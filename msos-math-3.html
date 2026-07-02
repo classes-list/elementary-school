@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mary, Star of the Sea — 3rd Grade Math Tutorial</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f9fa; color: #333; }
+    .container { display: flex; height: 100vh; }
+    .sidebar { border-right: 3px solid #FFD100;  width: 250px; background: #1a2a4a; color: white; overflow-y: auto; padding: 20px; }
+    .sidebar h2 { font-size: 14px; margin-bottom: 15px; font-weight: bold; }
+    .sidebar-item { padding: 10px; margin: 5px 0; background: #111d35; border-radius: 4px; cursor: pointer; font-size: 13px; }
+    .sidebar-item:hover { background: #1B3A8A; }
+    .sidebar-item.active { background: #1B3A8A; }
+    .main { flex: 1; display: flex; flex-direction: column; }
+    .summer-home-btn {
+      background: #FFD100; color: #1a2a4a; border: 1px solid #b8860b;
+      cursor: pointer; font-size: 13px; font-weight: 700;
+      padding: 8px 14px; border-radius: 6px; margin-right: 12px;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+      box-shadow: 0 1px 3px rgba(184,134,11,0.25); transition: all 0.18s;
+    }
+    .summer-home-btn:hover {
+      background: #b8860b; color: #fff;
+      box-shadow: 0 3px 8px rgba(184,134,11,0.35);
+      transform: translateX(-2px);
+    }
+    .topbar { border-bottom: 4px solid #FFD100;  background: #1B3A8A; color: white; padding: 15px 30px; font-size: 18px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+    .topbar-right { display: flex; gap: 20px; align-items: center; font-size: 14px; opacity: 0.85; }
+    .topbar-logos { display: flex; gap: 10px; align-items: center; }
+    .logo-circle { width: 50px; height: 50px; border-radius: 50%; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.25); overflow: hidden; display: inline-flex; align-items: center; justify-content: flex-start; flex-shrink: 0; }
+    .logo-circle img { display: block; }
+    .logo-circle.msos img { height: 100%; width: auto; }
+    .logo-circle.nui img { width: 100%; height: 100%; object-fit: cover; }
+    .logo-circle.msos { background: #1a2a4a; }
+    @media (max-width: 800px) { .logo-circle { width: 40px; height: 40px; } }
+    .content { flex: 1; overflow-y: auto; padding: 30px; }
+    .screen { display: none; }
+    .screen.active { display: block; }
+    .units-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .unit-card { background: white; border-radius: 8px; padding: 20px; cursor: pointer; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .unit-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(56,189,248,0.2); }
+    .unit-card-header { display: flex; gap: 15px; align-items: flex-start; margin-bottom: 15px; }
+    .unit-card-icon { font-size: 32px; }
+    .unit-card-meta { flex: 1; }
+    .unit-card-title { font-weight: bold; font-size: 16px; margin-bottom: 4px; }
+    .unit-card-cc { font-size: 12px; color: #666; }
+    .unit-card-desc { font-size: 13px; color: #555; margin-bottom: 12px; line-height: 1.4; }
+    .unit-card-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill { background: #f0f0f0; padding: 4px 10px; border-radius: 16px; font-size: 11px; }
+    .lesson-content h2 { margin: 20px 0 10px 0; color: #1B3A8A; }
+    .lesson-content p { margin-bottom: 12px; line-height: 1.6; }
+    .lesson-content ul, .lesson-content ol { margin-left: 20px; margin-bottom: 12px; }
+    .lesson-content li { margin-bottom: 8px; }
+    .btn { display: inline-block; padding: 10px 20px; background: #1B3A8A; color: white; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; margin: 5px; }
+    .btn:hover { background: #162E70; }
+    .btn-secondary { background: #6b7280; }
+    .btn-secondary:hover { background: #4b5563; }
+    .btn-yt { display: inline-block; padding: 10px 15px; background: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; margin: 5px 5px 5px 0; font-size: 13px; }
+    .btn-yt:hover { background: #dc2626; }
+    .btn-ixl { display: inline-block; padding: 10px 15px; background: #dc2626; color: white; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; margin: 5px 5px 5px 0; font-size: 13px; }
+    .btn-ixl:hover { background: #b91c1c; }
+    .btn-phet { display: inline-block; padding: 10px 15px; background: #7c3aed; color: white; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; margin: 5px 5px 5px 0; font-size: 13px; }
+    .btn-phet:hover { background: #6d28d9; }
+    .resource-card { background: #f3f4f6; border-radius: 8px; padding: 15px; margin: 20px 0; }
+    .resource-card h3 { margin-bottom: 10px; color: #1B3A8A; font-size: 14px; }
+    .resource-btns { display: flex; flex-wrap: wrap; }
+    .problem { background: white; padding: 15px; margin: 12px 0; border-left: 4px solid #1B3A8A; border-radius: 4px; }
+    .problem h4 { margin-bottom: 8px; color: #1B3A8A; }
+    .problem input, .problem textarea { width: 100%; padding: 8px; margin: 8px 0; border: 1px solid #ddd; border-radius: 4px; font-family: 'Courier New', monospace; }
+    .answer-key { background: #fef3c7; padding: 10px; margin: 8px 0; border-radius: 4px; font-size: 13px; }
+    .quiz-question { background: white; padding: 15px; margin: 15px 0; border-radius: 4px; border-left: 4px solid #1B3A8A; }
+    .quiz-question h4 { margin-bottom: 10px; color: #1B3A8A; }
+    .quiz-question label { display: block; margin: 8px 0; cursor: pointer; }
+    .quiz-question input[type="radio"] { margin-right: 8px; }
+    .result-card { background: #fef3c7; padding: 20px; border-radius: 8px; margin: 15px 0; }
+    .result-card h3 { color: #059669; margin-bottom: 10px; }
+    .nav-buttons { display: flex; gap: 10px; margin: 20px 0; }
+    .back-btn { background: #6b7280; }
+    .back-btn:hover { background: #4b5563; }
+
+    .handout-card { background: #fff; border-left: 5px solid #B8860B; border-radius: 10px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .handout-card h3 { margin: 0 0 8px; color: #B8860B; font-size: 1.2rem; }
+    .handout-science { font-size: 0.9rem; color: #666; margin-bottom: 12px; }
+    .handout-mission { background: #f8f9ff; border-radius: 6px; padding: 12px; margin-bottom: 16px; font-style: italic; color: #334; }
+    .handout-steps { margin: 0 0 16px; padding-left: 0; list-style: none; counter-reset: step-counter; }
+    .handout-steps li { counter-increment: step-counter; padding: 8px 12px 8px 44px; margin-bottom: 6px; background: #f0f4ff; border-radius: 6px; position: relative; font-size: 0.92rem; line-height: 1.5; }
+    .handout-steps li::before { content: counter(step-counter); position: absolute; left: 10px; top: 8px; width: 22px; height: 22px; background: #B8860B; color: #fff; border-radius: 50%; font-size: 0.78rem; font-weight: bold; display: flex; align-items: center; justify-content: center; }
+    .handout-deliverable { background: #fffbe6; border: 1px solid #f5d000; border-radius: 6px; padding: 12px; margin-bottom: 16px; }
+    .handout-deliverable strong { display: block; margin-bottom: 4px; color: #7a5f00; }
+    .handout-reflect { background: #fffbea; border: 1px solid #68d391; border-radius: 6px; padding: 12px; }
+    .handout-reflect strong { display: block; margin-bottom: 4px; color: #276749; }
+    .handout-reflect ol { margin: 0; padding-left: 20px; }
+    .handout-reflect li { margin-bottom: 6px; font-size: 0.9rem; }
+    code { background: #e8edf5; padding: 1px 5px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 0.88em; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2 style="margin:0 0 4px 0;">Mary, Star of the Sea</h2><p style="margin:0 0 16px 0;color:#888;font-size:14px;">3rd Grade Math Topics</p>
+      <div id="sidebar-content"></div>
+      <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #444; font-size: 12px; color: #999;">
+        Progress: <span id="progress-text">0/18</span>
+      </div>
+    </div>
+    <div class="main">
+      <div class="topbar">
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;">
+          <a href="index.html" class="summer-home-btn" title="Back to All Classes">← All Classes</a>
+          <div class="topbar-logos">
+            <span class="logo-circle msos" title="Mary, Star of the Sea"><img src="msos-logo.svg" alt="Mary, Star of the Sea Logo"></span>
+            <span class="logo-circle nui" title="Nurture · Unite · Inspire"><img src="nui-logo.png" alt="Nurture-Unite-Inspire Logo"></span>
+          </div>
+          <span id="topbar-title">Exploring the World with Math</span>
+        </div>
+        <div class="topbar-right">Math · Grade 3</div>
+      </div>
+      <div class="content">
+        <div id="home-screen" class="screen active">
+          <div id="units-grid" class="units-grid"></div>
+        </div>
+        <div id="lesson-screen" class="screen">
+          <button class="btn back-btn" onclick="showHome()">← Back to Units</button>
+          <div id="lesson-content" class="lesson-content"></div>
+          <div class="nav-buttons">
+            <button class="btn back-btn" onclick="showHome()">← Back</button>
+            <button class="btn" onclick="showHandout()">🌍 Real-World Math</button>
+            <button class="btn" onclick="showWorksheet()">Worksheet →</button>
+          </div>
+        </div>
+        <div id="worksheet-screen" class="screen">
+          <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back to Lesson</button>
+          <h2 style="margin: 20px 0;">📋 Worksheet</h2>
+          <div id="worksheet-content"></div>
+          <div class="nav-buttons">
+            <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back</button>
+            <button class="btn" onclick="checkWorksheet()">Check Answers</button>
+            <button class="btn" onclick="showQuiz()">Quiz →</button>
+          </div>
+        </div>
+        <div id="handout-screen" class="screen">
+          <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back to Lesson</button>
+          <h2 style="margin: 20px 0;">🌍 Real-World Math</h2>
+          <div id="handout-content"></div>
+          <div class="nav-buttons">
+            <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back to Lesson</button>
+            <button class="btn" onclick="showWorksheet()">Worksheet →</button>
+          </div>
+        </div>
+        <div id="quiz-screen" class="screen">
+          <button class="btn back-btn" onclick="showWorksheet()">← Back to Worksheet</button>
+          <h2 style="margin: 20px 0;">📝 Quick Quiz</h2>
+          <div id="quiz-content"></div>
+          <div class="nav-buttons">
+            <button class="btn back-btn" onclick="showWorksheet()">← Back</button>
+            <button class="btn" onclick="submitQuiz()">Submit Quiz</button>
+          </div>
+        </div>
+        <div id="certificate-screen" class="screen">
+          <div style="text-align: center; padding: 40px;">
+            <h2 style="color: #1B3A8A; margin: 20px 0;">🎉 Unit Completed!</h2>
+            <div id="cert-content"></div>
+            <button class="btn" onclick="showHome()" style="margin-top: 20px;">Return to Home</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+let completedUnits = {};
+const UNITS = [
+  { id:'mult-div-intro', title:'Understand Multiplication & Division', icon:'✖️➗', cc:'3.OA.1-4', desc:'Understand multiplication as equal groups; understand division as sharing or grouping.', ytSearch:'khan academy 3rd grade understanding multiplication division' },
+  { id:'mult-patterns', title:'Multiplication Facts: Use Patterns', icon:'🔁', cc:'3.OA.7,3.OA.9', desc:'Use skip counting and patterns to find multiplication facts for 2, 5, 9, and 10.', ytSearch:'khan academy 3rd grade multiplication patterns skip counting' },
+  { id:'mult-properties', title:'Multiplication Facts for 3, 4, 6, 7, 8', icon:'🎯', cc:'3.OA.5,3.OA.7', desc:'Use distributive and associative properties to solve harder multiplication facts.', ytSearch:'khan academy 3rd grade multiplication facts 3 4 6 7 8' },
+  { id:'division-facts', title:'Division Facts', icon:'📚', cc:'3.OA.6,3.OA.7', desc:'Use multiplication facts to find related division facts; understand fact families.', ytSearch:'khan academy 3rd grade division facts fact families' },
+  { id:'mult-div-fluent', title:'Fluently Multiply & Divide within 100', icon:'⚡', cc:'3.OA.7,3.OA.8', desc:'Solve one- and two-step word problems using multiplication and division within 100.', ytSearch:'khan academy 3rd grade multiplication division word problems' },
+  { id:'area', title:'Connect Area to Multiplication', icon:'🟦', cc:'3.MD.5-7', desc:'Find area by counting unit squares and by multiplying side lengths; use the distributive property with area.', ytSearch:'khan academy 3rd grade area rectangles multiplication' },
+  { id:'data', title:'Represent & Interpret Data', icon:'📊', cc:'3.MD.3-4', desc:'Read and make bar graphs, picture graphs, and line plots; solve one- and two-step data problems.', ytSearch:'khan academy 3rd grade bar graphs picture graphs line plots' },
+  { id:'add-sub-strategies', title:'Strategies to Add & Subtract', icon:'➕➖', cc:'3.NBT.1-2', desc:'Round numbers; use place value and properties to add and subtract with mental math.', ytSearch:'khan academy 3rd grade rounding addition subtraction strategies' },
+  { id:'add-sub-fluent', title:'Fluently Add & Subtract within 1,000', icon:'💯', cc:'3.NBT.2', desc:'Use the standard algorithm to add and subtract three-digit numbers, including regrouping.', ytSearch:'khan academy 3rd grade adding subtracting three digit numbers regrouping' },
+  { id:'mult-tens', title:'Multiply by Multiples of 10', icon:'🔟', cc:'3.NBT.3', desc:'Multiply one-digit numbers by 10, 20, 30, ... using place value patterns.', ytSearch:'khan academy 3rd grade multiply by multiples of 10' },
+  { id:'word-problems', title:'Word Problems with All 4 Operations', icon:'📝', cc:'3.OA.8', desc:'Solve two-step word problems using addition, subtraction, multiplication, and division.', ytSearch:'khan academy 3rd grade two step word problems' },
+  { id:'fractions-intro', title:'Understand Fractions as Numbers', icon:'🍕', cc:'3.NF.1-2', desc:'Understand a fraction as a part of a whole; represent fractions on a number line.', ytSearch:'khan academy 3rd grade understanding fractions' },
+  { id:'fraction-equiv', title:'Fraction Equivalence & Comparison', icon:'⚖️', cc:'3.NF.3', desc:'Find equivalent fractions; compare fractions with the same numerator or denominator.', ytSearch:'khan academy 3rd grade equivalent fractions comparing' },
+  { id:'time-mass-capacity', title:'Time, Capacity & Mass', icon:'⏰', cc:'3.MD.1-2', desc:'Tell time to the nearest minute; measure and estimate liquid volume and mass.', ytSearch:'khan academy 3rd grade telling time mass liquid volume' },
+  { id:'shapes-2d', title:'Attributes of 2D Shapes', icon:'🔷', cc:'3.G.1-2', desc:'Classify quadrilaterals by their attributes; partition shapes into equal areas.', ytSearch:'khan academy 3rd grade classify quadrilaterals' },
+  { id:'perimeter', title:'Solve Perimeter Problems', icon:'📏', cc:'3.MD.8', desc:'Find perimeters and side lengths of polygons; compare rectangles with same area or same perimeter.', ytSearch:'khan academy 3rd grade perimeter rectangles polygons' },
+];
+
+const LESSONS = {
+  "mult-div-intro": "<h2>Understand Multiplication &amp; Division</h2><p><strong>Multiplication</strong> is a fast way to count equal groups. 4 rows × 3 stars = 12 stars.</p><p><strong>Division</strong> is either <em>sharing</em> or <em>grouping</em>.</p><ul><li>Sharing: 12 marbles ÷ 3 friends = 4 each.</li><li>Grouping: 12 marbles into groups of 3 = 4 groups.</li></ul><p><strong>Worked Example:</strong> 5 baskets, 6 apples each. Apples in all? 5 × 6 = <strong>30</strong>.</p><p><strong>Vocabulary:</strong> factor × factor = product; dividend ÷ divisor = quotient.</p>",
+  "mult-patterns": "<h2>Multiplication Facts: Use Patterns</h2><p><strong>×2:</strong> double the number. 2 × 7 = 14.</p><p><strong>×5:</strong> ends in 0 or 5. 5 × 6 = 30.</p><p><strong>×10:</strong> add a zero. 10 × 8 = 80.</p><p><strong>×9 trick:</strong> multiply by 10, subtract the number. 9 × 7 = 70 − 7 = 63.</p><p><strong>Skip counting</strong> is the fastest way to build these facts: 3, 6, 9, 12, 15 (×3 table).</p>",
+  "mult-properties": "<h2>Multiplication Facts for 3, 4, 6, 7, 8</h2><p>These facts are harder to memorize. Break them apart!</p><p><strong>Distributive property:</strong> 6 × 8 = (5 × 8) + (1 × 8) = 40 + 8 = 48.</p><p><strong>Associative:</strong> 8 × 7 = 8 × (2 × 3) + 8 = still 56. Or think of 8 × 7 = 8 × 5 + 8 × 2 = 40 + 16 = 56.</p><p><strong>Doubles trick:</strong> ×4 = double twice. 4 × 6 → 6 doubled = 12; doubled again = <strong>24</strong>.</p><p><strong>Worked:</strong> 7 × 8 = 7 × 4 × 2 = 28 × 2 = <strong>56</strong>.</p>",
+  "division-facts": "<h2>Division Facts</h2><p>Every multiplication fact has a matching division fact.</p><p><strong>Fact family for 3, 5, 15:</strong> 3 × 5 = 15; 5 × 3 = 15; 15 ÷ 3 = 5; 15 ÷ 5 = 3.</p><p><strong>Worked:</strong> 42 ÷ 6 = ? Think: 6 × ? = 42. Answer: <strong>7</strong>.</p><p><strong>Special rules:</strong></p><ul><li>Any number ÷ 1 = itself.</li><li>Any number ÷ itself = 1.</li><li>0 ÷ any nonzero number = 0.</li><li>You cannot divide by 0.</li></ul>",
+  "mult-div-fluent": "<h2>Fluently Multiply &amp; Divide within 100</h2><p>Fluent means fast AND accurate. Aim for automatic recall of every fact up to 10 × 10.</p><p><strong>Word problem strategy:</strong></p><ol><li>Read the problem twice.</li><li>Circle the numbers and the question.</li><li>Decide: multiply or divide?</li><li>Solve and check.</li></ol><p><strong>Worked:</strong> A store had 8 shelves. Each shelf held 7 books. Then 12 books were sold. How many books left?</p><p>Total: 8 × 7 = 56. Left: 56 − 12 = <strong>44 books</strong>.</p>",
+  "area": "<h2>Connect Area to Multiplication</h2><p><strong>Area</strong> is the space inside a flat shape, measured in square units.</p><p><strong>Rectangle area = length × width.</strong> 5 × 3 = 15 square units.</p><p>You can also COUNT unit squares. A 5×3 rectangle has 5 rows of 3 squares = 15.</p><p><strong>Distributive property with area:</strong> A 6×8 rectangle can be split into 6×5 + 6×3 = 30 + 18 = 48 sq units.</p><p><strong>Real-life:</strong> How much carpet for a 12 ft × 10 ft room? Area = 12 × 10 = <strong>120 sq ft</strong>.</p>",
+  "data": "<h2>Represent &amp; Interpret Data</h2><p><strong>Bar graph:</strong> bars show counts. Great for comparing categories (favorite pet, favorite fruit).</p><p><strong>Picture graph:</strong> each picture stands for a number, told by the KEY.</p><p><strong>Line plot:</strong> Xs above a number line show how often each value shows up.</p><p><strong>Read carefully:</strong> check the SCALE. On a bar graph, if the scale goes up by 2s, a bar to 8 means 8, not 4.</p><p><strong>Worked:</strong> Bar graph shows Cats 8, Dogs 12, Fish 4. How many pets total? 8 + 12 + 4 = <strong>24</strong>.</p>",
+  "add-sub-strategies": "<h2>Strategies to Add &amp; Subtract</h2><p><strong>Rounding</strong> gives you a fast estimate.</p><p><strong>Nearest ten:</strong> look at the ones digit. 47 → 50; 42 → 40; 45 → 50 (round up on 5).</p><p><strong>Nearest hundred:</strong> look at the tens digit. 348 → 300; 375 → 400.</p><p><strong>Estimate first, then compute:</strong></p><p><strong>Worked:</strong> 287 + 156 ≈ 300 + 200 = 500. Exact: 287 + 156 = <strong>443</strong>. Estimate was off — recheck? 500 vs 443 → 300 was too high, should have used 290. Sharper estimate = 290 + 160 = 450 ≈ 443 ✓.</p>",
+  "add-sub-fluent": "<h2>Fluently Add &amp; Subtract within 1,000</h2><p>Use the <strong>standard algorithm</strong>: line up place values, add or subtract each column, regroup when needed.</p><p><strong>Worked (addition):</strong> 347 + 285</p><pre>    3 4 7\n +  2 8 5\n --------\n    6 3 2</pre><p>Ones: 7 + 5 = 12; write 2, carry 1. Tens: 4 + 8 + 1 = 13; write 3, carry 1. Hundreds: 3 + 2 + 1 = 6.</p><p><strong>Worked (subtraction with regrouping):</strong> 503 − 248</p><p>Ones: can't do 3 − 8; borrow from tens (but tens is 0, so borrow from hundreds first). Rework: 503 = 4 hundreds + 9 tens + 13 ones. 13−8 = 5; 9−4 = 5; 4−2 = 2. Answer: <strong>255</strong>.</p>",
+  "mult-tens": "<h2>Multiply by Multiples of 10</h2><p><strong>Pattern:</strong> multiplying by 10 adds a zero. Multiplying by 20 = (× 2) then (× 10) = double, then add a zero.</p><p><strong>Worked:</strong> 4 × 30. Think: 4 × 3 × 10 = 12 × 10 = <strong>120</strong>.</p><p><strong>Worked:</strong> 6 × 50 = 6 × 5 × 10 = 30 × 10 = <strong>300</strong>.</p><p><strong>Speed check:</strong> multiply the non-zero digits, then attach the zeros.</p><p>7 × 80: 7 × 8 = 56 → attach one 0 → <strong>560</strong>.</p>",
+  "word-problems": "<h2>Word Problems with All 4 Operations</h2><p><strong>Two-step problems</strong> need TWO operations.</p><p><strong>Strategy:</strong></p><ol><li>What do we know?</li><li>What are we asked?</li><li>What is the FIRST step?</li><li>What is the SECOND step?</li><li>Check: does the answer make sense?</li></ol><p><strong>Worked:</strong> Maya has 4 boxes. Each holds 8 crayons. She gives 5 away. How many left?</p><p>Step 1: 4 × 8 = 32 crayons. Step 2: 32 − 5 = <strong>27 crayons</strong>.</p>",
+  "fractions-intro": "<h2>Understand Fractions as Numbers</h2><p>A <strong>fraction</strong> shows part of a whole. The TOP (numerator) tells how many pieces you have; the BOTTOM (denominator) tells how many equal pieces make the whole.</p><p><strong>Example:</strong> 3/4 means \"3 of 4 equal pieces.\"</p><p><strong>Number line:</strong> a fraction is a place on the number line between 0 and 1 (or beyond).</p><p>To plot 2/5, divide the segment from 0 to 1 into 5 equal parts. The second tick mark is 2/5.</p><p><strong>Same numerator, different denominator:</strong> 1/2 &gt; 1/4 (bigger pieces).</p>",
+  "fraction-equiv": "<h2>Fraction Equivalence &amp; Comparison</h2><p><strong>Equivalent fractions</strong> look different but are equal. 1/2 = 2/4 = 3/6 = 4/8.</p><p><strong>Rule:</strong> multiply top and bottom by the same number.</p><p><strong>Compare same denominator:</strong> bigger top wins. 5/8 &gt; 3/8.</p><p><strong>Compare same numerator:</strong> smaller bottom wins (bigger pieces). 3/4 &gt; 3/8.</p><p><strong>Use benchmarks:</strong> compare to 1/2 or 1 whole. 3/4 is greater than 1/2; 1/4 is less than 1/2.</p>",
+  "time-mass-capacity": "<h2>Time, Capacity &amp; Mass</h2><p><strong>Telling time to the nearest minute:</strong> hour hand tells the hour; minute hand tells the minutes. Count minutes in 5s: 5, 10, 15, 20, ...</p><p><strong>Elapsed time:</strong> the amount of time between start and end. From 2:15 to 3:40 = 1 hour 25 minutes.</p><p><strong>Mass</strong> measures how heavy something is. Metric units: gram (g), kilogram (kg). 1 kg = 1,000 g.</p><p><strong>Capacity</strong> measures how much liquid a container holds. Metric units: milliliter (mL), liter (L). 1 L = 1,000 mL.</p><p><strong>Estimate reference:</strong> a paper clip ≈ 1 g; a book ≈ 1 kg; a spoon ≈ 5 mL; a soda bottle ≈ 500 mL.</p>",
+  "shapes-2d": "<h2>Attributes of 2D Shapes</h2><p>A <strong>quadrilateral</strong> is any 4-sided polygon.</p><ul><li><strong>Square:</strong> 4 equal sides + 4 right angles.</li><li><strong>Rectangle:</strong> 4 right angles (opposite sides equal).</li><li><strong>Rhombus:</strong> 4 equal sides (may not have right angles).</li><li><strong>Parallelogram:</strong> 2 pairs of parallel sides.</li><li><strong>Trapezoid:</strong> 1 pair of parallel sides.</li></ul><p><strong>Partition:</strong> divide a shape into equal areas. A rectangle cut into 4 equal parts = each part is 1/4 of the whole.</p><p><strong>Worked:</strong> Which shape has 4 right angles but sides that AREN'T all equal? <strong>Rectangle</strong>.</p>",
+  "perimeter": "<h2>Perimeter</h2><p><strong>Perimeter</strong> = the distance AROUND a shape. Add all the sides.</p><p><strong>Rectangle:</strong> P = 2(L + W). A 4×3 rectangle: P = 2(4+3) = 14 units.</p><p><strong>Square:</strong> P = 4 × side. A square with side 5: P = 20.</p><p><strong>Missing side:</strong> if you know the perimeter and some sides, subtract to find the missing one.</p><p><strong>Example:</strong> A triangle has sides 5, 7, and ?. Perimeter = 20. Missing side = 20 − 5 − 7 = <strong>8</strong>.</p><p><strong>Same area, different perimeter:</strong> a 1×6 rectangle and a 2×3 rectangle both have area 6, but perimeters 14 vs 10.</p>",
+};
+
+const WORKSHEETS = {
+  "mult-div-intro": [{"q": "5 groups of 4 = ___", "answer": "20 (5 × 4)"}, {"q": "What is 6 × 3?", "answer": "18"}, {"q": "21 marbles split among 3 friends. Each friend gets ___.", "answer": "7 (21 ÷ 3)"}, {"q": "You have 15 crayons packed 5 per box. How many boxes?", "answer": "3 boxes (15 ÷ 5)"}, {"q": "Write the multiplication and matching division sentence for 4, 6, 24.", "answer": "4 × 6 = 24; 24 ÷ 4 = 6 (also 6 × 4 = 24; 24 ÷ 6 = 4)"}],
+  "mult-patterns": [{"q": "9 × 6 = ? (Use the ×9 trick)", "answer": "54 (9 × 6 = 60 − 6 = 54)"}, {"q": "5 × 8 = ?", "answer": "40"}, {"q": "10 × 7 = ?", "answer": "70"}, {"q": "2 × 9 = ? (double)", "answer": "18"}, {"q": "Next number in 3, 6, 9, 12, ___", "answer": "15 (skip counting by 3)"}],
+  "mult-properties": [{"q": "7 × 8 = ? (break apart: 5 × 8 + 2 × 8)", "answer": "56 (40 + 16)"}, {"q": "4 × 6 = ? (double 6, double again)", "answer": "24"}, {"q": "6 × 7 = ?", "answer": "42"}, {"q": "8 × 8 = ?", "answer": "64"}, {"q": "3 × 9 = ?", "answer": "27"}],
+  "division-facts": [{"q": "56 ÷ 8 = ?", "answer": "7"}, {"q": "Fact family for 4, 7, 28?", "answer": "4×7=28; 7×4=28; 28÷4=7; 28÷7=4"}, {"q": "0 ÷ 5 = ?", "answer": "0"}, {"q": "9 ÷ 1 = ?", "answer": "9"}, {"q": "36 ÷ 6 = ?", "answer": "6"}],
+  "mult-div-fluent": [{"q": "A class has 6 rows of 4 desks. Total desks?", "answer": "24 desks"}, {"q": "You have 45 stickers, share equally among 5 friends. Each gets?", "answer": "9 stickers"}, {"q": "A vase holds 8 flowers. You have 3 vases. Total flowers?", "answer": "24 flowers"}, {"q": "Maya has 7 boxes with 6 cookies each. She eats 4. Left?", "answer": "38 cookies (42 − 4)"}, {"q": "A shelf has 4 rows of 8 books. If 5 are checked out, how many remain?", "answer": "27 books (32 − 5)"}],
+  "area": [{"q": "Area of a 5 × 3 rectangle?", "answer": "15 sq units"}, {"q": "Area of a 6 × 8 room in sq ft?", "answer": "48 sq ft"}, {"q": "Split 4 × 9 as 4 × (5 + 4). Compute using distributive.", "answer": "4×5 + 4×4 = 20 + 16 = 36"}, {"q": "A patio is 7 × 4. Area?", "answer": "28 sq units"}, {"q": "A rectangle has area 24 sq units and length 6. Width?", "answer": "4 units (24 ÷ 6)"}],
+  "data": [{"q": "Bar graph shows 6 apples, 9 oranges, 3 bananas. Total fruit?", "answer": "18 fruits"}, {"q": "Picture graph key: 🍎 = 2. If Anna has 5 🍎, how many apples?", "answer": "10 apples"}, {"q": "Line plot Xs: 2 at 3, 4 at 5, 1 at 7. Total data points?", "answer": "7"}, {"q": "Bar graph: dogs 15, cats 8. How many more dogs?", "answer": "7 more dogs"}, {"q": "What kind of graph is best for showing FREQUENCY of measurements?", "answer": "line plot"}],
+  "add-sub-strategies": [{"q": "Round 47 to the nearest ten.", "answer": "50"}, {"q": "Round 348 to the nearest hundred.", "answer": "300"}, {"q": "Estimate 236 + 158 by rounding to the nearest hundred.", "answer": "≈ 200 + 200 = 400 (exact = 394)"}, {"q": "Estimate 512 − 187 by rounding to the nearest hundred.", "answer": "≈ 500 − 200 = 300 (exact = 325)"}, {"q": "Round 65 to the nearest ten. Explain your rule.", "answer": "70 (rule: round up on 5)"}],
+  "add-sub-fluent": [{"q": "347 + 285 = ?", "answer": "632"}, {"q": "503 − 248 = ?", "answer": "255"}, {"q": "Add: 156 + 279", "answer": "435"}, {"q": "A store has 875 books. It sells 289. How many left?", "answer": "586 books"}, {"q": "728 + 145 = ?", "answer": "873"}],
+  "mult-tens": [{"q": "3 × 20 = ?", "answer": "60"}, {"q": "5 × 40 = ?", "answer": "200"}, {"q": "7 × 30 = ?", "answer": "210"}, {"q": "A store has 4 shelves. Each has 60 cans. Total?", "answer": "240 cans"}, {"q": "9 × 60 = ?", "answer": "540"}],
+  "word-problems": [{"q": "A pizza has 8 slices. You buy 3 pizzas. If you and your friends eat 12 slices, how many left?", "answer": "12 slices (3 × 8 = 24; 24 − 12)"}, {"q": "You have $25. You buy a book for $12 and a snack for $4. How much left?", "answer": "$9 (25 − 12 − 4)"}, {"q": "A garden has 5 rows of 8 tomatoes. Birds eat 7. Remaining?", "answer": "33 tomatoes (40 − 7)"}, {"q": "You save $6 each week for 4 weeks. Then you spend $9. How much left?", "answer": "$15 (24 − 9)"}, {"q": "A bus has 32 seats. 18 kids get on, then 6 more. How many empty?", "answer": "8 empty seats (32 − 24)"}],
+  "fractions-intro": [{"q": "A pizza is cut into 6 equal slices. You eat 2. Fraction eaten?", "answer": "2/6"}, {"q": "What fraction is at the third tick mark of a number line divided into 5 parts?", "answer": "3/5"}, {"q": "A rectangle has 4 equal parts and 3 are shaded. Fraction shaded?", "answer": "3/4"}, {"q": "Which is bigger: 1/2 or 1/4?", "answer": "1/2 (bigger pieces)"}, {"q": "Write 1 whole as a fraction with 8 as the denominator.", "answer": "8/8"}],
+  "fraction-equiv": [{"q": "Give a fraction equal to 1/2.", "answer": "2/4 (or 3/6, 4/8, etc.)"}, {"q": "Compare: 3/8 ___ 5/8", "answer": "3/8 &lt; 5/8"}, {"q": "Compare: 2/4 ___ 2/8", "answer": "2/4 &gt; 2/8 (bigger pieces)"}, {"q": "Give three fractions equivalent to 2/3.", "answer": "4/6, 6/9, 8/12"}, {"q": "Which is closer to 1/2: 3/8 or 5/8?", "answer": "They're both 1/8 away. Tie."}],
+  "time-mass-capacity": [{"q": "It is 2:15. What time is it 45 minutes later?", "answer": "3:00"}, {"q": "A book takes 25 minutes to read. You start at 4:10. What time do you finish?", "answer": "4:35"}, {"q": "A carton of milk holds ___ mL or L?", "answer": "≈ 1 L (or 1,000 mL)"}, {"q": "A pencil weighs about ___ (g or kg)?", "answer": "grams (about 5 g)"}, {"q": "How many grams in 3 kg?", "answer": "3,000 g"}],
+  "shapes-2d": [{"q": "A shape with 4 equal sides and 4 right angles is a ___.", "answer": "square"}, {"q": "A rectangle has how many right angles?", "answer": "4"}, {"q": "True or false: All squares are rectangles.", "answer": "True"}, {"q": "A quadrilateral with only 1 pair of parallel sides is a ___.", "answer": "trapezoid"}, {"q": "A rectangle is cut into 4 equal parts. Each part is ___ of the whole.", "answer": "1/4"}],
+  "perimeter": [{"q": "Perimeter of a 5 × 3 rectangle?", "answer": "16 units (2×5 + 2×3)"}, {"q": "Perimeter of a square with side 7?", "answer": "28 units"}, {"q": "A triangle has sides 4, 6, and 8. Perimeter?", "answer": "18 units"}, {"q": "A rectangle has perimeter 20 and length 6. Width?", "answer": "4 (20÷2 = 10; 10−6 = 4)"}, {"q": "A garden is 12 ft × 8 ft. How much fencing is needed?", "answer": "40 ft"}],
+};
+
+const QUIZZES = {
+  "mult-div-intro": [{"q": "4 × 5 = ?", "opts": ["9", "20", "25", "15"], "ans": 1}, {"q": "18 ÷ 3 = ?", "opts": ["5", "6", "7", "9"], "ans": 1}, {"q": "6 groups of 2 = ___", "opts": ["8", "10", "12", "14"], "ans": 2}, {"q": "A jar has 24 candies for 4 friends. Each gets ___", "opts": ["4", "5", "6", "8"], "ans": 2}, {"q": "Which pair are related facts?", "opts": ["3+4=7 and 7−3=4", "5×6=30 and 30÷5=6", "2+3=5 and 5×2=10", "none"], "ans": 1}],
+  "mult-patterns": [{"q": "9 × 4 = ?", "opts": ["36", "32", "40", "45"], "ans": 0}, {"q": "5 × 7 = ?", "opts": ["35", "40", "25", "12"], "ans": 0}, {"q": "10 × 6 = ?", "opts": ["6", "16", "60", "66"], "ans": 2}, {"q": "2 × 8 = ?", "opts": ["10", "12", "16", "18"], "ans": 2}, {"q": "Next in 4, 8, 12, 16?", "opts": ["18", "20", "24", "22"], "ans": 1}],
+  "mult-properties": [{"q": "6 × 7 = ?", "opts": ["36", "42", "48", "54"], "ans": 1}, {"q": "4 × 8 = ?", "opts": ["24", "28", "32", "36"], "ans": 2}, {"q": "7 × 8 = ?", "opts": ["48", "54", "56", "63"], "ans": 2}, {"q": "8 × 3 = ?", "opts": ["18", "21", "24", "27"], "ans": 2}, {"q": "6 × 6 = ?", "opts": ["30", "32", "35", "36"], "ans": 3}],
+  "division-facts": [{"q": "45 ÷ 9 = ?", "opts": ["4", "5", "6", "7"], "ans": 1}, {"q": "0 ÷ 4 = ?", "opts": ["0", "1", "4", "undefined"], "ans": 0}, {"q": "A number ÷ 1 = ?", "opts": ["0", "1", "the number", "undefined"], "ans": 2}, {"q": "54 ÷ 6 = ?", "opts": ["7", "8", "9", "12"], "ans": 2}, {"q": "The dividend is 63; the divisor is 9. Quotient?", "opts": ["5", "6", "7", "8"], "ans": 2}],
+  "mult-div-fluent": [{"q": "8 × 9 = ?", "opts": ["64", "72", "81", "56"], "ans": 1}, {"q": "A store has 5 rows of 6 hats. Total hats?", "opts": ["11", "25", "30", "35"], "ans": 2}, {"q": "You have 40 stickers, split 5 ways. Each?", "opts": ["5", "6", "7", "8"], "ans": 3}, {"q": "Two-step: 4 × 6 = ?, then + 10 = ?", "opts": ["24, 34", "20, 30", "30, 40", "24, 30"], "ans": 0}, {"q": "Best strategy for word problems is:", "opts": ["guess", "read carefully", "skip and hope", "use a calculator"], "ans": 1}],
+  "area": [{"q": "Area of a 4×6 rectangle?", "opts": ["10", "20", "24", "30"], "ans": 2}, {"q": "Area is measured in ___.", "opts": ["units", "square units", "cubic units", "dollars"], "ans": 1}, {"q": "A square with side 5 has area?", "opts": ["20", "25", "10", "15"], "ans": 1}, {"q": "To find area you ___.", "opts": ["add sides", "multiply length × width", "subtract", "count corners"], "ans": 1}, {"q": "A 3×7 rectangle has same area as ___.", "opts": ["3+7", "7×3", "21+1", "7−3"], "ans": 1}],
+  "data": [{"q": "A bar graph is best for ___.", "opts": ["fractions", "comparing categories", "showing time", "division"], "ans": 1}, {"q": "A picture graph uses a KEY to show ___.", "opts": ["color", "the value of each picture", "the scale", "the total"], "ans": 1}, {"q": "Line plot Xs at 2 (three times) — that means ___.", "opts": ["2 appears 3 times", "3 appears 2 times", "tie", "total = 5"], "ans": 0}, {"q": "Bar graph scale: 0, 5, 10, 15. A bar to 10 = ___.", "opts": ["5", "10", "15", "20"], "ans": 1}, {"q": "To find the total from a bar graph, ___.", "opts": ["guess", "add all the bar values", "subtract", "multiply"], "ans": 1}],
+  "add-sub-strategies": [{"q": "Round 78 to the nearest ten.", "opts": ["70", "75", "80", "100"], "ans": 2}, {"q": "Round 234 to the nearest hundred.", "opts": ["200", "230", "250", "300"], "ans": 0}, {"q": "Estimate 189 + 312 (nearest hundred).", "opts": ["400", "450", "500", "600"], "ans": 2}, {"q": "On a 5, round ___.", "opts": ["down", "up", "sometimes", "never"], "ans": 1}, {"q": "Best estimate of 82 + 47:", "opts": ["100", "130", "150", "200"], "ans": 1}],
+  "add-sub-fluent": [{"q": "456 + 289 = ?", "opts": ["645", "745", "755", "745"], "ans": 1}, {"q": "When we can't subtract, we ___.", "opts": ["skip it", "regroup", "carry", "multiply"], "ans": 1}, {"q": "900 − 456 = ?", "opts": ["434", "444", "454", "464"], "ans": 1}, {"q": "What is 725 + 158?", "opts": ["873", "883", "893", "783"], "ans": 1}, {"q": "618 − 379 = ?", "opts": ["239", "249", "259", "339"], "ans": 0}],
+  "mult-tens": [{"q": "5 × 30 = ?", "opts": ["15", "35", "150", "8"], "ans": 2}, {"q": "6 × 40 = ?", "opts": ["240", "230", "44", "1,200"], "ans": 0}, {"q": "Fast trick: 4 × 70 = ?", "opts": ["280", "74", "480", "30"], "ans": 0}, {"q": "9 × 50 = ?", "opts": ["400", "450", "500", "550"], "ans": 1}, {"q": "3 × 20 has the same product as ___", "opts": ["3 × 2 × 10", "3 × 3", "30 × 20", "5 × 12"], "ans": 0}],
+  "word-problems": [{"q": "Zach has 3 packs of 8 markers. He gives 6 to friends. How many left?", "opts": ["18", "24", "30", "20"], "ans": 0}, {"q": "A pizza has 8 slices. Each of 4 friends eats 2. Slices left?", "opts": ["0", "2", "4", "6"], "ans": 0}, {"q": "A store has 96 balls in boxes of 12. How many boxes?", "opts": ["8", "9", "10", "12"], "ans": 0}, {"q": "Two-step: 5 × 6 then − 8 = ?", "opts": ["22", "24", "26", "28"], "ans": 0}, {"q": "Best first step is:", "opts": ["read the problem twice", "guess", "multiply", "subtract"], "ans": 0}],
+  "fractions-intro": [{"q": "A shape is split into 6 equal parts, 4 shaded. Fraction shaded?", "opts": ["4/6", "6/4", "6/10", "2/6"], "ans": 0}, {"q": "In 3/5, the 5 is the ___.", "opts": ["numerator", "denominator", "answer", "part"], "ans": 1}, {"q": "Which is larger?", "opts": ["1/2", "1/3", "1/4", "1/5"], "ans": 0}, {"q": "On a number line 0 to 1 divided into 4 parts, 3/4 is ___.", "opts": ["near 0", "at 1/2", "at the third tick", "at 1"], "ans": 2}, {"q": "1 whole = ___/6 with denominator 6.", "opts": ["1", "6", "5", "7"], "ans": 1}],
+  "fraction-equiv": [{"q": "Which is equal to 1/2?", "opts": ["2/3", "2/4", "3/8", "4/10"], "ans": 1}, {"q": "Which is bigger: 3/8 or 5/8?", "opts": ["3/8", "5/8", "equal", "depends"], "ans": 1}, {"q": "Which is bigger: 2/3 or 2/6?", "opts": ["2/3", "2/6", "equal", "both"], "ans": 0}, {"q": "Fill: 3/4 = ?/8.", "opts": ["3", "4", "6", "8"], "ans": 2}, {"q": "Which is smallest?", "opts": ["1/2", "1/3", "1/4", "1/5"], "ans": 3}],
+  "time-mass-capacity": [{"q": "Time is 3:20. What is it 15 min later?", "opts": ["3:30", "3:35", "3:40", "3:25"], "ans": 1}, {"q": "A bookweighs about ___", "opts": ["1 g", "1 kg", "1 L", "1 mL"], "ans": 1}, {"q": "A soda bottle holds about ___", "opts": ["5 mL", "50 mL", "500 mL", "5,000 mL"], "ans": 2}, {"q": "2 kg = ___", "opts": ["20 g", "200 g", "2,000 g", "20,000 g"], "ans": 2}, {"q": "Elapsed time from 1:15 to 2:30 is ___", "opts": ["45 min", "1 h", "1 h 15 min", "1 h 30 min"], "ans": 2}],
+  "shapes-2d": [{"q": "A square has ___ right angles.", "opts": ["2", "3", "4", "5"], "ans": 2}, {"q": "A rectangle has 4 right angles. True/false?", "opts": ["True", "False", "sometimes", "depends"], "ans": 0}, {"q": "A trapezoid has ___ pair of parallel sides.", "opts": ["0", "1", "2", "3"], "ans": 1}, {"q": "A shape with 4 equal sides that isn't a square is a ___.", "opts": ["rectangle", "rhombus", "triangle", "pentagon"], "ans": 1}, {"q": "A rectangle divided into 3 equal parts. Each is ___ of the whole.", "opts": ["1/2", "1/3", "1/4", "1/5"], "ans": 1}],
+  "perimeter": [{"q": "Perimeter of a 4×7 rectangle?", "opts": ["11", "22", "28", "14"], "ans": 1}, {"q": "Perimeter of a square with side 6 is ___", "opts": ["24", "12", "36", "18"], "ans": 0}, {"q": "A rectangle has perimeter 30, length 10. Width?", "opts": ["3", "5", "10", "15"], "ans": 1}, {"q": "Two rectangles: 2×6 and 3×4. Both have area 12. Which has SMALLER perimeter?", "opts": ["2×6", "3×4", "equal", "can't tell"], "ans": 1}, {"q": "A triangle has sides 4, 5, 6. Perimeter?", "opts": ["12", "15", "20", "120"], "ans": 1}],
+};
+
+const HANDOUTS_5 = {
+  "mult-div-intro": {"title": "Sports Team Snack Packing", "science": "🍎 Real-World Math — Snacks", "mission": "Plan snacks for a soccer team.", "steps": ["A team has 12 players. Each gets 3 crackers. Total crackers needed?", "A juice pack has 6 boxes. You bring 4 packs. How many juice boxes?", "You have 18 apples for 6 kids. Each gets?", "A snack bag has 8 pretzels for 2 kids. Each gets?", "Write the multiplication and division sentences for problem 3."], "deliverable": "Snack plan with equations shown.", "reflect": ["When do you multiply vs divide?", "What is a real-life way to check your answer?"]},
+  "mult-patterns": {"title": "Skip-Count Bank Account", "science": "💰 Real-World Math — Money", "mission": "You save the same amount each week — track your growing total.", "steps": ["You save $5 per week. How much after 6 weeks?", "You save $10 per week. How much after 9 weeks?", "A friend saves $2 per week. How much after 8 weeks?", "Skip-count by 9s to find 9 × 5.", "Skip-count by 5s to find 5 × 9. Compare to your answer above."], "deliverable": "Savings tracker table.", "reflect": ["Why do skip counting and multiplication give the same answer?", "Which multiplication table did you find easiest?"]},
+  "mult-properties": {"title": "Board Game Points", "science": "🎲 Real-World Math — Games", "mission": "Score a board game using the multiplication tables for 3, 4, 6, 7, 8.", "steps": ["You land on 6 red spaces × 4 pts each. Score?", "You land on 8 blue × 7 pts each. Score?", "You land on 3 green × 8 pts each. Score?", "Use 6 × 8 = (5 × 8) + (1 × 8) to check.", "Total your points from 3 games."], "deliverable": "Game scorecard with computations.", "reflect": ["Which trick made a hard fact easier?", "What happens if you make a mistake in the middle?"]},
+  "division-facts": {"title": "Birthday Party Bags", "science": "🎉 Real-World Math — Parties", "mission": "Split treats fairly for a party.", "steps": ["You have 24 stickers for 6 kids. Each gets?", "You have 32 candies for 4 kids. Each gets?", "You have 45 balloons for 9 kids. Each gets?", "You have 0 leftover cookies to share 5 ways. Each?", "Write the multiplication that matches problem 1."], "deliverable": "Party bag plan with equations.", "reflect": ["What if you can't divide evenly?", "How can multiplication check a division answer?"]},
+  "mult-div-fluent": {"title": "School Fair Booth Planning", "science": "🎪 Real-World Math — School Events", "mission": "Run a booth at the school fair.", "steps": ["You sell 4 tickets per hour. Over 6 hours, tickets sold?", "Each ticket is $3. Total money?", "You gave $5 change to 8 people. Total change given?", "Money left after change: total from #2 − total from #3.", "If 48 tickets are left over and each pack is 6 tickets, how many packs?"], "deliverable": "Booth report: tickets, money, change, remaining stock.", "reflect": ["Why is it important to multiply and divide fluently?", "How does a mistake grow through a multi-step problem?"]},
+  "area": {"title": "Room Tile Layout", "science": "🏠 Real-World Math — Home Design", "mission": "Plan how many square tiles cover a floor.", "steps": ["A room is 8 ft × 5 ft. Area?", "A rug is 3 ft × 4 ft. Area?", "Rug covers ___ % of the room? (round to nearest 10)", "How many 1-ft × 1-ft tiles cover the room?", "How many tiles are covered by the rug?"], "deliverable": "Room diagram with tile count and rug placement.", "reflect": ["How is area different from perimeter?", "Why do we use square units for area?"]},
+  "data": {"title": "Class Favorite Fruit Survey", "science": "🍓 Real-World Math — Surveys", "mission": "Survey classmates and build a bar graph.", "steps": ["Survey 20 classmates: apple, banana, orange, grape. Record counts.", "Draw a bar graph with title and labeled axes.", "Which fruit is most popular?", "Which is least popular?", "How many more chose the most popular than the least popular?"], "deliverable": "Complete bar graph with 5 questions answered.", "reflect": ["Which type of graph would you use for time-of-day data?", "How can you tell if your graph's scale is well chosen?"]},
+  "add-sub-strategies": {"title": "Estimate Shopping Trip", "science": "🛍️ Real-World Math — Shopping", "mission": "Estimate then compute a shopping total.", "steps": ["Items: $23, $17, $32, $8. Estimate the total to the nearest ten.", "Compute the exact total.", "If you have $80, will you have enough? Estimate to check.", "Round $237 to the nearest hundred.", "Estimate $458 − $187 to the nearest hundred."], "deliverable": "Shopping list with estimates and exact totals.", "reflect": ["When is rounding good enough?", "When could rounding mislead you?"]},
+  "add-sub-fluent": {"title": "Library Book Tracker", "science": "📚 Real-World Math — Books", "mission": "Track library book counts using the standard algorithm.", "steps": ["The library has 458 books. They receive 275 more. Total?", "They return 189 borrowed books. New total?", "Yesterday: 632 books. Today: 754 books. Difference?", "A grade level checked out 315 books. If 89 are returned, how many still out?", "Estimate 632 + 275, then compute the exact total. Compare."], "deliverable": "Library log with all counts and computations.", "reflect": ["Why is regrouping needed when subtracting from 0 in a place?", "How does estimating help you check exact answers?"]},
+  "mult-tens": {"title": "Baseball Ticket Sales", "science": "⚾ Real-World Math — Sports", "mission": "Compute ticket sales at a baseball game.", "steps": ["4 rows × 30 seats. Total seats?", "7 sections × 40 seats. Total seats?", "Each ticket costs $10. Revenue from 6 × 50 seats?", "What is 3 × 200?", "A store had 8 boxes of 60 shirts. Total shirts?"], "deliverable": "Sales report with all multiplications shown.", "reflect": ["What pattern shows up when you multiply by 10s?", "Does multiplication by tens always add zeros? Explain."]},
+  "word-problems": {"title": "School Trip Planning", "science": "🚌 Real-World Math — Field Trips", "mission": "Plan a class field trip.", "steps": ["4 classes go, each with 25 students. Total students?", "Each bus holds 40. How many buses?", "Each student needs a $2 snack. Total snack cost?", "A parent chaperone volunteers for each class. Total chaperones?", "Total people (students + chaperones)?"], "deliverable": "Trip plan with numbers, buses, cost, and chaperones.", "reflect": ["What step could go wrong?", "Why do you round UP for the number of buses (not down)?"]},
+  "fractions-intro": {"title": "Pizza Party Fractions", "science": "🍕 Real-World Math — Pizza", "mission": "Serve pizza to friends fairly.", "steps": ["A pizza is 8 slices. 3 are eaten. Fraction eaten?", "A pizza is 6 slices. 2 are eaten. Fraction eaten?", "Draw two pizzas: one 1/4 eaten, one 3/4 eaten.", "Plot 2/6 and 4/6 on a number line 0 to 1 divided into 6.", "Which is bigger: 1/3 or 1/6?"], "deliverable": "Pizza fractions drawn and compared.", "reflect": ["When can a bigger denominator mean smaller pieces?", "How does a number line help you see fraction sizes?"]},
+  "fraction-equiv": {"title": "Recipe Doubling", "science": "🍪 Real-World Math — Baking", "mission": "Convert between equivalent fraction amounts in recipes.", "steps": ["1/2 cup sugar = ?/4 cup sugar", "2/3 cup flour = ?/6 cup flour", "You need 3/4 cup. Show 3/4 = ?/8.", "Compare: 2/3 vs 4/6. Explain.", "Order smallest to largest: 1/2, 3/8, 5/8."], "deliverable": "Recipe adjustments with equivalent fractions written out.", "reflect": ["Why do we multiply top and bottom by the same number?", "Which is easier to visualize: 1/2 or 4/8?"]},
+  "time-mass-capacity": {"title": "Morning Routine Timing", "science": "⏰ Real-World Math — Daily Routines", "mission": "Plan a morning routine using time and estimation.", "steps": ["You wake at 6:30. Shower for 15 min. Time now?", "Breakfast for 20 min after shower. Time now?", "Total morning time so far?", "A juice box is ___ mL (estimate).", "A backpack is ___ g or kg? (estimate)"], "deliverable": "Morning schedule with times and weight/capacity estimates.", "reflect": ["Why is elapsed time useful?", "How do you check if an estimate is reasonable?"]},
+  "shapes-2d": {"title": "Playground Shape Hunt", "science": "🎠 Real-World Math — Playground", "mission": "Identify shapes at a playground.", "steps": ["List 3 objects that are RECTANGLES.", "List 2 objects that are SQUARES.", "Draw a shape with 4 equal sides but no right angles.", "A slide entrance is 4 equal sides + 4 right angles. What shape?", "Which quadrilaterals have opposite sides parallel?"], "deliverable": "Playground shape hunt log with sketches.", "reflect": ["How does having 4 right angles change a shape?", "What makes a rhombus different from a square?"]},
+  "perimeter": {"title": "Garden Fence Planning", "science": "🌻 Real-World Math — Gardens", "mission": "Plan how much fencing to buy for a garden.", "steps": ["A rectangle garden is 8 ft × 5 ft. Perimeter?", "A square garden with side 6 ft. Perimeter?", "A triangle garden has sides 5, 7, 9. Perimeter?", "A rectangle has perimeter 24 ft and length 8 ft. Width?", "Compare two rectangles with area 20 sq ft: 4×5 and 2×10. Which needs LESS fencing?"], "deliverable": "Garden fence plan with all measurements.", "reflect": ["Why does the SHAPE matter as much as the area?", "What happens to perimeter if you double the sides?"]},
+};
+
+const ANSWER_KEYS_5 = {
+  "mult-div-intro": "Math3_mult_div_intro.xlsx",
+  "mult-patterns": "Math3_mult_patterns.xlsx",
+  "mult-properties": "Math3_mult_properties.xlsx",
+  "division-facts": "Math3_division_facts.xlsx",
+  "mult-div-fluent": "Math3_mult_div_fluent.xlsx",
+  "area": "Math3_area.xlsx",
+  "data": "Math3_data.xlsx",
+  "add-sub-strategies": "Math3_add_sub_strategies.xlsx",
+  "add-sub-fluent": "Math3_add_sub_fluent.xlsx",
+  "mult-tens": "Math3_mult_tens.xlsx",
+  "word-problems": "Math3_word_problems.xlsx",
+  "fractions-intro": "Math3_fractions_intro.xlsx",
+  "fraction-equiv": "Math3_fraction_equiv.xlsx",
+  "time-mass-capacity": "Math3_time_mass_capacity.xlsx",
+  "shapes-2d": "Math3_shapes_2d.xlsx",
+  "perimeter": "Math3_perimeter.xlsx",
+};
+
+const ANSWERS_5 = {
+  "mult-div-intro": ["12 × 3 = 36 crackers.", "4 × 6 = 24 juice boxes.", "18 ÷ 6 = 3 apples each.", "8 ÷ 2 = 4 pretzels each.", "18 = 6 × 3; 18 ÷ 3 = 6; 18 ÷ 6 = 3."],
+  "mult-patterns": ["6 × $5 = $30.", "9 × $10 = $90.", "8 × $2 = $16.", "9, 18, 27, 36, 45 → 45.", "5, 10, 15, 20, 25, 30, 35, 40, 45 → 45. Same answer!"],
+  "mult-properties": ["6 × 4 = 24 pts.", "8 × 7 = 56 pts.", "3 × 8 = 24 pts.", "6 × 8 = 40 + 8 = 48 pts.", "Sum from your three games."],
+  "division-facts": ["24 ÷ 6 = 4 stickers.", "32 ÷ 4 = 8 candies.", "45 ÷ 9 = 5 balloons.", "0 ÷ 5 = 0.", "6 × 4 = 24."],
+  "mult-div-fluent": ["4 × 6 = 24 tickets.", "24 × $3 = $72.", "8 × $5 = $40.", "$72 − $40 = $32 net.", "48 ÷ 6 = 8 packs."],
+  "area": ["8 × 5 = 40 sq ft.", "3 × 4 = 12 sq ft.", "12 ÷ 40 ≈ 30%.", "40 tiles.", "12 tiles under the rug."],
+  "data": ["Sample counts: 6, 7, 4, 3.", "Bar graph shown with axes.", "Banana (7).", "Grape (3).", "7 − 3 = 4 more."],
+  "add-sub-strategies": ["≈ $20 + $20 + $30 + $10 = $80.", "$80 exact.", "$80 ≤ $80 → tight but works.", "$237 → $200.", "≈ $500 − $200 = $300 (exact = $271)."],
+  "add-sub-fluent": ["458 + 275 = 733.", "733 − 189 = 544.", "754 − 632 = 122.", "315 − 89 = 226 still out.", "Estimate 630 + 280 = 910; exact 733; close enough."],
+  "mult-tens": ["4 × 30 = 120.", "7 × 40 = 280.", "6 × 50 × $10 = $3,000.", "3 × 200 = 600.", "8 × 60 = 480."],
+  "word-problems": ["4 × 25 = 100 students.", "100 ÷ 40 = 2 R 20 → 3 buses.", "100 × $2 = $200.", "4 chaperones.", "100 + 4 = 104 people."],
+  "fractions-intro": ["3/8.", "2/6.", "Drawings shown.", "2/6 and 4/6 plotted.", "1/3 &gt; 1/6."],
+  "fraction-equiv": ["1/2 = 2/4.", "2/3 = 4/6.", "3/4 = 6/8.", "2/3 = 4/6 (equal).", "3/8, 1/2 = 4/8, 5/8."],
+  "time-mass-capacity": ["6:45.", "7:05.", "35 min.", "≈ 200 mL.", "≈ 2 kg."],
+  "shapes-2d": ["Sample: brick wall, book, door.", "Sample: ceiling tile, checkerboard.", "Rhombus (drawn).", "Square.", "Parallelogram, rectangle, square, rhombus."],
+  "perimeter": ["2(8+5) = 26 ft.", "4 × 6 = 24 ft.", "5+7+9 = 21 ft.", "24 ÷ 2 = 12; 12 − 8 = 4 ft.", "2(4+5) = 18 vs 2(2+10) = 24 → 4×5 needs less."],
+};
+let currentUnit = null;
+
+function resourceCardHTML(unit) {
+  const phetBtn = unit.phetUrl ? `<a class="btn-phet" href="${unit.phetUrl}" target="_blank">🧪 PhET Simulation</a>` : '';
+  const ytBtn = `<a class="btn-yt" href="https://www.youtube.com/results?search_query=${encodeURIComponent(unit.ytSearch)}" target="_blank">▶️ YouTube</a>`;
+  const ixlBtn = unit.ixlUrl ? `<a class="btn-ixl" href="${unit.ixlUrl}" target="_blank" rel="noopener">📚 IXL Practice</a>` : '';
+  return `<div class="resource-card"><h3>📚 Resources</h3><div class="resource-btns">${phetBtn}${ixlBtn}${ytBtn}</div></div>`;
+}
+
+function renderHome() {
+  const grid = document.getElementById('units-grid');
+  grid.innerHTML = '';
+  UNITS.forEach(unit => {
+    const card = document.createElement('div');
+    card.className = 'unit-card';
+    card.onclick = () => showLesson(unit.id);
+    card.innerHTML = `
+      <div class="unit-card-header">
+        <div class="unit-card-icon">${unit.icon}</div>
+        <div class="unit-card-meta">
+          <div class="unit-card-title">${unit.title}${completedUnits[unit.id]?' ✅':''}</div>
+          <div class="unit-card-cc">${unit.cc}</div>
+        </div>
+      </div>
+      <div class="unit-card-desc">${unit.desc}</div>
+      <div class="unit-card-pills">
+        <div class="pill">📖 Lesson</div>
+        <div class="pill">📋 Worksheet</div>
+        <div class="pill">▶️ YouTube</div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function renderSidebar() {
+  const sidebar = document.getElementById('sidebar-content');
+  sidebar.innerHTML = '';
+  UNITS.forEach((unit, idx) => {
+    const item = document.createElement('div');
+    item.className = 'sidebar-item' + (currentUnit === unit.id ? ' active' : '');
+    item.textContent = `${idx + 1}. ${unit.title}${completedUnits[unit.id]?' ✅':''}`;
+    item.onclick = () => showLesson(unit.id);
+    sidebar.appendChild(item);
+  });
+}
+
+function setTopbar() {
+  document.getElementById('topbar-title').textContent = currentUnit ? UNITS.find(u => u.id === currentUnit).title : 'Exploring the World with Math';
+}
+
+function showHome() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('home-screen').classList.add('active');
+  currentUnit = null;
+  renderHome();
+  renderSidebar();
+  setTopbar();
+}
+
+function showLesson(unitId) {
+  currentUnit = unitId;
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('lesson-screen').classList.add('active');
+  const unit = UNITS.find(u => u.id === unitId);
+  document.getElementById('lesson-content').innerHTML = LESSONS[unitId] + resourceCardHTML(unit);
+  renderSidebar();
+  setTopbar();
+}
+
+function showWorksheet() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('worksheet-screen').classList.add('active');
+  const ws = WORKSHEETS[currentUnit];
+  let html = '';
+  ws.forEach((p, idx) => {
+    html += `<div class="problem"><h4>Problem ${idx + 1}</h4><p>${p.q}</p><textarea id="ans-${idx}" placeholder="Your answer..."></textarea></div>`;
+  });
+  document.getElementById('worksheet-content').innerHTML = html;
+}
+
+function checkWorksheet() {
+  const ws = WORKSHEETS[currentUnit];
+  let html = '';
+  ws.forEach((p, idx) => {
+    const userAns = document.getElementById(`ans-${idx}`).value;
+    html += `<div class="problem"><h4>Problem ${idx + 1}</h4><p>${p.q}</p><div class="answer-key"><strong>Answer:</strong> ${p.answer}</div><p><strong>Your answer:</strong> ${userAns || '(no answer)'}</p></div>`;
+  });
+  document.getElementById('worksheet-content').innerHTML = html;
+}
+
+function showQuiz() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('quiz-screen').classList.add('active');
+  const quiz = QUIZZES[currentUnit];
+  let html = `
+    <div style="background:#f0f4ff;padding:14px;border-radius:8px;margin-bottom:15px;border-left:4px solid #1B3A8A;">
+      <label style="display:block;font-weight:600;color:#1B3A8A;margin-bottom:6px;">Student Name:</label>
+      <input type="text" id="student-name" placeholder="Type your full name"
+        style="width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;font-size:14px;" />
+    </div>
+  `;
+  quiz.forEach((q, idx) => {
+    html += `<div class="quiz-question"><h4>Question ${idx + 1}</h4><p>${q.q}</p>`;
+    q.opts.forEach((opt, optIdx) => {
+      html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label>`;
+    });
+    html += `</div>`;
+  });
+  document.getElementById('quiz-content').innerHTML = html;
+}
+
+// Quiz results stored at latest submission so email button can use them.
+let lastQuizResults = null;
+
+function submitQuiz() {
+  const quiz = QUIZZES[currentUnit];
+  const studentName = (document.getElementById('student-name')?.value || '').trim();
+  let score = 0;
+  const breakdown = [];
+  quiz.forEach((q, idx) => {
+    const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+    const selectedIdx = selected ? parseInt(selected.value) : -1;
+    const isCorrect = selectedIdx === q.ans;
+    if (isCorrect) score++;
+    breakdown.push({
+      n: idx + 1,
+      question: q.q,
+      studentAnswer: selectedIdx >= 0 ? q.opts[selectedIdx] : '(no answer)',
+      correctAnswer: q.opts[q.ans],
+      correct: isCorrect
+    });
+  });
+  const percent = Math.round((score / quiz.length) * 100);
+  completedUnits[currentUnit] = true;
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('certificate-screen').classList.add('active');
+
+  const unitObj = UNITS.find(u => u.id === currentUnit);
+  const unitTitle = unitObj ? unitObj.title : currentUnit;
+
+  lastQuizResults = { studentName, unitTitle, score, total: quiz.length, pct: percent, breakdown };
+
+  const nameLine = studentName
+    ? `<p><strong>Student:</strong> ${studentName}</p>`
+    : `<p style="color:#b91c1c;"><em>Tip: type your name on the quiz screen before submitting so Mrs. Won knows who you are.</em></p>`;
+
+  document.getElementById('cert-content').innerHTML = `
+    <div style="padding: 20px;">
+      ${nameLine}
+      <p><strong>Unit:</strong> ${unitTitle}</p>
+      <p style="font-size: 24px; margin: 20px 0;">Quiz Score: ${score}/${quiz.length} (${percent}%)</p>
+      <p>${percent === 100 ? "Perfect! 🌟" : percent >= 67 ? "Nice work! Keep practicing." : "Good try! Review the lesson and try again."}</p>
+      <div style="margin-top:18px;">
+        <button class="btn" onclick="emailResults()" style="background:#1B3A8A;color:white;padding:10px 18px;font-size:14px;border:none;border-radius:6px;cursor:pointer;">
+          📧 Submit Quiz to Mrs. Won
+        </button>
+      </div>
+      <p style="margin-top:10px;font-size:12px;color:#666;">
+        Tapping the button opens Gmail with the score and answers filled in. Just press Send.
+      </p>
+    </div>
+  `;
+  renderSidebar();
+  updateProgress();
+}
+
+function emailResults() {
+  if (!lastQuizResults) return;
+  const r = lastQuizResults;
+  const lines = [];
+  lines.push(`Aloha Mrs. Won,`);
+  lines.push(``);
+  lines.push(`A 3rd-grade math quiz was just submitted.`);
+  lines.push(``);
+  lines.push(`Student: ${r.studentName || '(name not provided)'}`);
+  lines.push(`Unit: ${r.unitTitle}`);
+  lines.push(`Score: ${r.score} out of ${r.total} (${r.pct}%)`);
+  lines.push(``);
+  lines.push(`--- Detailed Answers ---`);
+  r.breakdown.forEach(b => {
+    lines.push(``);
+    lines.push(`Q${b.n}. ${b.question}`);
+    lines.push(`   Student's answer: ${b.studentAnswer}`);
+    lines.push(`   Correct answer:   ${b.correctAnswer}`);
+    lines.push(`   ${b.correct ? '✓ Correct' : '✗ Incorrect'}`);
+  });
+  lines.push(``);
+  lines.push(`Mahalo,`);
+  lines.push(`Mary, Star of the Sea School — Grade 3 Math`);
+
+  const subject = `Grade 3 Math Quiz Result — ${r.studentName || 'Student'} — ${r.unitTitle} — ${r.pct}%`;
+  const body = lines.join('\n');
+  const to = 'ewon@starofthesea.org';
+
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&tf=1`
+    + `&to=${encodeURIComponent(to)}`
+    + `&su=${encodeURIComponent(subject)}`
+    + `&body=${encodeURIComponent(body)}`;
+  window.open(gmailUrl, '_blank');
+}
+
+function updateProgress() {
+  const completed = Object.keys(completedUnits).length;
+  document.getElementById('progress-text').textContent = `${completed}/${UNITS.length}`;
+}
+
+function showHandout() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('handout-screen').classList.add('active');
+  const h = HANDOUTS_5[currentUnit];
+  if (!h) {
+    document.getElementById('handout-content').innerHTML = '<p>No handout available for this unit.</p>';
+    return;
+  }
+  const stepsHtml = h.steps.map(s => `<li>${s}</li>`).join('');
+  const reflectHtml = h.reflect.map((r,i) => `<li>${r}</li>`).join('');
+  const akFile = ANSWER_KEYS_5[currentUnit];
+  const answerKeyHtml = akFile ? `
+      <div style="background:#E8F5E9;border:2px solid #2E7D32;border-radius:8px;padding:14px;margin:14px 0;">
+        <strong style="color:#1B3A8A;">📗 Answer Key (for self-check):</strong>
+        <a href="answerkeys/${akFile}" download style="display:inline-block;background:#2E7D32;color:#fff;padding:8px 16px;border-radius:6px;text-decoration:none;font-weight:600;margin:6px 8px 6px 0;">Download ${akFile}</a>
+        <div style="font-size:0.9rem;color:#555;margin-top:6px;">Completed workbook with all formulas, charts, and real-world data. Open in Excel or upload to Google Sheets (<em>File → Import → Upload</em>) to compare with your own work after you finish.</div>
+      </div>` : '';
+  document.getElementById('handout-content').innerHTML = `
+    <div class="handout-card">
+      <h3>${h.title}</h3>
+      <div class="handout-science">${h.science}</div>
+      <div class="handout-mission">${h.mission}</div>
+      <p><strong>📋 Step-by-Step Instructions</strong></p>
+      <ol class="handout-steps">${stepsHtml}</ol>
+      <div class="handout-deliverable">
+        <strong>🎯 What to Submit:</strong>
+        ${h.deliverable}
+      </div>
+      ${answerKeyHtml}
+      <div class="handout-reflect">
+        <strong>💭 Reflection Questions:</strong>
+        <ol>${reflectHtml}</ol>
+      </div>
+    </div>`;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderHome();
+  renderSidebar();
+});
+  </script>
+</body>
+</html>
