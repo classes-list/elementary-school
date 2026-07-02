@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mary, Star of the Sea — 3rd Grade Science &amp; Math</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f9fa; color: #333; }
+    .container { display: flex; height: 100vh; }
+    .sidebar { border-right: 3px solid #FFD100;  width: 250px; background: #1a2a4a; color: white; overflow-y: auto; padding: 20px; }
+    .sidebar h2 { font-size: 14px; margin-bottom: 15px; font-weight: bold; }
+    .sidebar-item { padding: 10px; margin: 5px 0; background: #111d35; border-radius: 4px; cursor: pointer; font-size: 13px; }
+    .sidebar-item:hover { background: #1B3A8A; }
+    .sidebar-item.active { background: #1B3A8A; }
+    .main { flex: 1; display: flex; flex-direction: column; }
+    .summer-home-btn {
+      background: #FFD100; color: #1a2a4a; border: 1px solid #b8860b;
+      cursor: pointer; font-size: 13px; font-weight: 700;
+      padding: 8px 14px; border-radius: 6px; margin-right: 12px;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+      box-shadow: 0 1px 3px rgba(184,134,11,0.25); transition: all 0.18s;
+    }
+    .summer-home-btn:hover {
+      background: #b8860b; color: #fff;
+      box-shadow: 0 3px 8px rgba(184,134,11,0.35);
+      transform: translateX(-2px);
+    }
+    .topbar { border-bottom: 4px solid #FFD100;  background: #1B3A8A; color: white; padding: 15px 30px; font-size: 18px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+    .topbar-right { display: flex; gap: 20px; align-items: center; font-size: 14px; opacity: 0.85; }
+    .topbar-logos { display: flex; gap: 10px; align-items: center; }
+    .logo-circle { width: 50px; height: 50px; border-radius: 50%; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.25); overflow: hidden; display: inline-flex; align-items: center; justify-content: flex-start; flex-shrink: 0; }
+    .logo-circle img { display: block; }
+    .logo-circle.msos img { height: 100%; width: auto; }
+    .logo-circle.nui img { width: 100%; height: 100%; object-fit: cover; }
+    .logo-circle.msos { background: #1a2a4a; }
+    @media (max-width: 800px) { .logo-circle { width: 40px; height: 40px; } }
+    .content { flex: 1; overflow-y: auto; padding: 30px; }
+    .screen { display: none; }
+    .screen.active { display: block; }
+    .units-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .unit-card { background: white; border-radius: 8px; padding: 20px; cursor: pointer; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .unit-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(56,189,248,0.2); }
+    .unit-card-header { display: flex; gap: 15px; align-items: flex-start; margin-bottom: 15px; }
+    .unit-card-icon { font-size: 32px; }
+    .unit-card-meta { flex: 1; }
+    .unit-card-title { font-weight: bold; font-size: 16px; margin-bottom: 4px; }
+    .unit-card-cc { font-size: 12px; color: #666; }
+    .unit-card-desc { font-size: 13px; color: #555; margin-bottom: 12px; line-height: 1.4; }
+    .unit-card-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill { background: #f0f0f0; padding: 4px 10px; border-radius: 16px; font-size: 11px; }
+    .lesson-content h2 { margin: 20px 0 10px 0; color: #1B3A8A; }
+    .lesson-content p { margin-bottom: 12px; line-height: 1.6; }
+    .lesson-content ul, .lesson-content ol { margin-left: 20px; margin-bottom: 12px; }
+    .lesson-content li { margin-bottom: 8px; }
+    .btn { display: inline-block; padding: 10px 20px; background: #1B3A8A; color: white; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; margin: 5px; }
+    .btn:hover { background: #162E70; }
+    .btn-secondary { background: #6b7280; }
+    .btn-secondary:hover { background: #4b5563; }
+    .btn-yt { display: inline-block; padding: 10px 15px; background: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; margin: 5px 5px 5px 0; font-size: 13px; }
+    .btn-yt:hover { background: #dc2626; }
+    .btn-ixl { display: inline-block; padding: 10px 15px; background: #dc2626; color: white; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; margin: 5px 5px 5px 0; font-size: 13px; }
+    .btn-ixl:hover { background: #b91c1c; }
+    .btn-phet { display: inline-block; padding: 10px 15px; background: #7c3aed; color: white; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; margin: 5px 5px 5px 0; font-size: 13px; }
+    .btn-phet:hover { background: #6d28d9; }
+    .resource-card { background: #f3f4f6; border-radius: 8px; padding: 15px; margin: 20px 0; }
+    .resource-card h3 { margin-bottom: 10px; color: #1B3A8A; font-size: 14px; }
+    .resource-btns { display: flex; flex-wrap: wrap; }
+    .problem { background: white; padding: 15px; margin: 12px 0; border-left: 4px solid #1B3A8A; border-radius: 4px; }
+    .problem h4 { margin-bottom: 8px; color: #1B3A8A; }
+    .problem input, .problem textarea { width: 100%; padding: 8px; margin: 8px 0; border: 1px solid #ddd; border-radius: 4px; font-family: 'Courier New', monospace; }
+    .answer-key { background: #fef3c7; padding: 10px; margin: 8px 0; border-radius: 4px; font-size: 13px; }
+    .quiz-question { background: white; padding: 15px; margin: 15px 0; border-radius: 4px; border-left: 4px solid #1B3A8A; }
+    .quiz-question h4 { margin-bottom: 10px; color: #1B3A8A; }
+    .quiz-question label { display: block; margin: 8px 0; cursor: pointer; }
+    .quiz-question input[type="radio"] { margin-right: 8px; }
+    .result-card { background: #fef3c7; padding: 20px; border-radius: 8px; margin: 15px 0; }
+    .result-card h3 { color: #059669; margin-bottom: 10px; }
+    .nav-buttons { display: flex; gap: 10px; margin: 20px 0; }
+    .back-btn { background: #6b7280; }
+    .back-btn:hover { background: #4b5563; }
+
+    .handout-card { background: #fff; border-left: 5px solid #B8860B; border-radius: 10px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .handout-card h3 { margin: 0 0 8px; color: #B8860B; font-size: 1.2rem; }
+    .handout-science { font-size: 0.9rem; color: #666; margin-bottom: 12px; }
+    .handout-mission { background: #f8f9ff; border-radius: 6px; padding: 12px; margin-bottom: 16px; font-style: italic; color: #334; }
+    .handout-steps { margin: 0 0 16px; padding-left: 0; list-style: none; counter-reset: step-counter; }
+    .handout-steps li { counter-increment: step-counter; padding: 8px 12px 8px 44px; margin-bottom: 6px; background: #f0f4ff; border-radius: 6px; position: relative; font-size: 0.92rem; line-height: 1.5; }
+    .handout-steps li::before { content: counter(step-counter); position: absolute; left: 10px; top: 8px; width: 22px; height: 22px; background: #B8860B; color: #fff; border-radius: 50%; font-size: 0.78rem; font-weight: bold; display: flex; align-items: center; justify-content: center; }
+    .handout-deliverable { background: #fffbe6; border: 1px solid #f5d000; border-radius: 6px; padding: 12px; margin-bottom: 16px; }
+    .handout-deliverable strong { display: block; margin-bottom: 4px; color: #7a5f00; }
+    .handout-reflect { background: #fffbea; border: 1px solid #68d391; border-radius: 6px; padding: 12px; }
+    .handout-reflect strong { display: block; margin-bottom: 4px; color: #276749; }
+    .handout-reflect ol { margin: 0; padding-left: 20px; }
+    .handout-reflect li { margin-bottom: 6px; font-size: 0.9rem; }
+    code { background: #e8edf5; padding: 1px 5px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 0.88em; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2 style="margin:0 0 4px 0;">Mary, Star of the Sea</h2><p style="margin:0 0 16px 0;color:#888;font-size:14px;">3rd Grade Science &amp; Math Topics</p>
+      <div id="sidebar-content"></div>
+      <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #444; font-size: 12px; color: #999;">
+        Progress: <span id="progress-text">0/18</span>
+      </div>
+    </div>
+    <div class="main">
+      <div class="topbar">
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;">
+          <a href="index.html" class="summer-home-btn" title="Back to All Classes">← All Classes</a>
+          <div class="topbar-logos">
+            <span class="logo-circle msos" title="Mary, Star of the Sea"><img src="msos-logo.svg" alt="Mary, Star of the Sea Logo"></span>
+            <span class="logo-circle nui" title="Nurture · Unite · Inspire"><img src="nui-logo.png" alt="Nurture-Unite-Inspire Logo"></span>
+          </div>
+          <span id="topbar-title">Exploring the World with Math</span>
+        </div>
+        <div class="topbar-right">Math · Grade 3</div>
+      </div>
+      <div class="content">
+        <div id="home-screen" class="screen active">
+          <div id="units-grid" class="units-grid"></div>
+        </div>
+        <div id="lesson-screen" class="screen">
+          <button class="btn back-btn" onclick="showHome()">← Back to Units</button>
+          <div id="lesson-content" class="lesson-content"></div>
+          <div class="nav-buttons">
+            <button class="btn back-btn" onclick="showHome()">← Back</button>
+            <button class="btn" onclick="showHandout()">🔬 Lab Investigation</button>
+            <button class="btn" onclick="showScienceConnection()">📐 Math Focus</button>
+            <button class="btn" onclick="showWorksheet()">Worksheet →</button>
+          </div>
+        </div>
+        <div id="worksheet-screen" class="screen">
+          <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back to Lesson</button>
+          <h2 style="margin: 20px 0;">📋 Worksheet</h2>
+          <div id="worksheet-content"></div>
+          <div class="nav-buttons">
+            <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back</button>
+            <button class="btn" onclick="checkWorksheet()">Check Answers</button>
+            <button class="btn" onclick="showQuiz()">Quiz →</button>
+          </div>
+        </div>
+        <div id="handout-screen" class="screen">
+          <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back to Lesson</button>
+          <h2 style="margin: 20px 0;">🔬 Lab Investigation</h2>
+          <div id="handout-content"></div>
+          <div class="nav-buttons">
+            <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back to Lesson</button>
+            <button class="btn" onclick="showScienceConnection()">📐 Math Focus</button>
+            <button class="btn" onclick="showWorksheet()">Worksheet →</button>
+          </div>
+        </div>
+        <div id="science-screen" class="screen">
+          <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back to Lesson</button>
+          <h2 style="margin: 20px 0;">📐 Math Focus</h2>
+          <div id="science-content"></div>
+          <div class="nav-buttons">
+            <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back to Lesson</button>
+            <button class="btn" onclick="showHandout()">🔬 Lab Investigation</button>
+            <button class="btn" onclick="showWorksheet()">Worksheet →</button>
+          </div>
+        </div>
+        <div id="quiz-screen" class="screen">
+          <button class="btn back-btn" onclick="showWorksheet()">← Back to Worksheet</button>
+          <h2 style="margin: 20px 0;">📝 Quick Quiz</h2>
+          <div id="quiz-content"></div>
+          <div class="nav-buttons">
+            <button class="btn back-btn" onclick="showWorksheet()">← Back</button>
+            <button class="btn" onclick="submitQuiz()">Submit Quiz</button>
+          </div>
+        </div>
+        <div id="certificate-screen" class="screen">
+          <div style="text-align: center; padding: 40px;">
+            <h2 style="color: #1B3A8A; margin: 20px 0;">🎉 Unit Completed!</h2>
+            <div id="cert-content"></div>
+            <button class="btn" onclick="showHome()" style="margin-top: 20px;">Return to Home</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+let completedUnits = {};
+const UNITS = [
+  { id:'weather-detectives', title:"Weather Detectives", icon:'🌦️', cc:'3-ESS2 + 3.MD.3-4', desc:'Track daily weather. Build bar graphs of temperature; line plots of rainfall. Compare cities.', ytSearch:'3rd grade weather patterns bar graphs khan academy' },
+  { id:'life-cycles', title:"Life Cycles & Multiplication", icon:'🦋', cc:'3-LS1 + 3.OA.1-4', desc:'Frogs, butterflies, chickens. Count offspring in equal groups — that IS multiplication.', ytSearch:'3rd grade life cycle butterfly frog multiplication' },
+  { id:'plants-grow', title:"Plants Grow: Measure & Fractions", icon:'🌱', cc:'3-LS1 + 3.MD.1-2 + 3.NF.1', desc:'Measure plant height weekly. Show parts of a plant as fractions.', ytSearch:'3rd grade plant parts fractions measurement growth' },
+  { id:'forces-motion', title:"Forces & Motion Lab", icon:'⚙️', cc:'3-PS2 + 3.MD.1', desc:'Push, pull, magnets, friction. Measure distances a toy car rolls; compare speeds.', ytSearch:'3rd grade forces motion push pull magnets' },
+  { id:'ecosystems', title:"Ecosystems: Grouping & Division", icon:'🌳', cc:'3-LS2 + 3.OA.6-7', desc:'Food chains and food webs. Divide food fairly. Multiply predator-prey ratios.', ytSearch:'3rd grade food chains ecosystems division' },
+  { id:'habitats', title:"Habitat Design", icon:'🏞️', cc:'3-LS4 + 3.MD.5-8', desc:'Design an animal habitat. Compute area, perimeter, and fencing.', ytSearch:'3rd grade animal habitats area perimeter' },
+  { id:'heredity', title:"Heredity & Traits", icon:'👨‍👩‍👧', cc:'3-LS3 + 3.NF.1-2', desc:'Survey inherited traits (eye color, tongue-rolling). Fractions of your class.', ytSearch:'3rd grade inherited traits genetics fractions' },
+  { id:'fossils', title:"Fossils & Big Numbers", icon:'🦕', cc:'3-LS4 + 3.NBT.1', desc:'Dinosaurs lived millions of years ago. Round large numbers; compare ages.', ytSearch:'3rd grade fossils dinosaur timeline large numbers' },
+  { id:'adaptations', title:"Adaptations & Populations", icon:'🐢', cc:'3-LS4 + 3.OA.8', desc:'How animals fit their environment. Multi-step word problems about populations.', ytSearch:'3rd grade animal adaptations population word problems' },
+  { id:'water-cycle', title:"Water Cycle & Capacity", icon:'💧', cc:'3-ESS2 + 3.MD.2', desc:'Evaporation, condensation, precipitation. Measure water in mL and L.', ytSearch:'3rd grade water cycle capacity measurement' },
+  { id:'natural-hazards', title:"Natural Hazards & Estimation", icon:'⚡', cc:'3-ESS3 + 3.NBT.1', desc:'Storms, floods, earthquakes. Estimate magnitudes; round to compare.', ytSearch:'3rd grade natural hazards estimation weather safety' },
+  { id:'rocks-shapes', title:"Rocks, Crystals & 2D Shapes", icon:'💎', cc:'3-ESS2 + 3.G.1-2', desc:'Identify rocks and crystal shapes. Classify quadrilaterals in nature.', ytSearch:'3rd grade rocks crystals geometric shapes' },
+];
+
+const LESSONS = {
+  "weather-detectives": "<h2>🌦️ Weather Detectives</h2><h3>The Science</h3><p>Weather changes every day, but over weeks and months you can see PATTERNS. Weather scientists (meteorologists) track daily temperature, rainfall, wind, and clouds to predict what's coming.</p><h3>The Math Skill: Bar Graphs &amp; Line Plots</h3><p>Every scientist turns numbers into pictures. A BAR GRAPH shows how tall each day's temperature is. A LINE PLOT shows how often each rainfall amount happens.</p><p><strong>Example:</strong> Daily high temperatures: Mon 72°, Tue 75°, Wed 78°, Thu 70°, Fri 68°.</p><p>Draw 5 bars. Which is tallest? Which is shortest? What is the range (highest − lowest)? 78 − 68 = <strong>10°</strong>.</p><h3>Try This</h3><p>For 5 days, record the outdoor temperature at 9am. Round each to the nearest 5°. Draw a bar graph. Circle the hottest day.</p><h3>Vocabulary</h3><ul><li><strong>Temperature</strong> — how hot or cold the air is</li><li><strong>Precipitation</strong> — rain, snow, hail</li><li><strong>Range</strong> — biggest number minus smallest</li><li><strong>Bar graph</strong> — bars show category counts</li></ul>",
+  "life-cycles": "<h2>🦋 Life Cycles &amp; Multiplication</h2><h3>The Science</h3><p>Every animal has a life cycle. A butterfly goes: egg → caterpillar → chrysalis → adult. A frog: egg → tadpole → froglet → adult. A chicken: egg → chick → adult.</p><h3>The Math Skill: Multiplication as Equal Groups</h3><p>Animals lay eggs in equal groups! A butterfly lays 5 clusters of 8 eggs each. Total = 5 × 8 = <strong>40 eggs</strong>.</p><p>Multiplication is a fast way to count equal groups.</p><p><strong>Example:</strong> A frog lays 4 clusters of 6 eggs. Total = 4 × 6 = <strong>24 eggs</strong>. If only ½ hatch, that's 12 tadpoles.</p><h3>Try This</h3><p>Pretend you're a butterfly. Draw 4 groups of 5 eggs. Circle each group. Count by 5s: 5, 10, 15, 20. That's the same as 4 × 5 = 20.</p><h3>Vocabulary</h3><ul><li><strong>Life cycle</strong> — the stages an animal goes through</li><li><strong>Equal groups</strong> — groups of the same size</li><li><strong>Product</strong> — the answer to a multiplication problem</li></ul>",
+  "plants-grow": "<h2>🌱 Plants Grow: Measure &amp; Fractions</h2><h3>The Science</h3><p>Plants have parts: roots, stem, leaves, flowers. Each part has a job. Plants need sunlight, water, and soil to grow.</p><h3>The Math Skill: Measurement &amp; Fractions</h3><p>Measure plants with a ruler (cm). Track growth week by week. Show parts as fractions of the whole plant.</p><p><strong>Example:</strong> A plant is 12 cm tall. Roots take up 3 cm. Fraction of plant that's roots = 3/12 = <strong>1/4</strong>.</p><p>Week 1: 5 cm. Week 2: 8 cm. Growth = 8 − 5 = 3 cm.</p><h3>Try This</h3><p>Grow a bean plant. Measure it every week for 4 weeks. Make a bar graph of its heights. Draw the plant divided into 4 equal sections showing roots (1/4), stem (1/4), leaves (1/4), flower (1/4).</p><h3>Vocabulary</h3><ul><li><strong>Roots, stem, leaves, flower</strong> — parts of a plant</li><li><strong>Centimeter (cm)</strong> — a unit for measuring length</li><li><strong>Fraction</strong> — part of a whole</li></ul>",
+  "forces-motion": "<h2>⚙️ Forces &amp; Motion Lab</h2><h3>The Science</h3><p>A FORCE is a push or a pull. Forces make things move, stop, or change direction. Magnets pull metal without touching. Friction slows things down.</p><h3>The Math Skill: Measurement &amp; Comparison</h3><p>Measure how far a toy car rolls. Compare two ramps to see which is faster.</p><p><strong>Example:</strong> Car A rolls 45 cm on wood; Car B rolls 78 cm on plastic. Difference: 78 − 45 = <strong>33 cm</strong>. Plastic has less friction.</p><h3>Try This</h3><p>Roll a toy car down a ramp made of cardboard, then a ramp made of a smooth book. Measure each roll with a ruler. Which surface let the car roll farther? Why?</p><h3>Vocabulary</h3><ul><li><strong>Force</strong> — a push or pull</li><li><strong>Friction</strong> — slows down moving objects</li><li><strong>Magnet</strong> — pulls certain metals</li><li><strong>Distance</strong> — how far something travels</li></ul>",
+  "ecosystems": "<h2>🌳 Ecosystems: Grouping &amp; Division</h2><h3>The Science</h3><p>An ECOSYSTEM is all the living and non-living things in one place — plants, animals, water, soil, air. A FOOD CHAIN shows who eats whom: grass → grasshopper → frog → snake → hawk.</p><h3>The Math Skill: Multiplication &amp; Division</h3><p>Every level of the food chain needs 10 times as much energy as the level above it.</p><p><strong>Example:</strong> A robin brings 24 worms to 4 baby chicks. Each chick gets 24 ÷ 4 = <strong>6 worms</strong>.</p><p><strong>Predator-prey:</strong> 1 hawk needs 8 mice to survive. If 5 hawks live in a forest, they need 5 × 8 = 40 mice per month.</p><h3>Try This</h3><p>Draw a food chain with 4 levels. Label who eats whom. Then compute: if a fox eats 12 rabbits per year and there are 5 foxes, how many rabbits total? (12 × 5 = 60)</p><h3>Vocabulary</h3><ul><li><strong>Ecosystem</strong> — a community of living things and their environment</li><li><strong>Food chain</strong> — who eats whom</li><li><strong>Predator/prey</strong> — hunter/hunted</li></ul>",
+  "habitats": "<h2>🏞️ Habitat Design</h2><h3>The Science</h3><p>A HABITAT is the natural home of an animal. Different animals need different habitats: fish live in water, rabbits in fields, bats in caves. Habitat size matters — big animals need more space.</p><h3>The Math Skill: Area &amp; Perimeter</h3><p>Area = space inside a shape. Perimeter = distance around it.</p><p><strong>Example:</strong> A rabbit pen is 5 ft × 4 ft. Area = 5 × 4 = 20 sq ft. Perimeter = 2(5+4) = <strong>18 ft of fencing</strong>.</p><h3>Try This</h3><p>Design a habitat for a chosen animal. Draw its enclosure (rectangle) on grid paper. Compute area and perimeter. Decide how many food dishes fit (each takes 1 sq ft).</p><h3>Vocabulary</h3><ul><li><strong>Habitat</strong> — an animal's natural home</li><li><strong>Area</strong> — space inside (sq ft, sq m)</li><li><strong>Perimeter</strong> — distance around (ft, m)</li></ul>",
+  "heredity": "<h2>👨‍👩‍👧 Heredity &amp; Traits</h2><h3>The Science</h3><p>TRAITS are features you inherit from parents (eye color, hair color, ear shape). Other traits you learn (riding a bike, speaking a language). Every trait comes from GENES.</p><h3>The Math Skill: Fractions</h3><p>Survey your class. How many students have brown eyes? Blue? Green? Show as a fraction of the whole class.</p><p><strong>Example:</strong> 20 students in a class: 12 have brown eyes, 5 have blue, 3 have green. Fractions: 12/20 = 3/5 brown; 5/20 = 1/4 blue; 3/20 green.</p><h3>Try This</h3><p>Survey 10 friends for a trait (attached earlobes, dimples, freckles). Write each count as a fraction of 10. Which trait is most common?</p><h3>Vocabulary</h3><ul><li><strong>Trait</strong> — a feature of a living thing</li><li><strong>Inherited</strong> — passed from parents</li><li><strong>Fraction</strong> — part / whole</li></ul>",
+  "fossils": "<h2>🦕 Fossils &amp; Big Numbers</h2><h3>The Science</h3><p>A FOSSIL is what's left of a plant or animal that lived long ago. Dinosaurs lived about 65 million years ago. Fossils tell us how life on Earth has changed.</p><h3>The Math Skill: Round &amp; Compare Large Numbers</h3><p>Scientists round huge numbers to make them easier to talk about.</p><p><strong>Example:</strong> Tyrannosaurus rex lived 68 million years ago. Rounded to nearest 10 million: <strong>70 million</strong>. That's older than Triceratops (66 mya).</p><p>Which is more: 65,000,000 or 100,000,000? Compare the leading digits.</p><h3>Try This</h3><p>Make a dinosaur timeline. Round each age to the nearest 10 million. Order them from oldest to youngest.</p><h3>Vocabulary</h3><ul><li><strong>Fossil</strong> — preserved remains of ancient life</li><li><strong>Million</strong> — 1,000,000</li><li><strong>Round</strong> — replace with a friendlier close number</li></ul>",
+  "adaptations": "<h2>🐢 Adaptations &amp; Populations</h2><h3>The Science</h3><p>An ADAPTATION is a body part or behavior that helps an animal survive. A turtle's shell protects it. A cheetah's speed helps it hunt. A camel's hump stores fat.</p><h3>The Math Skill: Multi-Step Word Problems</h3><p>Real science asks multi-step questions.</p><p><strong>Example:</strong> A meadow has 8 rows of 6 rabbits. A hawk eats 5 rabbits. How many left? (8 × 6 = 48; 48 − 5 = <strong>43 rabbits</strong>.)</p><h3>Try This</h3><p>Pick an animal. Research one adaptation. Then invent a math problem: \"A population of 6 penguins per iceberg × 4 icebergs = 24 penguins. If 8 travel south, ___ remain.\"</p><h3>Vocabulary</h3><ul><li><strong>Adaptation</strong> — a trait that helps survival</li><li><strong>Population</strong> — total number of one species in an area</li><li><strong>Multi-step</strong> — a problem with more than one operation</li></ul>",
+  "water-cycle": "<h2>💧 Water Cycle &amp; Capacity</h2><h3>The Science</h3><p>Water moves around the Earth: EVAPORATION (liquid → gas), CONDENSATION (gas → droplets in clouds), PRECIPITATION (rain, snow), COLLECTION (rivers, oceans).</p><h3>The Math Skill: Capacity (mL and L)</h3><p>Water is measured by how much space it takes up. 1 liter (L) = 1,000 milliliters (mL). A juice box is about 200 mL; a soda bottle 500 mL; a milk jug 4 L.</p><p><strong>Example:</strong> A rain gauge collects 250 mL Mon, 150 mL Tue, 400 mL Wed. Total = 800 mL. Convert to liters: 800 mL = <strong>0.8 L</strong>.</p><h3>Try This</h3><p>Set up 3 rain gauges in different spots (open field, under a tree, near a wall). Compare total collected over a week. Draw the water cycle showing what happens to that rain.</p><h3>Vocabulary</h3><ul><li><strong>Evaporation, condensation, precipitation</strong> — water cycle stages</li><li><strong>Milliliter (mL), Liter (L)</strong> — capacity units</li><li><strong>1 L = 1,000 mL</strong></li></ul>",
+  "natural-hazards": "<h2>⚡ Natural Hazards &amp; Estimation</h2><h3>The Science</h3><p>Natural HAZARDS are dangerous events from nature: hurricanes, tornadoes, earthquakes, floods, wildfires. Scientists estimate how big each event is to warn people.</p><h3>The Math Skill: Estimation &amp; Rounding</h3><p>Hurricane winds can reach 150 mph. Rounded to the nearest 10: 150 mph. To the nearest 100: 200 mph. Meteorologists ROUND to communicate quickly.</p><p><strong>Example:</strong> An earthquake registers 4.2 on the Richter scale; another is 5.8. Which is bigger? 5.8. Difference: 5.8 − 4.2 = 1.6 points. Each point is 10× stronger.</p><h3>Try This</h3><p>Look up 3 hurricanes from history. Round each wind speed to the nearest 10 mph. Rank them strongest to weakest. Make a safety plan for your family (3 things to do).</p><h3>Vocabulary</h3><ul><li><strong>Natural hazard</strong> — dangerous natural event</li><li><strong>Round</strong> — replace with a friendly nearby number</li><li><strong>Estimate</strong> — a smart guess</li></ul>",
+  "rocks-shapes": "<h2>💎 Rocks, Crystals &amp; 2D Shapes</h2><h3>The Science</h3><p>Three main rock types: IGNEOUS (from lava), SEDIMENTARY (from layered sand), METAMORPHIC (changed by heat &amp; pressure). Crystals grow in geometric shapes — salt is CUBE-shaped; quartz is HEXAGONAL.</p><h3>The Math Skill: Classify 2D Shapes</h3><p>Every shape has attributes: number of sides, right angles, parallel sides.</p><p><strong>Quadrilaterals:</strong> square (4 equal sides + 4 right angles), rectangle (4 right angles), rhombus (4 equal sides), trapezoid (1 pair parallel sides), parallelogram (2 pairs parallel sides).</p><h3>Try This</h3><p>Look at 5 rocks or crystals. Trace the outline of each on paper. Which are quadrilaterals? Which have right angles? Which have equal sides?</p><h3>Vocabulary</h3><ul><li><strong>Igneous, sedimentary, metamorphic</strong> — rock types</li><li><strong>Crystal</strong> — solid with a geometric shape</li><li><strong>Quadrilateral</strong> — 4-sided shape</li></ul>",
+};
+
+const WORKSHEETS = {
+  "weather-detectives": [{"q": "Monday 68°, Tuesday 72°, Wednesday 75°. What is the range?", "answer": "7° (75 − 68)"}, {"q": "Rainfall: Mon 4 mm, Tue 0 mm, Wed 12 mm, Thu 3 mm, Fri 8 mm. Total?", "answer": "27 mm"}, {"q": "A line plot shows 3 sunny days, 2 cloudy days, 2 rainy days. Total data points?", "answer": "7 days"}, {"q": "A bar for Wednesday reaches 6. Scale goes up by 2s. Wednesday value?", "answer": "6"}, {"q": "Round 78° to the nearest 10.", "answer": "80°"}],
+  "life-cycles": [{"q": "A butterfly lays 4 clusters of 8 eggs. Total?", "answer": "32 eggs (4 × 8)"}, {"q": "A frog lays 6 groups of 5 eggs. Total?", "answer": "30 eggs"}, {"q": "8 chicks share 24 worms. Each chick gets?", "answer": "3 worms (24 ÷ 8)"}, {"q": "Butterfly life cycle: egg → caterpillar → ___ → adult", "answer": "chrysalis"}, {"q": "A hen lays 3 eggs per day. In 7 days?", "answer": "21 eggs"}],
+  "plants-grow": [{"q": "A plant is 10 cm tall Monday, 15 cm Friday. Growth?", "answer": "5 cm"}, {"q": "A plant is 12 cm tall; roots are 3 cm. Fraction that is roots?", "answer": "3/12 = 1/4"}, {"q": "Which is longer: 25 cm or 250 mm?", "answer": "Same (25 cm = 250 mm)"}, {"q": "Plant parts: roots, stem, ___, flower.", "answer": "leaves"}, {"q": "A plant grew 3 cm in Week 1 and 5 cm in Week 2. Total growth?", "answer": "8 cm"}],
+  "forces-motion": [{"q": "Car A rolls 48 cm. Car B rolls 76 cm. Difference?", "answer": "28 cm"}, {"q": "A push is a __; a pull is a ___.", "answer": "force; force"}, {"q": "A magnet attracts iron. True/False: it also attracts plastic?", "answer": "False"}, {"q": "Friction on rough surfaces makes objects roll ___ (more/less).", "answer": "less far"}, {"q": "Car rolls 8 cm each second for 5 seconds. Total distance?", "answer": "40 cm (8 × 5)"}],
+  "ecosystems": [{"q": "A robin brings 30 worms to 5 chicks. Each chick gets?", "answer": "6 worms"}, {"q": "A hawk needs 8 mice per week. For 4 weeks?", "answer": "32 mice"}, {"q": "Food chain order: grass → ___ → frog → snake.", "answer": "grasshopper"}, {"q": "A pack of 6 wolves shares 42 lb of food. Each wolf?", "answer": "7 lb"}, {"q": "True or false: producers make their own food.", "answer": "True (plants use sunlight)"}],
+  "habitats": [{"q": "Perimeter of a 6 ft × 4 ft rabbit pen?", "answer": "20 ft (2×6 + 2×4)"}, {"q": "Area of a 5 m × 3 m garden?", "answer": "15 sq m"}, {"q": "A square habitat has side 8 ft. Perimeter?", "answer": "32 ft"}, {"q": "A lion needs 200 sq ft. Will 15 × 12 fit?", "answer": "Yes (180 sq ft — too small actually! Rework: 15 × 12 = 180 &lt; 200. NO.)"}, {"q": "A rectangle habitat: area 24 sq ft, length 6 ft. Width?", "answer": "4 ft (24 ÷ 6)"}],
+  "heredity": [{"q": "20 students, 12 have brown eyes. Fraction?", "answer": "12/20 = 3/5"}, {"q": "Attached earlobes: 6 of 15 kids. Fraction?", "answer": "6/15 = 2/5"}, {"q": "Give 2 examples of INHERITED traits.", "answer": "eye color, hair color, height, dimples, tongue rolling"}, {"q": "Give 2 examples of LEARNED traits.", "answer": "riding a bike, reading, speaking a language"}, {"q": "8 of 10 kids can roll their tongue. Fraction?", "answer": "8/10 = 4/5"}],
+  "fossils": [{"q": "Round 68 million to the nearest 10 million.", "answer": "70 million"}, {"q": "Which is older: T. rex (68 mya) or Triceratops (66 mya)?", "answer": "T. rex"}, {"q": "A fossil is 100,000,000 years old. Write in words.", "answer": "One hundred million"}, {"q": "Compare: 65,000,000 vs 90,000,000.", "answer": "90,000,000 &gt; 65,000,000"}, {"q": "Order oldest to youngest: T.rex (68 mya), Diplodocus (155 mya), Stegosaurus (150 mya).", "answer": "Diplodocus, Stegosaurus, T.rex"}],
+  "adaptations": [{"q": "8 rows of 6 rabbits in a meadow. Hawk eats 5. How many left?", "answer": "43 (48 − 5)"}, {"q": "Name one adaptation of a polar bear.", "answer": "Thick fur, white color for camouflage, big paws"}, {"q": "A penguin colony has 4 × 25 = 100 penguins. 30 leave. How many remain?", "answer": "70"}, {"q": "A cheetah runs 60 mph. A person runs 15 mph. How much faster?", "answer": "45 mph faster"}, {"q": "A herd of 8 elephants eats 300 lb of leaves each. Total leaves?", "answer": "2,400 lb"}],
+  "water-cycle": [{"q": "A rain gauge collects 250 mL Mon, 150 mL Tue, 400 mL Wed. Total mL?", "answer": "800 mL"}, {"q": "Convert 800 mL to liters.", "answer": "0.8 L"}, {"q": "Water cycle stages: ___, condensation, precipitation, collection.", "answer": "evaporation"}, {"q": "A jug holds 3 L. How many mL?", "answer": "3,000 mL"}, {"q": "Which is more: 750 mL or 1 L?", "answer": "1 L (1,000 mL &gt; 750 mL)"}],
+  "natural-hazards": [{"q": "A hurricane has 128 mph winds. Round to nearest 10.", "answer": "130 mph"}, {"q": "Earthquake A: 4.5. Earthquake B: 6.2. Which is stronger?", "answer": "B (6.2 &gt; 4.5)"}, {"q": "Rainfall in a flood: 342 mm. Round to nearest 100.", "answer": "300 mm"}, {"q": "A wildfire covers 875 acres. Round to nearest 100.", "answer": "900 acres"}, {"q": "Give 2 natural hazards.", "answer": "hurricane, tornado, flood, earthquake, wildfire, blizzard"}],
+  "rocks-shapes": [{"q": "A salt crystal is shaped like a ___.", "answer": "cube"}, {"q": "A quadrilateral with 4 equal sides and 4 right angles is a ___.", "answer": "square"}, {"q": "Rocks made from cooled lava are ___ rocks.", "answer": "igneous"}, {"q": "A shape with 4 right angles and unequal sides is a ___.", "answer": "rectangle"}, {"q": "True/false: all squares are rectangles.", "answer": "True"}],
+};
+
+const QUIZZES = {
+  "weather-detectives": [{"q": "A bar graph is best for ___.", "opts": ["fractions", "comparing categories", "showing time", "divisions"], "ans": 1}, {"q": "Range of 68°, 72°, 78°, 74°, 70°?", "opts": ["5", "8", "10", "12"], "ans": 2}, {"q": "A line plot shows how ___ each value occurs.", "opts": ["often", "tall", "small", "wide"], "ans": 0}, {"q": "Rounded to nearest 10, 47° = ___.", "opts": ["40", "45", "50", "55"], "ans": 2}, {"q": "Total: Mon 3 mm + Tue 8 mm + Wed 5 mm = ___", "opts": ["13", "15", "16", "18"], "ans": 2}],
+  "life-cycles": [{"q": "4 clusters of 6 eggs = ___ eggs.", "opts": ["10", "12", "24", "30"], "ans": 2}, {"q": "Butterfly stage after caterpillar:", "opts": ["egg", "chrysalis", "adult", "froglet"], "ans": 1}, {"q": "12 seeds shared by 4 kids = ___ each.", "opts": ["2", "3", "4", "6"], "ans": 1}, {"q": "A hen lays 5 eggs/day for 7 days = ___ eggs.", "opts": ["12", "25", "30", "35"], "ans": 3}, {"q": "What multiplication fact is like 3 groups of 6?", "opts": ["3+6", "3×6", "3−6", "3÷6"], "ans": 1}],
+  "plants-grow": [{"q": "A plant is 20 cm tall. Roots = 5 cm. Fraction that is roots?", "opts": ["1/2", "1/4", "1/5", "2/5"], "ans": 1}, {"q": "Growth from 8 cm to 14 cm = ___ cm.", "opts": ["4", "5", "6", "8"], "ans": 2}, {"q": "Plants need ___ to make food.", "opts": ["sunlight", "friends", "music", "rocks"], "ans": 0}, {"q": "Which is longer: 40 cm or 350 mm?", "opts": ["40 cm", "350 mm", "equal", "depends"], "ans": 0}, {"q": "A plant part that holds it in the ground:", "opts": ["leaf", "flower", "root", "stem"], "ans": 2}],
+  "forces-motion": [{"q": "A push or a pull is a ___.", "opts": ["force", "fraction", "shape", "pattern"], "ans": 0}, {"q": "A magnet attracts:", "opts": ["plastic", "wood", "iron", "paper"], "ans": 2}, {"q": "Rough surfaces cause more:", "opts": ["friction", "gravity", "magnetism", "flight"], "ans": 0}, {"q": "A car rolls 15 cm × 4 = ___", "opts": ["60 cm", "45 cm", "70 cm", "90 cm"], "ans": 0}, {"q": "Motion means ___.", "opts": ["stopping", "moving", "waiting", "warm"], "ans": 1}],
+  "ecosystems": [{"q": "A ___ chain shows who eats whom.", "opts": ["food", "water", "life", "sea"], "ans": 0}, {"q": "32 ants ÷ 4 anthills = ___ per anthill.", "opts": ["6", "7", "8", "9"], "ans": 2}, {"q": "Grass, grasshopper, frog, snake, hawk. Who is the top predator?", "opts": ["grass", "frog", "snake", "hawk"], "ans": 3}, {"q": "A pack of 5 wolves ate 45 lb of meat. Each?", "opts": ["5", "7", "9", "11"], "ans": 2}, {"q": "Plants that make their own food are called ___.", "opts": ["predators", "producers", "prey", "decomposers"], "ans": 1}],
+  "habitats": [{"q": "Perimeter of a 5×3 rectangle?", "opts": ["8", "15", "16", "18"], "ans": 2}, {"q": "Area of a 6×4 rectangle?", "opts": ["10", "20", "22", "24"], "ans": 3}, {"q": "A habitat is:", "opts": ["a math problem", "an animal's home", "a food chain", "a fossil"], "ans": 1}, {"q": "A square 4-ft habitat has perimeter ___.", "opts": ["8", "12", "16", "20"], "ans": 2}, {"q": "A 10 × 6 pen has area ___ sq ft.", "opts": ["16", "32", "40", "60"], "ans": 3}],
+  "heredity": [{"q": "Traits from parents are ___.", "opts": ["learned", "inherited", "random", "fake"], "ans": 1}, {"q": "15 kids; 9 have brown eyes. Fraction?", "opts": ["3/5", "4/5", "9/15 = 3/5", "both A and C"], "ans": 3}, {"q": "Which is INHERITED?", "opts": ["riding a bike", "eye color", "reading", "writing"], "ans": 1}, {"q": "A fraction shows ___ of a whole.", "opts": ["part", "all", "none", "half"], "ans": 0}, {"q": "Which is LEARNED?", "opts": ["tongue rolling", "dimples", "swimming", "eye color"], "ans": 2}],
+  "fossils": [{"q": "Dinosaurs lived about ___ million years ago.", "opts": ["1", "65", "1,000", "one billion"], "ans": 1}, {"q": "Round 78,000,000 to the nearest 10,000,000.", "opts": ["70,000,000", "75,000,000", "80,000,000", "100,000,000"], "ans": 2}, {"q": "A ___ is preserved remains of ancient life.", "opts": ["crystal", "fossil", "fern", "fable"], "ans": 1}, {"q": "Compare 55 million vs 65 million.", "opts": ["55 is bigger", "65 is bigger", "equal", "can't tell"], "ans": 1}, {"q": "One million is:", "opts": ["1,000", "10,000", "100,000", "1,000,000"], "ans": 3}],
+  "adaptations": [{"q": "An adaptation helps an animal ___.", "opts": ["fly", "survive", "sleep", "learn"], "ans": 1}, {"q": "7 rows of 4 birds. Then 3 fly away. How many left?", "opts": ["22", "25", "26", "28"], "ans": 1}, {"q": "Which is an adaptation?", "opts": ["a rock", "a shell", "a river", "a cloud"], "ans": 1}, {"q": "Multi-step: 6 × 5 = 30, then − 8 = ___", "opts": ["22", "25", "24", "28"], "ans": 0}, {"q": "A cheetah's speed is an adaptation for:", "opts": ["flying", "swimming", "running", "burrowing"], "ans": 2}],
+  "water-cycle": [{"q": "When water turns into gas, that's ___.", "opts": ["evaporation", "condensation", "precipitation", "collection"], "ans": 0}, {"q": "1 L = ___ mL.", "opts": ["10", "100", "1,000", "10,000"], "ans": 2}, {"q": "Total: 300 mL + 200 mL + 100 mL = ___ mL.", "opts": ["500", "550", "600", "700"], "ans": 2}, {"q": "Rain, snow, hail = ___.", "opts": ["evaporation", "precipitation", "condensation", "collection"], "ans": 1}, {"q": "A juice box is about ___.", "opts": ["20 mL", "200 mL", "2 L", "2,000 L"], "ans": 1}],
+  "natural-hazards": [{"q": "A ___ is a strong storm with fast winds.", "opts": ["fossil", "flood", "hurricane", "forest"], "ans": 2}, {"q": "Round 138 mph to nearest 10.", "opts": ["130", "135", "140", "150"], "ans": 2}, {"q": "Which is stronger: 4.5 or 6.2 (Richter)?", "opts": ["4.5", "6.2", "equal", "can't tell"], "ans": 1}, {"q": "Round 385 acres to nearest 100.", "opts": ["300", "380", "400", "500"], "ans": 2}, {"q": "A ___ is fast-rising water covering land.", "opts": ["fossil", "flood", "forest", "fossil"], "ans": 1}],
+  "rocks-shapes": [{"q": "A quadrilateral has ___ sides.", "opts": ["3", "4", "5", "6"], "ans": 1}, {"q": "A shape with 4 equal sides and 4 right angles:", "opts": ["triangle", "square", "pentagon", "circle"], "ans": 1}, {"q": "Salt crystals are ___ shaped.", "opts": ["round", "cube", "flat", "triangular"], "ans": 1}, {"q": "A rock made from lava is:", "opts": ["igneous", "sedimentary", "metamorphic", "crystal"], "ans": 0}, {"q": "True/false: all squares are rectangles.", "opts": ["True", "False", "sometimes", "depends"], "ans": 0}],
+};
+
+const HANDOUTS_5 = {
+  "weather-detectives": {"title": "Weather Journal Lab", "science": "📊 5-Day Weather Journal", "mission": "Record and graph daily weather data.", "steps": ["Each day at 9am, record the temperature (°F).", "Note if it rained. Estimate rainfall in mm.", "After 5 days, make a bar graph of temperatures.", "Compute the range (highest − lowest).", "Predict tomorrow's weather. Explain why."], "deliverable": "Weather journal with bar graph, range, and prediction.", "reflect": ["Which day was hottest? Any pattern?", "How is your prediction different from a wild guess?"]},
+  "life-cycles": {"title": "Butterfly Life Cycle Multiplication", "science": "🦋 Egg-Cluster Counting Lab", "mission": "Model equal groups with butterfly eggs.", "steps": ["Pretend butterflies lay 4 clusters of 6 eggs each. Total?", "Draw 4 leaves, each with 6 dots. Circle each leaf.", "Count by 6s to check: 6, 12, 18, 24.", "Not all survive. If only ½ hatch, how many caterpillars? (24 ÷ 2 = 12)", "Draw the life-cycle stages: egg → caterpillar → chrysalis → adult."], "deliverable": "Illustrated lab notebook page.", "reflect": ["Why do most animals lay so many eggs?", "How does multiplication help you count faster?"]},
+  "plants-grow": {"title": "Bean Plant Height Log", "science": "🌱 4-Week Growth Study", "mission": "Grow a bean, measure weekly, graph the results.", "steps": ["Plant a bean seed in a cup with soil. Water regularly.", "Week 1: measure height in cm. Record.", "Repeat weekly for 4 weeks. Total 4 measurements.", "Compute growth: Week 4 height − Week 1 height.", "Make a bar graph of weekly heights."], "deliverable": "Bean-plant lab notebook with graph and growth total.", "reflect": ["Did the plant grow the same amount each week?", "What variables (water, sun, temp) might explain differences?"]},
+  "forces-motion": {"title": "Ramp &amp; Roll Lab", "science": "⚙️ Force &amp; Distance Test", "mission": "Compare how far a toy car rolls on different surfaces.", "steps": ["Set up a cardboard ramp about 30 cm tall.", "Roll a toy car down onto CARPET. Measure the distance it rolls.", "Repeat on WOOD floor.", "Repeat on a SMOOTH BOOK cover.", "Which surface let the car roll farthest? Why?"], "deliverable": "Data table with 3 surfaces and 3 distances.", "reflect": ["What is friction?", "How would ice compare to carpet?"]},
+  "ecosystems": {"title": "Food Chain Grouping Lab", "science": "🌳 Predator-Prey Math", "mission": "Model a food chain with equal groups.", "steps": ["Draw grass, grasshopper, frog, snake, hawk in a chain.", "1 hawk needs 4 snakes to survive. How many for 3 hawks?", "1 snake needs 6 frogs. How many for 4 snakes?", "1 frog needs 8 grasshoppers. How many for 3 frogs?", "A meadow has 240 grasshoppers. How many frogs does it support? (240 ÷ 8 = 30)"], "deliverable": "Food chain diagram with computations.", "reflect": ["Why is there LESS energy at the top of the food chain?", "What happens if one level disappears?"]},
+  "habitats": {"title": "Design an Animal Habitat", "science": "🏞️ Area &amp; Perimeter Blueprint", "mission": "Create a scaled habitat.", "steps": ["Choose an animal (e.g., rabbit, iguana, hamster).", "On grid paper, sketch a rectangle for the enclosure.", "Measure length and width in units.", "Compute PERIMETER (fencing needed).", "Compute AREA (space inside)."], "deliverable": "Grid-paper habitat with dimensions, area, and perimeter labeled.", "reflect": ["Why is area different from perimeter?", "What if you doubled all sides? What happens to the area?"]},
+  "heredity": {"title": "Class Traits Survey", "science": "👨‍👩‍👧 Fraction Investigation", "mission": "Collect trait data as fractions.", "steps": ["Pick 3 traits (eye color, dimples, attached earlobes).", "Survey 10 friends and count.", "Record each trait as a fraction of 10.", "Which trait was most common?", "Draw a bar graph showing all 3 traits."], "deliverable": "Survey table with fractions and a bar graph.", "reflect": ["Do siblings share traits? Why?", "What's the difference between inherited and learned traits?"]},
+  "fossils": {"title": "Dinosaur Age Timeline", "science": "🦕 Round &amp; Compare Ages", "mission": "Order dinosaurs by age.", "steps": ["List 5 dinosaurs and their approximate ages: T. rex (68 mya), Triceratops (66 mya), Stegosaurus (150 mya), Brachiosaurus (150 mya), Velociraptor (75 mya).", "Round each to the nearest 10 million.", "Order from oldest to youngest.", "Compute: how many million years apart are Stegosaurus and T. rex? (150 − 68 = 82 mya)", "Draw a timeline showing all 5."], "deliverable": "Dinosaur age timeline with rounded ages.", "reflect": ["Why do scientists round these numbers?", "What do fossils tell us about when animals lived?"]},
+  "adaptations": {"title": "Adaptation Population Lab", "science": "🐢 Multi-Step Story Problems", "mission": "Solve population problems for adapted animals.", "steps": ["A polar bear colony has 8 bears. Each eats 12 seals per season. Total seals eaten?", "A cactus stores water. In a drought, 6 rows of 5 cacti (30 total) — 8 die. How many left?", "A camel drinks 20 L on Monday and 15 L on Friday. Total?", "A jellyfish colony doubles in size every year. If it starts at 20, how many after 3 years? (20 × 2 = 40; 40 × 2 = 80; 80 × 2 = 160)", "Which adaptation impresses you most?"], "deliverable": "Adaptation math report with all problems solved.", "reflect": ["Why do adaptations matter for survival?", "What would happen if the environment changed suddenly?"]},
+  "water-cycle": {"title": "Rain Gauge Investigation", "science": "💧 Capacity Data Collection", "mission": "Track rainfall for a week.", "steps": ["Build a rain gauge from a clear cup with mL marks.", "Place it outside safely.", "Measure water collected each day for 7 days.", "Total the week's rainfall in mL.", "Convert total to L (divide by 1,000)."], "deliverable": "Rain gauge data log with weekly total.", "reflect": ["Where did the water go if it evaporated?", "How would a scientist compare rainfall between cities?"]},
+  "natural-hazards": {"title": "Hurricane Rounding Report", "science": "⚡ Big Storm Data", "mission": "Compare famous hurricanes.", "steps": ["Look up 3 hurricanes and their peak wind speeds.", "Round each to nearest 10 mph.", "Rank strongest to weakest.", "Estimate the difference in wind speed between the strongest and weakest.", "Design a safety plan (3 steps) for your family."], "deliverable": "Hurricane comparison table + safety plan.", "reflect": ["Why is early warning important?", "How do scientists predict storms?"]},
+  "rocks-shapes": {"title": "Rock &amp; Crystal Shape Sort", "science": "💎 Classification Lab", "mission": "Identify crystal shapes.", "steps": ["Collect 5 rocks or crystals.", "Trace each outline on paper.", "Identify each: quadrilateral, triangle, hexagon, or other?", "Which have right angles? Which have equal sides?", "Sort into piles: quadrilaterals vs others."], "deliverable": "Sorting chart with all 5 rocks classified.", "reflect": ["Why do crystals form specific shapes?", "What shape would a perfectly cut diamond be?"]},
+};
+
+const ANSWER_KEYS_5 = {
+  "weather-detectives": "MathSci3_weather_detectives.xlsx",
+  "life-cycles": "MathSci3_life_cycles.xlsx",
+  "plants-grow": "MathSci3_plants_grow.xlsx",
+  "forces-motion": "MathSci3_forces_motion.xlsx",
+  "ecosystems": "MathSci3_ecosystems.xlsx",
+  "habitats": "MathSci3_habitats.xlsx",
+  "heredity": "MathSci3_heredity.xlsx",
+  "fossils": "MathSci3_fossils.xlsx",
+  "adaptations": "MathSci3_adaptations.xlsx",
+  "water-cycle": "MathSci3_water_cycle.xlsx",
+  "natural-hazards": "MathSci3_natural_hazards.xlsx",
+  "rocks-shapes": "MathSci3_rocks_shapes.xlsx",
+};
+
+const ANSWERS_5 = {
+  "weather-detectives": ["Temperature recorded 5 days.", "Rainfall estimated in mm.", "Bar graph drawn with 5 bars.", "Range computed correctly.", "Prediction based on recent trend."],
+  "life-cycles": ["4 × 6 = 24 eggs.", "4 leaves with 6 dots each.", "6, 12, 18, 24 ✓", "24 ÷ 2 = 12 caterpillars.", "Life cycle stages drawn in order."],
+  "plants-grow": ["Seed planted.", "Week 1 height recorded.", "4 weekly measurements.", "Growth = Wk4 − Wk1.", "Bar graph with 4 bars."],
+  "forces-motion": ["Carpet distance recorded.", "Wood distance recorded.", "Smooth book distance recorded.", "Smooth book usually farthest (least friction).", "Friction slows objects."],
+  "ecosystems": ["Food chain drawn (5 levels).", "3 hawks × 4 snakes = 12 snakes.", "4 snakes × 6 frogs = 24 frogs.", "3 frogs × 8 grasshoppers = 24 grasshoppers.", "240 ÷ 8 = 30 frogs."],
+  "habitats": ["Animal chosen.", "Rectangle drawn on grid.", "Length and width measured.", "Perimeter = 2(L + W).", "Area = L × W."],
+  "heredity": ["3 traits chosen.", "10 friends surveyed.", "Fractions recorded (out of 10).", "Most common identified.", "Bar graph with 3 bars."],
+  "fossils": ["Dinosaur ages listed.", "Rounded to nearest 10 million.", "Ordered oldest → youngest.", "150 − 68 = 82 million years.", "Timeline drawn."],
+  "adaptations": ["8 × 12 = 96 seals.", "30 − 8 = 22 cacti.", "20 + 15 = 35 L.", "20 → 40 → 80 → 160 jellyfish.", "Any thoughtful answer."],
+  "water-cycle": ["Rain gauge built.", "Placed outside.", "Daily readings for 7 days.", "Weekly total in mL.", "Weekly total ÷ 1,000 = liters."],
+  "natural-hazards": ["3 hurricanes with wind speeds.", "Speeds rounded to nearest 10.", "Ranked strongest to weakest.", "Difference computed.", "3-step safety plan."],
+  "rocks-shapes": ["5 rocks collected.", "Traced outlines.", "Shapes identified.", "Right angles/equal sides noted.", "Sorted into piles."],
+};
+
+const SCIENCE_CONNECTIONS = {
+  "weather-detectives": "<h3>📐 Math Skill: Data &amp; Bar Graphs</h3><p><strong>Common Core:</strong> 3.MD.3 &mdash; Draw scaled picture and bar graphs. 3.MD.4 &mdash; Line plots.</p><p><strong>What students practice:</strong></p><ul><li>Recording data from observations</li><li>Drawing bar graphs with correct axis labels and scales</li><li>Reading values off a graph</li><li>Finding the range (max − min)</li></ul><p><strong>Extend it:</strong> Compare with another city's weather.</p>",
+  "life-cycles": "<h3>📐 Math Skill: Multiplication</h3><p><strong>Common Core:</strong> 3.OA.1 &mdash; Interpret products of whole numbers. 3.OA.3 &mdash; Multiply word problems.</p><p><strong>What students practice:</strong></p><ul><li>Counting equal groups (rows × columns)</li><li>Skip counting to check answers</li><li>Multiplication facts up to 10 × 10</li></ul><p><strong>Extend it:</strong> \"If half hatch, how many survive?\" (introduces division / halving).</p>",
+  "plants-grow": "<h3>📐 Math Skill: Measurement &amp; Fractions</h3><p><strong>Common Core:</strong> 3.MD.1 &mdash; Time. 3.MD.4 &mdash; Measure in whole units. 3.NF.1 &mdash; Fractions.</p><p><strong>What students practice:</strong></p><ul><li>Measuring with a ruler (cm)</li><li>Recording growth over time</li><li>Writing plant parts as fractions</li></ul>",
+  "forces-motion": "<h3>📐 Math Skill: Measurement &amp; Comparison</h3><p><strong>Common Core:</strong> 3.MD.4 &mdash; Measurement.</p><p><strong>What students practice:</strong></p><ul><li>Measuring distances with a ruler</li><li>Comparing values (which is bigger?)</li><li>Subtraction to find differences</li></ul>",
+  "ecosystems": "<h3>📐 Math Skill: Multiplication &amp; Division</h3><p><strong>Common Core:</strong> 3.OA.6 &mdash; Understand division as unknown-factor. 3.OA.7 &mdash; Fluently multiply and divide within 100.</p><p><strong>What students practice:</strong></p><ul><li>Fact families (mult ↔ div)</li><li>Word problems with equal groups</li></ul>",
+  "habitats": "<h3>📐 Math Skill: Area &amp; Perimeter</h3><p><strong>Common Core:</strong> 3.MD.5-7 &mdash; Area. 3.MD.8 &mdash; Perimeter.</p><p><strong>What students practice:</strong></p><ul><li>Area = length × width</li><li>Perimeter = 2 × (L + W)</li><li>Distinguishing when to use each</li></ul>",
+  "heredity": "<h3>📐 Math Skill: Fractions</h3><p><strong>Common Core:</strong> 3.NF.1 &mdash; Unit fractions. 3.NF.3 &mdash; Equivalence.</p><p><strong>What students practice:</strong></p><ul><li>Writing a fraction of a whole</li><li>Comparing fractions</li><li>Simplifying (6/10 = 3/5)</li></ul>",
+  "fossils": "<h3>📐 Math Skill: Rounding &amp; Large Numbers</h3><p><strong>Common Core:</strong> 3.NBT.1 &mdash; Round to nearest 10 or 100.</p><p><strong>What students practice:</strong></p><ul><li>Rounding large numbers</li><li>Comparing magnitudes</li><li>Writing large numbers in words</li></ul>",
+  "adaptations": "<h3>📐 Math Skill: Multi-Step Word Problems</h3><p><strong>Common Core:</strong> 3.OA.8 &mdash; Solve two-step word problems.</p><p><strong>What students practice:</strong></p><ul><li>Reading carefully</li><li>Picking the right operations</li><li>Checking whether the answer is reasonable</li></ul>",
+  "water-cycle": "<h3>📐 Math Skill: Capacity Measurement</h3><p><strong>Common Core:</strong> 3.MD.2 &mdash; Measure and estimate liquid volumes.</p><p><strong>What students practice:</strong></p><ul><li>Measuring in mL and L</li><li>Converting mL ↔ L (1,000 mL = 1 L)</li></ul>",
+  "natural-hazards": "<h3>📐 Math Skill: Estimation &amp; Rounding</h3><p><strong>Common Core:</strong> 3.NBT.1 &mdash; Round. 3.NBT.2 &mdash; Add and subtract.</p><p><strong>What students practice:</strong></p><ul><li>Rounding to talk about large events</li><li>Comparing magnitudes</li><li>Interpreting scientific measurements</li></ul>",
+  "rocks-shapes": "<h3>📐 Math Skill: Classify 2D Shapes</h3><p><strong>Common Core:</strong> 3.G.1 &mdash; Classify quadrilaterals.</p><p><strong>What students practice:</strong></p><ul><li>Identifying attributes (sides, angles)</li><li>Understanding hierarchies (square ⊂ rectangle ⊂ parallelogram)</li></ul>",
+};
+let currentUnit = null;
+
+function resourceCardHTML(unit) {
+  const phetBtn = unit.phetUrl ? `<a class="btn-phet" href="${unit.phetUrl}" target="_blank">🧪 PhET Simulation</a>` : '';
+  const ytBtn = `<a class="btn-yt" href="https://www.youtube.com/results?search_query=${encodeURIComponent(unit.ytSearch)}" target="_blank">▶️ YouTube</a>`;
+  const ixlBtn = unit.ixlUrl ? `<a class="btn-ixl" href="${unit.ixlUrl}" target="_blank" rel="noopener">📚 IXL Practice</a>` : '';
+  return `<div class="resource-card"><h3>📚 Resources</h3><div class="resource-btns">${phetBtn}${ixlBtn}${ytBtn}</div></div>`;
+}
+
+
+function showScienceConnection() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('science-screen').classList.add('active');
+  const content = SCIENCE_CONNECTIONS[currentUnit] || '<p>No science connection available for this unit yet.</p>';
+  document.getElementById('science-content').innerHTML = content;
+}
+
+function renderHome() {
+  const grid = document.getElementById('units-grid');
+  grid.innerHTML = '';
+  UNITS.forEach(unit => {
+    const card = document.createElement('div');
+    card.className = 'unit-card';
+    card.onclick = () => showLesson(unit.id);
+    card.innerHTML = `
+      <div class="unit-card-header">
+        <div class="unit-card-icon">${unit.icon}</div>
+        <div class="unit-card-meta">
+          <div class="unit-card-title">${unit.title}${completedUnits[unit.id]?' ✅':''}</div>
+          <div class="unit-card-cc">${unit.cc}</div>
+        </div>
+      </div>
+      <div class="unit-card-desc">${unit.desc}</div>
+      <div class="unit-card-pills">
+        <div class="pill">📖 Lesson</div>
+        <div class="pill">📋 Worksheet</div>
+        <div class="pill">▶️ YouTube</div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function renderSidebar() {
+  const sidebar = document.getElementById('sidebar-content');
+  sidebar.innerHTML = '';
+  UNITS.forEach((unit, idx) => {
+    const item = document.createElement('div');
+    item.className = 'sidebar-item' + (currentUnit === unit.id ? ' active' : '');
+    item.textContent = `${idx + 1}. ${unit.title}${completedUnits[unit.id]?' ✅':''}`;
+    item.onclick = () => showLesson(unit.id);
+    sidebar.appendChild(item);
+  });
+}
+
+function setTopbar() {
+  document.getElementById('topbar-title').textContent = currentUnit ? UNITS.find(u => u.id === currentUnit).title : 'Exploring the World with Math';
+}
+
+function showHome() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('home-screen').classList.add('active');
+  currentUnit = null;
+  renderHome();
+  renderSidebar();
+  setTopbar();
+}
+
+function showLesson(unitId) {
+  currentUnit = unitId;
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('lesson-screen').classList.add('active');
+  const unit = UNITS.find(u => u.id === unitId);
+  document.getElementById('lesson-content').innerHTML = LESSONS[unitId] + resourceCardHTML(unit);
+  renderSidebar();
+  setTopbar();
+}
+
+function showWorksheet() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('worksheet-screen').classList.add('active');
+  const ws = WORKSHEETS[currentUnit];
+  let html = '';
+  ws.forEach((p, idx) => {
+    html += `<div class="problem"><h4>Problem ${idx + 1}</h4><p>${p.q}</p><textarea id="ans-${idx}" placeholder="Your answer..."></textarea></div>`;
+  });
+  document.getElementById('worksheet-content').innerHTML = html;
+}
+
+function checkWorksheet() {
+  const ws = WORKSHEETS[currentUnit];
+  let html = '';
+  ws.forEach((p, idx) => {
+    const userAns = document.getElementById(`ans-${idx}`).value;
+    html += `<div class="problem"><h4>Problem ${idx + 1}</h4><p>${p.q}</p><div class="answer-key"><strong>Answer:</strong> ${p.answer}</div><p><strong>Your answer:</strong> ${userAns || '(no answer)'}</p></div>`;
+  });
+  document.getElementById('worksheet-content').innerHTML = html;
+}
+
+function showQuiz() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('quiz-screen').classList.add('active');
+  const quiz = QUIZZES[currentUnit];
+  let html = `
+    <div style="background:#f0f4ff;padding:14px;border-radius:8px;margin-bottom:15px;border-left:4px solid #1B3A8A;">
+      <label style="display:block;font-weight:600;color:#1B3A8A;margin-bottom:6px;">Student Name:</label>
+      <input type="text" id="student-name" placeholder="Type your full name"
+        style="width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;font-size:14px;" />
+    </div>
+  `;
+  quiz.forEach((q, idx) => {
+    html += `<div class="quiz-question"><h4>Question ${idx + 1}</h4><p>${q.q}</p>`;
+    q.opts.forEach((opt, optIdx) => {
+      html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label>`;
+    });
+    html += `</div>`;
+  });
+  document.getElementById('quiz-content').innerHTML = html;
+}
+
+// Quiz results stored at latest submission so email button can use them.
+let lastQuizResults = null;
+
+function submitQuiz() {
+  const quiz = QUIZZES[currentUnit];
+  const studentName = (document.getElementById('student-name')?.value || '').trim();
+  let score = 0;
+  const breakdown = [];
+  quiz.forEach((q, idx) => {
+    const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+    const selectedIdx = selected ? parseInt(selected.value) : -1;
+    const isCorrect = selectedIdx === q.ans;
+    if (isCorrect) score++;
+    breakdown.push({
+      n: idx + 1,
+      question: q.q,
+      studentAnswer: selectedIdx >= 0 ? q.opts[selectedIdx] : '(no answer)',
+      correctAnswer: q.opts[q.ans],
+      correct: isCorrect
+    });
+  });
+  const percent = Math.round((score / quiz.length) * 100);
+  completedUnits[currentUnit] = true;
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('certificate-screen').classList.add('active');
+
+  const unitObj = UNITS.find(u => u.id === currentUnit);
+  const unitTitle = unitObj ? unitObj.title : currentUnit;
+
+  lastQuizResults = { studentName, unitTitle, score, total: quiz.length, pct: percent, breakdown };
+
+  const nameLine = studentName
+    ? `<p><strong>Student:</strong> ${studentName}</p>`
+    : `<p style="color:#b91c1c;"><em>Tip: type your name on the quiz screen before submitting so Mrs. Won knows who you are.</em></p>`;
+
+  document.getElementById('cert-content').innerHTML = `
+    <div style="padding: 20px;">
+      ${nameLine}
+      <p><strong>Unit:</strong> ${unitTitle}</p>
+      <p style="font-size: 24px; margin: 20px 0;">Quiz Score: ${score}/${quiz.length} (${percent}%)</p>
+      <p>${percent === 100 ? "Perfect! 🌟" : percent >= 67 ? "Nice work! Keep practicing." : "Good try! Review the lesson and try again."}</p>
+      <div style="margin-top:18px;">
+        <button class="btn" onclick="emailResults()" style="background:#1B3A8A;color:white;padding:10px 18px;font-size:14px;border:none;border-radius:6px;cursor:pointer;">
+          📧 Submit Quiz to Mrs. Won
+        </button>
+      </div>
+      <p style="margin-top:10px;font-size:12px;color:#666;">
+        Tapping the button opens Gmail with the score and answers filled in. Just press Send.
+      </p>
+    </div>
+  `;
+  renderSidebar();
+  updateProgress();
+}
+
+function emailResults() {
+  if (!lastQuizResults) return;
+  const r = lastQuizResults;
+  const lines = [];
+  lines.push(`Aloha Mrs. Won,`);
+  lines.push(``);
+  lines.push(`A 3rd-grade integrated science &amp; math quiz was just submitted.`);
+  lines.push(``);
+  lines.push(`Student: ${r.studentName || '(name not provided)'}`);
+  lines.push(`Unit: ${r.unitTitle}`);
+  lines.push(`Score: ${r.score} out of ${r.total} (${r.pct}%)`);
+  lines.push(``);
+  lines.push(`--- Detailed Answers ---`);
+  r.breakdown.forEach(b => {
+    lines.push(``);
+    lines.push(`Q${b.n}. ${b.question}`);
+    lines.push(`   Student's answer: ${b.studentAnswer}`);
+    lines.push(`   Correct answer:   ${b.correctAnswer}`);
+    lines.push(`   ${b.correct ? '✓ Correct' : '✗ Incorrect'}`);
+  });
+  lines.push(``);
+  lines.push(`Mahalo,`);
+  lines.push(`Mary, Star of the Sea School — Grade 3 Science &amp; Math`);
+
+  const subject = `Grade 3 Science &amp; Math Quiz Result — ${r.studentName || 'Student'} — ${r.unitTitle} — ${r.pct}%`;
+  const body = lines.join('\n');
+  const to = 'ewon@starofthesea.org';
+
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&tf=1`
+    + `&to=${encodeURIComponent(to)}`
+    + `&su=${encodeURIComponent(subject)}`
+    + `&body=${encodeURIComponent(body)}`;
+  window.open(gmailUrl, '_blank');
+}
+
+function updateProgress() {
+  const completed = Object.keys(completedUnits).length;
+  document.getElementById('progress-text').textContent = `${completed}/${UNITS.length}`;
+}
+
+function showHandout() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('handout-screen').classList.add('active');
+  const h = HANDOUTS_5[currentUnit];
+  if (!h) {
+    document.getElementById('handout-content').innerHTML = '<p>No handout available for this unit.</p>';
+    return;
+  }
+  const stepsHtml = h.steps.map(s => `<li>${s}</li>`).join('');
+  const reflectHtml = h.reflect.map((r,i) => `<li>${r}</li>`).join('');
+  const akFile = ANSWER_KEYS_5[currentUnit];
+  const answerKeyHtml = akFile ? `
+      <div style="background:#E8F5E9;border:2px solid #2E7D32;border-radius:8px;padding:14px;margin:14px 0;">
+        <strong style="color:#1B3A8A;">📗 Answer Key (for self-check):</strong>
+        <a href="answerkeys/${akFile}" download style="display:inline-block;background:#2E7D32;color:#fff;padding:8px 16px;border-radius:6px;text-decoration:none;font-weight:600;margin:6px 8px 6px 0;">Download ${akFile}</a>
+        <div style="font-size:0.9rem;color:#555;margin-top:6px;">Completed workbook with all formulas, charts, and real-world data. Open in Excel or upload to Google Sheets (<em>File → Import → Upload</em>) to compare with your own work after you finish.</div>
+      </div>` : '';
+  document.getElementById('handout-content').innerHTML = `
+    <div class="handout-card">
+      <h3>${h.title}</h3>
+      <div class="handout-science">${h.science}</div>
+      <div class="handout-mission">${h.mission}</div>
+      <p><strong>📋 Step-by-Step Instructions</strong></p>
+      <ol class="handout-steps">${stepsHtml}</ol>
+      <div class="handout-deliverable">
+        <strong>🎯 What to Submit:</strong>
+        ${h.deliverable}
+      </div>
+      ${answerKeyHtml}
+      <div class="handout-reflect">
+        <strong>💭 Reflection Questions:</strong>
+        <ol>${reflectHtml}</ol>
+      </div>
+    </div>`;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderHome();
+  renderSidebar();
+});
+  </script>
+</body>
+</html>
