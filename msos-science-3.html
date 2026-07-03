@@ -216,9 +216,15 @@ function renderHome() {
   `).join('');
   let sbHTML = '';
   let lastQ = '';
+  const Q_LABELS = {
+    'Q1': 'Q1 · Scientific Method, Engineering & Technology',
+    'Q2': 'Q2 · Physical Science',
+    'Q3': 'Q3 · Life Science',
+    'Q4': 'Q4 · Earth & Space Science'
+  };
   UNITS.forEach(u => {
     if (u.q !== lastQ) {
-      sbHTML += `<div class="sidebar-quarter">${u.q}</div>`;
+      sbHTML += `<div class="sidebar-quarter">${Q_LABELS[u.q] || u.q}</div>`;
       lastQ = u.q;
     }
     const done = completedUnits[u.id] ? 'completed' : '';
