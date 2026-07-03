@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mary, Star of the Sea — Elementary School Course Syllabi and Resources</title>
+  <title>Mary, Star of the Sea — Elementary School Classrooms</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -25,20 +25,46 @@
     @media (max-width: 600px) { .logo-circle { width: 100px; height: 100px; } }
     h1 { color: #253a77; font-size: 2.2rem; margin: 14px 0 6px; font-weight: 700; }
     .school-name { color: #7a5f00; font-size: 0.95rem; margin-bottom: 36px; font-weight: 600; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 22px; margin-top: 16px; }
-    .card-wrap { display: flex; flex-direction: column; gap: 10px; }
-    .card { background: #fff; border: 2px solid #253a77; border-radius: 14px; padding: 22px 16px; text-decoration: none; color: #253a77; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(37, 58, 119, 0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 175px; position: relative; overflow: hidden; }
+
+    .grade-section { margin-bottom: 30px; }
+    .grade-heading {
+      color: #253a77; font-size: 1.15rem; font-weight: 700;
+      text-align: left; max-width: 900px; margin: 24px auto 12px;
+      padding: 8px 14px; background: linear-gradient(90deg, #FFD100 0%, transparent 100%);
+      border-left: 4px solid #FFD100; border-radius: 3px;
+    }
+
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 900px; margin: 0 auto; }
+
+    .card {
+      background: #fff; border: 2px solid #253a77; border-radius: 14px;
+      padding: 22px 20px; text-decoration: none; color: #253a77;
+      transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(37, 58, 119, 0.08);
+      display: flex; align-items: center; gap: 18px;
+      min-height: 100px; position: relative; overflow: hidden; text-align: left;
+    }
     .card.active { cursor: pointer; }
-    .card.active:hover { transform: translateY(-6px); box-shadow: 0 10px 28px rgba(37, 58, 119, 0.25); background: #253a77; color: #fff; }
-    .card.active:hover .card-theme { color: #FFD100; }
-    .card.active:hover .card-icon { transform: scale(1.1); }
+    .card.active:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(37, 58, 119, 0.25); background: #253a77; color: #fff; }
+    .card.active:hover .card-teacher { color: #FFD100; }
+    .card.active:hover .card-badge { background: #FFD100; color: #253a77; }
     .card.coming { cursor: default; border-color: #cbd5e1; background: #f8fafc; color: #94a3b8; }
-    .card.coming .card-icon { opacity: 0.6; }
-    .card-icon { font-size: 2.8rem; line-height: 1; margin-bottom: 10px; transition: transform 0.2s ease; }
-    .card-label { font-size: 1rem; font-weight: 700; margin-bottom: 4px; line-height: 1.25; }
-    .card-theme { font-size: 0.76rem; opacity: 0.85; font-style: italic; transition: color 0.2s; line-height: 1.3; }
+    .card.coming .card-badge { background: #cbd5e1; color: #fff; }
+    .card-badge {
+      flex-shrink: 0; width: 68px; height: 68px; border-radius: 50%;
+      background: #253a77; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.35rem; font-weight: 700; transition: all 0.2s;
+    }
+    .card-info { display: flex; flex-direction: column; gap: 3px; }
+    .card-grade { font-size: 1.05rem; font-weight: 700; line-height: 1.15; }
+    .card-teacher { font-size: 0.9rem; font-style: italic; opacity: 0.9; transition: color 0.2s; }
+    .card-status { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.6px; opacity: 0.7; margin-top: 2px; }
     footer { margin-top: 40px; font-size: 0.85rem; color: #888; }
-    @media (max-width: 600px) { h1 { font-size: 1.6rem; } .card-icon { font-size: 2.8rem; } }
+    @media (max-width: 600px) {
+      h1 { font-size: 1.5rem; }
+      .card { padding: 16px; gap: 12px; }
+      .card-badge { width: 54px; height: 54px; font-size: 1.1rem; }
+    }
   </style>
 </head>
 <body>
@@ -49,20 +75,75 @@
         <span class="logo-circle nui"><img src="nui-logo.png" alt="NUI Logo"></span>
       </div>
     </div>
-    <h1>Elementary School Course Syllabi and Resources</h1>
+    <h1>Elementary School Classrooms</h1>
     <p class="school-name">Mary, Star of the Sea SY 2026-2027</p>
-    <div class="grid">
-      <div class="card-wrap">
-        <a class="card active" href="msos-science-math-3.html">
-          <div class="card-icon">🔬🧮</div>
-          <div class="card-label">Science &amp; Math</div>
-          <div class="card-theme">Grade 3 Integrated Curriculum</div>
-        </a>
+
+    <div class="grade-section">
+      <div class="grade-heading">🌱 1st Grade</div>
+      <div class="grid">
+        <div class="card coming">
+          <div class="card-badge">1A</div>
+          <div class="card-info">
+            <div class="card-grade">1st Grade A</div>
+            <div class="card-teacher">Mrs. Yap</div>
+            <div class="card-status">Coming Soon</div>
+          </div>
+        </div>
+        <div class="card coming">
+          <div class="card-badge">1B</div>
+          <div class="card-info">
+            <div class="card-grade">1st Grade B</div>
+            <div class="card-teacher">Mrs. Eberlin</div>
+            <div class="card-status">Coming Soon</div>
+          </div>
+        </div>
       </div>
-      <div class="card-wrap"><div class="card coming"><div class="card-icon">✝️</div><div class="card-label">Religion</div><div class="card-theme">Catholic Faith Formation</div></div></div>
-      <div class="card-wrap"><div class="card coming"><div class="card-icon">🌍</div><div class="card-label">Social Studies</div><div class="card-theme">History &amp; Geography</div></div></div>
-      <div class="card-wrap"><div class="card coming"><div class="card-icon">📖</div><div class="card-label">English Language Arts</div><div class="card-theme">Reading, Writing &amp; Literature</div></div></div>
     </div>
+
+    <div class="grade-section">
+      <div class="grade-heading">🌿 2nd Grade</div>
+      <div class="grid">
+        <div class="card coming">
+          <div class="card-badge">2A</div>
+          <div class="card-info">
+            <div class="card-grade">2nd Grade A</div>
+            <div class="card-teacher">Mrs. Wong</div>
+            <div class="card-status">Coming Soon</div>
+          </div>
+        </div>
+        <div class="card coming">
+          <div class="card-badge">2B</div>
+          <div class="card-info">
+            <div class="card-grade">2nd Grade B</div>
+            <div class="card-teacher">Mrs. Peters</div>
+            <div class="card-status">Coming Soon</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grade-section">
+      <div class="grade-heading">🌳 3rd Grade</div>
+      <div class="grid">
+        <a class="card active" href="3a-won.html">
+          <div class="card-badge">3A</div>
+          <div class="card-info">
+            <div class="card-grade">3rd Grade A</div>
+            <div class="card-teacher">Mrs. Won</div>
+            <div class="card-status">View Class →</div>
+          </div>
+        </a>
+        <div class="card coming">
+          <div class="card-badge">3B</div>
+          <div class="card-info">
+            <div class="card-grade">3rd Grade B</div>
+            <div class="card-teacher">Ms. Rasa</div>
+            <div class="card-status">Coming Soon</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer>&copy; Mary, Star of the Sea School &middot; SY 2026-2027</footer>
   </div>
 </body>
