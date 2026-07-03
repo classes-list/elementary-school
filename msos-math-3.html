@@ -88,6 +88,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
         <div id="lesson-content" class="lesson-content"></div>
         <div class="nav-buttons">
           <button class="btn back-btn" onclick="showHome()">← Back</button>
+          <a id="yt-btn" class="btn" style="background:#c4302b;text-decoration:none;display:inline-block;" href="#" target="_blank" rel="noopener">📺 YouTube Tutorial</a>
           <button class="btn" onclick="showWorksheet()">Worksheet →</button>
         </div>
       </div>
@@ -130,22 +131,22 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 let completedUnits = {};
 
 const UNITS = [
-  { id:'t01-understand-mult', title:"Topic 1: Understand Multiplication", icon:'✖️', cc:'3.OA.1', q:'Q1', desc:'Multiplication as equal groups. Arrays and skip counting.' },
-  { id:'t02-mult-facts-patterns', title:"Topic 2: Multiplication Facts \u2014 Patterns", icon:'🔢', cc:'3.OA.7', q:'Q1', desc:'Facts for 2, 5, 9, 10 using patterns.' },
-  { id:'t03-mult-facts-properties', title:"Topic 3: Multiplication Facts \u2014 Properties", icon:'🧮', cc:'3.OA.5', q:'Q1', desc:'Apply commutative, associative, distributive properties for 3, 4, 6, 7, 8.' },
-  { id:'t04-use-mult-divide', title:"Topic 4: Use Multiplication to Divide", icon:'➗', cc:'3.OA.6', q:'Q2', desc:'Division as unknown-factor multiplication. Fact families.' },
-  { id:'t05-fluent-mult-div', title:"Topic 5: Fluently Multiply &amp; Divide within 100", icon:'⚡', cc:'3.OA.7', q:'Q2', desc:'Fluent mastery of multiplication and division within 100.' },
-  { id:'t06-area', title:"Topic 6: Connect Area to Multiplication", icon:'📐', cc:'3.MD.7', q:'Q2', desc:'Area of rectangles by counting squares and by L × W.' },
-  { id:'t07-data', title:"Topic 7: Represent &amp; Interpret Data", icon:'📊', cc:'3.MD.3-4', q:'Q2', desc:'Bar graphs, picture graphs, and line plots.' },
-  { id:'t08-add-sub-strategies', title:"Topic 8: Add &amp; Subtract Strategies", icon:'➕', cc:'3.NBT.2', q:'Q3', desc:'Place-value strategies to add and subtract.' },
-  { id:'t09-fluent-add-sub', title:"Topic 9: Fluently Add &amp; Subtract within 1,000", icon:'💯', cc:'3.NBT.2', q:'Q3', desc:'Fluent addition and subtraction within 1,000 using algorithms.' },
-  { id:'t10-mult-multiples-10', title:"Topic 10: Multiply by Multiples of 10", icon:'🔟', cc:'3.NBT.3', q:'Q3', desc:'Multiply single digits by 10, 20, 30, ..., 90.' },
-  { id:'t11-word-problems', title:"Topic 11: Operations Word Problems", icon:'📝', cc:'3.OA.8', q:'Q3', desc:'Two-step word problems using all four operations.' },
-  { id:'t15-2d-shapes', title:"Topic 15: Attributes of 2D Shapes", icon:'🔷', cc:'3.G.1', q:'Q3', desc:'Classify quadrilaterals by attributes.' },
-  { id:'t12-fractions-intro', title:"Topic 12: Understand Fractions as Numbers", icon:'½', cc:'3.NF.1', q:'Q4', desc:'Fractions as parts of a whole; fractions on a number line.' },
-  { id:'t13-fraction-equiv', title:"Topic 13: Fraction Equivalence &amp; Comparison", icon:'⚖️', cc:'3.NF.3', q:'Q4', desc:'Equivalent fractions; comparing fractions.' },
-  { id:'t14-time-cap-mass', title:"Topic 14: Time, Capacity, &amp; Mass", icon:'⏱️', cc:'3.MD.1-2', q:'Q4', desc:'Solve time, capacity (mL, L), and mass (g, kg) problems.' },
-  { id:'t16-perimeter', title:"Topic 16: Perimeter Problems", icon:'📏', cc:'3.MD.8', q:'Q4', desc:'Perimeter of polygons; missing side length.' },
+  { id:'t01-understand-mult', title:"Topic 1: Understand Multiplication", icon:'✖️', cc:'3.OA.1', q:'Q1', desc:"Multiplication as equal groups. Arrays and skip counting.", yt:"https://www.youtube.com/results?search_query=khan+academy+3rd+grade+multiplication+equal+groups" },
+  { id:'t02-mult-facts-patterns', title:"Topic 2: Multiplication Facts \u2014 Patterns", icon:'🔢', cc:'3.OA.7', q:'Q1', desc:"Facts for 2, 5, 9, 10 using patterns.", yt:"https://www.youtube.com/results?search_query=3rd+grade+multiplication+facts+patterns+2+5+9+10" },
+  { id:'t03-mult-facts-properties', title:"Topic 3: Multiplication Facts \u2014 Properties", icon:'🧮', cc:'3.OA.5', q:'Q1', desc:"Apply commutative, associative, distributive properties for 3, 4, 6, 7, 8.", yt:"https://www.youtube.com/results?search_query=khan+academy+distributive+property+multiplication+3rd+grade" },
+  { id:'t04-use-mult-divide', title:"Topic 4: Use Multiplication to Divide", icon:'➗', cc:'3.OA.6', q:'Q2', desc:"Division as unknown-factor multiplication. Fact families.", yt:"https://www.youtube.com/results?search_query=khan+academy+3rd+grade+division+as+unknown+factor" },
+  { id:'t05-fluent-mult-div', title:"Topic 5: Fluently Multiply &amp; Divide within 100", icon:'⚡', cc:'3.OA.7', q:'Q2', desc:"Fluent mastery of multiplication and division within 100.", yt:"https://www.youtube.com/results?search_query=3rd+grade+multiplication+division+facts+fluency" },
+  { id:'t06-area', title:"Topic 6: Connect Area to Multiplication", icon:'📐', cc:'3.MD.7', q:'Q2', desc:"Area of rectangles by counting squares and by L \u00d7 W.", yt:"https://www.youtube.com/results?search_query=khan+academy+area+rectangles+3rd+grade" },
+  { id:'t07-data', title:"Topic 7: Represent &amp; Interpret Data", icon:'📊', cc:'3.MD.3-4', q:'Q2', desc:"Bar graphs, picture graphs, and line plots.", yt:"https://www.youtube.com/results?search_query=3rd+grade+bar+graph+picture+graph+line+plot" },
+  { id:'t08-add-sub-strategies', title:"Topic 8: Add &amp; Subtract Strategies", icon:'➕', cc:'3.NBT.2', q:'Q3', desc:"Place-value strategies to add and subtract.", yt:"https://www.youtube.com/results?search_query=3rd+grade+addition+subtraction+strategies+place+value" },
+  { id:'t09-fluent-add-sub', title:"Topic 9: Fluently Add &amp; Subtract within 1,000", icon:'💯', cc:'3.NBT.2', q:'Q3', desc:"Fluent addition and subtraction within 1,000 using algorithms.", yt:"https://www.youtube.com/results?search_query=khan+academy+add+subtract+within+1000+3rd+grade" },
+  { id:'t10-mult-multiples-10', title:"Topic 10: Multiply by Multiples of 10", icon:'🔟', cc:'3.NBT.3', q:'Q3', desc:"Multiply single digits by 10, 20, 30, ..., 90.", yt:"https://www.youtube.com/results?search_query=khan+academy+multiply+multiples+of+10+3rd+grade" },
+  { id:'t11-word-problems', title:"Topic 11: Operations Word Problems", icon:'📝', cc:'3.OA.8', q:'Q3', desc:"Two-step word problems using all four operations.", yt:"https://www.youtube.com/results?search_query=3rd+grade+two+step+word+problems+all+operations" },
+  { id:'t15-2d-shapes', title:"Topic 15: Attributes of 2D Shapes", icon:'🔷', cc:'3.G.1', q:'Q3', desc:"Classify quadrilaterals by attributes.", yt:"https://www.youtube.com/results?search_query=3rd+grade+quadrilaterals+attributes+shapes" },
+  { id:'t12-fractions-intro', title:"Topic 12: Understand Fractions as Numbers", icon:'½', cc:'3.NF.1', q:'Q4', desc:"Fractions as parts of a whole; fractions on a number line.", yt:"https://www.youtube.com/results?search_query=khan+academy+introduction+fractions+3rd+grade" },
+  { id:'t13-fraction-equiv', title:"Topic 13: Fraction Equivalence &amp; Comparison", icon:'⚖️', cc:'3.NF.3', q:'Q4', desc:"Equivalent fractions; comparing fractions.", yt:"https://www.youtube.com/results?search_query=khan+academy+equivalent+fractions+3rd+grade" },
+  { id:'t14-time-cap-mass', title:"Topic 14: Time, Capacity, &amp; Mass", icon:'⏱️', cc:'3.MD.1-2', q:'Q4', desc:"Solve time, capacity (mL, L), and mass (g, kg) problems.", yt:"https://www.youtube.com/results?search_query=3rd+grade+time+capacity+mass+measurement" },
+  { id:'t16-perimeter', title:"Topic 16: Perimeter Problems", icon:'📏', cc:'3.MD.8', q:'Q4', desc:"Perimeter of polygons; missing side length.", yt:"https://www.youtube.com/results?search_query=khan+academy+perimeter+3rd+grade" },
 ];
 
 const LESSONS = {
@@ -245,6 +246,15 @@ function showLesson(uid) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('lesson-screen').classList.add('active');
   document.getElementById('lesson-content').innerHTML = LESSONS[uid] || '<p>Lesson coming soon.</p>';
+  // Wire up YouTube button
+  const unit = UNITS.find(u => u.id === uid);
+  const ytBtn = document.getElementById('yt-btn');
+  if (unit && unit.yt) {
+    ytBtn.href = unit.yt;
+    ytBtn.style.display = 'inline-block';
+  } else {
+    ytBtn.style.display = 'none';
+  }
 }
 
 function showWorksheet() {
