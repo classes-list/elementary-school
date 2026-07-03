@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 3 Social Studies · Curriculum Map 2026–2027</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background:#F1F5F9; color:#1F2937; line-height:1.5; padding:20px; }
+    .container { max-width: 1400px; margin: 0 auto; background:#fff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08); overflow:hidden; }
+    .header { background:linear-gradient(135deg,#b45309 0%,#d97706 100%); color:#fff; padding:24px 28px; position:relative; }
+    .header h1 { font-size:1.6rem; margin-bottom:6px; }
+    .header .sub { font-size:0.95rem; opacity:0.92; }
+    .header .back-btn { position:absolute; top:20px; right:24px; background:rgba(255,255,255,0.18); color:#fff; border:1.5px solid rgba(255,255,255,0.4); padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.85rem; cursor:pointer; }
+    .header .back-btn:hover { background:rgba(255,255,255,0.28); }
+    .tabs { display:flex; background:#F8FAFC; border-bottom:2px solid #E2E8F0; padding:0 28px; }
+    .tab { background:transparent; border:none; padding:14px 22px; font-size:0.95rem; font-weight:600; color:#64748B; cursor:pointer; border-bottom:3px solid transparent; transition:all 0.15s; }
+    .tab:hover { color:#b45309; }
+    .tab.active { color:#b45309; border-bottom-color:#b45309; }
+    .panel { display:none; padding:24px 28px; }
+    .panel.active { display:block; }
+    .panel h2 { font-size:1.25rem; color:#b45309; margin-bottom:18px; }
+    .panel .note { font-size:0.85rem; color:#64748B; margin-bottom:14px; font-style:italic; }
+    .map-table { width:100%; border-collapse:collapse; font-size:0.82rem; }
+    .map-table th { background:#b45309; color:#fff; padding:10px 8px; text-align:left; font-weight:600; border:1px solid #b45309; }
+    .map-table td { padding:10px 8px; border:1px solid #CBD5E1; vertical-align:top; }
+    .map-table .unit-name { font-weight:700; color:#b45309; width:170px; }
+    .map-table .standards { width:60px; text-align:center; font-weight:600; }
+    .map-table .cc-codes { font-size:0.82rem; color:#0c4a6e; font-weight:600; width:200px; }
+    .map-table .pacing { font-weight:600; color:#5B21B6; width:150px; }
+    .gantt-wrap { overflow-x:auto; }
+    .gantt-table { border-collapse:collapse; font-size:0.72rem; }
+    .gantt-table th, .gantt-table td { border:1px solid #CBD5E1; padding:4px 6px; }
+    .gantt-table .unit-cell { width:240px; font-weight:600; color:#b45309; background:#F8FAFC; padding:8px; font-size:0.85rem; }
+    .gantt-table .weeks-cell { width:50px; text-align:center; font-weight:600; background:#F8FAFC; font-size:0.85rem; }
+    .gantt-table .week-th { width:28px; text-align:center; background:#b45309; color:#fff; font-weight:600; font-size:0.7rem; }
+    .gantt-table .qtr-banner { padding:8px; text-align:center; font-weight:700; font-size:0.85rem; }
+    .gantt-table .qtr-1 { background:#BDD7EE; color:#1F4E78; }
+    .gantt-table .qtr-2 { background:#C6E0B4; color:#365B27; }
+    .gantt-table .qtr-3 { background:#FFE699; color:#7A5F00; }
+    .gantt-table .qtr-4 { background:#F4B084; color:#7B3D14; }
+    .gantt-table .gantt-cell { width:28px; height:32px; background:#fff; }
+    .gantt-table .corner-cell { background:#F1F5F9; }
+    .notes-box { margin-top:24px; padding:16px 20px; background:#FFF8E1; border-left:4px solid #FFD100; border-radius:6px; }
+    .notes-box h3 { font-size:1rem; color:#7A5F00; margin-bottom:10px; }
+    .notes-box ul { list-style:none; padding:0; }
+    .notes-box li { padding:4px 0; font-size:0.9rem; color:#4A4A4A; }
+    .notes-box li::before { content:"📌  "; }
+    @media (max-width:768px) {
+      .header h1 { font-size:1.2rem; }
+      .map-table { font-size:0.72rem; }
+      .tab { padding:10px 14px; font-size:0.85rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📅 Grade 3 Social Studies · Curriculum Map 2026–2027</h1>
+      <div class="sub">Mary, Star of the Sea School · Teacher: Mrs. Edlin Won · 3rd Grade A</div>
+      <a class="back-btn" href="msos-social-studies-3.html">← Back to Class</a>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-tab="map">📚 Curriculum Map</button>
+      <button class="tab" data-tab="calendar">📅 Unit Calendar (Gantt)</button>
+    </div>
+    <div id="map" class="panel active">
+      <h2>Curriculum Map by Quarter</h2>
+      <p class="note">Each unit lists its standards, learning objectives, essential content, pacing, assessments, and resources.</p>
+      <div style="overflow-x:auto">
+        <table class="map-table">
+          <thead>
+            <tr>
+              <th>Unit</th>
+              <th>Standards</th>
+              <th>Standards Reference</th>
+              <th>Learning Objectives</th>
+              <th>Essential Content &amp; Skills</th>
+              <th>Sequencing &amp; Pacing</th>
+              <th>Assessments</th>
+              <th>Resources Used</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="unit-name" style="background:#DBEAFE"><strong>Q1 Civics: Communities Build a Nation</strong></td>
+              <td class="standards">Std</td>
+              <td class="cc-codes">C3 D2.Civ.1; D2.Civ.6; D2.Civ.14</td>
+              <td>1. Describe types of communities; 2. Explain roles of leaders and citizens; 3. Identify rights and responsibilities.</td>
+              <td>Rural/suburban/urban communities; local leaders (mayor, police, teachers); rights and responsibilities; U.S. symbols.</td>
+              <td class="pacing">Q1: 9 weeks (8/3–10/2)</td>
+              <td>Community leader interview; Civics quiz.</td>
+              <td>iCivics; Congress for Kids; local civic leaders as guests.</td>
+            </tr>
+            <tr>
+              <td class="unit-name" style="background:#DCFCE7"><strong>Q2 History: Governments</strong></td>
+              <td class="standards">Std</td>
+              <td class="cc-codes">C3 D2.His.1-3; D2.Civ.4</td>
+              <td>1. Trace history of governments; 2. Describe three branches of U.S. government; 3. Understand Hawaiian kingdom history.</td>
+              <td>Executive, legislative, judicial branches; Constitution; Bill of Rights; Kamehameha; Hawaiian statehood.</td>
+              <td class="pacing">Q2: 9 weeks (10/19–12/18)</td>
+              <td>Branches-of-government project; Constitution quiz.</td>
+              <td>Hawaii History online; Ben's Guide to Government.</td>
+            </tr>
+            <tr>
+              <td class="unit-name" style="background:#FEF3C7"><strong>Q3 Economics</strong></td>
+              <td class="standards">Std</td>
+              <td class="cc-codes">C3 D2.Eco.1; D2.Eco.3-5</td>
+              <td>1. Distinguish needs vs wants; 2. Compare goods and services; 3. Understand money and trade.</td>
+              <td>Producers and consumers; goods vs services; currency; saving/spending/budgeting; scarcity; trade.</td>
+              <td class="pacing">Q3: 9 weeks (1/7–3/12)</td>
+              <td>Class mini-economy; Economics unit test.</td>
+              <td>Money As You Grow; Junior Achievement.</td>
+            </tr>
+            <tr>
+              <td class="unit-name" style="background:#FCE7F3"><strong>Q4 Geography: Earth's Resources &amp; Cultures</strong></td>
+              <td class="standards">Std</td>
+              <td class="cc-codes">C3 D2.Geo.1-5; D2.Geo.7-8</td>
+              <td>1. Read maps; 2. Identify continents, oceans, landforms; 3. Explore cultures and Hawaiian geography.</td>
+              <td>Continents and oceans; compass, legend, scale; landforms; climate zones; natural resources; conservation; cultural diversity; Hawaiian geography and moʻolelo.</td>
+              <td class="pacing">Q4: 9 weeks (3/29–6/3)</td>
+              <td>Cultural report; Geography final.</td>
+              <td>National Geographic Kids; Bishop Museum resources.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="calendar" class="panel">
+      <h2>Week-by-Week Unit Calendar</h2>
+      <p class="note">Color-coded bars show which weeks each unit occupies. Quarter blocks: Q1 blue · Q2 green · Q3 gold · Q4 orange.</p>
+      <div class="gantt-wrap">
+        <table class="gantt-table">
+          <thead>
+            <tr>
+              <th class="corner-cell" rowspan="2">Unit</th>
+              <th class="corner-cell" rowspan="2">Wks</th>
+              <th class="qtr-banner qtr-1" colspan="9">1st Qtr 8/3-10/2</th>
+              <th class="qtr-banner qtr-2" colspan="9">2nd Qtr 10/19-12/18</th>
+              <th class="qtr-banner qtr-3" colspan="9">3rd Qtr 1/7-3/12</th>
+              <th class="qtr-banner qtr-4" colspan="9">4th Qtr 3/29-6/3</th>
+            </tr>
+            <tr><th class="week-th">W1</th><th class="week-th">W2</th><th class="week-th">W3</th><th class="week-th">W4</th><th class="week-th">W5</th><th class="week-th">W6</th><th class="week-th">W7</th><th class="week-th">W8</th><th class="week-th">W9</th><th class="week-th">W10</th><th class="week-th">W11</th><th class="week-th">W12</th><th class="week-th">W13</th><th class="week-th">W14</th><th class="week-th">W15</th><th class="week-th">W16</th><th class="week-th">W17</th><th class="week-th">W18</th><th class="week-th">W19</th><th class="week-th">W20</th><th class="week-th">W21</th><th class="week-th">W22</th><th class="week-th">W23</th><th class="week-th">W24</th><th class="week-th">W25</th><th class="week-th">W26</th><th class="week-th">W27</th><th class="week-th">W28</th><th class="week-th">W29</th><th class="week-th">W30</th><th class="week-th">W31</th><th class="week-th">W32</th><th class="week-th">W33</th><th class="week-th">W34</th><th class="week-th">W35</th><th class="week-th">W36</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="unit-cell"><strong>Q1 Civics: Communities Build a Nation</strong></td>
+              <td class="weeks-cell">9</td>
+              <td class="gantt-cell" style="background:#BDD7EE"></td><td class="gantt-cell" style="background:#BDD7EE"></td><td class="gantt-cell" style="background:#BDD7EE"></td><td class="gantt-cell" style="background:#BDD7EE"></td><td class="gantt-cell" style="background:#BDD7EE"></td><td class="gantt-cell" style="background:#BDD7EE"></td><td class="gantt-cell" style="background:#BDD7EE"></td><td class="gantt-cell" style="background:#BDD7EE"></td><td class="gantt-cell" style="background:#BDD7EE"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td>
+            </tr>
+            <tr>
+              <td class="unit-cell"><strong>Q2 History: Governments</strong></td>
+              <td class="weeks-cell">9</td>
+              <td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell" style="background:#C6E0B4"></td><td class="gantt-cell" style="background:#C6E0B4"></td><td class="gantt-cell" style="background:#C6E0B4"></td><td class="gantt-cell" style="background:#C6E0B4"></td><td class="gantt-cell" style="background:#C6E0B4"></td><td class="gantt-cell" style="background:#C6E0B4"></td><td class="gantt-cell" style="background:#C6E0B4"></td><td class="gantt-cell" style="background:#C6E0B4"></td><td class="gantt-cell" style="background:#C6E0B4"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td>
+            </tr>
+            <tr>
+              <td class="unit-cell"><strong>Q3 Economics</strong></td>
+              <td class="weeks-cell">9</td>
+              <td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell" style="background:#FFE699"></td><td class="gantt-cell" style="background:#FFE699"></td><td class="gantt-cell" style="background:#FFE699"></td><td class="gantt-cell" style="background:#FFE699"></td><td class="gantt-cell" style="background:#FFE699"></td><td class="gantt-cell" style="background:#FFE699"></td><td class="gantt-cell" style="background:#FFE699"></td><td class="gantt-cell" style="background:#FFE699"></td><td class="gantt-cell" style="background:#FFE699"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td>
+            </tr>
+            <tr>
+              <td class="unit-cell"><strong>Q4 Geography: Earth's Resources &amp; Cultures</strong></td>
+              <td class="weeks-cell">9</td>
+              <td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell"></td><td class="gantt-cell" style="background:#F4B084"></td><td class="gantt-cell" style="background:#F4B084"></td><td class="gantt-cell" style="background:#F4B084"></td><td class="gantt-cell" style="background:#F4B084"></td><td class="gantt-cell" style="background:#F4B084"></td><td class="gantt-cell" style="background:#F4B084"></td><td class="gantt-cell" style="background:#F4B084"></td><td class="gantt-cell" style="background:#F4B084"></td><td class="gantt-cell" style="background:#F4B084"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="notes-box">
+        <h3>📌 Key Calendar Dates (2026–2027)</h3>
+
+    <ul>
+      <li>First Day of School: Aug. 3, 2026</li>
+      <li>Fall Break: Oct. 5 – Oct. 16, 2026 (two-week intersession)</li>
+      <li>Winter Break: Dec. 21, 2026 – Jan. 6, 2027</li>
+      <li>Spring Break: Mar. 15 – Mar. 26, 2027 (two-week intersession)</li>
+      <li>Last Day of School: Jun. 3, 2027</li>
+    </ul>
+
+      </div>
+    </div>
+  </div>
+  <script>
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
