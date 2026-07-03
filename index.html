@@ -11,59 +11,127 @@
       background: linear-gradient(135deg, #eef2fa 0%, #f8f9fa 100%);
       color: #253a77;
       min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 40px 20px;
     }
     .container { max-width: 1200px; width: 100%; text-align: center; }
     .logo-wrap { margin-bottom: 24px; }
-    .logos-row { display: flex; gap: 28px; align-items: center; justify-content: center; flex-wrap: wrap; }
-    .logo-circle { width: 130px; height: 130px; border-radius: 50%; background: #fff; box-shadow: 0 6px 20px rgba(37,58,119,0.18); overflow: hidden; display: inline-flex; align-items: center; justify-content: flex-start; flex-shrink: 0; }
+    .logos-row {
+      display: flex; gap: 28px; align-items: center; justify-content: center; flex-wrap: wrap;
+    }
+    .logo-circle {
+      width: 130px; height: 130px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 6px 20px rgba(37,58,119,0.18);
+      overflow: hidden;
+      display: inline-flex; align-items: center; justify-content: flex-start;
+      flex-shrink: 0;
+    }
     .logo-circle img { display: block; }
     .logo-circle.msos img { height: 100%; width: auto; }
     .logo-circle.nui img { width: 100%; height: 100%; object-fit: cover; }
     .logo-circle.msos { background: #1a2a4a; }
-    @media (max-width: 600px) { .logo-circle { width: 100px; height: 100px; } }
-    h1 { color: #253a77; font-size: 2.2rem; margin: 14px 0 6px; font-weight: 700; }
-    .school-name { color: #7a5f00; font-size: 0.95rem; margin-bottom: 36px; font-weight: 600; }
-
-    .grade-section { margin-bottom: 30px; }
-    .grade-heading {
-      color: #253a77; font-size: 1.15rem; font-weight: 700;
-      text-align: left; max-width: 900px; margin: 24px auto 12px;
-      padding: 8px 14px; background: linear-gradient(90deg, #FFD100 0%, transparent 100%);
-      border-left: 4px solid #FFD100; border-radius: 3px;
+    @media (max-width: 600px) {
+      .logo-circle { width: 100px; height: 100px; }
     }
-
-    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 900px; margin: 0 auto; }
-
+    h1 {
+      color: #253a77;
+      font-size: 2.2rem;
+      margin: 14px 0 6px;
+      font-weight: 700;
+    }
+    .school-name {
+      color: #7a5f00;
+      font-size: 0.95rem;
+      margin-bottom: 36px;
+      font-weight: 600;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 16px;
+    }
     .card {
-      background: #fff; border: 2px solid #253a77; border-radius: 14px;
-      padding: 22px 20px; text-decoration: none; color: #253a77;
-      transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(37, 58, 119, 0.08);
-      display: flex; align-items: center; gap: 18px;
-      min-height: 100px; position: relative; overflow: hidden; text-align: left;
+      background: #fff;
+      border: 2px solid #253a77;
+      border-radius: 14px;
+      padding: 22px 16px;
+      text-decoration: none;
+      color: #253a77;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(37, 58, 119, 0.08);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 175px;
+      position: relative;
+      overflow: hidden;
     }
     .card.active { cursor: pointer; }
-    .card.active:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(37, 58, 119, 0.25); background: #253a77; color: #fff; }
-    .card.active:hover .card-teacher { color: #FFD100; }
-    .card.active:hover .card-badge { background: #FFD100; color: #253a77; }
-    .card.coming { cursor: default; border-color: #cbd5e1; background: #f8fafc; color: #94a3b8; }
-    .card.coming .card-badge { background: #cbd5e1; color: #fff; }
-    .card-badge {
-      flex-shrink: 0; width: 68px; height: 68px; border-radius: 50%;
-      background: #253a77; color: #fff;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.35rem; font-weight: 700; transition: all 0.2s;
+    .card.active:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 28px rgba(37, 58, 119, 0.25);
+      background: #253a77;
+      color: #fff;
     }
-    .card-info { display: flex; flex-direction: column; gap: 3px; }
-    .card-grade { font-size: 1.05rem; font-weight: 700; line-height: 1.15; }
-    .card-teacher { font-size: 0.9rem; font-style: italic; opacity: 0.9; transition: color 0.2s; }
-    .card-status { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.6px; opacity: 0.7; margin-top: 2px; }
-    footer { margin-top: 40px; font-size: 0.85rem; color: #888; }
+    .card.active:hover .card-theme { color: #FFD100; }
+    .card.active:hover .card-icon { transform: scale(1.05); background: #FFD100; color: #253a77; }
+    .card.coming {
+      cursor: default;
+      border-color: #cbd5e1;
+      background: #f8fafc;
+      color: #94a3b8;
+    }
+    .card.coming .card-icon { background: #cbd5e1; color: #fff; }
+    .card-icon {
+      font-size: 1.55rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 12px;
+      width: 62px; height: 62px;
+      border-radius: 50%;
+      background: #253a77;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s ease;
+      letter-spacing: 0.5px;
+    }
+    .card-label {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      line-height: 1.25;
+    }
+    .card-theme {
+      font-size: 0.82rem;
+      opacity: 0.85;
+      font-style: italic;
+      transition: color 0.2s;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .card-status {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 14px;
+      text-transform: uppercase;
+    }
+    .card.active .card-status { background: #FFD100; color: #1a2a4a; }
+    .card.active:hover .card-status { background: #FFD100; color: #1a2a4a; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+    .card.coming .card-status { background: #e2e8f0; color: #64748b; }
+    footer {
+      margin-top: 40px;
+      font-size: 0.85rem;
+      color: #888;
+    }
     @media (max-width: 600px) {
-      h1 { font-size: 1.5rem; }
-      .card { padding: 16px; gap: 12px; }
-      .card-badge { width: 54px; height: 54px; font-size: 1.1rem; }
+      h1 { font-size: 1.6rem; }
+      .card-icon { width: 54px; height: 54px; font-size: 1.35rem; }
     }
   </style>
 </head>
@@ -71,80 +139,60 @@
   <div class="container">
     <div class="logo-wrap">
       <div class="logos-row">
-        <span class="logo-circle msos"><img src="msos-logo.svg" alt="MSOS Logo"></span>
-        <span class="logo-circle nui"><img src="nui-logo.png" alt="NUI Logo"></span>
+        <span class="logo-circle msos" title="Mary, Star of the Sea"><img src="msos-logo.svg" alt="Mary, Star of the Sea Logo"></span>
+        <span class="logo-circle nui" title="Nurture · Unite · Inspire"><img src="nui-logo.png" alt="Nurture-Unite-Inspire Logo"></span>
       </div>
     </div>
     <h1>Elementary School Classrooms</h1>
     <p class="school-name">Mary, Star of the Sea SY 2026-2027</p>
 
-    <div class="grade-section">
-      <div class="grade-heading">🌱 1st Grade</div>
-      <div class="grid">
-        <div class="card coming">
-          <div class="card-badge">1A</div>
-          <div class="card-info">
-            <div class="card-grade">1st Grade A</div>
-            <div class="card-teacher">Mrs. Yap</div>
-            <div class="card-status">Coming Soon</div>
-          </div>
-        </div>
-        <div class="card coming">
-          <div class="card-badge">1B</div>
-          <div class="card-info">
-            <div class="card-grade">1st Grade B</div>
-            <div class="card-teacher">Mrs. Eberlin</div>
-            <div class="card-status">Coming Soon</div>
-          </div>
-        </div>
+    <div class="grid">
+      <div class="card coming">
+        <div class="card-icon">1A</div>
+        <div class="card-label">1st Grade A</div>
+        <div class="card-theme">Mrs. Yap</div>
+        <div class="card-status">Coming Soon</div>
+      </div>
+
+      <div class="card coming">
+        <div class="card-icon">1B</div>
+        <div class="card-label">1st Grade B</div>
+        <div class="card-theme">Mrs. Eberlin</div>
+        <div class="card-status">Coming Soon</div>
+      </div>
+
+      <div class="card coming">
+        <div class="card-icon">2A</div>
+        <div class="card-label">2nd Grade A</div>
+        <div class="card-theme">Mrs. Wong</div>
+        <div class="card-status">Coming Soon</div>
+      </div>
+
+      <div class="card coming">
+        <div class="card-icon">2B</div>
+        <div class="card-label">2nd Grade B</div>
+        <div class="card-theme">Mrs. Peters</div>
+        <div class="card-status">Coming Soon</div>
+      </div>
+
+      <a class="card active" href="3a-won.html">
+        <div class="card-icon">3A</div>
+        <div class="card-label">3rd Grade A</div>
+        <div class="card-theme">Mrs. Won</div>
+        <div class="card-status">Open →</div>
+      </a>
+
+      <div class="card coming">
+        <div class="card-icon">3B</div>
+        <div class="card-label">3rd Grade B</div>
+        <div class="card-theme">Ms. Rasa</div>
+        <div class="card-status">Coming Soon</div>
       </div>
     </div>
 
-    <div class="grade-section">
-      <div class="grade-heading">🌿 2nd Grade</div>
-      <div class="grid">
-        <div class="card coming">
-          <div class="card-badge">2A</div>
-          <div class="card-info">
-            <div class="card-grade">2nd Grade A</div>
-            <div class="card-teacher">Mrs. Wong</div>
-            <div class="card-status">Coming Soon</div>
-          </div>
-        </div>
-        <div class="card coming">
-          <div class="card-badge">2B</div>
-          <div class="card-info">
-            <div class="card-grade">2nd Grade B</div>
-            <div class="card-teacher">Mrs. Peters</div>
-            <div class="card-status">Coming Soon</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="grade-section">
-      <div class="grade-heading">🌳 3rd Grade</div>
-      <div class="grid">
-        <a class="card active" href="3a-won.html">
-          <div class="card-badge">3A</div>
-          <div class="card-info">
-            <div class="card-grade">3rd Grade A</div>
-            <div class="card-teacher">Mrs. Won</div>
-            <div class="card-status">View Class →</div>
-          </div>
-        </a>
-        <div class="card coming">
-          <div class="card-badge">3B</div>
-          <div class="card-info">
-            <div class="card-grade">3rd Grade B</div>
-            <div class="card-teacher">Ms. Rasa</div>
-            <div class="card-status">Coming Soon</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <footer>&copy; Mary, Star of the Sea School &middot; SY 2026-2027</footer>
+    <footer>
+      &copy; Mary, Star of the Sea School &middot; SY 2026-2027
+    </footer>
   </div>
 </body>
 </html>
