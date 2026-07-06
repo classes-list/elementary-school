@@ -1,226 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mary, Star of the Sea — 3rd Grade Science &amp; Math</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f9fa; color: #333; }
-    .container { display: flex; height: 100vh; }
-    .sidebar { border-right: 3px solid #FFD100;  width: 250px; background: #1a2a4a; color: white; overflow-y: auto; padding: 20px; }
-    .sidebar h2 { font-size: 14px; margin-bottom: 15px; font-weight: bold; }
-    .sidebar-item { padding: 10px; margin: 5px 0; background: #111d35; border-radius: 4px; cursor: pointer; font-size: 13px; }
-    .sidebar-item:hover { background: #1B3A8A; }
-    .sidebar-item.active { background: #1B3A8A; }
-    .main { flex: 1; display: flex; flex-direction: column; }
-    .summer-home-btn {
-      background: #FFD100; color: #1a2a4a; border: 1px solid #b8860b;
-      cursor: pointer; font-size: 13px; font-weight: 700;
-      padding: 8px 14px; border-radius: 6px; margin-right: 12px;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
-      box-shadow: 0 1px 3px rgba(184,134,11,0.25); transition: all 0.18s;
-    }
-    .summer-home-btn:hover {
-      background: #b8860b; color: #fff;
-      box-shadow: 0 3px 8px rgba(184,134,11,0.35);
-      transform: translateX(-2px);
-    }
-    .topbar { border-bottom: 4px solid #FFD100;  background: #1B3A8A; color: white; padding: 15px 30px; font-size: 18px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
-    .topbar-right { display: flex; gap: 20px; align-items: center; font-size: 14px; opacity: 0.85; }
-    .topbar-logos { display: flex; gap: 10px; align-items: center; }
-    .logo-circle { width: 50px; height: 50px; border-radius: 50%; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.25); overflow: hidden; display: inline-flex; align-items: center; justify-content: flex-start; flex-shrink: 0; }
-    .logo-circle img { display: block; }
-    .logo-circle.msos img { height: 100%; width: auto; }
-    .logo-circle.nui img { width: 100%; height: 100%; object-fit: cover; }
-    .logo-circle.msos { background: #1a2a4a; }
-    @media (max-width: 800px) { .logo-circle { width: 40px; height: 40px; } }
-    .content { flex: 1; overflow-y: auto; padding: 30px; }
-    .screen { display: none; }
-    .screen.active { display: block; }
-    .units-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-    .unit-card { background: white; border-radius: 8px; padding: 20px; cursor: pointer; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    .unit-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(56,189,248,0.2); }
-    .unit-card-header { display: flex; gap: 15px; align-items: flex-start; margin-bottom: 15px; }
-    .unit-card-icon { font-size: 32px; }
-    .unit-card-meta { flex: 1; }
-    .unit-card-title { font-weight: bold; font-size: 16px; margin-bottom: 4px; }
-    .unit-card-cc { font-size: 12px; color: #666; }
-    .unit-card-desc { font-size: 13px; color: #555; margin-bottom: 12px; line-height: 1.4; }
-    .unit-card-pills { display: flex; flex-wrap: wrap; gap: 8px; }
-    .pill { background: #f0f0f0; padding: 4px 10px; border-radius: 16px; font-size: 11px; }
-    .lesson-content h2 { margin: 20px 0 10px 0; color: #1B3A8A; }
-    .lesson-content p { margin-bottom: 12px; line-height: 1.6; }
-    .lesson-content ul, .lesson-content ol { margin-left: 20px; margin-bottom: 12px; }
-    .lesson-content li { margin-bottom: 8px; }
-    .btn { display: inline-block; padding: 10px 20px; background: #1B3A8A; color: white; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; margin: 5px; }
-    .btn:hover { background: #162E70; }
-    .btn-secondary { background: #6b7280; }
-    .btn-secondary:hover { background: #4b5563; }
-    .btn-yt { display: inline-block; padding: 10px 15px; background: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; margin: 5px 5px 5px 0; font-size: 13px; }
-    .btn-yt:hover { background: #dc2626; }
-    .btn-ixl { display: inline-block; padding: 10px 15px; background: #dc2626; color: white; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; margin: 5px 5px 5px 0; font-size: 13px; }
-    .btn-ixl:hover { background: #b91c1c; }
-    .btn-phet { display: inline-block; padding: 10px 15px; background: #7c3aed; color: white; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; margin: 5px 5px 5px 0; font-size: 13px; }
-    .btn-phet:hover { background: #6d28d9; }
-    .resource-card { background: #f3f4f6; border-radius: 8px; padding: 15px; margin: 20px 0; }
-    .resource-card h3 { margin-bottom: 10px; color: #1B3A8A; font-size: 14px; }
-    .resource-btns { display: flex; flex-wrap: wrap; }
-    .problem { background: white; padding: 15px; margin: 12px 0; border-left: 4px solid #1B3A8A; border-radius: 4px; }
-    .problem h4 { margin-bottom: 8px; color: #1B3A8A; }
-    .problem input, .problem textarea { width: 100%; padding: 8px; margin: 8px 0; border: 1px solid #ddd; border-radius: 4px; font-family: 'Courier New', monospace; }
-    .answer-key { background: #fef3c7; padding: 10px; margin: 8px 0; border-radius: 4px; font-size: 13px; }
-    .quiz-question { background: white; padding: 15px; margin: 15px 0; border-radius: 4px; border-left: 4px solid #1B3A8A; }
-    .quiz-question h4 { margin-bottom: 10px; color: #1B3A8A; }
-    .quiz-question label { display: block; margin: 8px 0; cursor: pointer; }
-    .quiz-question input[type="radio"] { margin-right: 8px; }
-    .result-card { background: #fef3c7; padding: 20px; border-radius: 8px; margin: 15px 0; }
-    .result-card h3 { color: #059669; margin-bottom: 10px; }
-    .nav-buttons { display: flex; gap: 10px; margin: 20px 0; }
-    .back-btn { background: #6b7280; }
-    .back-btn:hover { background: #4b5563; }
-
-    .handout-card { background: #fff; border-left: 5px solid #B8860B; border-radius: 10px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-    .handout-card h3 { margin: 0 0 8px; color: #B8860B; font-size: 1.2rem; }
-    .handout-science { font-size: 0.9rem; color: #666; margin-bottom: 12px; }
-    .handout-mission { background: #f8f9ff; border-radius: 6px; padding: 12px; margin-bottom: 16px; font-style: italic; color: #334; }
-    .handout-steps { margin: 0 0 16px; padding-left: 0; list-style: none; counter-reset: step-counter; }
-    .handout-steps li { counter-increment: step-counter; padding: 8px 12px 8px 44px; margin-bottom: 6px; background: #f0f4ff; border-radius: 6px; position: relative; font-size: 0.92rem; line-height: 1.5; }
-    .handout-steps li::before { content: counter(step-counter); position: absolute; left: 10px; top: 8px; width: 22px; height: 22px; background: #B8860B; color: #fff; border-radius: 50%; font-size: 0.78rem; font-weight: bold; display: flex; align-items: center; justify-content: center; }
-    .handout-deliverable { background: #fffbe6; border: 1px solid #f5d000; border-radius: 6px; padding: 12px; margin-bottom: 16px; }
-    .handout-deliverable strong { display: block; margin-bottom: 4px; color: #7a5f00; }
-    .handout-reflect { background: #fffbea; border: 1px solid #68d391; border-radius: 6px; padding: 12px; }
-    .handout-reflect strong { display: block; margin-bottom: 4px; color: #276749; }
-    .handout-reflect ol { margin: 0; padding-left: 20px; }
-    .handout-reflect li { margin-bottom: 6px; font-size: 0.9rem; }
-    code { background: #e8edf5; padding: 1px 5px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 0.88em; }
-  
-    /* ── Math Focus screen: readable spacing so it doesn't feel jammed ── */
-    #science-content { font-size: 16px; line-height: 1.7; color: #253a5f; max-width: 780px; }
-    #science-content h2 { font-size: 1.5rem; color: #253a77; margin: 0 0 6px; padding-bottom: 10px; border-bottom: 3px solid #FFD100; }
-    #science-content > p:first-of-type { color: #7a5f00; font-style: italic; font-size: 0.95rem; margin: 0 0 26px; }
-    #science-content h3 { font-size: 1.15rem; color: #1a5490; margin: 32px 0 10px; padding: 8px 14px; background: linear-gradient(90deg, #eef4ff 0%, transparent 100%); border-left: 4px solid #1a5490; border-radius: 3px; }
-    #science-content h4 { font-size: 1rem; color: #253a77; margin: 20px 0 8px; }
-    #science-content p { margin: 0 0 14px; }
-    #science-content ul, #science-content ol { margin: 8px 0 18px 8px; padding-left: 24px; }
-    #science-content li { margin-bottom: 8px; }
-    #science-content strong { color: #253a77; }
-    #science-content table { width: 100%; margin: 12px 0 20px; border-collapse: collapse; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
-    #science-content table th { background: #253a77; color: #fff; padding: 10px 12px !important; text-align: left; border: none !important; font-weight: 600; }
-    #science-content table td { padding: 10px 12px !important; border: 1px solid #e0e6f0 !important; }
-    #science-content table tr:nth-child(even) td { background: #f7f9fc; }
-    /* ── Section banners for worksheet & quiz (10 math + 10 science) ── */
-    .section-banner { margin: 24px 0 16px; padding: 12px 18px; border-radius: 8px; font-size: 1.05rem; font-weight: 700; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
-    .section-banner span { font-weight: 400; font-size: 0.85rem; opacity: 0.85; margin-left: 8px; }
-    .section-math { background: linear-gradient(90deg, #1a5490 0%, #253a77 100%); color: #fff; }
-    .section-science { background: linear-gradient(90deg, #0f766e 0%, #14b8a6 100%); color: #fff; }
-    .section-banner:first-child { margin-top: 0; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mary, Star of the Sea — Integrated Science &amp; Math 3</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #f3f0ff 0%, #e6f4ea 100%); color: #253a77; min-height: 100vh; }
+.container { display: flex; min-height: 100vh; }
+.sidebar { width: 300px; background: #4a3489; color: #fff; padding: 24px 20px; overflow-y: auto; }
+.sidebar h2 { color: #FFD100; font-size: 1.05rem; }
+.sidebar-sub { color: #d4c8b0; font-size: 0.78rem; margin: 0 0 12px 0; }
+.sidebar-quarter { margin-top: 20px; padding-top: 10px; border-top: 1px solid #5f45a3; color: #FFD100; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.sidebar-unit { display: flex; align-items: center; gap: 10px; padding: 10px 12px; margin: 4px 0; background: #5f45a3; border-radius: 6px; cursor: pointer; transition: all 0.15s; font-size: 0.85rem; line-height: 1.25; }
+.sidebar-unit:hover { background: #FFD100; color: #253a77; }
+.sidebar-unit.completed { background: #4a8c3a; }
+.main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.topbar { background: #fff; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #eee; flex-wrap: wrap; gap: 10px; }
+.topbar-logos { display: flex; gap: 10px; }
+.logo-circle { width: 46px; height: 46px; border-radius: 50%; background: #fff; box-shadow: 0 2px 6px rgba(37,58,119,0.15); overflow: hidden; display: inline-flex; align-items: center; justify-content: flex-start; flex-shrink: 0; }
+.logo-circle img { display: block; }
+.logo-circle.msos img { height: 100%; width: auto; }
+.logo-circle.nui img { width: 100%; height: 100%; object-fit: cover; }
+.logo-circle.msos { background: #1a2a4a; }
+.summer-home-btn { background: #4a3489; color: #fff; padding: 8px 14px; text-decoration: none; border-radius: 6px; font-weight: 700; font-size: 0.85rem; }
+.summer-home-btn:hover { background: #3a2a6b; }
+.topbar-right { color: #666; font-size: 0.85rem; font-weight: 600; }
+.content { flex: 1; padding: 24px; overflow-y: auto; }
+.screen { display: none; }
+.screen.active { display: block; }
+.units-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.unit-card { background: #fff; padding: 22px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer; transition: all 0.2s; border-left: 4px solid #4a3489; }
+.unit-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
+.unit-icon { font-size: 2rem; margin-bottom: 6px; }
+.unit-title { font-weight: 700; color: #4a3489; font-size: 1rem; margin-bottom: 4px; line-height: 1.2; }
+.unit-cc { font-size: 0.72rem; color: #7a5f00; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+.unit-desc { font-size: 0.85rem; color: #666; line-height: 1.4; }
+.btn { background: #4a3489; color: #fff; padding: 10px 16px; text-decoration: none; border-radius: 6px; font-weight: 700; border: none; cursor: pointer; font-size: 0.9rem; margin-right: 8px; margin-bottom: 8px; }
+.btn:hover { background: #3a2a6b; }
+.back-btn { background: #6b7280; }
+.back-btn:hover { background: #4b5563; }
+.lesson-content h2 { color: #4a3489; margin-bottom: 12px; }
+.lesson-content h3 { color: #5f45a3; margin: 16px 0 6px; font-size: 1.1rem; padding: 6px 12px; background: linear-gradient(90deg, #f3f0ff 0%, transparent 100%); border-left: 3px solid #4a3489; }
+.lesson-content p { margin-bottom: 10px; line-height: 1.6; }
+.lesson-content ul, .lesson-content ol { margin: 8px 0 12px 20px; }
+.lesson-content li { margin-bottom: 4px; }
+.lesson-content strong { color: #4a3489; }
+.nav-buttons { margin-top: 24px; padding-top: 16px; border-top: 1px solid #eee; }
+.handout-card { background: #fff; padding: 22px; border-radius: 10px; border-left: 5px solid #B8860B; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.handout-card h3 { color: #B8860B; margin-bottom: 4px; }
+.handout-mission { background: #fffbea; padding: 10px 14px; border-radius: 6px; margin: 10px 0; font-style: italic; color: #333; }
+.handout-steps { padding-left: 20px; margin: 10px 0; }
+.handout-steps li { margin-bottom: 6px; }
+.handout-reflect { background: #e6f4ea; padding: 10px 14px; border-radius: 6px; margin-top: 10px; }
+.problem { background: #fff; padding: 14px 18px; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.problem h4 { color: #4a3489; font-size: 0.9rem; margin-bottom: 6px; }
+.problem p { line-height: 1.5; }
+.problem textarea { width: 100%; min-height: 45px; margin-top: 6px; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; }
+.answer-key { background: #e6f4ea; border-left: 3px solid #0f5132; padding: 8px 12px; margin-top: 8px; border-radius: 4px; font-size: 0.9rem; }
+.quiz-question { background: #fff; padding: 14px 18px; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.quiz-question label { display: block; padding: 6px 10px; margin: 3px 0; background: #f3f0ff; border-radius: 4px; cursor: pointer; }
+.quiz-question label:hover { background: #e0d3f5; }
+.quiz-question input[type=radio] { margin-right: 8px; }
+#science-content { font-size: 16px; line-height: 1.7; color: #253a5f; max-width: 780px; }
+#science-content h2 { font-size: 1.5rem; color: #4a3489; margin: 0 0 6px; padding-bottom: 10px; border-bottom: 3px solid #FFD100; }
+#science-content > p:first-of-type { color: #7a5f00; font-style: italic; font-size: 0.95rem; margin: 0 0 26px; }
+#science-content h3 { font-size: 1.15rem; color: #5f45a3; margin: 32px 0 10px; padding: 8px 14px; background: linear-gradient(90deg, #f3f0ff 0%, transparent 100%); border-left: 4px solid #5f45a3; border-radius: 3px; }
+#science-content h4 { font-size: 1rem; color: #4a3489; margin: 20px 0 8px; }
+#science-content p { margin: 0 0 14px; }
+#science-content ul, #science-content ol { margin: 8px 0 18px 8px; padding-left: 24px; }
+#science-content li { margin-bottom: 8px; }
+#science-content strong { color: #4a3489; }
+#science-content table { width: 100%; margin: 12px 0 20px; border-collapse: collapse; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+#science-content table th { background: #4a3489; color: #fff; padding: 10px 12px !important; text-align: left; border: none !important; font-weight: 600; }
+#science-content table td { padding: 10px 12px !important; border: 1px solid #e0e6f0 !important; }
+.section-banner { margin: 24px 0 16px; padding: 12px 18px; border-radius: 8px; font-size: 1.05rem; font-weight: 700; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+.section-banner span { font-weight: 400; font-size: 0.85rem; opacity: 0.85; margin-left: 8px; }
+.section-math { background: linear-gradient(90deg, #1a5490 0%, #253a77 100%); color: #fff; }
+.section-science { background: linear-gradient(90deg, #0f766e 0%, #14b8a6 100%); color: #fff; }
+.section-banner:first-child { margin-top: 0; }
+</style>
 </head>
 <body>
-  <div class="container">
-    <div class="sidebar">
-      <h2 style="margin:0 0 4px 0;">Mary, Star of the Sea</h2><p style="margin:0 0 16px 0;color:#888;font-size:14px;">3rd Grade Science &amp; Math Topics</p>
-      <div id="sidebar-content"></div>
-      <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #444; font-size: 12px; color: #999;">
-        Progress: <span id="progress-text">0/16</span>
-      </div>
+<div class="container">
+  <div class="sidebar">
+    <h2 style="margin:0 0 4px 0;">Mary, Star of the Sea</h2>
+    <p class="sidebar-sub">🔬🧮 Integrated Science &amp; Math 3</p>
+    <div id="sidebar-content"></div>
+    <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #5f45a3; font-size: 0.75rem; color: #c8b5eb;">
+      Progress: <span id="progress-text">0/16</span>
     </div>
-    <div class="main">
-      <div class="topbar">
-        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;">
-          <a href="3a-won.html" class="summer-home-btn" title="Back to Mrs. Won's Class">← Back to Classes</a>
-          <div class="topbar-logos">
-            <span class="logo-circle msos" title="Mary, Star of the Sea"><img src="msos-logo.svg" alt="Mary, Star of the Sea Logo"></span>
-            <span class="logo-circle nui" title="Nurture · Unite · Inspire"><img src="nui-logo.png" alt="Nurture-Unite-Inspire Logo"></span>
-          </div>
-          <span id="topbar-title">Exploring the World with Science and Math</span>
+  </div>
+  <div class="main">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;">
+        <a href="3a-won.html" class="summer-home-btn">← Back to Class</a>
+        <div class="topbar-logos">
+          <span class="logo-circle msos"><img src="msos-logo.svg" alt="MSOS Logo"></span>
+          <span class="logo-circle nui"><img src="nui-logo.png" alt="NUI Logo"></span>
         </div>
-        <div class="topbar-right">Math · Grade 3</div>
+        <span style="font-weight:600;">Integrated Science &amp; Math 3</span>
       </div>
-      <div class="content">
-        <div id="home-screen" class="screen active">
-          <div id="units-grid" class="units-grid"></div>
+      <div class="topbar-right">Science &amp; Math · Grade 3</div>
+    </div>
+    <div class="content">
+      <div id="home-screen" class="screen active">
+        <div id="units-grid" class="units-grid"></div>
+      </div>
+      <div id="lesson-screen" class="screen">
+        <button class="btn back-btn" onclick="showHome()">← Back to Units</button>
+        <div id="lesson-content" class="lesson-content"></div>
+        <div class="nav-buttons">
+          <button class="btn back-btn" onclick="showHome()">← Back</button>
+          <button class="btn" onclick="showLab()" style="background:#B8860B;">🔬 Lab Investigation</button>
+          <button class="btn" onclick="showMathFocus()" style="background:#1a5490;">📐 Math Focus</button>
+          <button class="btn" onclick="showWorksheet()">Worksheet →</button>
         </div>
-        <div id="lesson-screen" class="screen">
-          <button class="btn back-btn" onclick="showHome()">← Back to Units</button>
-          <div id="lesson-content" class="lesson-content"></div>
-          <div class="nav-buttons">
-            <button class="btn back-btn" onclick="showHome()">← Back</button>
-            <button class="btn" onclick="showHandout()">🔬 Lab Investigation</button>
-            <button class="btn" onclick="showScienceConnection()">📐 Math Focus</button>
-            <button class="btn" onclick="showWorksheet()">Worksheet →</button>
-          </div>
+      </div>
+      <div id="lab-screen" class="screen">
+        <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back to Lesson</button>
+        <h2 style="margin:20px 0;color:#B8860B;">🔬 Lab Investigation</h2>
+        <div id="lab-content"></div>
+        <div class="nav-buttons">
+          <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back</button>
+          <button class="btn" onclick="showMathFocus()" style="background:#1a5490;">📐 Math Focus</button>
+          <button class="btn" onclick="showWorksheet()">Worksheet →</button>
         </div>
-        <div id="worksheet-screen" class="screen">
-          <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back to Lesson</button>
-          <h2 style="margin: 20px 0;">📋 Worksheet</h2>
-          <div id="worksheet-content"></div>
-          <div class="nav-buttons">
-            <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back</button>
-            <button class="btn" onclick="checkWorksheet()">Check Answers</button>
-            <button class="btn" onclick="showQuiz()">Quiz →</button>
-          </div>
+      </div>
+      <div id="science-screen" class="screen">
+        <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back to Lesson</button>
+        <div id="science-content"></div>
+        <div class="nav-buttons">
+          <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back</button>
+          <button class="btn" onclick="showLab()" style="background:#B8860B;">🔬 Lab Investigation</button>
+          <button class="btn" onclick="showWorksheet()">Worksheet →</button>
         </div>
-        <div id="handout-screen" class="screen">
-          <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back to Lesson</button>
-          <h2 style="margin: 20px 0;">🔬 Lab Investigation</h2>
-          <div id="handout-content"></div>
-          <div class="nav-buttons">
-            <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back to Lesson</button>
-            <button class="btn" onclick="showScienceConnection()">📐 Math Focus</button>
-            <button class="btn" onclick="showWorksheet()">Worksheet →</button>
-          </div>
+      </div>
+      <div id="worksheet-screen" class="screen">
+        <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back to Lesson</button>
+        <h2 style="margin:20px 0;">📋 Worksheet</h2>
+        <div id="worksheet-content"></div>
+        <div class="nav-buttons">
+          <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back</button>
+          <button class="btn" onclick="checkWorksheet()">Check Answers</button>
+          <button class="btn" onclick="showQuiz()">Quiz →</button>
         </div>
-        <div id="science-screen" class="screen">
-          <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back to Lesson</button>
-          <h2 style="margin: 20px 0;">📐 Math Focus</h2>
-          <div id="science-content"></div>
-          <div class="nav-buttons">
-            <button class="btn back-btn" onclick="showLesson(currentUnit)">← Back to Lesson</button>
-            <button class="btn" onclick="showHandout()">🔬 Lab Investigation</button>
-            <button class="btn" onclick="showWorksheet()">Worksheet →</button>
-          </div>
+      </div>
+      <div id="quiz-screen" class="screen">
+        <button class="btn back-btn" onclick="showWorksheet()">← Back to Worksheet</button>
+        <h2 style="margin:20px 0;">📝 Quiz</h2>
+        <div style="background:#f3f0ff;padding:12px 16px;border-radius:8px;margin-bottom:15px;border-left:4px solid #4a3489;">
+          <label style="display:block;font-weight:600;color:#4a3489;margin-bottom:6px;">Student Name:</label>
+          <input type="text" id="student-name" placeholder="Type your full name" style="width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;font-size:14px;" />
         </div>
-        <div id="quiz-screen" class="screen">
-          <button class="btn back-btn" onclick="showWorksheet()">← Back to Worksheet</button>
-          <h2 style="margin: 20px 0;">📝 Quick Quiz</h2>
-          <div id="quiz-content"></div>
-          <div class="nav-buttons">
-            <button class="btn back-btn" onclick="showWorksheet()">← Back</button>
-            <button class="btn" onclick="submitQuiz()">Submit Quiz</button>
-          </div>
+        <div id="quiz-content"></div>
+        <div class="nav-buttons">
+          <button class="btn back-btn" onclick="showWorksheet()">← Back</button>
+          <button class="btn" onclick="submitQuiz()">Submit Quiz</button>
         </div>
-        <div id="certificate-screen" class="screen">
-          <div style="text-align: center; padding: 40px;">
-            <h2 style="color: #1B3A8A; margin: 20px 0;">🎉 Unit Completed!</h2>
-            <div id="cert-content"></div>
-            <button class="btn" onclick="showHome()" style="margin-top: 20px;">Return to Home</button>
-          </div>
+      </div>
+      <div id="certificate-screen" class="screen">
+        <div style="text-align:center;padding:40px;">
+          <h2 style="color:#4a3489;">🎓 Certificate of Completion</h2>
+          <div id="cert-content"></div>
+          <button class="btn" onclick="showHome()" style="margin-top:20px;">← Back to Units</button>
+          <button class="btn" id="email-btn" onclick="emailResults()" style="background:#FFD100;color:#4a3489;">📧 Email Results to Mrs. Won</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <script>
+<script>
 let completedUnits = {};
 const UNITS = [
-  { id:'sci-method', title:"Scientific Method: Repeated Trials", icon:'🔬', cc:'Q1 · Topic 1 · 3.OA.1', q:'Q1', desc:'Scientists repeat experiments in equal groups. Count total trials with multiplication.', ytSearch:'3rd grade scientific method repeated trials' },
-  { id:'eng-design', title:"Engineering Design: Building in Arrays", icon:'⚙️', cc:'Q1 · Topic 2 · 3.OA.7', q:'Q1', desc:'Engineers organize parts in rows and columns. Master multiplication facts.', ytSearch:'3rd grade engineering multiplication arrays' },
-  { id:'prototypes', title:"Prototypes: Break-Apart Testing", icon:'🧰', cc:'Q1 · Topic 3 · 3.OA.5', q:'Q1', desc:'Break big builds into smaller parts. Use distributive property to test faster.', ytSearch:'3rd grade distributive property engineering' },
-  { id:'motion-distance', title:"Motion & Distance: Divide with Multiplication", icon:'🏎️', cc:'Q2 · Topic 4 · 3.OA.6', q:'Q2', desc:'Measure how far things roll. Use multiplication to solve division problems.', ytSearch:'3rd grade division as unknown factor' },
-  { id:'push-pull', title:"Push & Pull: Division Facts", icon:'💪', cc:'Q2 · Topic 5 · 3.OA.7', q:'Q2', desc:'Share force among wheels and axles. Master division facts within 100.', ytSearch:'3rd grade division facts push pull force' },
-  { id:'track-area', title:"Testing Track: Area", icon:'📐', cc:'Q2 · Topic 6 · 3.MD.7', q:'Q2', desc:'Design and measure rectangular test tracks. Area = length × width.', ytSearch:'3rd grade area of rectangles' },
-  { id:'motion-data', title:"Motion Data: Graphs & Line Plots", icon:'📊', cc:'Q2 · Topic 7 · 3.MD.3-4', q:'Q2', desc:'Collect data from tests. Draw bar graphs and line plots of speeds and distances.', ytSearch:'3rd grade bar graphs line plots' },
-  { id:'life-cycles', title:"Life Cycles: Add & Subtract Strategies", icon:'🦋', cc:'Q3 · Topic 8 · 3.NBT.2', q:'Q3', desc:'Butterflies, frogs, plants. Track populations across stages with place-value strategies.', ytSearch:'3rd grade life cycles addition subtraction' },
-  { id:'population', title:"Population Change: Fluent Add/Sub within 1,000", icon:'🐢', cc:'Q3 · Topic 9 · 3.NBT.2', q:'Q3', desc:'Study how animal groups grow and shrink. Add and subtract fluently within 1,000.', ytSearch:'3rd grade population subtraction addition 1000' },
-  { id:'inherited', title:"Inherited Traits: Multiply by Tens", icon:'👨‍👩‍👧', cc:'Q3 · Topic 10 · 3.NBT.3', q:'Q3', desc:'Traits pass from parents to babies. Multiply by 10, 20, 30 to scale up populations.', ytSearch:'3rd grade inherited traits multiply by tens' },
-  { id:'hawaiian-eco', title:"Hawaiian Ecosystems: Word Problems", icon:'🌺', cc:'Q3 · Topic 11 · 3.OA.8', q:'Q3', desc:'Native Hawaiian plants and animals. Solve two-step word problems about ecosystems.', ytSearch:'3rd grade Hawaiian ecosystems word problems' },
-  { id:'habitat-geometry', title:"Habitat Geometry: 2D Shapes", icon:'🏞️', cc:'Q3 · Topic 15 · 3.G.1', q:'Q3', desc:'Classify quadrilaterals in nature. Design habitats using geometric attributes.', ytSearch:'3rd grade 2D shapes quadrilaterals habitats' },
-  { id:'cloud-fractions', title:"Cloud Coverage: Understanding Fractions", icon:'☁️', cc:'Q4 · Topic 12 · 3.NF.1', q:'Q4', desc:'What fraction of the sky is cloudy? Introduce fractions as parts of a whole.', ytSearch:'3rd grade fractions clouds sky' },
-  { id:'rain-snow', title:"Rain & Snow: Equivalent Fractions", icon:'🌧️', cc:'Q4 · Topic 13 · 3.NF.3', q:'Q4', desc:'Compare rainfall in fractions. Show that 1/2 = 2/4 = 4/8.', ytSearch:'3rd grade equivalent fractions weather' },
-  { id:'rain-measure', title:"Weather Measurement: Time, Capacity & Mass", icon:'📏', cc:'Q4 · Topic 14 · 3.MD.1-2', q:'Q4', desc:'Measure rainfall in mL and L. Track weather change over time.', ytSearch:'3rd grade time capacity mass measurement' },
-  { id:'storm-perimeter', title:"Storm Boundaries: Perimeter", icon:'🌀', cc:'Q4 · Topic 16 · 3.MD.8', q:'Q4', desc:'Storms trace boundaries. Compute the perimeter of storm paths.', ytSearch:'3rd grade perimeter storm boundaries' },
+  { id:'sci-method', title:"Scientific Method: Repeated Trials", icon:'🔬', cc:'Q1 · Topic 1 · 3.OA.1', q:'Q1', desc:"Scientists repeat experiments in equal groups. Count total trials with multiplication." },
+  { id:'eng-design', title:"Engineering Design: Building in Arrays", icon:'⚙️', cc:'Q1 · Topic 2 · 3.OA.7', q:'Q1', desc:"Engineers organize parts in rows and columns. Master multiplication facts." },
+  { id:'prototypes', title:"Prototypes: Break-Apart Testing", icon:'🧰', cc:'Q1 · Topic 3 · 3.OA.5', q:'Q1', desc:"Break big builds into smaller parts. Use distributive property to test faster." },
+  { id:'motion-distance', title:"Motion & Distance: Divide with Multiplication", icon:'🏎️', cc:'Q2 · Topic 4 · 3.OA.6', q:'Q2', desc:"Measure how far things roll. Use multiplication to solve division problems." },
+  { id:'push-pull', title:"Push & Pull: Division Facts", icon:'💪', cc:'Q2 · Topic 5 · 3.OA.7', q:'Q2', desc:"Share force among wheels and axles. Master division facts within 100." },
+  { id:'track-area', title:"Testing Track: Area", icon:'📐', cc:'Q2 · Topic 6 · 3.MD.7', q:'Q2', desc:"Design and measure rectangular test tracks. Area = length \u00d7 width." },
+  { id:'motion-data', title:"Motion Data: Graphs & Line Plots", icon:'📊', cc:'Q2 · Topic 7 · 3.MD.3-4', q:'Q2', desc:"Collect data from tests. Draw bar graphs and line plots of speeds and distances." },
+  { id:'life-cycles', title:"Life Cycles: Add & Subtract Strategies", icon:'🦋', cc:'Q3 · Topic 8 · 3.NBT.2', q:'Q3', desc:"Butterflies, frogs, plants. Track populations across stages with place-value strategies." },
+  { id:'population', title:"Population Change: Fluent Add/Sub within 1,000", icon:'🐢', cc:'Q3 · Topic 9 · 3.NBT.2', q:'Q3', desc:"Study how animal groups grow and shrink. Add and subtract fluently within 1,000." },
+  { id:'inherited', title:"Inherited Traits: Multiply by Tens", icon:'👨‍👩‍👧', cc:'Q3 · Topic 10 · 3.NBT.3', q:'Q3', desc:"Traits pass from parents to babies. Multiply by 10, 20, 30 to scale up populations." },
+  { id:'hawaiian-eco', title:"Hawaiian Ecosystems: Word Problems", icon:'🌺', cc:'Q3 · Topic 11 · 3.OA.8', q:'Q3', desc:"Native Hawaiian plants and animals. Solve two-step word problems about ecosystems." },
+  { id:'habitat-geometry', title:"Habitat Geometry: 2D Shapes", icon:'🏞️', cc:'Q3 · Topic 15 · 3.G.1', q:'Q3', desc:"Classify quadrilaterals in nature. Design habitats using geometric attributes." },
+  { id:'cloud-fractions', title:"Cloud Coverage: Understanding Fractions", icon:'☁️', cc:'Q4 · Topic 12 · 3.NF.1', q:'Q4', desc:"What fraction of the sky is cloudy? Introduce fractions as parts of a whole." },
+  { id:'rain-snow', title:"Rain & Snow: Equivalent Fractions", icon:'🌧️', cc:'Q4 · Topic 13 · 3.NF.3', q:'Q4', desc:"Compare rainfall in fractions. Show that 1/2 = 2/4 = 4/8." },
+  { id:'rain-measure', title:"Weather Measurement: Time, Capacity & Mass", icon:'📏', cc:'Q4 · Topic 14 · 3.MD.1-2', q:'Q4', desc:"Measure rainfall in mL and L. Track weather change over time." },
+  { id:'storm-perimeter', title:"Storm Boundaries: Perimeter", icon:'🌀', cc:'Q4 · Topic 16 · 3.MD.8', q:'Q4', desc:"Storms trace boundaries. Compute the perimeter of storm paths." },
 ];
 
 const LESSONS = {
@@ -240,6 +209,44 @@ const LESSONS = {
   "rain-snow": "<h2>🌧️ Rain & Snow: Equivalent Fractions</h2><h3>The Science</h3><p>Rain and snow are types of PRECIPITATION. Compare amounts using fractions.</p><h3>The Math: Fraction Equivalence</h3><p>Two fractions are EQUIVALENT if they show the same amount. 1/2 = 2/4 = 4/8.</p><p><strong>Rule:</strong> Multiply top and bottom by the same number.</p><p><strong>Compare:</strong> Which is bigger, 2/3 or 3/4? Convert to twelfths: 8/12 vs 9/12 → 3/4 wins.</p>",
   "rain-measure": "<h2>📏 Weather Measurement: Time, Capacity & Mass</h2><h3>The Science</h3><p>Weather is measured over TIME. Rainfall is measured by CAPACITY (mL, L). Hail can be weighed by MASS (grams).</p><h3>The Math: Measurement</h3><p><strong>1 L = 1,000 mL.</strong> 1 kg = 1,000 g.</p><p><strong>Time:</strong> Elapsed time = end − start.</p><p><strong>Example:</strong> Rain gauge collects 250 mL Mon, 400 mL Tue. Total 650 mL = <strong>0.65 L</strong>.</p>",
   "storm-perimeter": "<h2>🌀 Storm Boundaries: Perimeter</h2><h3>The Science</h3><p>Hurricanes and tornadoes have BOUNDARIES that scientists track on maps. The distance around a shape is its PERIMETER.</p><h3>The Math: Perimeter</h3><p><strong>Perimeter = sum of all sides.</strong></p><p>Rectangle: P = 2(L + W). Square: P = 4 × side.</p><p><strong>Example:</strong> A storm covers a rectangular area 15 mi × 8 mi. Perimeter = 2(15+8) = <strong>46 miles</strong>.</p>",
+};
+
+const HANDOUTS_5 = {
+  "sci-method": {"title": "Design a Fair Test", "science": "🔬 Scientific Method Lab", "mission": "Test which ball bounces highest.", "steps": ["State a question: which of 3 balls bounces highest?", "Write a hypothesis (your prediction).", "Drop each ball from same height, 5 times. That's 3 × 5 = 15 trials.", "Measure and record each bounce height.", "Average each ball's heights. Compare."], "deliverable": "Lab notebook with 15 recorded bounces, averages, and conclusion.", "reflect": ["Was your hypothesis correct?", "Why do multiple trials matter?"]},
+  "eng-design": {"title": "Build a Paper Bridge", "science": "⚙️ Engineering Design Lab", "mission": "Design the strongest paper bridge.", "steps": ["Fold paper in different shapes to try.", "Test each design by loading pennies.", "If shape holds 6 pennies × 4 tests = 24 penny loads, record that.", "Compare designs.", "Redesign the weakest to improve."], "deliverable": "Sketches of 3 designs with penny-load results in a table.", "reflect": ["Which shape held most weight?", "How would you engineer version 2?"]},
+  "prototypes": {"title": "Test & Improve a Marble Run", "science": "🧰 Prototypes Lab", "mission": "Build a marble track using distributive thinking.", "steps": ["Sketch 2 possible tracks.", "Build prototype 1.", "Time 10 marble runs. Break the trials into (5×time)+(5×time) to compute total.", "Identify weakness. Build prototype 2.", "Compare."], "deliverable": "Two prototype sketches, times, and improvement notes.", "reflect": ["What broke?", "How did the improvement help?"]},
+  "motion-distance": {"title": "Toy Car Distance Test", "science": "🏎️ Distance & Speed Lab", "mission": "Measure a car's speed.", "steps": ["Set up a smooth track 100 cm long.", "Roll a car and time it with a stopwatch.", "Run 5 trials. Add distances. Divide by 5 for average distance.", "Compute speed = distance ÷ time.", "Repeat on carpet."], "deliverable": "Data table with 5 trials, average, speed.", "reflect": ["Which surface let the car roll faster?", "How does surface change speed?"]},
+  "push-pull": {"title": "Fair Share of Force", "science": "💪 Push & Pull Lab", "mission": "Divide up a load fairly.", "steps": ["Pile 24 books.", "Split into 4 equal groups. 24 ÷ 4 = ?", "Have 4 friends each carry one group.", "Try again with 8 groups. 24 ÷ 8 = ?", "Which is easier?"], "deliverable": "Notes with division facts and observations.", "reflect": ["Why is sharing weight easier?", "What if only 3 friends? (24 ÷ 3 = 8.)"]},
+  "track-area": {"title": "Design a Test Track", "science": "📐 Track Area Lab", "mission": "Draw and measure a rectangular track.", "steps": ["Choose a length (5-12 ft) and width (3-6 ft).", "Compute Area = L × W.", "Sketch the track on grid paper.", "How many square tiles cover the floor?", "Design a bigger track and compare."], "deliverable": "Grid-paper track with L, W, Area labeled.", "reflect": ["If area is 48 sq ft and L is 8, what is W?", "Why do we call it square feet?"]},
+  "motion-data": {"title": "Speed Data Detective", "science": "📊 Motion Data Lab", "mission": "Graph 5 cars' rolling distances.", "steps": ["Roll 5 different toy cars once each.", "Measure each distance.", "Draw a bar graph.", "Draw a line plot showing each distance as an X.", "Compute range (max − min)."], "deliverable": "Bar graph + line plot + range.", "reflect": ["Which car was fastest?", "Why plot both a bar graph and a line plot?"]},
+  "life-cycles": {"title": "Butterfly Life-Cycle Count", "science": "🦋 Life Cycles Lab", "mission": "Track a butterfly cluster.", "steps": ["Butterfly lays 348 eggs.", "172 turn into caterpillars.", "How many eggs didn't hatch? (348 − 172 = 176.)", "Of 172 caterpillars, 89 become butterflies.", "How many died as caterpillars? (172 − 89 = 83.)"], "deliverable": "Add/subtract chart showing life cycle survival.", "reflect": ["Why do so many not survive?", "What helps survival?"]},
+  "population": {"title": "Sea Turtle Nest Count", "science": "🐢 Population Lab", "mission": "Track a sea turtle nest.", "steps": ["Nest A has 92 eggs. Nest B has 128 eggs.", "Total: 92 + 128 = 220 eggs.", "76 hatchlings survive to sea.", "How many did NOT make it? (220 − 76 = 144.)", "If the next nest has 350 eggs, and 84 survive, deaths = 350 − 84 = 266."], "deliverable": "Population math report with all totals.", "reflect": ["Why are many young lost?", "How can humans help?"]},
+  "inherited": {"title": "Trait Multiplier", "science": "👨‍👩‍👧 Inherited Traits Lab", "mission": "Compute family sizes.", "steps": ["A family has 4 generations.", "Each generation has 30 members.", "Total = 4 × 30 = 120.", "With 10 more per generation, new total = 4 × 40 = 160.", "Increase by 20 per generation: 4 × 50 = 200."], "deliverable": "Multiplication-by-tens family chart.", "reflect": ["Which traits get passed down?", "What is a trait?"]},
+  "hawaiian-eco": {"title": "Nēnē Population Word Problems", "science": "🌺 Hawaiiana Lab", "mission": "Solve multi-step problems about native species.", "steps": ["A nēnē preserve has 6 rows of 8 birds. Total?", "7 fly away. How many remain?", "A monk seal beach has 12 seals. 3 groups of 4 arrive. New total?", "A koa forest has 240 trees. Wildfire takes 85. Remaining?", "Design your own word problem."], "deliverable": "Solutions + one original word problem.", "reflect": ["Why protect Hawaiian species?", "What does endemic mean?"]},
+  "habitat-geometry": {"title": "Design an Endangered-Species Habitat", "science": "🏞️ Habitat Geometry Lab", "mission": "Sketch a habitat with named quadrilaterals.", "steps": ["Choose a species: honu (sea turtle), nēnē, monk seal.", "Sketch its enclosure using 3 different quadrilateral shapes.", "Label each shape.", "Measure sides on grid paper.", "Compute area for each rectangular section."], "deliverable": "Grid-paper habitat design labeling each shape.", "reflect": ["Why choose those shapes?", "What do the animals need?"]},
+  "cloud-fractions": {"title": "Cloud Coverage Journal", "science": "☁️ Cloud Fractions Lab", "mission": "Record cloud coverage as fractions.", "steps": ["Go outside each day for 5 days.", "Estimate fraction of sky covered by clouds (0/8, 1/8, ..., 8/8).", "Record each day.", "Simplify each fraction if possible.", "Which day had most clouds?"], "deliverable": "5-day cloud coverage journal in fractions.", "reflect": ["What season has most clouds?", "How is 4/8 = 1/2?"]},
+  "rain-snow": {"title": "Equivalent Rainfall", "science": "🌧️ Rain Equivalence Lab", "mission": "Compare rain fractions.", "steps": ["City A: rain 3/6 of days. City B: rain 1/2 of days. Equal? (Yes: 3/6 = 1/2.)", "City C: 4/8 of days. Simplify. (1/2.)", "City D: 5/10 days. Simplify. (1/2.)", "Which city had the most rain among 3/8, 4/8, 5/8?", "Compare 2/3 vs 3/4 by converting to twelfths."], "deliverable": "Comparison chart of city rainfall in fractions.", "reflect": ["Why simplify?", "When are two fractions equivalent?"]},
+  "rain-measure": {"title": "Build a Rain Gauge", "science": "📏 Weather Measurement Lab", "mission": "Measure rain over a week.", "steps": ["Build a clear-cup rain gauge with mL marks.", "Measure water each day for 7 days.", "Add totals.", "Convert to L (divide by 1,000).", "How long did each daily reading take? (Elapsed time.)"], "deliverable": "7-day rain gauge chart with mL and L.", "reflect": ["Where does the water come from?", "Where does it go after?"]},
+  "storm-perimeter": {"title": "Storm Path Perimeter", "science": "🌀 Storm Boundaries Lab", "mission": "Measure a storm boundary.", "steps": ["Draw a rectangular storm path 15 mi × 8 mi.", "Compute perimeter: 2(15+8) = 46 mi.", "A hurricane covers a square 12 mi on each side. Perimeter?", "A tornado track is 20 mi × 3 mi. Perimeter?", "Which storm covers most territory (largest perimeter)?"], "deliverable": "Storm perimeter chart with 3 storms.", "reflect": ["Why do we track storm boundaries?", "How is perimeter different from area?"]},
+};
+
+const SCIENCE_CONNECTIONS = {
+  "sci-method": "<h2>📐 Math Focus: Multiplication as Equal Groups</h2><p><em>Common Core:</em> 3.OA.1, 3.OA.3 &mdash; Understand multiplication as equal groups.</p><h3>Topic 1 — What Multiplication Means</h3><p>4 × 5 means \"4 groups of 5\" OR \"5 taken 4 times.\"</p><h3>Topic 2 — Skip Counting</h3><p>3 × 4 = 4, 8, 12. Multiplication is fast addition of equal groups.</p><h3>Topic 3 — Arrays</h3><p>4 rows × 5 columns = 20 objects.</p><h3>Topic 4 — Vocabulary</h3><p>FACTOR × FACTOR = PRODUCT. In 4 × 5 = 20, the factors are 4 and 5; the product is 20.</p>",
+  "eng-design": "<h2>📐 Math Focus: Multiplication Facts</h2><p><em>Common Core:</em> 3.OA.7 &mdash; Fluently multiply within 100.</p><h3>Topic 1 — Multiples of 2, 5, 10</h3><p>×2 = double. ×5 ends in 0 or 5. ×10 adds a zero.</p><h3>Topic 2 — Multiples of 3, 4, 6</h3><p>×3 is triple. ×4 is double-double. ×6 is × 2 × 3.</p><h3>Topic 3 — Multiples of 7, 8, 9</h3><p>×9 finger trick: fold the finger for the multiplier; count fingers left of fold = tens, right = ones.</p><h3>Topic 4 — Try It</h3><p>Compute: 6×7=42, 8×9=72, 7×4=28.</p>",
+  "prototypes": "<h2>📐 Math Focus: Properties of Multiplication</h2><p><em>Common Core:</em> 3.OA.5 &mdash; Apply properties.</p><h3>Topic 1 — Commutative Property</h3><p>4 × 5 = 5 × 4. Order doesn't matter.</p><h3>Topic 2 — Distributive Property</h3><p>7 × 8 = (5 × 8) + (2 × 8) = 40 + 16 = 56. Break apart to make easier.</p><h3>Topic 3 — Associative Property</h3><p>2 × 3 × 4 = (2×3) × 4 = 6 × 4 = 24 OR 2 × (3×4) = 2 × 12 = 24. Group either way.</p><h3>Topic 4 — Identity &amp; Zero</h3><p>×1 = itself. ×0 = 0.</p>",
+  "motion-distance": "<h2>📐 Math Focus: Division as Unknown-Factor Multiplication</h2><p><em>Common Core:</em> 3.OA.6 &mdash; Understand division as unknown factor.</p><h3>Topic 1 — Division = Missing Factor</h3><p>24 ÷ 6 means \"what × 6 = 24?\" Answer: 4.</p><h3>Topic 2 — Fact Family</h3><p>For (4, 6, 24): 4×6=24, 6×4=24, 24÷4=6, 24÷6=4.</p><h3>Topic 3 — Speed</h3><p>Speed = distance ÷ time. Car rolls 45 cm in 5 sec → speed = 9 cm/sec.</p>",
+  "push-pull": "<h2>📐 Math Focus: Division Facts</h2><p><em>Common Core:</em> 3.OA.7 &mdash; Fluent division within 100.</p><h3>Topic 1 — Sharing (Partitive)</h3><p>24 ÷ 4: 24 shared among 4 → each gets 6.</p><h3>Topic 2 — Grouping (Quotative)</h3><p>24 ÷ 4: 24 in groups of 4 → 6 groups.</p><h3>Topic 3 — Zero &amp; One</h3><p>Any number ÷ 1 = itself. Any number ÷ itself = 1. Cannot ÷ 0.</p><h3>Topic 4 — Remainders</h3><p>25 ÷ 4 = 6 remainder 1. (6 × 4 = 24; 25 − 24 = 1.)</p>",
+  "track-area": "<h2>📐 Math Focus: Area of Rectangles</h2><p><em>Common Core:</em> 3.MD.5-7 &mdash; Area.</p><h3>Topic 1 — Area by Counting Squares</h3><p>Cover a rectangle with unit squares. Count them.</p><h3>Topic 2 — Area = L × W</h3><p>5 × 3 = 15 sq units. Multiplication is faster than counting.</p><h3>Topic 3 — Missing Side</h3><p>Area = 24, L = 6 → W = 24 ÷ 6 = 4.</p><h3>Topic 4 — Distributive Area</h3><p>L-shape: split into two rectangles, add areas.</p>",
+  "motion-data": "<h2>📐 Math Focus: Data &amp; Graphs</h2><p><em>Common Core:</em> 3.MD.3-4 &mdash; Scaled graphs; line plots.</p><h3>Topic 1 — Bar Graphs</h3><p>Bars compare categories. Height = value.</p><h3>Topic 2 — Line Plots</h3><p>X marks above a number line. Mode = tallest stack.</p><h3>Topic 3 — Scaled Graphs</h3><p>Choose scale (1, 2, 5, 10) to fit data.</p><h3>Topic 4 — Range</h3><p>Range = max − min.</p>",
+  "life-cycles": "<h2>📐 Math Focus: Add &amp; Subtract Strategies</h2><p><em>Common Core:</em> 3.NBT.2 &mdash; Add &amp; subtract with strategies.</p><h3>Topic 1 — Break Apart by Place Value</h3><p>468 + 235 = (400+200) + (60+30) + (8+5) = 600 + 90 + 13 = 703.</p><h3>Topic 2 — Compensation</h3><p>398 + 25 = 400 + 25 − 2 = 423.</p><h3>Topic 3 — Counting On/Back</h3><p>530 − 175: 175 + 25 = 200; 200 + 300 = 500; 500 + 30 = 530. So 25 + 300 + 30 = 355.</p>",
+  "population": "<h2>📐 Math Focus: Fluent Add/Subtract within 1,000</h2><p><em>Common Core:</em> 3.NBT.2 &mdash; Fluent add/sub within 1,000.</p><h3>Topic 1 — Column Addition</h3><p>Align by place value. Regroup when column ≥ 10.</p><h3>Topic 2 — Column Subtraction</h3><p>Regroup by borrowing.</p><h3>Topic 3 — Checking</h3><p>Add to check subtraction: 348 − 172 = 176; check: 176 + 172 = 348 ✓.</p>",
+  "inherited": "<h2>📐 Math Focus: Multiply by Multiples of 10</h2><p><em>Common Core:</em> 3.NBT.3 &mdash; × multiples of 10.</p><h3>Topic 1 — The Zero Trick</h3><p>× 10 → add a zero. 7 × 10 = 70.</p><h3>Topic 2 — Break Apart</h3><p>6 × 40 = 6 × 4 × 10 = 24 × 10 = 240.</p><h3>Topic 3 — × 100 &amp; × 1,000</h3><p>× 100 = add 2 zeros. × 1,000 = add 3 zeros.</p>",
+  "hawaiian-eco": "<h2>📐 Math Focus: Word Problems (All Operations)</h2><p><em>Common Core:</em> 3.OA.8 &mdash; Two-step word problems.</p><h3>Topic 1 — Read Carefully</h3><p>Identify what's given and what's asked.</p><h3>Topic 2 — Choose Operations</h3><p>\"Total\" = add. \"Left\" = subtract. \"Groups\" = multiply. \"Share\" = divide.</p><h3>Topic 3 — Two-Step Problems</h3><p>Step 1: find intermediate value. Step 2: use it to answer the question.</p>",
+  "habitat-geometry": "<h2>📐 Math Focus: Classify 2D Shapes</h2><p><em>Common Core:</em> 3.G.1 &mdash; Classify shapes by attributes.</p><h3>Topic 1 — Attributes</h3><p>Sides, angles (right vs not), parallel sides.</p><h3>Topic 2 — Quadrilateral Family</h3><p>Square ⊂ Rectangle ⊂ Parallelogram ⊂ Quadrilateral.</p><h3>Topic 3 — Special Quadrilaterals</h3><p>Square, Rectangle, Rhombus, Parallelogram, Trapezoid.</p>",
+  "cloud-fractions": "<h2>📐 Math Focus: Fractions as Numbers</h2><p><em>Common Core:</em> 3.NF.1-2 &mdash; Fractions.</p><h3>Topic 1 — Parts of a Whole</h3><p>3/4 = 3 of 4 equal parts.</p><h3>Topic 2 — Number Line</h3><p>Divide 0-1 into equal ticks. Locate fractions.</p><h3>Topic 3 — Fractions of a Group</h3><p>12 items, 3 red → 3/12 = 1/4.</p>",
+  "rain-snow": "<h2>📐 Math Focus: Fraction Equivalence &amp; Comparison</h2><p><em>Common Core:</em> 3.NF.3 &mdash; Equivalence.</p><h3>Topic 1 — Equivalent Fractions</h3><p>1/2 = 2/4 = 3/6 = 4/8. Multiply top and bottom by same number.</p><h3>Topic 2 — Simplifying</h3><p>6/8: divide top and bottom by 2 → 3/4.</p><h3>Topic 3 — Comparing</h3><p>Same denominator → bigger numerator wins. Same numerator → smaller denominator wins.</p>",
+  "rain-measure": "<h2>📐 Math Focus: Time, Capacity &amp; Mass</h2><p><em>Common Core:</em> 3.MD.1-2 &mdash; Time; liquid volumes; masses.</p><h3>Topic 1 — Time (elapsed)</h3><p>End − Start = elapsed time. Use a number line to jump.</p><h3>Topic 2 — Capacity</h3><p>1 L = 1,000 mL. Add capacities directly.</p><h3>Topic 3 — Mass</h3><p>1 kg = 1,000 g.</p>",
+  "storm-perimeter": "<h2>📐 Math Focus: Perimeter</h2><p><em>Common Core:</em> 3.MD.8 &mdash; Perimeter.</p><h3>Topic 1 — Sum of All Sides</h3><p>Perimeter = add all sides.</p><h3>Topic 2 — Rectangle Shortcut</h3><p>P = 2(L + W). For square: P = 4 × side.</p><h3>Topic 3 — Missing Side</h3><p>P = 20 cm, L = 6 → 2(6 + W) = 20 → W = 4.</p><h3>Topic 4 — Same Perimeter, Different Area</h3><p>Two shapes with equal perimeter can have different area.</p>",
 };
 
 const WORKSHEETS = {
@@ -280,167 +287,87 @@ const QUIZZES = {
   "storm-perimeter": [{"q": "Rectangle 15 × 8 perim:", "opts": ["23", "46", "120", "60"], "ans": 1}, {"q": "Square 12 perim:", "opts": ["24", "36", "48", "60"], "ans": 2}, {"q": "Triangle 5+6+7 =", "opts": ["15", "16", "18", "20"], "ans": 2}, {"q": "Rectangle 20 × 3 perim:", "opts": ["23", "46", "60", "66"], "ans": 1}, {"q": "P=20, L=6, W=?", "opts": ["3", "4", "5", "6"], "ans": 1}, {"q": "Square side 9 perim:", "opts": ["27", "36", "40", "45"], "ans": 1}, {"q": "Rectangle 7 × 11 perim:", "opts": ["18", "30", "36", "40"], "ans": 2}, {"q": "Pentagon 5×4:", "opts": ["16", "18", "20", "25"], "ans": 2}, {"q": "Rectangle 25 × 4 perim:", "opts": ["54", "56", "58", "60"], "ans": 2}, {"q": "L-shape 3+4+5+6+8+10 =", "opts": ["32", "34", "36", "38"], "ans": 2}, {"q": "Hurricane is a:", "opts": ["calm day", "rotating storm", "snow", "stars"], "ans": 1}, {"q": "Tornado is:", "opts": ["snowstorm", "spinning air column", "rain", "sun"], "ans": 1}, {"q": "Track storms with:", "opts": ["stars", "radar", "trees", "music"], "ans": 1}, {"q": "Track boundaries to:", "opts": ["stargaze", "warn people", "sing", "eat"], "ans": 1}, {"q": "Hurricane season in HI:", "opts": ["winter", "summer/fall", "always", "never"], "ans": 1}, {"q": "Safety plan means:", "opts": ["nothing", "emergency prep", "games", "TV"], "ans": 1}, {"q": "Storm risk in HI:", "opts": ["none", "flooding/wind", "snow", "ice"], "ans": 1}, {"q": "Storm surge:", "opts": ["calm sea", "sea rising from storm", "wind only", "stars"], "ans": 1}, {"q": "Hurricane Iniki hit:", "opts": ["Big Island", "Kauai", "Oahu", "Maui"], "ans": 1}, {"q": "Prepare for storms to:", "opts": ["have fun", "stay safe", "ignore", "forget"], "ans": 1}],
 };
 
-const HANDOUTS_5 = {
-  "sci-method": {"title": "Design a Fair Test", "science": "🔬 Scientific Method Lab", "mission": "Test which ball bounces highest.", "steps": ["State a question: which of 3 balls bounces highest?", "Write a hypothesis (your prediction).", "Drop each ball from same height, 5 times. That's 3 × 5 = 15 trials.", "Measure and record each bounce height.", "Average each ball's heights. Compare."], "deliverable": "Lab notebook with 15 recorded bounces, averages, and conclusion.", "reflect": ["Was your hypothesis correct?", "Why do multiple trials matter?"]},
-  "eng-design": {"title": "Build a Paper Bridge", "science": "⚙️ Engineering Design Lab", "mission": "Design the strongest paper bridge.", "steps": ["Fold paper in different shapes to try.", "Test each design by loading pennies.", "If shape holds 6 pennies × 4 tests = 24 penny loads, record that.", "Compare designs.", "Redesign the weakest to improve."], "deliverable": "Sketches of 3 designs with penny-load results in a table.", "reflect": ["Which shape held most weight?", "How would you engineer version 2?"]},
-  "prototypes": {"title": "Test & Improve a Marble Run", "science": "🧰 Prototypes Lab", "mission": "Build a marble track using distributive thinking.", "steps": ["Sketch 2 possible tracks.", "Build prototype 1.", "Time 10 marble runs. Break the trials into (5×time)+(5×time) to compute total.", "Identify weakness. Build prototype 2.", "Compare."], "deliverable": "Two prototype sketches, times, and improvement notes.", "reflect": ["What broke?", "How did the improvement help?"]},
-  "motion-distance": {"title": "Toy Car Distance Test", "science": "🏎️ Distance & Speed Lab", "mission": "Measure a car's speed.", "steps": ["Set up a smooth track 100 cm long.", "Roll a car and time it with a stopwatch.", "Run 5 trials. Add distances. Divide by 5 for average distance.", "Compute speed = distance ÷ time.", "Repeat on carpet."], "deliverable": "Data table with 5 trials, average, speed.", "reflect": ["Which surface let the car roll faster?", "How does surface change speed?"]},
-  "push-pull": {"title": "Fair Share of Force", "science": "💪 Push & Pull Lab", "mission": "Divide up a load fairly.", "steps": ["Pile 24 books.", "Split into 4 equal groups. 24 ÷ 4 = ?", "Have 4 friends each carry one group.", "Try again with 8 groups. 24 ÷ 8 = ?", "Which is easier?"], "deliverable": "Notes with division facts and observations.", "reflect": ["Why is sharing weight easier?", "What if only 3 friends? (24 ÷ 3 = 8.)"]},
-  "track-area": {"title": "Design a Test Track", "science": "📐 Track Area Lab", "mission": "Draw and measure a rectangular track.", "steps": ["Choose a length (5-12 ft) and width (3-6 ft).", "Compute Area = L × W.", "Sketch the track on grid paper.", "How many square tiles cover the floor?", "Design a bigger track and compare."], "deliverable": "Grid-paper track with L, W, Area labeled.", "reflect": ["If area is 48 sq ft and L is 8, what is W?", "Why do we call it square feet?"]},
-  "motion-data": {"title": "Speed Data Detective", "science": "📊 Motion Data Lab", "mission": "Graph 5 cars' rolling distances.", "steps": ["Roll 5 different toy cars once each.", "Measure each distance.", "Draw a bar graph.", "Draw a line plot showing each distance as an X.", "Compute range (max − min)."], "deliverable": "Bar graph + line plot + range.", "reflect": ["Which car was fastest?", "Why plot both a bar graph and a line plot?"]},
-  "life-cycles": {"title": "Butterfly Life-Cycle Count", "science": "🦋 Life Cycles Lab", "mission": "Track a butterfly cluster.", "steps": ["Butterfly lays 348 eggs.", "172 turn into caterpillars.", "How many eggs didn't hatch? (348 − 172 = 176.)", "Of 172 caterpillars, 89 become butterflies.", "How many died as caterpillars? (172 − 89 = 83.)"], "deliverable": "Add/subtract chart showing life cycle survival.", "reflect": ["Why do so many not survive?", "What helps survival?"]},
-  "population": {"title": "Sea Turtle Nest Count", "science": "🐢 Population Lab", "mission": "Track a sea turtle nest.", "steps": ["Nest A has 92 eggs. Nest B has 128 eggs.", "Total: 92 + 128 = 220 eggs.", "76 hatchlings survive to sea.", "How many did NOT make it? (220 − 76 = 144.)", "If the next nest has 350 eggs, and 84 survive, deaths = 350 − 84 = 266."], "deliverable": "Population math report with all totals.", "reflect": ["Why are many young lost?", "How can humans help?"]},
-  "inherited": {"title": "Trait Multiplier", "science": "👨‍👩‍👧 Inherited Traits Lab", "mission": "Compute family sizes.", "steps": ["A family has 4 generations.", "Each generation has 30 members.", "Total = 4 × 30 = 120.", "With 10 more per generation, new total = 4 × 40 = 160.", "Increase by 20 per generation: 4 × 50 = 200."], "deliverable": "Multiplication-by-tens family chart.", "reflect": ["Which traits get passed down?", "What is a trait?"]},
-  "hawaiian-eco": {"title": "Nēnē Population Word Problems", "science": "🌺 Hawaiiana Lab", "mission": "Solve multi-step problems about native species.", "steps": ["A nēnē preserve has 6 rows of 8 birds. Total?", "7 fly away. How many remain?", "A monk seal beach has 12 seals. 3 groups of 4 arrive. New total?", "A koa forest has 240 trees. Wildfire takes 85. Remaining?", "Design your own word problem."], "deliverable": "Solutions + one original word problem.", "reflect": ["Why protect Hawaiian species?", "What does endemic mean?"]},
-  "habitat-geometry": {"title": "Design an Endangered-Species Habitat", "science": "🏞️ Habitat Geometry Lab", "mission": "Sketch a habitat with named quadrilaterals.", "steps": ["Choose a species: honu (sea turtle), nēnē, monk seal.", "Sketch its enclosure using 3 different quadrilateral shapes.", "Label each shape.", "Measure sides on grid paper.", "Compute area for each rectangular section."], "deliverable": "Grid-paper habitat design labeling each shape.", "reflect": ["Why choose those shapes?", "What do the animals need?"]},
-  "cloud-fractions": {"title": "Cloud Coverage Journal", "science": "☁️ Cloud Fractions Lab", "mission": "Record cloud coverage as fractions.", "steps": ["Go outside each day for 5 days.", "Estimate fraction of sky covered by clouds (0/8, 1/8, ..., 8/8).", "Record each day.", "Simplify each fraction if possible.", "Which day had most clouds?"], "deliverable": "5-day cloud coverage journal in fractions.", "reflect": ["What season has most clouds?", "How is 4/8 = 1/2?"]},
-  "rain-snow": {"title": "Equivalent Rainfall", "science": "🌧️ Rain Equivalence Lab", "mission": "Compare rain fractions.", "steps": ["City A: rain 3/6 of days. City B: rain 1/2 of days. Equal? (Yes: 3/6 = 1/2.)", "City C: 4/8 of days. Simplify. (1/2.)", "City D: 5/10 days. Simplify. (1/2.)", "Which city had the most rain among 3/8, 4/8, 5/8?", "Compare 2/3 vs 3/4 by converting to twelfths."], "deliverable": "Comparison chart of city rainfall in fractions.", "reflect": ["Why simplify?", "When are two fractions equivalent?"]},
-  "rain-measure": {"title": "Build a Rain Gauge", "science": "📏 Weather Measurement Lab", "mission": "Measure rain over a week.", "steps": ["Build a clear-cup rain gauge with mL marks.", "Measure water each day for 7 days.", "Add totals.", "Convert to L (divide by 1,000).", "How long did each daily reading take? (Elapsed time.)"], "deliverable": "7-day rain gauge chart with mL and L.", "reflect": ["Where does the water come from?", "Where does it go after?"]},
-  "storm-perimeter": {"title": "Storm Path Perimeter", "science": "🌀 Storm Boundaries Lab", "mission": "Measure a storm boundary.", "steps": ["Draw a rectangular storm path 15 mi × 8 mi.", "Compute perimeter: 2(15+8) = 46 mi.", "A hurricane covers a square 12 mi on each side. Perimeter?", "A tornado track is 20 mi × 3 mi. Perimeter?", "Which storm covers most territory (largest perimeter)?"], "deliverable": "Storm perimeter chart with 3 storms.", "reflect": ["Why do we track storm boundaries?", "How is perimeter different from area?"]},
-};
-
-const ANSWER_KEYS_5 = {
-  "sci-method": "SciMath3_sci_method.xlsx",
-  "eng-design": "SciMath3_eng_design.xlsx",
-  "prototypes": "SciMath3_prototypes.xlsx",
-  "motion-distance": "SciMath3_motion_distance.xlsx",
-  "push-pull": "SciMath3_push_pull.xlsx",
-  "track-area": "SciMath3_track_area.xlsx",
-  "motion-data": "SciMath3_motion_data.xlsx",
-  "life-cycles": "SciMath3_life_cycles.xlsx",
-  "population": "SciMath3_population.xlsx",
-  "inherited": "SciMath3_inherited.xlsx",
-  "hawaiian-eco": "SciMath3_hawaiian_eco.xlsx",
-  "habitat-geometry": "SciMath3_habitat_geometry.xlsx",
-  "cloud-fractions": "SciMath3_cloud_fractions.xlsx",
-  "rain-snow": "SciMath3_rain_snow.xlsx",
-  "rain-measure": "SciMath3_rain_measure.xlsx",
-  "storm-perimeter": "SciMath3_storm_perimeter.xlsx",
-};
-
-const ANSWERS_5 = {
-  "sci-method": ["✓ trial 1", "✓ trial 2", "✓ trial 3", "✓ trial 4", "✓ trial 5"],
-  "eng-design": ["✓ trial 1", "✓ trial 2", "✓ trial 3", "✓ trial 4", "✓ trial 5"],
-  "prototypes": ["✓ trial 1", "✓ trial 2", "✓ trial 3", "✓ trial 4", "✓ trial 5"],
-  "motion-distance": ["✓ trial 1", "✓ trial 2", "✓ trial 3", "✓ trial 4", "✓ trial 5"],
-  "push-pull": ["✓ trial 1", "✓ trial 2", "✓ trial 3", "✓ trial 4", "✓ trial 5"],
-  "track-area": ["✓ trial 1", "✓ trial 2", "✓ trial 3", "✓ trial 4", "✓ trial 5"],
-  "motion-data": ["✓ trial 1", "✓ trial 2", "✓ trial 3", "✓ trial 4", "✓ trial 5"],
-  "life-cycles": ["✓ trial 1", "✓ trial 2", "✓ trial 3", "✓ trial 4", "✓ trial 5"],
-  "population": ["✓ trial 1", "✓ trial 2", "✓ trial 3", "✓ trial 4", "✓ trial 5"],
-  "inherited": ["✓ trial 1", "✓ trial 2", "✓ trial 3", "✓ trial 4", "✓ trial 5"],
-  "hawaiian-eco": ["✓ trial 1", "✓ trial 2", "✓ trial 3", "✓ trial 4", "✓ trial 5"],
-  "habitat-geometry": ["✓ trial 1", "✓ trial 2", "✓ trial 3", "✓ trial 4", "✓ trial 5"],
-  "cloud-fractions": ["✓ trial 1", "✓ trial 2", "✓ trial 3", "✓ trial 4", "✓ trial 5"],
-  "rain-snow": ["✓ trial 1", "✓ trial 2", "✓ trial 3", "✓ trial 4", "✓ trial 5"],
-  "rain-measure": ["✓ trial 1", "✓ trial 2", "✓ trial 3", "✓ trial 4", "✓ trial 5"],
-  "storm-perimeter": ["✓ trial 1", "✓ trial 2", "✓ trial 3", "✓ trial 4", "✓ trial 5"],
-};
-
-const SCIENCE_CONNECTIONS = {
-  "sci-method": "<h2>📐 Math Focus: Multiplication as Equal Groups</h2><p><em>Common Core:</em> 3.OA.1, 3.OA.3 &mdash; Understand multiplication as equal groups.</p><h3>Topic 1 — What Multiplication Means</h3><p>4 × 5 means \"4 groups of 5\" OR \"5 taken 4 times.\"</p><h3>Topic 2 — Skip Counting</h3><p>3 × 4 = 4, 8, 12. Multiplication is fast addition of equal groups.</p><h3>Topic 3 — Arrays</h3><p>4 rows × 5 columns = 20 objects.</p><h3>Topic 4 — Vocabulary</h3><p>FACTOR × FACTOR = PRODUCT. In 4 × 5 = 20, the factors are 4 and 5; the product is 20.</p>",
-  "eng-design": "<h2>📐 Math Focus: Multiplication Facts</h2><p><em>Common Core:</em> 3.OA.7 &mdash; Fluently multiply within 100.</p><h3>Topic 1 — Multiples of 2, 5, 10</h3><p>×2 = double. ×5 ends in 0 or 5. ×10 adds a zero.</p><h3>Topic 2 — Multiples of 3, 4, 6</h3><p>×3 is triple. ×4 is double-double. ×6 is × 2 × 3.</p><h3>Topic 3 — Multiples of 7, 8, 9</h3><p>×9 finger trick: fold the finger for the multiplier; count fingers left of fold = tens, right = ones.</p><h3>Topic 4 — Try It</h3><p>Compute: 6×7=42, 8×9=72, 7×4=28.</p>",
-  "prototypes": "<h2>📐 Math Focus: Properties of Multiplication</h2><p><em>Common Core:</em> 3.OA.5 &mdash; Apply properties.</p><h3>Topic 1 — Commutative Property</h3><p>4 × 5 = 5 × 4. Order doesn't matter.</p><h3>Topic 2 — Distributive Property</h3><p>7 × 8 = (5 × 8) + (2 × 8) = 40 + 16 = 56. Break apart to make easier.</p><h3>Topic 3 — Associative Property</h3><p>2 × 3 × 4 = (2×3) × 4 = 6 × 4 = 24 OR 2 × (3×4) = 2 × 12 = 24. Group either way.</p><h3>Topic 4 — Identity &amp; Zero</h3><p>×1 = itself. ×0 = 0.</p>",
-  "motion-distance": "<h2>📐 Math Focus: Division as Unknown-Factor Multiplication</h2><p><em>Common Core:</em> 3.OA.6 &mdash; Understand division as unknown factor.</p><h3>Topic 1 — Division = Missing Factor</h3><p>24 ÷ 6 means \"what × 6 = 24?\" Answer: 4.</p><h3>Topic 2 — Fact Family</h3><p>For (4, 6, 24): 4×6=24, 6×4=24, 24÷4=6, 24÷6=4.</p><h3>Topic 3 — Speed</h3><p>Speed = distance ÷ time. Car rolls 45 cm in 5 sec → speed = 9 cm/sec.</p>",
-  "push-pull": "<h2>📐 Math Focus: Division Facts</h2><p><em>Common Core:</em> 3.OA.7 &mdash; Fluent division within 100.</p><h3>Topic 1 — Sharing (Partitive)</h3><p>24 ÷ 4: 24 shared among 4 → each gets 6.</p><h3>Topic 2 — Grouping (Quotative)</h3><p>24 ÷ 4: 24 in groups of 4 → 6 groups.</p><h3>Topic 3 — Zero &amp; One</h3><p>Any number ÷ 1 = itself. Any number ÷ itself = 1. Cannot ÷ 0.</p><h3>Topic 4 — Remainders</h3><p>25 ÷ 4 = 6 remainder 1. (6 × 4 = 24; 25 − 24 = 1.)</p>",
-  "track-area": "<h2>📐 Math Focus: Area of Rectangles</h2><p><em>Common Core:</em> 3.MD.5-7 &mdash; Area.</p><h3>Topic 1 — Area by Counting Squares</h3><p>Cover a rectangle with unit squares. Count them.</p><h3>Topic 2 — Area = L × W</h3><p>5 × 3 = 15 sq units. Multiplication is faster than counting.</p><h3>Topic 3 — Missing Side</h3><p>Area = 24, L = 6 → W = 24 ÷ 6 = 4.</p><h3>Topic 4 — Distributive Area</h3><p>L-shape: split into two rectangles, add areas.</p>",
-  "motion-data": "<h2>📐 Math Focus: Data &amp; Graphs</h2><p><em>Common Core:</em> 3.MD.3-4 &mdash; Scaled graphs; line plots.</p><h3>Topic 1 — Bar Graphs</h3><p>Bars compare categories. Height = value.</p><h3>Topic 2 — Line Plots</h3><p>X marks above a number line. Mode = tallest stack.</p><h3>Topic 3 — Scaled Graphs</h3><p>Choose scale (1, 2, 5, 10) to fit data.</p><h3>Topic 4 — Range</h3><p>Range = max − min.</p>",
-  "life-cycles": "<h2>📐 Math Focus: Add &amp; Subtract Strategies</h2><p><em>Common Core:</em> 3.NBT.2 &mdash; Add &amp; subtract with strategies.</p><h3>Topic 1 — Break Apart by Place Value</h3><p>468 + 235 = (400+200) + (60+30) + (8+5) = 600 + 90 + 13 = 703.</p><h3>Topic 2 — Compensation</h3><p>398 + 25 = 400 + 25 − 2 = 423.</p><h3>Topic 3 — Counting On/Back</h3><p>530 − 175: 175 + 25 = 200; 200 + 300 = 500; 500 + 30 = 530. So 25 + 300 + 30 = 355.</p>",
-  "population": "<h2>📐 Math Focus: Fluent Add/Subtract within 1,000</h2><p><em>Common Core:</em> 3.NBT.2 &mdash; Fluent add/sub within 1,000.</p><h3>Topic 1 — Column Addition</h3><p>Align by place value. Regroup when column ≥ 10.</p><h3>Topic 2 — Column Subtraction</h3><p>Regroup by borrowing.</p><h3>Topic 3 — Checking</h3><p>Add to check subtraction: 348 − 172 = 176; check: 176 + 172 = 348 ✓.</p>",
-  "inherited": "<h2>📐 Math Focus: Multiply by Multiples of 10</h2><p><em>Common Core:</em> 3.NBT.3 &mdash; × multiples of 10.</p><h3>Topic 1 — The Zero Trick</h3><p>× 10 → add a zero. 7 × 10 = 70.</p><h3>Topic 2 — Break Apart</h3><p>6 × 40 = 6 × 4 × 10 = 24 × 10 = 240.</p><h3>Topic 3 — × 100 &amp; × 1,000</h3><p>× 100 = add 2 zeros. × 1,000 = add 3 zeros.</p>",
-  "hawaiian-eco": "<h2>📐 Math Focus: Word Problems (All Operations)</h2><p><em>Common Core:</em> 3.OA.8 &mdash; Two-step word problems.</p><h3>Topic 1 — Read Carefully</h3><p>Identify what's given and what's asked.</p><h3>Topic 2 — Choose Operations</h3><p>\"Total\" = add. \"Left\" = subtract. \"Groups\" = multiply. \"Share\" = divide.</p><h3>Topic 3 — Two-Step Problems</h3><p>Step 1: find intermediate value. Step 2: use it to answer the question.</p>",
-  "habitat-geometry": "<h2>📐 Math Focus: Classify 2D Shapes</h2><p><em>Common Core:</em> 3.G.1 &mdash; Classify shapes by attributes.</p><h3>Topic 1 — Attributes</h3><p>Sides, angles (right vs not), parallel sides.</p><h3>Topic 2 — Quadrilateral Family</h3><p>Square ⊂ Rectangle ⊂ Parallelogram ⊂ Quadrilateral.</p><h3>Topic 3 — Special Quadrilaterals</h3><p>Square, Rectangle, Rhombus, Parallelogram, Trapezoid.</p>",
-  "cloud-fractions": "<h2>📐 Math Focus: Fractions as Numbers</h2><p><em>Common Core:</em> 3.NF.1-2 &mdash; Fractions.</p><h3>Topic 1 — Parts of a Whole</h3><p>3/4 = 3 of 4 equal parts.</p><h3>Topic 2 — Number Line</h3><p>Divide 0-1 into equal ticks. Locate fractions.</p><h3>Topic 3 — Fractions of a Group</h3><p>12 items, 3 red → 3/12 = 1/4.</p>",
-  "rain-snow": "<h2>📐 Math Focus: Fraction Equivalence &amp; Comparison</h2><p><em>Common Core:</em> 3.NF.3 &mdash; Equivalence.</p><h3>Topic 1 — Equivalent Fractions</h3><p>1/2 = 2/4 = 3/6 = 4/8. Multiply top and bottom by same number.</p><h3>Topic 2 — Simplifying</h3><p>6/8: divide top and bottom by 2 → 3/4.</p><h3>Topic 3 — Comparing</h3><p>Same denominator → bigger numerator wins. Same numerator → smaller denominator wins.</p>",
-  "rain-measure": "<h2>📐 Math Focus: Time, Capacity &amp; Mass</h2><p><em>Common Core:</em> 3.MD.1-2 &mdash; Time; liquid volumes; masses.</p><h3>Topic 1 — Time (elapsed)</h3><p>End − Start = elapsed time. Use a number line to jump.</p><h3>Topic 2 — Capacity</h3><p>1 L = 1,000 mL. Add capacities directly.</p><h3>Topic 3 — Mass</h3><p>1 kg = 1,000 g.</p>",
-  "storm-perimeter": "<h2>📐 Math Focus: Perimeter</h2><p><em>Common Core:</em> 3.MD.8 &mdash; Perimeter.</p><h3>Topic 1 — Sum of All Sides</h3><p>Perimeter = add all sides.</p><h3>Topic 2 — Rectangle Shortcut</h3><p>P = 2(L + W). For square: P = 4 × side.</p><h3>Topic 3 — Missing Side</h3><p>P = 20 cm, L = 6 → 2(6 + W) = 20 → W = 4.</p><h3>Topic 4 — Same Perimeter, Different Area</h3><p>Two shapes with equal perimeter can have different area.</p>",
-};
 let currentUnit = null;
-
-function resourceCardHTML(unit) {
-  const phetBtn = unit.phetUrl ? `<a class="btn-phet" href="${unit.phetUrl}" target="_blank">🧪 PhET Simulation</a>` : '';
-  const ytBtn = `<a class="btn-yt" href="https://www.youtube.com/results?search_query=${encodeURIComponent(unit.ytSearch)}" target="_blank">▶️ YouTube</a>`;
-  const ixlBtn = unit.ixlUrl ? `<a class="btn-ixl" href="${unit.ixlUrl}" target="_blank" rel="noopener">📚 IXL Practice</a>` : '';
-  return `<div class="resource-card"><h3>📚 Resources</h3><div class="resource-btns">${phetBtn}${ixlBtn}${ytBtn}</div></div>`;
-}
-
-
-function showScienceConnection() {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById('science-screen').classList.add('active');
-  const content = SCIENCE_CONNECTIONS[currentUnit] || '<p>No science connection available for this unit yet.</p>';
-  document.getElementById('science-content').innerHTML = content;
-}
+let lastQuizResults = null;
 
 function renderHome() {
   const grid = document.getElementById('units-grid');
-  grid.innerHTML = '';
-  UNITS.forEach(unit => {
-    const card = document.createElement('div');
-    card.className = 'unit-card';
-    card.onclick = () => showLesson(unit.id);
-    card.innerHTML = `
-      <div class="unit-card-header">
-        <div class="unit-card-icon">${unit.icon}</div>
-        <div class="unit-card-meta">
-          <div class="unit-card-title">${unit.title}${completedUnits[unit.id]?' ✅':''}</div>
-          <div class="unit-card-cc">${unit.cc}</div>
-        </div>
-      </div>
-      <div class="unit-card-desc">${unit.desc}</div>
-      <div class="unit-card-pills">
-        <div class="pill">📖 Lesson</div>
-        <div class="pill">📋 Worksheet</div>
-        <div class="pill">▶️ YouTube</div>
-      </div>`;
-    grid.appendChild(card);
+  grid.innerHTML = UNITS.map(u => `
+    <div class="unit-card" onclick="showLesson('${u.id}')">
+      <div class="unit-icon">${u.icon}</div>
+      <div class="unit-cc">${u.cc}</div>
+      <div class="unit-title">${u.title}</div>
+      <div class="unit-desc">${u.desc}</div>
+    </div>
+  `).join('');
+  let sbHTML = '';
+  let lastQ = '';
+  const Q_LABELS = {
+    'Q1': 'Q1 · Engineering & Tech',
+    'Q2': 'Q2 · Physical Science',
+    'Q3': 'Q3 · Life Science',
+    'Q4': 'Q4 · Earth & Space'
+  };
+  UNITS.forEach(u => {
+    if (u.q !== lastQ) {
+      sbHTML += `<div class="sidebar-quarter">${Q_LABELS[u.q] || u.q}</div>`;
+      lastQ = u.q;
+    }
+    const done = completedUnits[u.id] ? 'completed' : '';
+    sbHTML += `<div class="sidebar-unit ${done}" onclick="showLesson('${u.id}')">${u.icon} ${u.title}</div>`;
   });
-}
-
-function renderSidebar() {
-  const sidebar = document.getElementById('sidebar-content');
-  sidebar.innerHTML = '';
-  UNITS.forEach((unit, idx) => {
-    const item = document.createElement('div');
-    item.className = 'sidebar-item' + (currentUnit === unit.id ? ' active' : '');
-    item.textContent = `${idx + 1}. ${unit.title}${completedUnits[unit.id]?' ✅':''}`;
-    item.onclick = () => showLesson(unit.id);
-    sidebar.appendChild(item);
-  });
-}
-
-function setTopbar() {
-  document.getElementById('topbar-title').textContent = currentUnit ? UNITS.find(u => u.id === currentUnit).title : 'Exploring the World with Science and Math';
+  document.getElementById('sidebar-content').innerHTML = sbHTML;
+  const done = Object.keys(completedUnits).length;
+  document.getElementById('progress-text').textContent = done + '/' + UNITS.length;
 }
 
 function showHome() {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('home-screen').classList.add('active');
-  currentUnit = null;
   renderHome();
-  renderSidebar();
-  setTopbar();
 }
 
-function showLesson(unitId) {
-  currentUnit = unitId;
+function showLesson(uid) {
+  currentUnit = uid;
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('lesson-screen').classList.add('active');
-  const unit = UNITS.find(u => u.id === unitId);
-  document.getElementById('lesson-content').innerHTML = LESSONS[unitId] + resourceCardHTML(unit);
-  renderSidebar();
-  setTopbar();
+  document.getElementById('lesson-content').innerHTML = LESSONS[uid] || '<p>Lesson coming soon.</p>';
 }
+
+function showLab() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('lab-screen').classList.add('active');
+  const l = HANDOUTS_5[currentUnit];
+  if (!l) { document.getElementById('lab-content').innerHTML = '<p>Lab coming soon.</p>'; return; }
+  const steps = l.steps.map(s => `<li>${s}</li>`).join('');
+  const reflect = l.reflect.map(r => `<li>${r}</li>`).join('');
+  document.getElementById('lab-content').innerHTML = `
+    <div class="handout-card">
+      <h3>${l.title}</h3>
+      <div style="font-size:0.9rem;color:#666;margin-bottom:6px;">${l.science}</div>
+      <div class="handout-mission">${l.mission}</div>
+      <strong>Steps:</strong><ol class="handout-steps">${steps}</ol>
+      <strong>Deliverable:</strong> ${l.deliverable}
+      <div class="handout-reflect"><strong>Reflect:</strong><ol>${reflect}</ol></div>
+    </div>`;
+}
+
+function showMathFocus() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('science-screen').classList.add('active');
+  document.getElementById('science-content').innerHTML = SCIENCE_CONNECTIONS[currentUnit] || '<p>Math Focus coming soon.</p>';
+}
+
+const _sectionHeader = (idx) => {
+  if (idx === 0)  return '<div class="section-banner section-math">🧮 Part 1 &mdash; Math Questions <span>(10 problems)</span></div>';
+  if (idx === 10) return '<div class="section-banner section-science">🔬 Part 2 &mdash; Science Questions <span>(10 problems)</span></div>';
+  return '';
+};
 
 function showWorksheet() {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('worksheet-screen').classList.add('active');
-  const ws = WORKSHEETS[currentUnit];
-  const _sectionHeader = (idx) => {
-    if (idx === 0)  return '<div class="section-banner section-math">🧮 Part 1 &mdash; Math Questions <span>(10 problems)</span></div>';
-    if (idx === 10) return '<div class="section-banner section-science">🔬 Part 2 &mdash; Science Questions <span>(10 problems)</span></div>';
-    return '';
-  };
+  const ws = WORKSHEETS[currentUnit] || [];
   let html = '';
   ws.forEach((p, idx) => {
     html += _sectionHeader(idx);
@@ -450,17 +377,12 @@ function showWorksheet() {
 }
 
 function checkWorksheet() {
-  const ws = WORKSHEETS[currentUnit];
-  const _sectionHeader = (idx) => {
-    if (idx === 0)  return '<div class="section-banner section-math">🧮 Part 1 &mdash; Math Questions <span>(10 problems)</span></div>';
-    if (idx === 10) return '<div class="section-banner section-science">🔬 Part 2 &mdash; Science Questions <span>(10 problems)</span></div>';
-    return '';
-  };
+  const ws = WORKSHEETS[currentUnit] || [];
   let html = '';
   ws.forEach((p, idx) => {
     html += _sectionHeader(idx);
-    const userAns = document.getElementById(`ans-${idx}`).value;
-    html += `<div class="problem"><h4>Problem ${idx + 1}</h4><p>${p.q}</p><div class="answer-key"><strong>Answer:</strong> ${p.answer}</div><p><strong>Your answer:</strong> ${userAns || '(no answer)'}</p></div>`;
+    const user = document.getElementById(`ans-${idx}`).value;
+    html += `<div class="problem"><h4>Problem ${idx + 1}</h4><p>${p.q}</p><div class="answer-key"><strong>Answer:</strong> ${p.answer}</div><p><strong>Your answer:</strong> ${user || '(no answer)'}</p></div>`;
   });
   document.getElementById('worksheet-content').innerHTML = html;
 }
@@ -468,165 +390,47 @@ function checkWorksheet() {
 function showQuiz() {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('quiz-screen').classList.add('active');
-  const quiz = QUIZZES[currentUnit];
-  let html = `
-    <div style="background:#f0f4ff;padding:14px;border-radius:8px;margin-bottom:15px;border-left:4px solid #1B3A8A;">
-      <label style="display:block;font-weight:600;color:#1B3A8A;margin-bottom:6px;">Student Name:</label>
-      <input type="text" id="student-name" placeholder="Type your full name"
-        style="width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;font-size:14px;" />
-    </div>
-  `;
-  const _sectionHeader = (idx) => {
-    if (idx === 0)  return '<div class="section-banner section-math">🧮 Part 1 &mdash; Math Questions <span>(10 problems)</span></div>';
-    if (idx === 10) return '<div class="section-banner section-science">🔬 Part 2 &mdash; Science Questions <span>(10 problems)</span></div>';
-    return '';
-  };
-  quiz.forEach((q, idx) => {
+  const q = QUIZZES[currentUnit] || [];
+  let html = '';
+  q.forEach((qq, idx) => {
     html += _sectionHeader(idx);
-    html += `<div class="quiz-question"><h4>Question ${idx + 1}</h4><p>${q.q}</p>`;
-    q.opts.forEach((opt, optIdx) => {
-      html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label>`;
+    html += `<div class="quiz-question"><h4>Question ${idx + 1}</h4><p>${qq.q}</p>`;
+    qq.opts.forEach((opt, i) => {
+      html += `<label><input type="radio" name="q${idx}" value="${i}"> ${opt}</label>`;
     });
     html += `</div>`;
   });
   document.getElementById('quiz-content').innerHTML = html;
 }
 
-// Quiz results stored at latest submission so email button can use them.
-let lastQuizResults = null;
-
 function submitQuiz() {
-  const quiz = QUIZZES[currentUnit];
-  const studentName = (document.getElementById('student-name')?.value || '').trim();
+  const q = QUIZZES[currentUnit] || [];
+  const name = (document.getElementById('student-name')?.value || '').trim();
   let score = 0;
-  const breakdown = [];
-  quiz.forEach((q, idx) => {
-    const selected = document.querySelector(`input[name="q${idx}"]:checked`);
-    const selectedIdx = selected ? parseInt(selected.value) : -1;
-    const isCorrect = selectedIdx === q.ans;
-    if (isCorrect) score++;
-    breakdown.push({
-      n: idx + 1,
-      question: q.q,
-      studentAnswer: selectedIdx >= 0 ? q.opts[selectedIdx] : '(no answer)',
-      correctAnswer: q.opts[q.ans],
-      correct: isCorrect
-    });
+  q.forEach((qq, idx) => {
+    const sel = document.querySelector(`input[name="q${idx}"]:checked`);
+    if (sel && parseInt(sel.value) === qq.ans) score++;
   });
-  const percent = Math.round((score / quiz.length) * 100);
+  const pct = Math.round((score / q.length) * 100);
   completedUnits[currentUnit] = true;
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('certificate-screen').classList.add('active');
-
-  const unitObj = UNITS.find(u => u.id === currentUnit);
-  const unitTitle = unitObj ? unitObj.title : currentUnit;
-
-  lastQuizResults = { studentName, unitTitle, score, total: quiz.length, pct: percent, breakdown };
-
-  const nameLine = studentName
-    ? `<p><strong>Student:</strong> ${studentName}</p>`
-    : `<p style="color:#b91c1c;"><em>Tip: type your name on the quiz screen before submitting so Mrs. Won knows who you are.</em></p>`;
-
+  const unit = UNITS.find(u => u.id === currentUnit);
+  lastQuizResults = { studentName: name, unitTitle: unit ? unit.title : currentUnit, score, total: q.length, pct };
   document.getElementById('cert-content').innerHTML = `
-    <div style="padding: 20px;">
-      ${nameLine}
-      <p><strong>Unit:</strong> ${unitTitle}</p>
-      <p style="font-size: 24px; margin: 20px 0;">Quiz Score: ${score}/${quiz.length} (${percent}%)</p>
-      <p>${percent === 100 ? "Perfect! 🌟" : percent >= 67 ? "Nice work! Keep practicing." : "Good try! Review the lesson and try again."}</p>
-      <div style="margin-top:18px;">
-        <button class="btn" onclick="emailResults()" style="background:#1B3A8A;color:white;padding:10px 18px;font-size:14px;border:none;border-radius:6px;cursor:pointer;">
-          📧 Submit Quiz to Mrs. Won
-        </button>
-      </div>
-      <p style="margin-top:10px;font-size:12px;color:#666;">
-        Tapping the button opens Gmail with the score and answers filled in. Just press Send.
-      </p>
-    </div>
-  `;
-  renderSidebar();
-  updateProgress();
+    <p style="font-size:1.1rem;margin:16px 0;"><strong>${name || 'Student'}</strong></p>
+    <p>completed <strong>${unit ? unit.title : currentUnit}</strong></p>
+    <p style="font-size:1.4rem;color:${pct >= 70 ? '#4a8c3a' : '#c62828'};margin:16px 0;"><strong>${score} / ${q.length} correct (${pct}%)</strong></p>`;
 }
 
 function emailResults() {
   if (!lastQuizResults) return;
   const r = lastQuizResults;
-  const lines = [];
-  lines.push(`Aloha Mrs. Won,`);
-  lines.push(``);
-  lines.push(`A 3rd-grade integrated science &amp; math quiz was just submitted.`);
-  lines.push(``);
-  lines.push(`Student: ${r.studentName || '(name not provided)'}`);
-  lines.push(`Unit: ${r.unitTitle}`);
-  lines.push(`Score: ${r.score} out of ${r.total} (${r.pct}%)`);
-  lines.push(``);
-  lines.push(`--- Detailed Answers ---`);
-  r.breakdown.forEach(b => {
-    lines.push(``);
-    lines.push(`Q${b.n}. ${b.question}`);
-    lines.push(`   Student's answer: ${b.studentAnswer}`);
-    lines.push(`   Correct answer:   ${b.correctAnswer}`);
-    lines.push(`   ${b.correct ? '✓ Correct' : '✗ Incorrect'}`);
-  });
-  lines.push(``);
-  lines.push(`Mahalo,`);
-  lines.push(`Mary, Star of the Sea School — Grade 3 Science &amp; Math`);
-
-  const subject = `Grade 3 Science &amp; Math Quiz Result — ${r.studentName || 'Student'} — ${r.unitTitle} — ${r.pct}%`;
-  const body = lines.join('\n');
-  const to = 'ewon@starofthesea.org';
-
-  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&tf=1`
-    + `&to=${encodeURIComponent(to)}`
-    + `&su=${encodeURIComponent(subject)}`
-    + `&body=${encodeURIComponent(body)}`;
-  window.open(gmailUrl, '_blank');
+  const body = `Hello Mrs. Won,%0D%0A%0D%0A${r.studentName || 'A student'} completed the ${r.unitTitle} quiz.%0D%0A%0D%0AScore: ${r.score}/${r.total} (${r.pct}%%)%0D%0A%0D%0AThank you.`;
+  window.location.href = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=ewon@starofthesea.org&su=${encodeURIComponent(r.unitTitle + ' Quiz Result')}&body=${body}`;
 }
 
-function updateProgress() {
-  const completed = Object.keys(completedUnits).length;
-  document.getElementById('progress-text').textContent = `${completed}/${UNITS.length}`;
-}
-
-function showHandout() {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById('handout-screen').classList.add('active');
-  const h = HANDOUTS_5[currentUnit];
-  if (!h) {
-    document.getElementById('handout-content').innerHTML = '<p>No handout available for this unit.</p>';
-    return;
-  }
-  const stepsHtml = h.steps.map(s => `<li>${s}</li>`).join('');
-  const reflectHtml = h.reflect.map((r,i) => `<li>${r}</li>`).join('');
-  const akFile = ANSWER_KEYS_5[currentUnit];
-  const answerKeyHtml = akFile ? `
-      <div style="background:#E8F5E9;border:2px solid #2E7D32;border-radius:8px;padding:14px;margin:14px 0;">
-        <strong style="color:#1B3A8A;">📗 Answer Key (for self-check):</strong>
-        <a href="answerkeys/${akFile}" download style="display:inline-block;background:#2E7D32;color:#fff;padding:8px 16px;border-radius:6px;text-decoration:none;font-weight:600;margin:6px 8px 6px 0;">Download ${akFile}</a>
-        <div style="font-size:0.9rem;color:#555;margin-top:6px;">Completed workbook with all formulas, charts, and real-world data. Open in Excel or upload to Google Sheets (<em>File → Import → Upload</em>) to compare with your own work after you finish.</div>
-      </div>` : '';
-  document.getElementById('handout-content').innerHTML = `
-    <div class="handout-card">
-      <h3>${h.title}</h3>
-      <div class="handout-science">${h.science}</div>
-      <div class="handout-mission">${h.mission}</div>
-      <p><strong>📋 Step-by-Step Instructions</strong></p>
-      <ol class="handout-steps">${stepsHtml}</ol>
-      <div class="handout-deliverable">
-        <strong>🎯 What to Submit:</strong>
-        ${h.deliverable}
-      </div>
-      ${answerKeyHtml}
-      <div class="handout-reflect">
-        <strong>💭 Reflection Questions:</strong>
-        <ol>${reflectHtml}</ol>
-      </div>
-    </div>`;
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderHome();
-  renderSidebar();
-});
-  </script>
+renderHome();
+</script>
 </body>
 </html>
