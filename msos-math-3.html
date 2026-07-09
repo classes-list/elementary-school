@@ -210,15 +210,21 @@ const QUIZZES = {
 let currentUnit = null;
 let lastQuizResults = null;
 
+function topicPageFor(id) {
+  // id looks like "t01-understand-mult" — extract the 2-digit number after 't'
+  const m = id.match(/^t(\d{2})/);
+  return m ? `msos-math-3-topic-${m[1]}.html` : `msos-math-3.html`;
+}
+
 function renderHome() {
   const grid = document.getElementById('units-grid');
   grid.innerHTML = UNITS.map(u => `
-    <div class="unit-card" onclick="showLesson('${u.id}')">
+    <a class="unit-card" href="${topicPageFor(u.id)}" style="text-decoration:none;color:inherit;display:block;">
       <div class="unit-icon">${u.icon}</div>
       <div class="unit-cc">${u.q} · ${u.cc}</div>
       <div class="unit-title">${u.title}</div>
       <div class="unit-desc">${u.desc}</div>
-    </div>
+    </a>
   `).join('');
   // Sidebar
   let sbHTML = '';
@@ -229,7 +235,7 @@ function renderHome() {
       lastQ = u.q;
     }
     const done = completedUnits[u.id] ? 'completed' : '';
-    sbHTML += `<div class="sidebar-unit ${done}" onclick="showLesson('${u.id}')">${u.icon} ${u.title}</div>`;
+    sbHTML += `<div class="sidebar-unit ${done}" onclick="location.href='${topicPageFor(u.id)}'">${u.icon} ${u.title}</div>`;
   });
   document.getElementById('sidebar-content').innerHTML = sbHTML;
   const done = Object.keys(completedUnits).length;

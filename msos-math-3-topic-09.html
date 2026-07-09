@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 9: Fluently Add &amp; Subtract within 1,000 · Grade 3 Math</title>
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #F1F5F9; color: #1F2937; line-height: 1.5; }
+.container { max-width: 900px; margin: 0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #7A5F00 0%, #2E6BA8 100%); color: #fff; padding: 22px 24px; border-radius: 10px; position: relative; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.10); }
+.header h1 { font-size: 1.5rem; margin-bottom: 6px; }
+.header .sub { font-size: 0.9rem; opacity: 0.92; }
+.header .back-btn { position: absolute; top: 18px; right: 22px; background: rgba(255,255,255,0.2); color: #fff; border: 1.5px solid rgba(255,255,255,0.4); padding: 7px 14px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.82rem; }
+.header .back-btn:hover { background: rgba(255,255,255,0.3); }
+.qbadge { display:inline-block; padding:3px 10px; border-radius:12px; background:#FFE699; color:#333; font-weight:700; font-size:0.75rem; margin-top:6px; margin-right:6px; }
+.pacing { color:#fff; opacity:0.85; font-size:0.85rem; }
+.lesson { background: #fff; padding: 22px 24px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 5px solid #7A5F00; }
+.lesson h2 { color: #7A5F00; font-size: 1.2rem; margin-bottom: 12px; }
+.lesson .mini { background: #F8FAFC; padding: 14px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 0.98rem; color: #334; }
+.lesson h3 { color: #1F4E78; font-size: 1rem; margin: 18px 0 10px; }
+.res-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 18px; }
+.res-card { background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 8px; padding: 12px; text-decoration: none; color: #1E3A8A; display: block; transition: all 0.15s; }
+.res-card:hover { background: #DBEAFE; transform: translateY(-2px); }
+.res-label { font-weight: 700; font-size: 0.9rem; display:block; margin-bottom:4px; }
+.res-desc { font-size: 0.78rem; color: #475569; }
+.worksheet { background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 8px; padding: 14px 16px; margin-top: 12px; }
+.worksheet h4 { color: #7A5F00; margin-bottom: 12px; font-size: 0.95rem; }
+.problem { padding: 8px 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.problem .q { flex: 1; min-width: 200px; font-size: 0.95rem; }
+.problem input { padding: 6px 10px; border: 1.5px solid #FDE68A; border-radius: 5px; font-size: 0.95rem; width: 90px; }
+.problem input:focus { outline: 2px solid #FBBF24; border-color: transparent; }
+.check-btn { background: #7A5F00; color: #fff; border: none; padding: 9px 18px; border-radius: 6px; font-weight: 700; cursor: pointer; margin-top: 12px; font-size: 0.9rem; }
+.check-btn:hover { background: #5A4600; }
+.score { margin-top: 10px; font-weight: 700; padding: 6px 10px; border-radius: 5px; display:inline-block; }
+.score.good { background: #DCFCE7; color: #14532D; }
+.score.needs { background: #FEE2E2; color: #7F1D1D; }
+.problem .verdict { font-weight: 700; font-size: 1.1rem; }
+.problem .verdict.ok { color: #14532D; }
+.problem .verdict.bad { color: #7F1D1D; }
+footer { text-align: center; padding: 24px 10px; color: #64748B; font-size: 0.82rem; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a class="back-btn" href="msos-math-3.html">← Back to Math 3 Hub</a>
+      <h1>💯 Topic 9: Fluently Add &amp; Subtract within 1,000</h1>
+      <div class="sub">Mrs. Won · 3rd Grade A · Mary, Star of the Sea School</div>
+      <div><span class="qbadge">Q3</span><span class="pacing">📅 2 weeks (1/25 – 2/5) · Standard 3.NBT.2</span></div>
+    </div>
+
+    
+<div class="lesson">
+  <h2>Lesson 1: Standard Addition Algorithm</h2>
+  <div class="mini">Line numbers up by place value. Add ones first. If ones sum to 10 or more, carry a 1 to the tens. Then add tens (and any carry). Then hundreds. Keep place-value columns tidy.</div>
+  <h3>📝 Practice Worksheet</h3>
+  <div class="worksheet">
+    <h4>Try 6 problems. Type each answer, then click Check.</h4>
+    
+      <div class="problem">
+        <div class="q"><strong>1.</strong> 246 + 137 = ?</div>
+        <input type="text" id="t9l0p0" data-ans="383" placeholder="answer">
+        <span class="verdict" id="t9l0p0v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>2.</strong> 358 + 267 = ?</div>
+        <input type="text" id="t9l0p1" data-ans="625" placeholder="answer">
+        <span class="verdict" id="t9l0p1v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>3.</strong> 419 + 285 = ?</div>
+        <input type="text" id="t9l0p2" data-ans="704" placeholder="answer">
+        <span class="verdict" id="t9l0p2v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>4.</strong> 567 + 234 = ?</div>
+        <input type="text" id="t9l0p3" data-ans="801" placeholder="answer">
+        <span class="verdict" id="t9l0p3v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>5.</strong> 125 + 348 = ?</div>
+        <input type="text" id="t9l0p4" data-ans="473" placeholder="answer">
+        <span class="verdict" id="t9l0p4v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>6.</strong> 289 + 176 = ?</div>
+        <input type="text" id="t9l0p5" data-ans="465" placeholder="answer">
+        <span class="verdict" id="t9l0p5v"></span>
+      </div>
+    <button class="check-btn" onclick="checkWorksheet('t9l0', 6)">Check My Answers</button>
+    <div class="score" id="t9l0s" style="display:none;"></div>
+  </div>
+</div>
+<div class="lesson">
+  <h2>Lesson 2: Standard Subtraction with Regrouping</h2>
+  <div class="mini">When the top digit is smaller than the bottom, BORROW from the next column. 300 − 128: can&#x27;t do 0−8, so borrow from tens (also 0, borrow from hundreds first). Rewrite as 2 hundreds, 9 tens, 10 ones = 172.</div>
+  <h3>📝 Practice Worksheet</h3>
+  <div class="worksheet">
+    <h4>Try 6 problems. Type each answer, then click Check.</h4>
+    
+      <div class="problem">
+        <div class="q"><strong>1.</strong> 400 − 156 = ?</div>
+        <input type="text" id="t9l1p0" data-ans="244" placeholder="answer">
+        <span class="verdict" id="t9l1p0v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>2.</strong> 523 − 267 = ?</div>
+        <input type="text" id="t9l1p1" data-ans="256" placeholder="answer">
+        <span class="verdict" id="t9l1p1v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>3.</strong> 612 − 348 = ?</div>
+        <input type="text" id="t9l1p2" data-ans="264" placeholder="answer">
+        <span class="verdict" id="t9l1p2v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>4.</strong> 705 − 289 = ?</div>
+        <input type="text" id="t9l1p3" data-ans="416" placeholder="answer">
+        <span class="verdict" id="t9l1p3v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>5.</strong> 831 − 456 = ?</div>
+        <input type="text" id="t9l1p4" data-ans="375" placeholder="answer">
+        <span class="verdict" id="t9l1p4v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>6.</strong> 900 − 375 = ?</div>
+        <input type="text" id="t9l1p5" data-ans="525" placeholder="answer">
+        <span class="verdict" id="t9l1p5v"></span>
+      </div>
+    <button class="check-btn" onclick="checkWorksheet('t9l1', 6)">Check My Answers</button>
+    <div class="score" id="t9l1s" style="display:none;"></div>
+  </div>
+</div>
+<div class="lesson">
+  <h2>Lesson 3: Checking with Reverse Operations</h2>
+  <div class="mini">Every subtraction problem can be checked with addition. 523 − 217 = 306. Check: 306 + 217 should equal 523. If yes, you&#x27;re right. If no, redo the problem.</div>
+  <h3>📝 Practice Worksheet</h3>
+  <div class="worksheet">
+    <h4>Try 6 problems. Type each answer, then click Check.</h4>
+    
+      <div class="problem">
+        <div class="q"><strong>1.</strong> 543 − 218 = ? (check with +)</div>
+        <input type="text" id="t9l2p0" data-ans="325" placeholder="answer">
+        <span class="verdict" id="t9l2p0v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>2.</strong> 612 − 145 = ?</div>
+        <input type="text" id="t9l2p1" data-ans="467" placeholder="answer">
+        <span class="verdict" id="t9l2p1v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>3.</strong> 789 − 234 = ?</div>
+        <input type="text" id="t9l2p2" data-ans="555" placeholder="answer">
+        <span class="verdict" id="t9l2p2v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>4.</strong> 456 + 217 = ?</div>
+        <input type="text" id="t9l2p3" data-ans="673" placeholder="answer">
+        <span class="verdict" id="t9l2p3v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>5.</strong> Check 800 − 350 by adding 350 + 450 = ?</div>
+        <input type="text" id="t9l2p4" data-ans="800" placeholder="answer">
+        <span class="verdict" id="t9l2p4v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>6.</strong> Check 250 + 175 by subtracting 425 − 175 = ?</div>
+        <input type="text" id="t9l2p5" data-ans="250" placeholder="answer">
+        <span class="verdict" id="t9l2p5v"></span>
+      </div>
+    <button class="check-btn" onclick="checkWorksheet('t9l2', 6)">Check My Answers</button>
+    <div class="score" id="t9l2s" style="display:none;"></div>
+  </div>
+</div>
+    
+<div class="lesson">
+  <h2>🌐 Curated Resources</h2>
+  <p style="margin-bottom:12px; color:#556;">Videos, articles, and simulations to explore this topic. All free — no signup needed.</p>
+  <div class="res-grid">
+    <a class="res-card" href="https://www.youtube.com/watch?v=A-VJfIsxDgg" target="_blank" rel="noopener">
+      <span class="res-label">Math Antics: Regrouping</span>
+      <span class="res-desc">Standard algorithm demonstration</span>
+    </a>
+    <a class="res-card" href="https://www.ducksters.com/kidsmath/subtracting_regrouping.php" target="_blank" rel="noopener">
+      <span class="res-label">Ducksters: Subtraction with Regrouping</span>
+      <span class="res-desc">Step-by-step borrowing</span>
+    </a>
+  </div>
+</div>
+
+    <footer>Mary, Star of the Sea School · Grade 3 Math · Mrs. Won · SY 2026-2027</footer>
+  </div>
+  <script>
+function checkWorksheet(prefix, count) {
+  let correct = 0;
+  for (let i = 0; i < count; i++) {
+    const el = document.getElementById(prefix + 'p' + i);
+    const v = document.getElementById(prefix + 'p' + i + 'v');
+    if (!el) continue;
+    const user = (el.value || '').trim().toLowerCase().replace(/\s+/g,'');
+    const ans = (el.dataset.ans || '').trim().toLowerCase().replace(/\s+/g,'');
+    if (user === ans) {
+      correct++;
+      v.textContent = '✓';
+      v.className = 'verdict ok';
+    } else {
+      v.textContent = '✗';
+      v.className = 'verdict bad';
+    }
+  }
+  const box = document.getElementById(prefix + 's');
+  box.style.display = 'inline-block';
+  const pct = Math.round((correct / count) * 100);
+  if (pct >= 70) {
+    box.className = 'score good';
+    box.textContent = `${correct} / ${count} correct (${pct}%). Great work!`;
+  } else {
+    box.className = 'score needs';
+    box.textContent = `${correct} / ${count} correct (${pct}%). Review the mini-lesson and try again.`;
+  }
+}
+</script>
+</body>
+</html>

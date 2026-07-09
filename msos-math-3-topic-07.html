@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 7: Represent &amp; Interpret Data · Grade 3 Math</title>
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #F1F5F9; color: #1F2937; line-height: 1.5; }
+.container { max-width: 900px; margin: 0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #365B27 0%, #2E6BA8 100%); color: #fff; padding: 22px 24px; border-radius: 10px; position: relative; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.10); }
+.header h1 { font-size: 1.5rem; margin-bottom: 6px; }
+.header .sub { font-size: 0.9rem; opacity: 0.92; }
+.header .back-btn { position: absolute; top: 18px; right: 22px; background: rgba(255,255,255,0.2); color: #fff; border: 1.5px solid rgba(255,255,255,0.4); padding: 7px 14px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.82rem; }
+.header .back-btn:hover { background: rgba(255,255,255,0.3); }
+.qbadge { display:inline-block; padding:3px 10px; border-radius:12px; background:#C6E0B4; color:#333; font-weight:700; font-size:0.75rem; margin-top:6px; margin-right:6px; }
+.pacing { color:#fff; opacity:0.85; font-size:0.85rem; }
+.lesson { background: #fff; padding: 22px 24px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 5px solid #365B27; }
+.lesson h2 { color: #365B27; font-size: 1.2rem; margin-bottom: 12px; }
+.lesson .mini { background: #F8FAFC; padding: 14px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 0.98rem; color: #334; }
+.lesson h3 { color: #1F4E78; font-size: 1rem; margin: 18px 0 10px; }
+.res-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 18px; }
+.res-card { background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 8px; padding: 12px; text-decoration: none; color: #1E3A8A; display: block; transition: all 0.15s; }
+.res-card:hover { background: #DBEAFE; transform: translateY(-2px); }
+.res-label { font-weight: 700; font-size: 0.9rem; display:block; margin-bottom:4px; }
+.res-desc { font-size: 0.78rem; color: #475569; }
+.worksheet { background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 8px; padding: 14px 16px; margin-top: 12px; }
+.worksheet h4 { color: #7A5F00; margin-bottom: 12px; font-size: 0.95rem; }
+.problem { padding: 8px 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.problem .q { flex: 1; min-width: 200px; font-size: 0.95rem; }
+.problem input { padding: 6px 10px; border: 1.5px solid #FDE68A; border-radius: 5px; font-size: 0.95rem; width: 90px; }
+.problem input:focus { outline: 2px solid #FBBF24; border-color: transparent; }
+.check-btn { background: #7A5F00; color: #fff; border: none; padding: 9px 18px; border-radius: 6px; font-weight: 700; cursor: pointer; margin-top: 12px; font-size: 0.9rem; }
+.check-btn:hover { background: #5A4600; }
+.score { margin-top: 10px; font-weight: 700; padding: 6px 10px; border-radius: 5px; display:inline-block; }
+.score.good { background: #DCFCE7; color: #14532D; }
+.score.needs { background: #FEE2E2; color: #7F1D1D; }
+.problem .verdict { font-weight: 700; font-size: 1.1rem; }
+.problem .verdict.ok { color: #14532D; }
+.problem .verdict.bad { color: #7F1D1D; }
+footer { text-align: center; padding: 24px 10px; color: #64748B; font-size: 0.82rem; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a class="back-btn" href="msos-math-3.html">← Back to Math 3 Hub</a>
+      <h1>📊 Topic 7: Represent &amp; Interpret Data</h1>
+      <div class="sub">Mrs. Won · 3rd Grade A · Mary, Star of the Sea School</div>
+      <div><span class="qbadge">Q2</span><span class="pacing">📅 2 weeks (12/7 – 12/18) · Standard 3.MD.3-4</span></div>
+    </div>
+
+    
+<div class="lesson">
+  <h2>Lesson 1: Picture Graphs</h2>
+  <div class="mini">A picture graph uses symbols (each symbol = a number of items). Always check the KEY! If ☆ = 2 books and one row shows 4 stars, that row = 8 books.</div>
+  <h3>📝 Practice Worksheet</h3>
+  <div class="worksheet">
+    <h4>Try 6 problems. Type each answer, then click Check.</h4>
+    
+      <div class="problem">
+        <div class="q"><strong>1.</strong> If ★ = 2 and 3 stars are shown, count = ?</div>
+        <input type="text" id="t7l0p0" data-ans="6" placeholder="answer">
+        <span class="verdict" id="t7l0p0v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>2.</strong> If ★ = 5 and 4 stars, count = ?</div>
+        <input type="text" id="t7l0p1" data-ans="20" placeholder="answer">
+        <span class="verdict" id="t7l0p1v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>3.</strong> If ★ = 3 and 6 stars, count = ?</div>
+        <input type="text" id="t7l0p2" data-ans="18" placeholder="answer">
+        <span class="verdict" id="t7l0p2v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>4.</strong> If ★ = 4 and 5 stars, count = ?</div>
+        <input type="text" id="t7l0p3" data-ans="20" placeholder="answer">
+        <span class="verdict" id="t7l0p3v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>5.</strong> If ★ = 2 and 7 stars, count = ?</div>
+        <input type="text" id="t7l0p4" data-ans="14" placeholder="answer">
+        <span class="verdict" id="t7l0p4v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>6.</strong> If ★ = 10 and 3 stars, count = ?</div>
+        <input type="text" id="t7l0p5" data-ans="30" placeholder="answer">
+        <span class="verdict" id="t7l0p5v"></span>
+      </div>
+    <button class="check-btn" onclick="checkWorksheet('t7l0', 6)">Check My Answers</button>
+    <div class="score" id="t7l0s" style="display:none;"></div>
+  </div>
+</div>
+<div class="lesson">
+  <h2>Lesson 2: Bar Graphs</h2>
+  <div class="mini">Bar graphs use rectangles to show amounts. The taller the bar, the bigger the number. Always read the SCALE on the side. Compare bars by subtracting.</div>
+  <h3>📝 Practice Worksheet</h3>
+  <div class="worksheet">
+    <h4>Try 6 problems. Type each answer, then click Check.</h4>
+    
+      <div class="problem">
+        <div class="q"><strong>1.</strong> If red = 8 and blue = 5, red − blue = ?</div>
+        <input type="text" id="t7l1p0" data-ans="3" placeholder="answer">
+        <span class="verdict" id="t7l1p0v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>2.</strong> If A = 12 and B = 7, A + B = ?</div>
+        <input type="text" id="t7l1p1" data-ans="19" placeholder="answer">
+        <span class="verdict" id="t7l1p1v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>3.</strong> If C = 15 and D = 9, difference = ?</div>
+        <input type="text" id="t7l1p2" data-ans="6" placeholder="answer">
+        <span class="verdict" id="t7l1p2v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>4.</strong> Total of 4, 6, 8 = ?</div>
+        <input type="text" id="t7l1p3" data-ans="18" placeholder="answer">
+        <span class="verdict" id="t7l1p3v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>5.</strong> Total of 7, 3, 5 = ?</div>
+        <input type="text" id="t7l1p4" data-ans="15" placeholder="answer">
+        <span class="verdict" id="t7l1p4v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>6.</strong> Difference of 20 and 12 = ?</div>
+        <input type="text" id="t7l1p5" data-ans="8" placeholder="answer">
+        <span class="verdict" id="t7l1p5v"></span>
+      </div>
+    <button class="check-btn" onclick="checkWorksheet('t7l1', 6)">Check My Answers</button>
+    <div class="score" id="t7l1s" style="display:none;"></div>
+  </div>
+</div>
+<div class="lesson">
+  <h2>Lesson 3: Line Plots</h2>
+  <div class="mini">A line plot uses Xs above a number line to show how often each value appears. Handy for measurements (like plant heights, shoe sizes). Count Xs to find the mode.</div>
+  <h3>📝 Practice Worksheet</h3>
+  <div class="worksheet">
+    <h4>Try 6 problems. Type each answer, then click Check.</h4>
+    
+      <div class="problem">
+        <div class="q"><strong>1.</strong> If 5 Xs are at value 3, total value = ?</div>
+        <input type="text" id="t7l2p0" data-ans="15" placeholder="answer">
+        <span class="verdict" id="t7l2p0v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>2.</strong> If 3 Xs at value 4 and 2 Xs at value 2, sum = ?</div>
+        <input type="text" id="t7l2p1" data-ans="16" placeholder="answer">
+        <span class="verdict" id="t7l2p1v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>3.</strong> Xs at values 6, 6, 8. Sum = ?</div>
+        <input type="text" id="t7l2p2" data-ans="20" placeholder="answer">
+        <span class="verdict" id="t7l2p2v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>4.</strong> Xs at 2, 4, 6, 8. Sum = ?</div>
+        <input type="text" id="t7l2p3" data-ans="20" placeholder="answer">
+        <span class="verdict" id="t7l2p3v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>5.</strong> Xs at 3, 3, 3. Sum = ?</div>
+        <input type="text" id="t7l2p4" data-ans="9" placeholder="answer">
+        <span class="verdict" id="t7l2p4v"></span>
+      </div>
+      <div class="problem">
+        <div class="q"><strong>6.</strong> Xs at 5, 5, 10. Sum = ?</div>
+        <input type="text" id="t7l2p5" data-ans="20" placeholder="answer">
+        <span class="verdict" id="t7l2p5v"></span>
+      </div>
+    <button class="check-btn" onclick="checkWorksheet('t7l2', 6)">Check My Answers</button>
+    <div class="score" id="t7l2s" style="display:none;"></div>
+  </div>
+</div>
+    
+<div class="lesson">
+  <h2>🌐 Curated Resources</h2>
+  <p style="margin-bottom:12px; color:#556;">Videos, articles, and simulations to explore this topic. All free — no signup needed.</p>
+  <div class="res-grid">
+    <a class="res-card" href="https://www.youtube.com/watch?v=uk7gS3cZVp4" target="_blank" rel="noopener">
+      <span class="res-label">Math Antics: Graphs</span>
+      <span class="res-desc">Bar graphs and picture graphs</span>
+    </a>
+    <a class="res-card" href="https://www.ducksters.com/kidsmath/data_bar_graphs.php" target="_blank" rel="noopener">
+      <span class="res-label">Ducksters: Bar Graphs</span>
+      <span class="res-desc">How to read bar graphs</span>
+    </a>
+  </div>
+</div>
+
+    <footer>Mary, Star of the Sea School · Grade 3 Math · Mrs. Won · SY 2026-2027</footer>
+  </div>
+  <script>
+function checkWorksheet(prefix, count) {
+  let correct = 0;
+  for (let i = 0; i < count; i++) {
+    const el = document.getElementById(prefix + 'p' + i);
+    const v = document.getElementById(prefix + 'p' + i + 'v');
+    if (!el) continue;
+    const user = (el.value || '').trim().toLowerCase().replace(/\s+/g,'');
+    const ans = (el.dataset.ans || '').trim().toLowerCase().replace(/\s+/g,'');
+    if (user === ans) {
+      correct++;
+      v.textContent = '✓';
+      v.className = 'verdict ok';
+    } else {
+      v.textContent = '✗';
+      v.className = 'verdict bad';
+    }
+  }
+  const box = document.getElementById(prefix + 's');
+  box.style.display = 'inline-block';
+  const pct = Math.round((correct / count) * 100);
+  if (pct >= 70) {
+    box.className = 'score good';
+    box.textContent = `${correct} / ${count} correct (${pct}%). Great work!`;
+  } else {
+    box.className = 'score needs';
+    box.textContent = `${correct} / ${count} correct (${pct}%). Review the mini-lesson and try again.`;
+  }
+}
+</script>
+</body>
+</html>
