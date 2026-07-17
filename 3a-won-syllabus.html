@@ -49,7 +49,7 @@ body {
 .header-info { flex: 1 1 260px; }
 .header-info h1 { color: #253a77; font-size: 1.6rem; font-weight: 800; margin-bottom: 4px; }
 .header-info .role { color: #7a5f00; font-style: italic; font-size: 0.95rem; margin-bottom: 6px; }
-.header-info .contact { font-size: 0.9rem; line-height: 1.7; color: #444; }
+.header-info .contact { font-size: 0.92rem; line-height: 1.7; color: #444; }
 .header-info .contact strong { color: #253a77; }
 .header-info .contact a { color: #253a77; text-decoration: none; }
 .header-info .contact a:hover { text-decoration: underline; }
@@ -57,169 +57,115 @@ body {
   display: inline-block;
   background: linear-gradient(135deg, #FFD100 0%, #FFB800 100%);
   color: #253a77;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 5px 14px;
-  border-radius: 999px;
+  font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 999px;
   margin-bottom: 10px;
   box-shadow: 0 2px 6px rgba(255,209,0,0.35);
 }
+.teacher-photo {
+  width: 130px; height: 130px; border-radius: 50%;
+  background: #1a2a4a; overflow: hidden; flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(37,58,119,0.2);
+}
+.teacher-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; display: block; }
 
-.subject-banner {
-  background: linear-gradient(135deg, #253a77 0%, #3457B2 100%);
-  color: #fff;
-  border-radius: 10px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
+.eq-box {
+  background: linear-gradient(135deg, #fff8e1 0%, #fef3c7 100%);
+  border-left: 5px solid #FFD100;
+  padding: 20px 24px; border-radius: 10px;
+  margin-bottom: 22px;
   text-align: center;
 }
-.subject-banner .eyebrow { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700; opacity: 0.88; margin-bottom: 4px; }
-.subject-banner h2 { font-size: 1.55rem; font-weight: 800; margin-bottom: 4px; }
-.subject-banner .sub { font-size: 0.95rem; opacity: 0.92; }
+.eq-box .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 800; color: #7a5f00; margin-bottom: 8px; }
+.eq-box .question { font-size: 1.35rem; color: #253a77; font-weight: 700; font-style: italic; margin-bottom: 6px; }
+.eq-box .verse { color: #7a5f00; font-size: 0.95rem; font-weight: 600; }
+.eq-box .placeholder { color: #92400e; font-size: 0.82rem; font-style: italic; margin-top: 6px; }
 
-section { margin-top: 30px; }
-section > h3 {
-  color: #253a77;
-  font-size: 1.2rem;
-  font-weight: 800;
-  margin-bottom: 12px;
-  padding-bottom: 6px;
+.section-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(37,58,119,0.07);
+  padding: 22px 26px;
+  margin-bottom: 18px;
+  border-top: 4px solid #253a77;
+}
+.section-card h2 {
+  color: #253a77; font-size: 1.25rem; font-weight: 800;
+  margin-bottom: 10px; padding-bottom: 6px;
   border-bottom: 2px solid #FFD100;
   display: flex; align-items: center; gap: 8px;
 }
-section p { color: #2d3748; font-size: 0.98rem; line-height: 1.7; margin-bottom: 12px; }
-section ul { margin: 10px 0 12px 22px; }
-section ul li { padding: 4px 0; color: #2d3748; font-size: 0.95rem; line-height: 1.5; }
-section ul li strong { color: #253a77; }
+.section-card p { color: #2d3748; font-size: 0.96rem; line-height: 1.7; margin-bottom: 10px; }
+.section-card ul, .section-card ol { margin: 8px 0 12px 24px; }
+.section-card li { padding: 3px 0; color: #2d3748; font-size: 0.95rem; line-height: 1.65; }
+.section-card li strong { color: #253a77; }
 
 .welcome-box {
-  background: #f0f4fc;
-  border-left: 4px solid #253a77;
-  padding: 16px 20px;
-  border-radius: 6px;
-  margin-bottom: 8px;
+  background: #f0f4fc; border-left: 4px solid #253a77;
+  padding: 18px 22px; border-radius: 8px;
+  margin: 10px 0;
 }
-.welcome-box p { font-style: italic; color: #2d3748; }
+.welcome-box p { color: #2d3748; margin-bottom: 8px; }
+.mother-teresa-quote {
+  font-style: italic; color: #4c1d95;
+  background: #eef2ff; border-left: 4px solid #4c1d95;
+  padding: 14px 18px; border-radius: 8px; margin: 12px 0;
+}
+.mother-teresa-quote p { color: #4c1d95; font-style: italic; margin-bottom: 6px; }
+.mother-teresa-quote .attribution { font-weight: 700; color: #4c1d95; font-size: 0.88rem; text-align: right; margin-top: 6px; }
 
-.mission-box {
-  background: #fff8e1;
-  border-left: 4px solid #FFD100;
-  padding: 14px 20px;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  color: #2d3748;
-  line-height: 1.6;
-  margin-top: 6px;
-}
+.star-list { list-style: none; margin-left: 0; padding-left: 0; }
+.star-list li { padding: 6px 0 6px 6px; font-size: 0.98rem; font-weight: 600; color: #253a77; }
 
-.subject-block {
-  margin-top: 22px;
-  border: 2px solid #e2e8f0;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #fff;
+.grading-scale { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+.grade-item {
+  background: #f8fafc; border-left: 4px solid #253a77;
+  padding: 12px 16px; border-radius: 6px;
 }
-.subject-header {
-  padding: 12px 18px;
-  color: #fff;
-  font-weight: 800;
-  font-size: 1.05rem;
-  display: flex; align-items: center; gap: 10px;
-  letter-spacing: 0.02em;
-}
-.subject-header .icon { font-size: 1.35rem; }
-.subject-tag {
-  margin-left: auto;
-  font-size: 0.72rem;
-  background: rgba(255,255,255,0.22);
-  padding: 3px 10px; border-radius: 999px;
-  font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
-}
-.quarters {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: #e2e8f0;
-}
-.quarter {
-  background: #fff;
-  padding: 14px 14px 16px;
-  font-size: 0.85rem;
-}
-.q-label {
-  font-size: 0.7rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #7a5f00;
-  margin-bottom: 4px;
-}
-.q-title {
-  font-weight: 800;
-  font-size: 0.92rem;
-  color: #253a77;
-  margin-bottom: 6px;
-  line-height: 1.3;
-}
-.q-subtitle {
-  font-size: 0.78rem;
-  color: #64748b;
-  font-style: italic;
-  margin-bottom: 6px;
-  line-height: 1.35;
-}
-.q-list { list-style: none; padding: 0; margin: 4px 0 0; font-size: 0.8rem; color: #2d3748; }
-.q-list li {
-  padding: 2px 0 2px 12px; position: relative; line-height: 1.4;
-}
-.q-list li::before {
-  content: "•";
-  position: absolute; left: 0; color: #FFB800; font-weight: 800;
-}
-.eq {
-  margin-top: 8px;
-  padding-top: 6px;
-  border-top: 1px dashed #cbd5e1;
-  font-size: 0.78rem;
-  color: #475569;
-  line-height: 1.4;
-}
-.eq strong { color: #253a77; }
+.grade-item .grade-num { font-size: 1.5rem; font-weight: 800; color: #253a77; margin-bottom: 4px; }
+.grade-item .grade-name { font-weight: 700; color: #7a5f00; margin-bottom: 4px; font-size: 0.92rem; }
+.grade-item ul { margin: 4px 0 0 18px; }
+.grade-item li { font-size: 0.85rem; padding: 1px 0; line-height: 1.45; }
 
-@media (max-width: 900px) {
-  .quarters { grid-template-columns: repeat(2, 1fr); }
+.choice-board-callout {
+  background: #f0f9ff; border-left: 4px solid #0284c7;
+  padding: 14px 18px; border-radius: 8px; margin: 10px 0;
 }
-@media (max-width: 500px) {
-  .quarters { grid-template-columns: 1fr; }
-  .syllabus-card { padding: 26px 20px; }
-}
+.choice-board-callout h4 { color: #0284c7; font-size: 1rem; margin-bottom: 6px; }
+.choice-board-callout ul { margin: 4px 0 0 20px; }
+.choice-board-callout li { font-size: 0.9rem; padding: 2px 0; }
 
-/* Subject color themes for headers */
-.subj-reading   { background: linear-gradient(135deg, #6b21a8, #8b5cf6); }
-.subj-writing   { background: linear-gradient(135deg, #9333ea, #a78bfa); }
-.subj-grammar   { background: linear-gradient(135deg, #db2777, #f472b6); }
-.subj-phonics   { background: linear-gradient(135deg, #be185d, #ec4899); }
-.subj-math      { background: linear-gradient(135deg, #253a77, #3457B2); }
-.subj-ss        { background: linear-gradient(135deg, #b45309, #d97706); }
-.subj-science   { background: linear-gradient(135deg, #0f5132, #14b8a6); }
-.subj-religion  { background: linear-gradient(135deg, #7c2d12, #c2410c); }
+.hw-guidelines {
+  background: #fff8e1; border-left: 4px solid #FFD100;
+  padding: 16px 20px; border-radius: 8px; margin: 12px 0;
+}
+.hw-guidelines h4 { color: #7a5f00; font-size: 1rem; margin-bottom: 8px; text-align: center; }
+.hw-guidelines ol { margin-left: 22px; }
+.hw-guidelines li { font-size: 0.92rem; padding: 3px 0; }
+
+.subject-block { margin-bottom: 12px; padding: 12px 16px; background: #f8fafc; border-radius: 8px; border-left: 4px solid #253a77; }
+.subject-block h3 { color: #253a77; font-size: 1.05rem; margin-bottom: 4px; }
+.subject-block p { font-size: 0.93rem; color: #2d3748; margin-bottom: 0; }
+
+.dates-list li { padding: 4px 0; font-size: 0.94rem; }
 
 footer {
-  margin-top: 40px;
-  padding-top: 20px;
+  margin-top: 32px; padding-top: 20px;
   border-top: 2px solid #e2e8f0;
-  text-align: center;
-  color: #64748b;
-  font-size: 0.85rem;
+  text-align: center; color: #7a5f00;
+  font-style: italic; font-weight: 700; font-size: 1.05rem;
 }
 
 @media print {
   body { background: #fff; padding: 0; }
   .back-index-btn, .print-btn { display: none; }
-  .syllabus-card { box-shadow: none; border-radius: 0; padding: 20px; }
-  .subject-block { break-inside: avoid; }
+  .syllabus-card { box-shadow: none; padding: 20px; }
+  .section-card { box-shadow: none; break-inside: avoid; }
+}
+@media (max-width: 640px) {
+  .syllabus-card { padding: 24px 20px; }
+  .header-info h1 { font-size: 1.3rem; }
 }
 </style>
 </head>
@@ -229,571 +175,275 @@ footer {
 
 <div class="container">
   <div class="syllabus-card">
+
     <div class="header-top">
+      <div class="teacher-photo">
+        <img src="mrs-won.jpg" alt="Mrs. Edlin Won">
+      </div>
       <div class="header-info">
         <div class="year-badge">School Year 2026-2027</div>
-        <h1>Class Syllabus &middot; Mrs. Won</h1>
+        <h1>Mrs. Edlin Won &middot; 3rd Grade A</h1>
         <div class="role">3rd Grade A Teacher &middot; Mary, Star of the Sea School</div>
         <div class="contact">
           <strong>Email:</strong> <a href="mailto:ewon@starofthesea.org">ewon@starofthesea.org</a><br>
-          <strong>Room:</strong> 3rd Grade A Classroom
+          <strong>Phone (school office):</strong> (808) 734-0208
         </div>
       </div>
     </div>
 
-    <div class="subject-banner">
-      <div class="eyebrow">2026-2027 Curriculum Map</div>
-      <h2>Welcome to 3rd Grade A</h2>
-      <div class="sub">Reading &middot; Writing &middot; Grammar &middot; Phonics &middot; Math &middot; Social Studies &middot; Science &middot; Religion</div>
+    <!-- MSOS Essential Question -->
+    <div class="eq-box">
+      <div class="label">MSOS Essential Question</div>
+      <div class="question">&ldquo;With Jesus, what makes my spirit soar?&rdquo;</div>
+      <div class="verse">Isaiah 40:31</div>
+      <div class="placeholder">*To be updated for the 2026-2027 school year.</div>
     </div>
 
-    <section>
-      <h3>👋 Welcome</h3>
+    <!-- Welcome -->
+    <div class="section-card">
+      <h2>👋 Welcome</h2>
       <div class="welcome-box">
-        <p>Aloha families! Welcome to 3rd Grade A. This year we will read great books, write with confidence,
-        become fluent in multiplication and division, explore the world through science and social studies,
-        and grow in our Catholic faith together. This syllabus is a quarter-by-quarter map of the year ahead
-        so that families know what to expect and how to support learning at home.</p>
-        <p style="margin-top:10px"><em>&ldquo;A child seldom needs a good talking to as a good listening to.&rdquo;</em> &mdash; Robert Brault. Our classroom lives out the Mary, Star of the Sea mission of forming faith-filled, academically strong learners &mdash; and our Schoolwide Learning Expectations (SLEs) of being <strong>Faith-filled Catholics, Effective Communicators, Critical Thinkers, and Active Citizens</strong> shape every part of our day.</p>
+        <p>Aloha families! Welcome to 3rd Grade A. This year we will read great books, write with confidence, become fluent in multiplication and division, explore the world through science and social studies, and grow in our Catholic faith together. This syllabus is a quarter-by-quarter map of the year ahead so that families know what to expect and how to support learning at home.</p>
       </div>
-    </section>
-
-    <section>
-      <h3>📚 Curriculum Overview</h3>
-      <p>Each subject follows a four-quarter arc built around Essential Questions (EQs). Below is what
-      students will study each quarter.</p>
-
-      <!-- ─────────── READING ─────────── -->
-      <div class="subject-block">
-        <div class="subject-header subj-reading">
-          <span class="icon">📖</span> Reading
-          <span class="subject-tag">4 Units</span>
-        </div>
-        <div class="quarters">
-          <div class="quarter">
-            <div class="q-label">Q1 &middot; Unit 1</div>
-            <div class="q-title">Routines &amp; Building a Reading Life</div>
-            <div class="q-subtitle">5 Basic Comprehension Strategies</div>
-            <ul class="q-list">
-              <li>Visualizing</li>
-              <li>Inferring</li>
-              <li>Predicting</li>
-              <li>Questioning</li>
-              <li>Summarizing</li>
-              <li><strong>Novel:</strong> <em>Muggie Maggie</em></li>
-            </ul>
-            <div class="eq"><strong>EQ:</strong> How do readers create reading lives by building strong reading habits?</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q2 &middot; Unit 2</div>
-            <div class="q-title">Reading to Learn</div>
-            <div class="q-subtitle">Grasping main ideas &amp; text structures (nonfiction)</div>
-            <ul class="q-list">
-              <li>Text structures in expository writing</li>
-              <li><strong>Novel:</strong> <em>What Was the First Thanksgiving?</em></li>
-            </ul>
-            <div class="eq"><strong>EQ:</strong> How can we use text structure of expository texts to help us comprehend nonfiction?</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q3 &middot; Unit 3</div>
-            <div class="q-title">Character Study</div>
-            <div class="q-subtitle">Story elements &middot; characters &middot; setting &middot; plot</div>
-            <ul class="q-list">
-              <li>Analyzing character traits &amp; motives</li>
-              <li><strong>Novel:</strong> <em>Family Under the Bridge</em></li>
-            </ul>
-            <div class="eq"><strong>EQ:</strong> How can we use what we know about characters to find the big idea of a story?</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q4 &middot; Unit 4</div>
-            <div class="q-title">Mystery: Skills in Disguise</div>
-            <div class="q-subtitle">Story details &middot; inferring &middot; predicting</div>
-            <ul class="q-list">
-              <li>Reading for clues in mystery stories</li>
-              <li><strong>Novel:</strong> A-Z Mysteries &mdash; <em>The White Wolf</em></li>
-            </ul>
-            <div class="eq"><strong>EQ:</strong> How do mystery readers read for clues?</div>
-          </div>
-        </div>
+      <div class="mother-teresa-quote">
+        <p>&ldquo;Not all of us can do great things. But we can do small things with great love.&rdquo;</p>
+        <div class="attribution">&mdash; Mother Teresa</div>
       </div>
+    </div>
 
-      <!-- ─────────── WRITING ─────────── -->
-      <div class="subject-block">
-        <div class="subject-header subj-writing">
-          <span class="icon">✍️</span> Writing
-          <span class="subject-tag">5 Units</span>
-        </div>
-        <div class="quarters">
-          <div class="quarter">
-            <div class="q-label">Q1 &middot; Units 1&ndash;2</div>
-            <div class="q-title">Launching Workshop &amp; Crafting True Stories</div>
-            <div class="eq"><strong>EQ:</strong> How do we craft true stories?</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q2 &middot; Unit 3</div>
-            <div class="q-title">Informational Writing</div>
-            <div class="eq"><strong>EQ:</strong> How can we best inform our readers?</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q3 &middot; Unit 4</div>
-            <div class="q-title">Persuasive Writing</div>
-            <div class="eq"><strong>EQ:</strong> How can we best persuade our readers?</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q4 &middot; Units 4&ndash;5</div>
-            <div class="q-title">Poetry &amp; Adapting Fairy Tales</div>
-            <ul class="q-list">
-              <li><strong>Poetry:</strong> language, meaning, emotion</li>
-              <li><strong>Fairy Tales:</strong> adapting the classics</li>
-            </ul>
-            <div class="eq"><strong>EQ:</strong> How do poets use language &mdash; and how do writers adapt classic fairy tales?</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ─────────── GRAMMAR ─────────── -->
-      <div class="subject-block">
-        <div class="subject-header subj-grammar">
-          <span class="icon">🔤</span> Grammar
-          <span class="subject-tag">4 Units</span>
-        </div>
-        <div class="quarters">
-          <div class="quarter">
-            <div class="q-label">Q1 &middot; Unit 1</div>
-            <div class="q-title">Nouns, Verbs &amp; Modifiers</div>
-            <ul class="q-list">
-              <li>Common &amp; Proper Nouns</li>
-              <li>Plural &amp; Abstract Nouns</li>
-              <li>Regular &amp; Irregular Verbs</li>
-              <li>Verb Tenses (past, present, future)</li>
-              <li>Adjectives &amp; Adverbs</li>
-            </ul>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q2 &middot; Unit 2</div>
-            <div class="q-title">Sentence Structure</div>
-            <ul class="q-list">
-              <li>Pronouns &amp; Antecedents</li>
-              <li>Helping &amp; Linking Verbs</li>
-              <li>Subject &amp; Predicate</li>
-              <li>Subject-Verb Agreement</li>
-              <li>Conjunctions</li>
-              <li>Simple, Compound &amp; Complex Sentences</li>
-            </ul>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q3 &middot; Unit 3</div>
-            <div class="q-title">Punctuation &amp; Possessives</div>
-            <ul class="q-list">
-              <li>Capitalizing Titles</li>
-              <li>Commas (parts 1 &amp; 2)</li>
-              <li>Quotations</li>
-              <li>Commas and Quotations</li>
-              <li>Possessive Nouns</li>
-              <li>Possessive Pronouns &amp; Adjectives</li>
-            </ul>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q4 &middot; Unit 4</div>
-            <div class="q-title">Word Study</div>
-            <ul class="q-list">
-              <li>Comparative &amp; Superlative</li>
-              <li>Prefixes &amp; Suffixes</li>
-              <li>Multiple-Meaning Words</li>
-              <li>Shades of Meaning</li>
-              <li>Dictionary Skills</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- ─────────── PHONICS ─────────── -->
-      <div class="subject-block">
-        <div class="subject-header subj-phonics">
-          <span class="icon">🔊</span> Phonics
-          <span class="subject-tag">4 Units</span>
-        </div>
-        <div class="quarters">
-          <div class="quarter">
-            <div class="q-label">Q1 &middot; Unit 1</div>
-            <div class="q-title">Long &amp; Short Vowels</div>
-            <ul class="q-list">
-              <li>Long A, E, I, O Patterns</li>
-              <li>Short e and a</li>
-              <li>Short Vowel Patterns</li>
-            </ul>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q2 &middot; Unit 2</div>
-            <div class="q-title">R-Controlled &amp; Blends</div>
-            <ul class="q-list">
-              <li>-er, -or, -ur, -ir</li>
-              <li>-ore, -oar, -air, -are, -ure</li>
-              <li>Contractions</li>
-              <li>-oy, -oi</li>
-              <li>pr, sh, th, pl blends</li>
-              <li>ck, ct, ft, ld, mp, nd endings</li>
-            </ul>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q3 &middot; Unit 3</div>
-            <div class="q-title">Consonant Clusters</div>
-            <ul class="q-list">
-              <li>ng, nk, nt, pt, sk, st</li>
-              <li>ch, -tch</li>
-              <li>spr, shr, str, squ, scr, spl, thr</li>
-              <li>gh, ph, f</li>
-              <li>Silent letter combos: mb, gn, wr, kn, stle</li>
-              <li>Hard/soft "g" &amp; "c"</li>
-            </ul>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q4 &middot; Unit 4</div>
-            <div class="q-title">Endings, Affixes &amp; Word Building</div>
-            <ul class="q-list">
-              <li>Endings: -ed, -ing</li>
-              <li>Suffixes: -ly, -less, -ness, -ful, -ily</li>
-              <li>Suffixes: -y, -al, -able, -ible</li>
-              <li>Suffixes: -tion, -sion, -ment, -er, -est</li>
-              <li>Prefixes: re-, dis-, un-, im-, in-</li>
-              <li>Plurals (regular &amp; irregular)</li>
-              <li>Compound Words &amp; Homonyms</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- ─────────── MATH ─────────── -->
-      <div class="subject-block">
-        <div class="subject-header subj-math">
-          <span class="icon">🧮</span> Math &middot; enVisionMATH 2.0
-          <span class="subject-tag">Topics 1&ndash;16</span>
-        </div>
-        <div class="quarters">
-          <div class="quarter">
-            <div class="q-label">Q1 &middot; Unit 1</div>
-            <div class="q-title">Multiplication Foundations</div>
-            <div class="q-subtitle">Topics 1&ndash;3</div>
-            <ul class="q-list">
-              <li>Understanding Multiplication</li>
-              <li>Multiplication Facts</li>
-            </ul>
-            <div class="eq"><strong>EQ:</strong> How do we understand and use multiplication?</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q2 &middot; Units 1&ndash;2</div>
-            <div class="q-title">Division &amp; Data</div>
-            <div class="q-subtitle">Topics 4&ndash;7</div>
-            <ul class="q-list">
-              <li>Using Multiplication to Divide</li>
-              <li>Division Facts</li>
-              <li>Represent &amp; Interpret Data</li>
-            </ul>
-            <div class="eq"><strong>EQ:</strong> How is division related to multiplication?</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q3 &middot; Units 3&ndash;4</div>
-            <div class="q-title">Addition, Subtraction &amp; Geometry</div>
-            <div class="q-subtitle">Topics 8&ndash;11, 15</div>
-            <ul class="q-list">
-              <li>Fluently Add &amp; Subtract Within 1,000</li>
-              <li>Operations &amp; Word Problems</li>
-              <li>Geometry</li>
-            </ul>
-            <div class="eq"><strong>EQ:</strong> How can we solve problems with the four operations?</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q4 &middot; Units 5&ndash;6</div>
-            <div class="q-title">Fractions &amp; Measurement</div>
-            <div class="q-subtitle">Topics 12&ndash;14, 16</div>
-            <ul class="q-list">
-              <li>Fractions</li>
-              <li>Measurement</li>
-            </ul>
-            <div class="eq"><strong>EQ:</strong> How do fractions and measurements describe our world?</div>
-          </div>
-        </div>
-        <div style="margin-top:14px; padding:12px 16px; background:#EFF6FF; border:1px solid #BFDBFE; border-left:4px solid #253a77; border-radius:8px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
-          <span style="font-size:1.4rem;">📄</span>
-          <div style="flex:1; min-width:200px;">
-            <a href="https://www.k5learning.com/free-math-worksheets/third-grade-3" target="_blank" rel="noopener" style="font-weight:700; color:#253a77; text-decoration:none; font-size:1rem;">Printable Worksheets</a>
-            <div style="font-size:0.82rem; color:#475569; margin-top:2px;">K5 Learning &middot; free ready-to-print 3rd-grade math practice, all topics</div>
-          </div>
-          <a href="https://www.k5learning.com/free-math-worksheets/third-grade-3" target="_blank" rel="noopener" style="background:#253a77; color:#fff; padding:6px 14px; border-radius:6px; text-decoration:none; font-size:0.85rem; font-weight:600;">Open →</a>
-        </div>
-      </div>
-
-      <!-- ─────────── SOCIAL STUDIES ─────────── -->
-      <div class="subject-block">
-        <div class="subject-header subj-ss">
-          <span class="icon">🌍</span> Social Studies
-          <span class="subject-tag">4 Units</span>
-        </div>
-        <div class="quarters">
-          <div class="quarter">
-            <div class="q-label">Q1 &middot; History</div>
-            <div class="q-title">Government</div>
-            <div class="q-subtitle">Election-year connection to current events</div>
-            <div class="eq"><strong>EQ:</strong> How do people organize themselves?</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q2 &middot; Civics</div>
-            <div class="q-title">Civics: Communities</div>
-            <div class="q-subtitle">Communities Build a Nation &amp; Leaders</div>
-            <div class="eq"><strong>EQ:</strong> How does our past affect our future?</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q3 &middot; Economics</div>
-            <div class="q-title">Economics</div>
-            <div class="eq"><strong>EQ:</strong> How can we meet our needs in a changing world?</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q4 &middot; Geography</div>
-            <div class="q-title">Earth's Resources &amp; Cultures Around the World</div>
-            <div class="eq"><strong>EQ:</strong> How do we live where we do?</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ─────────── SCIENCE ─────────── -->
-      <div class="subject-block">
-        <div class="subject-header subj-science">
-          <span class="icon">🔬</span> Science
-          <span class="subject-tag">NGSS + Hawaiiana</span>
-        </div>
-        <div class="quarters">
-          <div class="quarter">
-            <div class="q-label">Q1 &middot; Engineering &amp; Tech</div>
-            <div class="q-title">Scientific Method, Engineering &amp; Technology</div>
-            <div class="eq"><strong>EQ:</strong> How do engineers create a prototype and test it to see if it works?</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q2 &middot; Physical Science</div>
-            <div class="q-title">Forces and Motion</div>
-            <div class="eq"><strong>EQ:</strong> How does force impact motion?</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q3 &middot; Life Science</div>
-            <div class="q-title">Life Cycles &amp; Inherited Traits<br>Organisms &amp; Their Environment</div>
-            <div class="q-subtitle">Hawaiiana Unit</div>
-            <div class="eq"><strong>EQ:</strong> How do living things survive?</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q4 &middot; Earth &amp; Space</div>
-            <div class="q-title">Weather Impacts</div>
-            <div class="eq"><strong>EQ:</strong> How does climate influence our choices?</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ─────────── RELIGION ─────────── -->
-      <div class="subject-block">
-        <div class="subject-header subj-religion">
-          <span class="icon">✝️</span> Religion &middot; The Four Marks of the Church
-          <span class="subject-tag">5 Units</span>
-        </div>
-        <div class="quarters">
-          <div class="quarter">
-            <div class="q-label">Q1 &middot; Unit 1</div>
-            <div class="q-title">The Church is One</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q2 &middot; Unit 2</div>
-            <div class="q-title">The Church is Holy</div>
-            <div class="q-subtitle">🕯️ Liturgical Calendar: Advent</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q3 &middot; Unit 3</div>
-            <div class="q-title">The Church is Catholic</div>
-            <div class="q-subtitle">✝️ Liturgical Calendar: Lent</div>
-          </div>
-          <div class="quarter">
-            <div class="q-label">Q4 &middot; Units 4&ndash;5</div>
-            <div class="q-title">The Church is Apostolic<br>+ The Church Has a Mission to the World</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h3>🗓 Daily Schedule</h3>
-      <p>Please refer to the MSOS elementary daily bell schedule (a hard copy is included in your
-      first-week folder) for exact times. Highlights of a typical day:</p>
-      <ul>
-        <li><strong>Morning arrival &amp; prayer</strong> &mdash; students settle in, morning meeting, prayer.</li>
-        <li><strong>Morning academic block</strong> &mdash; Reading, Writing, Phonics, Grammar.</li>
-        <li><strong>Recess</strong> &mdash; mid-morning outdoor break.</li>
-        <li><strong>Math block</strong> &mdash; enVisionMATH 2.0 lesson + guided practice.</li>
-        <li><strong>Lunch &amp; recess</strong> &mdash; midday.</li>
-        <li><strong>Afternoon block</strong> &mdash; Social Studies, Science, or Religion (rotates by day).</li>
-        <li><strong>Specials</strong> &mdash; P.E., Music, Art, Library, and Chapel rotate on specific days &mdash; please check the weekly schedule sent home.</li>
-        <li><strong>Dismissal</strong> &mdash; end-of-day prayer, pack-up, and dismissal per the master schedule.</li>
+    <!-- Teaching Philosophy -->
+    <div class="section-card">
+      <h2>💜 Mrs. Won's Teaching Philosophy</h2>
+      <p>My teaching philosophy is rooted in nurturing the development of the whole child &mdash; socially, emotionally, and academically. I believe that every child learns best in a safe and supportive environment where they feel empowered to take risks, make mistakes, and grow from them. It is in this space that we <strong>nurture</strong> curiosity, <strong>unite</strong> as a classroom family, and <strong>inspire</strong> one another to reach our God-given potential.</p>
+      <p>Equally important is helping students grow in their relationship with God. Through daily prayer, reflection, and faith-filled learning, I hope to guide each child to become the unique person God created them to be.</p>
+      <p style="font-weight:700;color:#253a77;margin-top:12px">At Mary, Star of the Sea School, we guide our students to become <strong>S.T.A.R.s</strong>:</p>
+      <ul class="star-list">
+        <li>⭐ <strong>S</strong>elf-aware, Confident Individuals</li>
+        <li>⭐ <strong>T</strong>eachable, Lifelong Independent Learners</li>
+        <li>⭐ <strong>A</strong>ctive Christians</li>
+        <li>⭐ <strong>R</strong>esponsible Citizens</li>
       </ul>
-      <p style="font-size:0.9rem;color:#4a5568">Pickup procedures are in the family handbook. Please notify the office in advance for early pickups or changes.</p>
-    </section>
+      <p style="margin-top:12px">My goal is to help your child grow in all these areas by building a strong foundation for both their academic journey and their life of faith. Together, we will nurture hearts and minds, unite in purpose and spirit, and inspire one another each day. I am excited for this new beginning as we grow together &mdash; empowered to succeed and always guided by faith.</p>
+    </div>
 
-    <section>
-      <h3>📝 Homework &amp; Study Expectations</h3>
-      <p><strong>Nightly time:</strong> Following the MSOS guideline of ~10 minutes per grade,
-      3rd graders should expect roughly <strong>30 minutes of homework per night</strong>, plus 20 minutes
-      of independent reading. Homework is meant to reinforce (not introduce) what was learned in class.</p>
-      <p><strong>Typical assignments:</strong></p>
+    <!-- Attendance -->
+    <div class="section-card">
+      <h2>🕘 Attendance</h2>
+      <p>Students begin school at <strong>7:45 a.m.</strong> with morning assignments. They will be considered &ldquo;tardy&rdquo; at <strong>7:50 a.m.</strong> and will be required to get a tardy slip from the office. Please inform me and the office via email of any <u>absences</u> by <strong>8:00 a.m.</strong></p>
       <ul>
-        <li>Math worksheet or IXL practice tied to the current topic.</li>
-        <li>Weekly spelling / phonics list and a short reading assignment.</li>
-        <li>Ongoing reading log (nightly reading, family-signed weekly).</li>
-        <li>Occasional project work (research, writing, science observation).</li>
+        <li><em><strong>Morning drop-off zone</strong> is at the Gazebo along Marist Lane (drive-thru lane next to the church and cafeteria). Students arriving before 7:30 should proceed to the cafeteria.</em></li>
+        <li><em><strong>Afternoon pick-up zone</strong> is at the Gazebo beginning at 2:35 p.m. and 11:35 a.m. on Early Dismissal Days. Some children will be attending After School Enrichment Programs. Those with younger siblings are to be picked up together in front of the school office.</em></li>
       </ul>
-      <p><strong>Tips for supporting homework at home:</strong></p>
-      <ul>
-        <li>Set a consistent, quiet study time and place.</li>
-        <li>Read the directions together, then step back and let your child try.</li>
-        <li>Ask them to explain the problem back &mdash; teaching cements learning.</li>
-        <li>If a task takes much longer than expected, please note it and email me.</li>
-      </ul>
-      <p><strong>Late or missed work policy:</strong> Homework is due the next school day.
-      Late work may still be turned in the following day for reduced credit; work missed due to
-      an <em>excused</em> absence has one week for full credit. Chronically missing work triggers a
-      phone call home so we can problem-solve together.</p>
-    </section>
+    </div>
 
-    <section>
-      <h3>🎯 Grading &amp; Assessment</h3>
-      <p>Student progress is reported quarterly. Grades are based on daily work,
-      formative and summative assessments, class participation, and project-based
-      learning aligned with each subject&#39;s Essential Questions.</p>
-      <ul>
-        <li><strong>Daily Work &amp; Practice</strong> &mdash; classwork, weekly practice</li>
-        <li><strong>Assessments</strong> &mdash; quizzes, chapter/unit tests, benchmark reads</li>
-        <li><strong>Projects</strong> &mdash; writing pieces, novel studies, science labs, social studies research</li>
-        <li><strong>Participation &amp; Effort</strong> &mdash; classroom discussions, prayer, service</li>
-      </ul>
-      <p style="margin-top:12px"><strong>Grading scale (per MSOS elementary reporting):</strong></p>
-      <ul>
-        <li><strong>E</strong> &ndash; Exceeds grade-level expectations</li>
-        <li><strong>M</strong> &ndash; Meets grade-level expectations</li>
-        <li><strong>P</strong> &ndash; Progressing toward grade-level expectations</li>
-        <li><strong>N</strong> &ndash; Needs support to meet grade-level expectations</li>
-      </ul>
-      <p style="margin-top:8px"><strong>Standardized testing:</strong> Students take the <strong>STAR</strong> assessment in fall, winter, and spring to track reading and math growth. English-language learners take the <strong>WIDA</strong> assessment as required.</p>
-      <p><strong>Parent-teacher conferences</strong> are held after Q1 and Q3 grades post; additional conferences may be requested by email anytime.</p>
-    </section>
+    <!-- Grading -->
+    <div class="section-card">
+      <h2>📊 Grading</h2>
+      <p>Grading will be based on a variety of daily classwork, projects, assessments, and homework. Late work will be accepted but may affect the student's study skills grade. <u>Quality work</u> is also expected (including manuscript-cursive writing).</p>
+      <p style="margin-top:12px"><strong>Primary Grades K-3 Report Card Grading:</strong></p>
+      <div class="grading-scale">
+        <div class="grade-item">
+          <div class="grade-num">1</div>
+          <div class="grade-name">Beginning</div>
+          <ul>
+            <li>The student is beginning to understand the concept or skill</li>
+            <li>Requires significant support and guidance</li>
+            <li>Limited understanding or mastery of the topic</li>
+          </ul>
+        </div>
+        <div class="grade-item">
+          <div class="grade-num">2</div>
+          <div class="grade-name">Developing</div>
+          <ul>
+            <li>The student demonstrates partial understanding or skill</li>
+            <li>Needs occasional assistance or support</li>
+            <li>Progressing but with notable gaps</li>
+          </ul>
+        </div>
+        <div class="grade-item">
+          <div class="grade-num">3</div>
+          <div class="grade-name">Proficient</div>
+          <ul>
+            <li>The student meets grade-level expectations</li>
+            <li>Demonstrates a solid understanding of concepts or skills</li>
+            <li>Works independently with minimal errors</li>
+          </ul>
+        </div>
+        <div class="grade-item">
+          <div class="grade-num">4</div>
+          <div class="grade-name">Mastery</div>
+          <ul>
+            <li>The student exceeds grade-level expectations</li>
+            <li>Demonstrates a thorough understanding and can apply skills in new situations</li>
+            <li>Work is consistently accurate and shows higher-level thinking</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:14px">Report cards are based on how your child performs each quarter. Students also take a standardized assessment called <strong>STAR Renaissance</strong> for Math and Literacy in fall, winter, and spring. English Language Learners take the <strong>WIDA</strong> assessment as required.</p>
+      <p><strong>Parent-Teacher-Student Conferences</strong> are held at the end of the first and third quarters.</p>
+    </div>
 
-    <section>
-      <h3>🏫 Classroom Procedures &amp; Behavior Expectations</h3>
-      <p>Our classroom follows Mary, Star of the Sea School&#39;s values of respect,
-      kindness, responsibility, and faith. Students are expected to:</p>
-      <ul>
-        <li>Come to class prepared and ready to learn</li>
-        <li>Treat classmates, teachers, and school property with respect</li>
-        <li>Complete assignments on time and to their best ability</li>
-        <li>Participate in prayer and faith formation</li>
-        <li>Ask for help when needed &mdash; we are a learning community</li>
-      </ul>
-      <p style="margin-top:12px"><strong>Positive behavior system:</strong> Students earn recognition through verbal praise, "star student" notes home, individual sticker/star charts, and class-wide rewards (extra recess, class read-aloud pick, sharing time) for consistently showing our expected behaviors.</p>
-      <p><strong>When expectations are not met (in a supportive tone):</strong></p>
-      <ol style="margin:6px 0 10px 22px">
-        <li>Quiet private reminder and reset.</li>
-        <li>Reflection sheet / think-time in class.</li>
-        <li>Loss of a small privilege (e.g., choice time) and a note home.</li>
-        <li>Phone call or email home; if needed, a family meeting with the principal.</li>
-      </ol>
-      <p style="font-size:0.9rem;color:#4a5568">The goal is always to help students re-choose kind, respectful, on-task behavior &mdash; not to punish.</p>
-    </section>
-
-    <section>
-      <h3>🎒 Supplies &amp; Materials</h3>
-      <p><strong>Provided by the school:</strong> textbooks, classroom manipulatives, math tools,
-      composition books, and shared classroom technology.</p>
-      <p><strong>Students bring daily (in labeled folder/backpack):</strong></p>
-      <ul>
-        <li>Sharpened pencils (a pack of 12 for classroom bin)</li>
-        <li>Two large pink erasers</li>
-        <li>Crayons and colored pencils</li>
-        <li>Child-safe scissors and a glue stick</li>
-        <li>Two two-pocket folders (homework in / homework out)</li>
-        <li>Reusable water bottle and healthy snack</li>
-        <li>Reading book (school or home library)</li>
-      </ul>
-      <p style="font-size:0.9rem;color:#4a5568"><strong>Later in the year:</strong>
-      a small ruler, watercolor set, and headphones may be requested &mdash; a supply reminder
-      will go home in advance.</p>
-    </section>
-
-    <section>
-      <h3>💻 Technology Use</h3>
+    <!-- Technology Use -->
+    <div class="section-card">
+      <h2>💻 Technology Use</h2>
       <p><strong>Platforms used in this class:</strong></p>
       <ul>
-        <li><strong>FACTS / RenWeb</strong> &mdash; grade portal and family communication.</li>
-        <li><strong>IXL</strong> &mdash; individualized skill practice for math and language arts.</li>
-        <li><strong>Class iPads / Chromebooks</strong> &mdash; used in class for guided reading, math practice, and research.</li>
-        <li><strong>Educational sites</strong> &mdash; Khan Academy Kids, Epic!, and teacher-approved read-alouds.</li>
+        <li><strong>Beehively, RenWeb, FACTS</strong> &mdash; family communication and portal</li>
+        <li><strong>IXL / Freckle</strong> &mdash; aligns with our STAR Renaissance test results; individual skill practice for math and language arts</li>
+        <li><strong>Student iPads</strong> &mdash; used as an additional resource for language arts, math, and research</li>
       </ul>
-      <p><strong>Digital citizenship:</strong> All device use follows the MSOS
-      <em>Technology Acceptable Usage Policy</em> in the family handbook. Third graders learn to
-      use devices only for schoolwork, keep passwords private, be kind online, and tell an adult
-      if anything on a screen makes them uncomfortable.</p>
-    </section>
+      <p style="margin-top:10px"><strong>*Digital Usage for Students:</strong> All device use follows the MSOS Technology Acceptable Usage Policy in our MSOS Parent Handbook. Students are to use their iPads only for schoolwork, keep their original passwords, be kind online, and report any discrepancies upon the use of their device. <em>It is not recommended that students in third grade use any form of AI (artificial intelligence) for any of their class assignments.</em></p>
+    </div>
 
-    <section>
-      <h3>👨‍👩‍👧 Room Parent &amp; Parent Volunteers</h3>
-      <p><strong>Ways to help:</strong> chaperoning field trips, helping with class parties
-      (Halloween, Christmas, Valentine's, end-of-year), guest-reading a favorite book, sharing
-      your job or hobby, and providing occasional classroom supplies.</p>
-      <p><strong>How to sign up:</strong> Please email me if you'd like to help &mdash; I'll connect
-      you with our room parent. All volunteers must have current safe-environment training on
-      file with the school office.</p>
-      <p><strong>Key dates to remember:</strong> Back-to-School Night, Parent-Teacher Conferences
-      (Q1 &amp; Q3), All Saints Prayer Service, Christmas Program, Catholic Schools Week, STEM Fair,
-      Field Day, and end-of-year Awards. Exact dates are on the school calendar and in weekly
-      newsletters.</p>
-    </section>
+    <!-- Homework and Study Expectations -->
+    <div class="section-card">
+      <h2>📝 Homework and Study Expectations</h2>
+      <p><strong>ALL homework is a review of concepts taught in class</strong> / <u><strong>&ldquo;Choice Boards&rdquo;</strong></u> (see details below). Projects will periodically be assigned. Additional reviews / incomplete assignments will be added to daily homework as necessary. <u>Students' Homework Agendas</u> to be signed <strong>DAILY</strong>.</p>
+      <p>Choice Board Project and book report will be assigned twice a quarter, with 4 weeks to complete.</p>
 
-    <section>
-      <h3>🏡 How to Support Your Child at Home</h3>
-      <p>Families are our most important partner in student success. Here are the routines
-      that build strong 3rd-grade learners:</p>
+      <div class="choice-board-callout">
+        <h4>What is a Choice Board?</h4>
+        <ul>
+          <li>A menu or grid of learning activities</li>
+          <li>Students choose which activities to complete</li>
+          <li>Covers different subjects / concepts / skills</li>
+          <li>To be completed at home</li>
+        </ul>
+        <h4 style="margin-top:10px">Purpose of a Choice Board for Homework:</h4>
+        <ul>
+          <li>Gives students voice and choice</li>
+          <li>Makes homework more fun and engaging</li>
+          <li>Supports different learning styles</li>
+          <li>Encourages responsibility and independence</li>
+          <li>*Reinforces subjects, concepts, and skills taught in class</li>
+          <li>Allows for creativity and deeper thinking</li>
+        </ul>
+      </div>
+
+      <div class="hw-guidelines">
+        <h4>⭐ Third Grade Homework Guidelines ⭐</h4>
+        <p style="text-align:center;font-size:0.9rem;color:#7a5f00">(See Student Agenda for more details.)</p>
+        <p style="margin:8px 0 12px;font-size:0.92rem"><strong>3rd Graders are expected to spend about 30 minutes per night with about 20 minutes of independent reading.</strong> All homework is meant to reinforce concepts and skills learned in class.</p>
+        <ol>
+          <li>📘 Check your Student Agenda book every day after school to see what homework needs to be done.</li>
+          <li>✏️ Read all directions carefully before starting each assignment.</li>
+          <li>🕰️ Take your time &mdash; don't rush. NEAT work shows you care!</li>
+          <li>📚 Double-check your work when you finish.</li>
+          <li>📏 Use your BEST handwriting and complete sentences when needed.</li>
+          <li>👨‍👩‍👧 Ask a parent or older sibling for help if you're confused &mdash; but try on your own first!</li>
+          <li>Put a star ⭐ or a happy face 😊 next to each assignment in your agenda after it's completed (projects: work on a little each day before due date).</li>
+          <li>✅ Have a parent review your completed homework and sign your agenda book DAILY.</li>
+          <li>🎒 Pack your finished homework back into your folder or backpack.</li>
+          <li>🗓️ Bring your Student Agenda book and homework to school every day.</li>
+          <li>🎉 Be proud of your work &mdash; you're building great habits!</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Curriculum -->
+    <div class="section-card">
+      <h2>📚 Curriculum</h2>
+      <p style="font-size:0.9rem;color:#4a5568;font-style:italic">Please refer to the curriculum map for the full quarter-by-quarter arc. This section shows the curriculum books and resources we use.</p>
+
+      <div class="subject-block">
+        <h3>✝️ Religion</h3>
+        <p><strong>RCL Benzinger</strong> is used as a guided resource. Growing in our faith is the core of our instruction. Learn to pray and follow the significant events in our liturgical calendar that teach us more about God.</p>
+      </div>
+      <div class="subject-block">
+        <h3>🔬 Science</h3>
+        <p><strong>Houghton Mifflin Harcourt (HMH)</strong>, <strong>STEM Labs</strong>, and <strong>Mystery Science</strong> curriculum teaches students to explore engineering &amp; technology, forces &amp; motion, life cycles &amp; inherited traits, organisms &amp; their environment, and weather impact.</p>
+      </div>
+      <div class="subject-block">
+        <h3>📖 Literacy &middot; IXL, Freckle</h3>
+        <p>Students will develop their reading comprehension, grammar/language, and writing skills, through a cross-curricular approach that includes chapter books, <strong>Epic</strong>, and other resource materials. Students will explore fiction and non-fiction texts and write personal narratives, opinion pieces, research reports, poetry, and much more.</p>
+      </div>
+      <div class="subject-block">
+        <h3>🧮 Math &middot; IXL</h3>
+        <p><strong>Envision Math</strong> is a problem-based curriculum that will develop number sense, multiplication, division, time, data tables, fractions, and much more.</p>
+      </div>
+      <div class="subject-block">
+        <h3>🌍 Social Studies</h3>
+        <p><strong>myWorld</strong> social studies curriculum teaches students about our environment, economics, communities, government, and citizenship. We will also learn about maps and geography.</p>
+      </div>
+    </div>
+
+    <!-- Wellness -->
+    <div class="section-card">
+      <h2>💛 Wellness</h2>
+      <p><strong>Wellness for third grade is once a week during our third quarter with our School Counselor, Ms. Tacy.</strong></p>
+      <p>Students will explore their self-awareness by recognizing and managing their emotions.</p>
+      <p style="font-weight:700;color:#253a77;margin-top:10px">Brief description of each week of 3rd-grade SEL/Wellness lessons:</p>
+      <ol>
+        <li><strong>The Mood Meter</strong> &mdash; introduce it, scale, and name feelings</li>
+        <li><strong>Feelings Detectives</strong> &mdash; What is empathy? Reading others' emotions; we can feel different emotions about the same thing</li>
+        <li><strong>Thought Connections</strong> &mdash; How thoughts relate to feelings and actions; caterpillar thoughts (positive, growth-oriented) vs. worm thoughts (negative); growth mindset</li>
+        <li><strong>What makes a good friend?</strong> Finding commonalities and identifying strengths in self and others</li>
+        <li><strong>Stereotypes</strong> &mdash; what they are and how they can be harmful</li>
+        <li><strong>Battle the Bullies</strong> &mdash; what bullying is, reporting, assertiveness</li>
+        <li><strong>Problem-Solving Steps</strong> &mdash; stop, think, cool off, weigh consequences, take action</li>
+        <li><strong>Talk it out and clear it up</strong> &mdash; how to resolve conflicts, apologize, make new choices next time</li>
+        <li><strong>Transition to Intermediate</strong> &mdash; growing, changing, and learning in new ways</li>
+      </ol>
+    </div>
+
+    <!-- Birthday/Holiday Treats -->
+    <div class="section-card">
+      <h2>🎂 Birthday / Holiday Treats</h2>
+      <p>For health and safety reasons, please email Mrs. Won before bringing any class treats. Non-food items (goodie bags) are encouraged, or store-bought HEALTHY treats are preferred and should be easy to distribute to the children. Invitations only to be distributed if the entire class is invited.</p>
+      <p style="font-size:0.9rem;color:#4a5568"><em>Please refer to the</em> <strong>PARENT/STUDENT HANDBOOK</strong> for our school Birthday and Treat Policies (pp. 24&ndash;25).</p>
+    </div>
+
+    <!-- Uniforms -->
+    <div class="section-card">
+      <h2>👕 School Uniforms</h2>
+      <p><em>Please refer to the</em> <strong>PARENT/STUDENT HANDBOOK</strong> for our school uniform policy (pp. 54&ndash;58).</p>
+      <p><strong>3A will have P.E. on Thursdays and Fridays.</strong> Students are to wear their P.E. uniforms on these days. <em>3A P.E. days to be updated for the 2026-2027 school year.</em></p>
+    </div>
+
+    <!-- Dates to Remember -->
+    <div class="section-card">
+      <h2>📅 Dates to Remember</h2>
+      <p style="font-size:0.9rem;color:#4a5568;font-style:italic">Refer to our MSOS School Calendar for specific dates.</p>
+      <ul class="dates-list">
+        <li>Monthly Early Dismissal Days</li>
+        <li>Parent-Teacher-Student Conferences (Q1 &amp; Q3)</li>
+        <li>Fall Festival</li>
+        <li>Christmas Program</li>
+        <li>Catholic Schools Week</li>
+        <li>MSOS East Honolulu Food Festival</li>
+        <li>May Day</li>
+      </ul>
+    </div>
+
+    <!-- Parent Communication and Volunteers -->
+    <div class="section-card">
+      <h2>💬 Parent Communication &amp; Room Parent / Volunteers</h2>
       <ul>
-        <li><strong>Read together nightly</strong> (20+ minutes) &mdash; take turns and talk about the story.</li>
-        <li><strong>Practice multiplication and division facts</strong> in short daily bursts (5&ndash;10 minutes).</li>
-        <li><strong>Review the week's Essential Question</strong> at dinner &mdash; it makes school talk easy.</li>
-        <li><strong>Encourage independence</strong> &mdash; let your child pack their own backpack and check the assignment sheet.</li>
-        <li><strong>Praise effort and strategy</strong> ("I saw you keep trying") more than just correct answers.</li>
-        <li><strong>Check FACTS/RenWeb weekly</strong> for grades and communications.</li>
-        <li><strong>Email Mrs. Won early</strong> if you notice frustration &mdash; small course-corrections are much easier than late-quarter recoveries.</li>
+        <li>Please <strong>check and sign your child's Homework Agenda DAILY</strong>.</li>
+        <li>Please read <strong>3A's Class Newsletter/Updates</strong> weekly, sent via email.</li>
+        <li><strong>Parent Pouches</strong> will be sent home <strong>EVERY Tuesday</strong>. Please sign and return these after reviewing the material inside.</li>
+        <li><strong>Parent-Teacher-Student Conferences</strong> are scheduled for the first and third quarters.</li>
+        <li><strong>3A Classroom Parent</strong> &mdash; please email me if you are interested in helping our class.</li>
+        <li>Parents may also be asked to be <strong>chaperones for our field trips</strong>.</li>
       </ul>
-    </section>
+      <p style="margin-top:12px">Please feel free to contact me via email at <strong><a href="mailto:ewon@starofthesea.org">ewon@starofthesea.org</a></strong> for any questions or concerns. Emails will be answered within <strong>24 hours</strong> of the time the message was received. You may also choose to request a conference by emailing 2&ndash;3 dates/times that we may coordinate together. Thank you!</p>
+    </div>
 
-    <section>
-      <h3>📞 Communication</h3>
-      <p><strong>Best method:</strong> Email is fastest &mdash; reach Mrs. Won at
-      <strong><a href="mailto:ewon@starofthesea.org">ewon@starofthesea.org</a></strong>.
-      Emails will be answered within one school day.</p>
-      <p><strong>To schedule a meeting:</strong> Email me with 2&ndash;3 times that work for you.
-      I am available before school (7:45&ndash;8:00&nbsp;a.m.), during my prep period, or after
-      dismissal by appointment. Phone messages left at the school office are returned within
-      one school day.</p>
-      <p><strong>Parent-teacher conferences</strong> are held quarterly (after Q1 and Q3 grades post),
-      but families may also request additional meetings at any time throughout the year.</p>
-    </section>
+    <!-- Class Schedule -->
+    <div class="section-card">
+      <h2>🗓 Class Schedule</h2>
+      <p style="color:#92400e;font-style:italic">*My class schedule to be updated for the 2026-2027 school year.</p>
+    </div>
 
-    <section>
-      <h3>💛 Final Notes &amp; Acknowledgment</h3>
-      <p>Thank you for partnering with me this year. Your support at home is the single biggest
-      factor in your child's confidence and success in 3rd grade. I am grateful for the trust
-      you place in Mary, Star of the Sea and in this classroom.</p>
-      <p style="margin-top:8px"><strong>Class website:</strong>
-      <a href="https://starofthesea.org/classes/" target="_blank" rel="noopener">starofthesea.org/classes</a>
-      &mdash; all class pages, syllabi, and unit materials are live there.</p>
-      <p style="margin-top:8px"><strong>Acknowledgment:</strong> After reviewing this syllabus with your
-      student, please email <a href="mailto:ewon@starofthesea.org">ewon@starofthesea.org</a> with the
-      subject line &ldquo;3rd Grade A Syllabus Reviewed &mdash; [Student Name]&rdquo; so I know it has
-      reached your family. Mahalo!</p>
-    </section>
+    <!-- Final Notes & Acknowledgment -->
+    <div class="section-card" style="border-top-color:#c084fc;background:#faf5ff">
+      <h2 style="color:#6b21a8">💛 Final Notes &amp; Acknowledgment</h2>
+      <p>Thank you for partnering with me this year. Your support at home is the single biggest factor in your child's confidence and success in 3rd grade. I am grateful for the trust you place in Mary, Star of the Sea and in this classroom.</p>
+      <p><strong>Class website:</strong> <a href="https://starofthesea.org/classes/" target="_blank" rel="noopener">starofthesea.org/classes</a> &mdash; all class pages, syllabi, and unit materials are live there.</p>
+      <p><strong>Acknowledgment:</strong> <em>After reviewing this syllabus with your student, please email <a href="mailto:ewon@starofthesea.org">ewon@starofthesea.org</a> with the subject line &ldquo;3rd Grade A Syllabus Reviewed &mdash; [Student Name]&rdquo; so I know it has reached your family. Mahalo!</em></p>
+    </div>
 
-    <footer>
-      Mary, Star of the Sea School &middot; SY 2026-2027 &middot; Mrs. Edlin Won &middot; 3rd Grade A
-    </footer>
+    <footer>Empowered to Succeed, Guided by Faith &nbsp;❤️!</footer>
   </div>
 </div>
 </body>
