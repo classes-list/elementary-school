@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1st Grade B &middot; Curriculum Map 2026–2027 &middot; Mrs. Eberlin</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background:#F1F5F9; color:#1F2937; line-height:1.5; padding:20px; }
+    .container { max-width: 1400px; margin: 0 auto; background:#fff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08); overflow:hidden; }
+    .header { background:linear-gradient(135deg,#253a77 0%,#4c6ac8 100%); color:#fff; padding:24px 28px; position:relative; }
+    .header h1 { font-size:1.6rem; margin-bottom:6px; }
+    .header .sub { font-size:0.95rem; opacity:0.92; }
+    .header .back-btn { position:absolute; top:20px; right:24px; background:rgba(255,255,255,0.18); color:#fff; border:1.5px solid rgba(255,255,255,0.4); padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.85rem; cursor:pointer; }
+    .header .back-btn:hover { background:rgba(255,255,255,0.28); }
+
+    .tabs { display:flex; background:#F8FAFC; border-bottom:2px solid #E2E8F0; padding:0 28px; }
+    .tab { background:transparent; border:none; padding:14px 22px; font-size:0.95rem; font-weight:600; color:#64748B; cursor:pointer; border-bottom:3px solid transparent; transition:all 0.15s; }
+    .tab:hover { color:#253a77; }
+    .tab.active { color:#253a77; border-bottom-color:#253a77; }
+    .panel { display:none; padding:24px 28px; }
+    .panel.active { display:block; }
+    .panel h2 { font-size:1.25rem; color:#253a77; margin-bottom:14px; }
+    .panel .note { font-size:0.85rem; color:#64748B; margin-bottom:14px; font-style:italic; }
+
+    /* Gantt calendar */
+    .gantt-wrap { overflow-x:auto; }
+    .gantt-table { width:100%; border-collapse:collapse; font-size:0.72rem; min-width: 1200px; }
+    .gantt-table th, .gantt-table td { border:1px solid #CBD5E1; padding:6px 8px; }
+    .gantt-table .subj-cell { width:200px; padding:10px 12px; font-size:0.88rem; background:#F8FAFC; color:#253a77; }
+    .gantt-table .week-th { width:28px; text-align:center; background:#253a77; color:#fff; font-weight:600; font-size:0.68rem; padding:4px 2px; }
+    .gantt-table .qtr-banner { padding:8px; text-align:center; font-weight:700; font-size:0.82rem; }
+    .gantt-table .qtr-cell { text-align:center; font-weight:600; font-size:0.78rem; padding:12px 10px; line-height:1.3; }
+    .gantt-table .corner-cell { background:#F1F5F9; }
+
+    /* Curriculum map */
+    .map-wrap { overflow-x:auto; }
+    .map-table { width:100%; border-collapse:collapse; font-size:0.85rem; }
+    .map-table th, .map-table td { border:1px solid #CBD5E1; padding:12px 14px; vertical-align:top; text-align:left; }
+    .map-table thead th { text-align:center; font-weight:700; padding:10px 12px; }
+    .map-table th.subj-col { background:#253a77; color:#fff; width:180px; }
+    .map-table th.year-col { background:#7a5f00; color:#fff; width:220px; }
+    .map-table .subj-name { background:#F0F4FC; font-size:0.95rem; color:#253a77; font-weight:700; width:180px; }
+    .map-table .topic-cell { font-size:0.88rem; line-height:1.55; }
+    .map-table .year-focus { background:#FFFBEA; font-style:italic; color:#7a5f00; font-size:0.85rem; width:220px; }
+
+    .notes-box { margin-top:24px; padding:16px 20px; background:#FFF8E1; border-left:4px solid #FFD100; border-radius:6px; }
+    .notes-box h3 { font-size:1rem; color:#7A5F00; margin-bottom:10px; }
+    .notes-box ul { list-style:none; padding:0; }
+    .notes-box li { padding:4px 0; font-size:0.9rem; color:#4A4A4A; }
+    .notes-box li::before { content:"📌  "; }
+
+    @media (max-width:768px) {
+      .header h1 { font-size:1.2rem; }
+      .tab { padding:10px 14px; font-size:0.85rem; }
+      .header .back-btn { position:static; margin-top:12px; display:inline-block; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📅 1st Grade B &middot; Curriculum Map 2026–2027</h1>
+      <div class="sub">Mary, Star of the Sea School &middot; Teacher: Mrs. Raylyn Eberlin</div>
+      <a class="back-btn" href="1b-eberlin.html">← Back to Class</a>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="calendar">📅 Unit Calendar (Gantt)</button>
+      <button class="tab" data-tab="map">📚 Curriculum Map</button>
+    </div>
+
+    <div id="calendar" class="panel active">
+      <h2>Week-by-Week Unit Calendar</h2>
+      <p class="note">Color-coded bars show which topics are taught in each quarter across all subjects. Q1 blue &middot; Q2 green &middot; Q3 gold &middot; Q4 orange.</p>
+      <div class="gantt-wrap">
+        <table class="gantt-table">
+          <thead>
+            <tr>
+              <th class="corner-cell" rowspan="2" style="background:#F1F5F9;">Subject</th>
+              <th class="qtr-banner" colspan="9" style="background:#BDD7EE;color:#1F4E78;">Q1: 8/12–10/16</th><th class="qtr-banner" colspan="9" style="background:#C6E0B4;color:#365B27;">Q2: 10/27–12/19</th><th class="qtr-banner" colspan="9" style="background:#FFE699;color:#7A5F00;">Q3: 1/5–3/13</th><th class="qtr-banner" colspan="9" style="background:#F4B084;color:#7B3D14;">Q4: 3/23–5/22</th>
+            </tr>
+            <tr><th class="week-th">W1</th><th class="week-th">W2</th><th class="week-th">W3</th><th class="week-th">W4</th><th class="week-th">W5</th><th class="week-th">W6</th><th class="week-th">W7</th><th class="week-th">W8</th><th class="week-th">W9</th><th class="week-th">W10</th><th class="week-th">W11</th><th class="week-th">W12</th><th class="week-th">W13</th><th class="week-th">W14</th><th class="week-th">W15</th><th class="week-th">W16</th><th class="week-th">W17</th><th class="week-th">W18</th><th class="week-th">W19</th><th class="week-th">W20</th><th class="week-th">W21</th><th class="week-th">W22</th><th class="week-th">W23</th><th class="week-th">W24</th><th class="week-th">W25</th><th class="week-th">W26</th><th class="week-th">W27</th><th class="week-th">W28</th><th class="week-th">W29</th><th class="week-th">W30</th><th class="week-th">W31</th><th class="week-th">W32</th><th class="week-th">W33</th><th class="week-th">W34</th><th class="week-th">W35</th><th class="week-th">W36</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="subj-cell">✝️ <strong>Religion</strong></td><td class="qtr-cell" colspan="9" style="background:#BDD7EE;color:#1F4E78;" title="Q1 (8/12–10/16): Our Church Community">Our Church Community</td><td class="qtr-cell" colspan="9" style="background:#C6E0B4;color:#365B27;" title="Q2 (10/27–12/19): Our Loving God">Our Loving God</td><td class="qtr-cell" colspan="9" style="background:#FFE699;color:#7A5F00;" title="Q3 (1/5–3/13): God’s Son Jesus; The Holy Spirit">God’s Son Jesus; The Holy Spirit</td><td class="qtr-cell" colspan="9" style="background:#F4B084;color:#7B3D14;" title="Q4 (3/23–5/22): Jesus’ Church of Followers">Jesus’ Church of Followers</td></tr><tr><td class="subj-cell">📖 <strong>Reading Workshop</strong></td><td class="qtr-cell" colspan="9" style="background:#BDD7EE;color:#1F4E78;" title="Q1 (8/12–10/16): Launching Readers Workshop and building good reading habits. (Sept: Reading folders go home.)">Launching Readers Workshop and building good reading habits. (Sept: Reading folders go home.)</td><td class="qtr-cell" colspan="9" style="background:#C6E0B4;color:#365B27;" title="Q2 (10/27–12/19): Using decoding, comprehension, and fluency strategies to read simple texts.">Using decoding, comprehension, and fluency strategies to read simple texts.</td><td class="qtr-cell" colspan="9" style="background:#FFE699;color:#7A5F00;" title="Q3 (1/5–3/13): Using our reading strategies to read fairy tales and folk tales. Learning about characters.">Using our reading strategies to read fairy tales and folk tales. Learning about characters.</td><td class="qtr-cell" colspan="9" style="background:#F4B084;color:#7B3D14;" title="Q4 (3/23–5/22): Using decoding, comprehension, and fluency strategies to read non-fiction. Poetry reading.">Using decoding, comprehension, and fluency strategies to read non-fiction. Poetry reading.</td></tr><tr><td class="subj-cell">✍️ <strong>Writing Workshop</strong></td><td class="qtr-cell" colspan="9" style="background:#BDD7EE;color:#1F4E78;" title="Q1 (8/12–10/16): Launching Writer’s Workshop and Narrative Writing.">Launching Writer’s Workshop and Narrative Writing.</td><td class="qtr-cell" colspan="9" style="background:#C6E0B4;color:#365B27;" title="Q2 (10/27–12/19): How-to writing. Writing to share my opinion on topics.">How-to writing. Writing to share my opinion on topics.</td><td class="qtr-cell" colspan="9" style="background:#FFE699;color:#7A5F00;" title="Q3 (1/5–3/13): Fairy tales and realistic fiction. Nonfiction booklets.">Fairy tales and realistic fiction. Nonfiction booklets.</td><td class="qtr-cell" colspan="9" style="background:#F4B084;color:#7B3D14;" title="Q4 (3/23–5/22): Writing letters to persuade others. Poetry writing.">Writing letters to persuade others. Poetry writing.</td></tr><tr><td class="subj-cell">🔤 <strong>Sounds to Spelling (Phonics)</strong></td><td class="qtr-cell" colspan="9" style="background:#BDD7EE;color:#1F4E78;" title="Q1 (8/12–10/16): Letter names; CVC words; Digraphs (ch, th, sh, wh); floss rule ff, ll, ss, zz.">Letter names; CVC words; Digraphs (ch, th, sh, wh); floss rule ff, ll, ss, zz.</td><td class="qtr-cell" colspan="9" style="background:#C6E0B4;color:#365B27;" title="Q2 (10/27–12/19): S, R, and L Blends; Final blends (-mp, -nd); Glued sounds (ng, nk).">S, R, and L Blends; Final blends (-mp, -nd); Glued sounds (ng, nk).</td><td class="qtr-cell" colspan="9" style="background:#FFE699;color:#7A5F00;" title="Q3 (1/5–3/13): R-controlled words; long vowels with magic ‘e’.">R-controlled words; long vowels with magic ‘e’.</td><td class="qtr-cell" colspan="9" style="background:#F4B084;color:#7B3D14;" title="Q4 (3/23–5/22): Long vowel teams (ee, ea, oa, oe, ue, ew); long vowel <em>i</em> spelled <em>y</em> and <em>igh</em>.">Long vowel teams (ee, ea, oa, oe, ue, ew); long vowel <em>i</em> spelled <em>y</em> and <em>igh</em>.</td></tr><tr><td class="subj-cell">✏️ <strong>Zaner-Bloser Handwriting</strong></td><td class="qtr-cell" colspan="9" style="background:#BDD7EE;color:#1F4E78;" title="Q1 (8/12–10/16): Getting started and basic strokes.">Getting started and basic strokes.</td><td class="qtr-cell" colspan="9" style="background:#C6E0B4;color:#365B27;" title="Q2 (10/27–12/19): Writing letters and numbers.">Writing letters and numbers.</td><td class="qtr-cell" colspan="9" style="background:#FFE699;color:#7A5F00;" title="Q3 (1/5–3/13): Writing words.">Writing words.</td><td class="qtr-cell" colspan="9" style="background:#F4B084;color:#7B3D14;" title="Q4 (3/23–5/22): Applying handwriting in the real world.">Applying handwriting in the real world.</td></tr><tr><td class="subj-cell">🧮 <strong>Math Workshop</strong></td><td class="qtr-cell" colspan="9" style="background:#BDD7EE;color:#1F4E78;" title="Q1 (8/12–10/16): Measurement; 2D and 3D shapes and their attributes; Telling time to the hour and half hour; Money; Adding and subtracting within 5 fluently.">Measurement; 2D and 3D shapes and their attributes; Telling time to the hour and half hour; Money; Adding and subtracting within 5 fluently.</td><td class="qtr-cell" colspan="9" style="background:#C6E0B4;color:#365B27;" title="Q2 (10/27–12/19): Solving addition and subtraction word problems; Adding and subtracting within 10 fluently.">Solving addition and subtraction word problems; Adding and subtracting within 10 fluently.</td><td class="qtr-cell" colspan="9" style="background:#FFE699;color:#7A5F00;" title="Q3 (1/5–3/13): Addition and subtraction facts to 20 using various strategies; Working with addition and subtraction equations.">Addition and subtraction facts to 20 using various strategies; Working with addition and subtraction equations.</td><td class="qtr-cell" colspan="9" style="background:#F4B084;color:#7B3D14;" title="Q4 (3/23–5/22): Extending the counting sequence; Place value; Comparing two-digit numbers.">Extending the counting sequence; Place value; Comparing two-digit numbers.</td></tr><tr><td class="subj-cell">🔬 <strong>Science</strong></td><td class="qtr-cell" colspan="9" style="background:#BDD7EE;color:#1F4E78;" title="Q1 (8/12–10/16): Scientific process; Matter and energy.">Scientific process; Matter and energy.</td><td class="qtr-cell" colspan="9" style="background:#C6E0B4;color:#365B27;" title="Q2 (10/27–12/19): Objects and patterns in the sky.">Objects and patterns in the sky.</td><td class="qtr-cell" colspan="9" style="background:#FFE699;color:#7A5F00;" title="Q3 (1/5–3/13): Survival of living things (plants and animals).">Survival of living things (plants and animals).</td><td class="qtr-cell" colspan="9" style="background:#F4B084;color:#7B3D14;" title="Q4 (3/23–5/22): Weather; Engineering Design Process.">Weather; Engineering Design Process.</td></tr><tr><td class="subj-cell">🌍 <strong>Social Studies</strong></td><td class="qtr-cell" colspan="9" style="background:#BDD7EE;color:#1F4E78;" title="Q1 (8/12–10/16): Rights and responsibilities; U.S. symbols.">Rights and responsibilities; U.S. symbols.</td><td class="qtr-cell" colspan="9" style="background:#C6E0B4;color:#365B27;" title="Q2 (10/27–12/19): Families past and present; Celebrations around the world.">Families past and present; Celebrations around the world.</td><td class="qtr-cell" colspan="9" style="background:#FFE699;color:#7A5F00;" title="Q3 (1/5–3/13): Work and geography of a community.">Work and geography of a community.</td><td class="qtr-cell" colspan="9" style="background:#F4B084;color:#7B3D14;" title="Q4 (3/23–5/22): May Day; Geography (maps, globes, continents).">May Day; Geography (maps, globes, continents).</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="notes-box">
+        <h3>Key Calendar Dates (2026–2027)</h3>
+        <ul>
+          <li>First Day of School: Aug. 12, 2026</li>
+          <li>Q1 ends: Oct. 16, 2026</li>
+          <li>Fall Break: Oct. 19–23, 2026</li>
+          <li>Q2 (Oct. 27 – Dec. 19); Winter Break: Dec. 22, 2026 – Jan. 2, 2027</li>
+          <li>Q3 (Jan. 5 – Mar. 13); Spring Break: Mar. 16–20, 2027</li>
+          <li>Q4 (Mar. 23 – May 22); Last Day of School: May 22, 2027</li>
+          <li>Parent-Teacher Conferences: Q1 &amp; Q3 (dates in weekly newsletter)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="map" class="panel">
+      <h2>Curriculum Map by Subject &amp; Quarter</h2>
+      <p class="note">Each subject's quarterly focus, plus the year-long learning goal for the class.</p>
+      <div class="map-wrap">
+        <table class="map-table">
+          <thead>
+            <tr>
+              <th class="subj-col">Subject</th>
+              <th style="background:#BDD7EE;color:#1F4E78;">Q1<br><span style="font-weight:400;font-size:0.72rem">8/12–10/16</span></th><th style="background:#C6E0B4;color:#365B27;">Q2<br><span style="font-weight:400;font-size:0.72rem">10/27–12/19</span></th><th style="background:#FFE699;color:#7A5F00;">Q3<br><span style="font-weight:400;font-size:0.72rem">1/5–3/13</span></th><th style="background:#F4B084;color:#7B3D14;">Q4<br><span style="font-weight:400;font-size:0.72rem">3/23–5/22</span></th>
+              <th class="year-col">Year-Long Focus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="subj-name">✝️ <strong>Religion</strong></td><td class="topic-cell" style="background:#BDD7EE22;border-left:4px solid #BDD7EE">Our Church Community</td><td class="topic-cell" style="background:#C6E0B422;border-left:4px solid #C6E0B4">Our Loving God</td><td class="topic-cell" style="background:#FFE69922;border-left:4px solid #FFE699">God’s Son Jesus; The Holy Spirit</td><td class="topic-cell" style="background:#F4B08422;border-left:4px solid #F4B084">Jesus’ Church of Followers</td><td class="year-focus">Learning and reciting daily prayers, stories of Jesus, learning about God’s creations, learning and practicing proper church behavior for weekly Mass.</td></tr><tr><td class="subj-name">📖 <strong>Reading Workshop</strong></td><td class="topic-cell" style="background:#BDD7EE22;border-left:4px solid #BDD7EE">Launching Readers Workshop and building good reading habits. (Sept: Reading folders go home.)</td><td class="topic-cell" style="background:#C6E0B422;border-left:4px solid #C6E0B4">Using decoding, comprehension, and fluency strategies to read simple texts.</td><td class="topic-cell" style="background:#FFE69922;border-left:4px solid #FFE699">Using our reading strategies to read fairy tales and folk tales. Learning about characters.</td><td class="topic-cell" style="background:#F4B08422;border-left:4px solid #F4B084">Using decoding, comprehension, and fluency strategies to read non-fiction. Poetry reading.</td><td class="year-focus">Building a love of reading through decoding, comprehension, fluency, and exposure to diverse genres.</td></tr><tr><td class="subj-name">✍️ <strong>Writing Workshop</strong></td><td class="topic-cell" style="background:#BDD7EE22;border-left:4px solid #BDD7EE">Launching Writer’s Workshop and Narrative Writing.</td><td class="topic-cell" style="background:#C6E0B422;border-left:4px solid #C6E0B4">How-to writing. Writing to share my opinion on topics.</td><td class="topic-cell" style="background:#FFE69922;border-left:4px solid #FFE699">Fairy tales and realistic fiction. Nonfiction booklets.</td><td class="topic-cell" style="background:#F4B08422;border-left:4px solid #F4B084">Writing letters to persuade others. Poetry writing.</td><td class="year-focus">Building writing craft across narrative, informational, opinion, and poetic forms.</td></tr><tr><td class="subj-name">🔤 <strong>Sounds to Spelling (Phonics)</strong></td><td class="topic-cell" style="background:#BDD7EE22;border-left:4px solid #BDD7EE">Letter names; CVC words; Digraphs (ch, th, sh, wh); floss rule ff, ll, ss, zz.</td><td class="topic-cell" style="background:#C6E0B422;border-left:4px solid #C6E0B4">S, R, and L Blends; Final blends (-mp, -nd); Glued sounds (ng, nk).</td><td class="topic-cell" style="background:#FFE69922;border-left:4px solid #FFE699">R-controlled words; long vowels with magic ‘e’.</td><td class="topic-cell" style="background:#F4B08422;border-left:4px solid #F4B084">Long vowel teams (ee, ea, oa, oe, ue, ew); long vowel <em>i</em> spelled <em>y</em> and <em>igh</em>.</td><td class="year-focus">Systematic phonics instruction moving from single letters to blends, digraphs, and vowel patterns.</td></tr><tr><td class="subj-name">✏️ <strong>Zaner-Bloser Handwriting</strong></td><td class="topic-cell" style="background:#BDD7EE22;border-left:4px solid #BDD7EE">Getting started and basic strokes.</td><td class="topic-cell" style="background:#C6E0B422;border-left:4px solid #C6E0B4">Writing letters and numbers.</td><td class="topic-cell" style="background:#FFE69922;border-left:4px solid #FFE699">Writing words.</td><td class="topic-cell" style="background:#F4B08422;border-left:4px solid #F4B084">Applying handwriting in the real world.</td><td class="year-focus">Developing legible manuscript handwriting through the Zaner-Bloser program.</td></tr><tr><td class="subj-name">🧮 <strong>Math Workshop</strong></td><td class="topic-cell" style="background:#BDD7EE22;border-left:4px solid #BDD7EE">Measurement; 2D and 3D shapes and their attributes; Telling time to the hour and half hour; Money; Adding and subtracting within 5 fluently.</td><td class="topic-cell" style="background:#C6E0B422;border-left:4px solid #C6E0B4">Solving addition and subtraction word problems; Adding and subtracting within 10 fluently.</td><td class="topic-cell" style="background:#FFE69922;border-left:4px solid #FFE699">Addition and subtraction facts to 20 using various strategies; Working with addition and subtraction equations.</td><td class="topic-cell" style="background:#F4B08422;border-left:4px solid #F4B084">Extending the counting sequence; Place value; Comparing two-digit numbers.</td><td class="year-focus">enVision Math 2.0 — number sense, operations to 20, measurement, geometry, time, and money.</td></tr><tr><td class="subj-name">🔬 <strong>Science</strong></td><td class="topic-cell" style="background:#BDD7EE22;border-left:4px solid #BDD7EE">Scientific process; Matter and energy.</td><td class="topic-cell" style="background:#C6E0B422;border-left:4px solid #C6E0B4">Objects and patterns in the sky.</td><td class="topic-cell" style="background:#FFE69922;border-left:4px solid #FFE699">Survival of living things (plants and animals).</td><td class="topic-cell" style="background:#F4B08422;border-left:4px solid #F4B084">Weather; Engineering Design Process.</td><td class="year-focus">Inquiry-based exploration of physical, earth/space, and life science with hands-on activities.</td></tr><tr><td class="subj-name">🌍 <strong>Social Studies</strong></td><td class="topic-cell" style="background:#BDD7EE22;border-left:4px solid #BDD7EE">Rights and responsibilities; U.S. symbols.</td><td class="topic-cell" style="background:#C6E0B422;border-left:4px solid #C6E0B4">Families past and present; Celebrations around the world.</td><td class="topic-cell" style="background:#FFE69922;border-left:4px solid #FFE699">Work and geography of a community.</td><td class="topic-cell" style="background:#F4B08422;border-left:4px solid #F4B084">May Day; Geography (maps, globes, continents).</td><td class="year-focus">Civics, culture, community, and geography with a strong Hawaiian identity.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
