@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Syllabus &mdash; Mrs. Peters &middot; 2nd Grade B &middot; SY 2026-2027</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #eef2fa 0%, #f8f9fa 100%);
+  color: #253a77;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+.container { max-width: 1080px; margin: 0 auto; }
+.back-index-btn {
+  position: fixed; top: 20px; left: 20px;
+  background: #253a77; color: #fff; text-decoration: none;
+  padding: 10px 16px; border-radius: 8px;
+  font-size: 14px; font-weight: 700;
+  box-shadow: 0 3px 10px rgba(37,58,119,0.25);
+  transition: all 0.18s; z-index: 10;
+}
+.back-index-btn:hover { background: #1a2a4a; transform: translateX(-2px); }
+.print-btn {
+  position: fixed; top: 20px; right: 20px;
+  background: #B45309; color: #fff; text-decoration: none;
+  padding: 10px 16px; border-radius: 8px;
+  font-size: 14px; font-weight: 700; border: none; cursor: pointer;
+  box-shadow: 0 3px 10px rgba(180,83,9,0.25);
+  z-index: 10;
+}
+.print-btn:hover { background: #92400e; }
+
+.syllabus-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 28px rgba(37,58,119,0.12);
+  padding: 40px 44px;
+  border-top: 6px solid #FFD100;
+}
+
+.header-top {
+  display: flex; gap: 24px; align-items: center;
+  border-bottom: 2px solid #e2e8f0; padding-bottom: 22px; margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.header-info { flex: 1 1 260px; }
+.header-info h1 { color: #253a77; font-size: 1.6rem; font-weight: 800; margin-bottom: 4px; }
+.header-info .role { color: #7a5f00; font-style: italic; font-size: 0.95rem; margin-bottom: 6px; }
+.header-info .contact { font-size: 0.92rem; line-height: 1.7; color: #444; }
+.header-info .contact strong { color: #253a77; }
+.header-info .contact a { color: #253a77; text-decoration: none; }
+.header-info .contact a:hover { text-decoration: underline; }
+.year-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #FFD100 0%, #FFB800 100%);
+  color: #253a77;
+  font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 999px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(255,209,0,0.35);
+}
+.teacher-photo {
+  width: 130px; height: 130px; border-radius: 50%;
+  background: #1a2a4a; overflow: hidden; flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(37,58,119,0.2);
+  display: flex; align-items: center; justify-content: center;
+}
+.teacher-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; display: block; }
+.teacher-photo .initials { color: #FFD100; font-size: 2.4rem; font-weight: 800; letter-spacing: 0.05em; }
+
+.section-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(37,58,119,0.07);
+  padding: 22px 26px;
+  margin-bottom: 18px;
+  border-top: 4px solid #253a77;
+}
+.section-card h2 {
+  color: #253a77; font-size: 1.25rem; font-weight: 800;
+  margin-bottom: 10px; padding-bottom: 6px;
+  border-bottom: 2px solid #FFD100;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-card h3 { color: #253a77; font-size: 1.05rem; font-weight: 700; margin: 14px 0 6px; }
+.section-card p { color: #2d3748; font-size: 0.96rem; line-height: 1.7; margin-bottom: 10px; }
+.section-card ul, .section-card ol { margin: 8px 0 12px 24px; }
+.section-card li { padding: 3px 0; color: #2d3748; font-size: 0.95rem; line-height: 1.65; }
+.section-card li strong { color: #253a77; }
+
+.eq-box {
+  background: linear-gradient(135deg, #fff8e1 0%, #fef3c7 100%);
+  border-left: 5px solid #FFD100;
+  padding: 20px 24px; border-radius: 10px;
+  margin-bottom: 22px; text-align: center;
+}
+.eq-box .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 800; color: #7a5f00; margin-bottom: 8px; }
+.eq-box .question { font-size: 1.2rem; color: #253a77; font-weight: 700; font-style: italic; margin-bottom: 6px; }
+.eq-box .verse { color: #7a5f00; font-size: 0.95rem; font-weight: 600; }
+
+.expect-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 12px; }
+.expect-item {
+  background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+  border-left: 4px solid #db2777;
+  padding: 14px 18px; border-radius: 8px;
+}
+.expect-item .expect-title { color: #831843; font-size: 1rem; font-weight: 800; margin-bottom: 6px; }
+.expect-item p { color: #831843; font-size: 0.9rem; margin: 0; line-height: 1.5; }
+
+.behavior-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 12px; }
+.behavior-cell { padding: 14px 16px; border-radius: 8px; font-size: 0.9rem; line-height: 1.5; }
+.behavior-cell h4 { font-size: 0.98rem; margin-bottom: 4px; font-weight: 800; }
+.b-green { background: #dcfce7; color: #14532d; }
+.b-blue { background: #dbeafe; color: #1e3a8a; }
+.b-yellow { background: #fef9c3; color: #713f12; }
+.b-red { background: #fce7e7; color: #7f1d1d; }
+
+.grading-scale { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+.grade-item {
+  background: #f8fafc; border-left: 4px solid #253a77;
+  padding: 12px 16px; border-radius: 6px;
+}
+.grade-item .grade-num { font-size: 1.8rem; font-weight: 800; color: #253a77; margin-bottom: 4px; }
+.grade-item .grade-name { font-weight: 700; color: #7a5f00; margin-bottom: 4px; font-size: 0.95rem; }
+.grade-item p { font-size: 0.85rem; padding: 1px 0; line-height: 1.45; margin: 0; }
+
+.callout {
+  background: #fff8e1; border-left: 4px solid #FFD100;
+  padding: 14px 20px; border-radius: 8px; margin: 12px 0;
+}
+.callout p { margin-bottom: 6px; }
+
+table.schedule {
+  width: 100%; border-collapse: collapse; margin: 10px 0;
+  font-size: 0.85rem;
+}
+table.schedule th, table.schedule td {
+  border: 1px solid #d1d5db; padding: 6px 8px; text-align: center;
+  color: #1f2937;
+}
+table.schedule th { background: #253a77; color: #fff; font-weight: 700; }
+table.schedule td.time { background: #f8fafc; font-weight: 700; color: #253a77; white-space: nowrap; }
+.sub-phonics { background: #fef3c7; }
+.sub-religion { background: #fce7f3; }
+.sub-math { background: #dcfce7; }
+.sub-snack { background: #dbeafe; }
+.sub-art { background: #fef08a; }
+.sub-pe { background: #fed7aa; }
+.sub-music { background: #ddd6fe; }
+.sub-lunch { background: #f3f4f6; }
+.sub-reading { background: #dbeafe; }
+.sub-writing { background: #e0e7ff; }
+.sub-sci-ss { background: #e0e7ff; }
+.sub-library { background: #b45309; color: #fff; }
+.sub-mass { background: #9d174d; color: #fff; }
+.sub-team { background: #f9a8d4; }
+.sub-station { background: #f9a8d4; }
+.sub-dict { background: #9d174d; color: #fff; }
+.sub-seasonal { background: #fca5a5; }
+.sub-morning { background: #67e8f9; }
+
+footer {
+  margin-top: 32px; padding-top: 20px;
+  border-top: 2px solid #e2e8f0;
+  text-align: center; color: #7a5f00;
+  font-style: italic; font-weight: 700; font-size: 1.05rem;
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .back-index-btn, .print-btn { display: none; }
+  .syllabus-card { box-shadow: none; padding: 20px; }
+  .section-card { box-shadow: none; break-inside: avoid; }
+}
+@media (max-width: 640px) {
+  .syllabus-card { padding: 24px 20px; }
+  .header-info h1 { font-size: 1.3rem; }
+}
+</style>
+</head>
+<body>
+<a href="2b-peters.html" class="back-index-btn" title="Back to Mrs. Peters' Class">&larr; Back to Class</a>
+<a class="print-btn" href="2b-peters-syllabus.pdf?v=1" target="_blank" rel="noopener" title="Open original PDF">🖨️ Print Syllabus</a>
+
+<div class="container">
+  <div class="syllabus-card">
+
+    <div class="header-top">
+      <div class="teacher-photo">
+        <img src="mrs-peters.jpg" alt="Mrs. Destaney Peters" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="initials" style="display:none; width:100%; height:100%; align-items:center; justify-content:center;">DP</div>
+      </div>
+      <div class="header-info">
+        <div class="year-badge">School Year 2026-2027</div>
+        <h1>Mrs. Destaney Peters &middot; 2nd Grade B</h1>
+        <div class="role">2nd Grade B Teacher &middot; M.Ed. School Counseling &middot; Mary, Star of the Sea School</div>
+        <div class="contact">
+          <strong>Email:</strong> <a href="mailto:dpeters@starofthesea.org">dpeters@starofthesea.org</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mission / EQ -->
+    <div class="eq-box">
+      <div class="label">MSOS Essential Question &middot; Mission / Vision / EQ</div>
+      <div class="question">&ldquo;In the same way, let your light shine before others, that they may see your good deeds and glorify your Father in heaven.&rdquo;</div>
+      <div class="verse">Matthew 5:16 &middot; <strong>N</strong>urture, <strong>U</strong>nite, <strong>I</strong>nspire &middot; Empowered to Succeed, Guided by Faith</div>
+    </div>
+
+    <!-- Hi, I'm Mrs. Peters -->
+    <div class="section-card">
+      <h2>👋 Hi, I&rsquo;m Mrs. Peters</h2>
+      <p>I am a graduate of Northern Arizona University and Liberty University. I have a <strong>M.Ed. with a concentration in School Counseling</strong>. I have taught students across multiple grade levels, including a semester in China teaching University. I love teaching second grade because I love helping students build <strong>curiosity, confidence, and a lifelong love of learning</strong>.</p>
+    </div>
+
+    <!-- Teaching Style -->
+    <div class="section-card">
+      <h2>🍎 Teaching Style</h2>
+      <p>Every child is an individual with unique characteristics, temperament, and developmental pathways. While most children will go through the same basic stages of development, they will do so at their own pace and each with their own unique personalities and dispositions. Children differ in their motivation, prior knowledge and skills, learning styles, and interests. As teachers we know that each student is an individual capable of making progress and contributing to the larger group.</p>
+      <p>In second grade we will have shared goals and can expect to have common learning progressions. However, as a responsible educator creating my students&rsquo; learning opportunities, I will always consider the unique intercross between the child and the environment in order to fully support their growth and development. Children develop and grow over time when they experience supportive interactions and active engagement in enriching learning environments. It is my honor and duty as your child&rsquo;s teacher to provide the utmost loving care and guidance as s/he continues their academic journey!</p>
+      <p><strong>Discipline is a process of learning self-control, respect for others, and responsibility.</strong> It is the necessary process of learning to be respectful and resourceful members of a community. Positive methods of discipline will be practiced at all times so children are aware of an acceptable code of conduct at school. We thrive on mistakes and with proper direction and reflection we will grow because of them. This is the reason the majority of our minor disciplinary issues in this classroom are viewed as learning opportunities. It is through error and process in which we truly learn. For this reason, mistakes are not only tolerated and expected, but are in fact needed! At the core, it is mistakes that are the cause and effect for learning.</p>
+    </div>
+
+    <!-- Class Expectations -->
+    <div class="section-card">
+      <h2>🤝 Class Expectations</h2>
+      <div class="expect-grid">
+        <div class="expect-item"><div class="expect-title">Respect Yourself</div><p>Always take pride in your work and actions.</p></div>
+        <div class="expect-item"><div class="expect-title">Respect Others</div><p>Treat everyone with kindness and consideration.</p></div>
+        <div class="expect-item"><div class="expect-title">Respect Our Time</div><p>Be ready to learn and be fully engaged during class.</p></div>
+      </div>
+    </div>
+
+    <!-- Behavior Chart -->
+    <div class="section-card">
+      <h2>🌟 Behavior Chart</h2>
+      <div class="behavior-grid">
+        <div class="behavior-cell b-green">
+          <h4>Above and Beyond</h4>
+          <p><strong>Gotcha!</strong><br>5 in a row &mdash; Note home<br>10 in a row &mdash; Treasure box</p>
+        </div>
+        <div class="behavior-cell b-blue">
+          <h4>Cool and in the Zone</h4>
+          <p>Everyone starts the day here &mdash; ready to learn.</p>
+        </div>
+        <div class="behavior-cell b-yellow">
+          <h4>You Can Turn This Around</h4>
+          <p>Yellow ticket home with prompt for family discussion.</p>
+        </div>
+        <div class="behavior-cell b-red">
+          <h4>THINK</h4>
+          <p>Could be&hellip; Think paper &middot; Email home &middot; Talk with counselor or principal.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Communication -->
+    <div class="section-card">
+      <h2>💬 Communication</h2>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:dpeters@starofthesea.org">dpeters@starofthesea.org</a></li>
+        <li><strong>Beehively:</strong> Weekly Newsletter</li>
+        <li><strong>Communication Pouch:</strong> Goes home every <strong>Tuesday</strong> with any important communication from the school as well as any notes or information from me.</li>
+        <li><strong>Assessment Folder:</strong> Do not remove anything from this folder. Sign and return.</li>
+      </ul>
+    </div>
+
+    <!-- Specials Notes -->
+    <div class="section-card">
+      <h2>📚 Special&rsquo;s Notes</h2>
+      <ul>
+        <li><strong>SCHOOL LIBRARY BOOKS &mdash;</strong> Students will have the opportunity to check out 2 library books on <strong>Mondays</strong>. School library books are marked with a barcode sticker. Return them the following Monday so they can check out new ones!</li>
+        <li><strong>PE Uniform</strong> to be worn on <strong>Wednesday</strong> and <strong>Friday</strong>.</li>
+      </ul>
+    </div>
+
+    <!-- Units of Study -->
+    <div class="section-card">
+      <h2>📖 Units of Study</h2>
+
+      <h3>Language Arts</h3>
+      <p><strong>Book/Program:</strong> Reader&rsquo;s and Writer&rsquo;s Journal, Freckle, Zaner-Bloser Handwriting Book, Sounds to Spelling, Quarterly Whole-Group Read Aloud, Monthly Book Reports.<br>
+      <strong>Content:</strong> Writing, Grammar, Sounds to Spelling.</p>
+
+      <h3>Math</h3>
+      <p><strong>Book/Program:</strong> enVision Math 2.0 Volumes 1 &amp; 2 and Freckle.<br>
+      <strong>Content:</strong> Computation, place value, time, money, estimating and graphing, problem solving, geometry, measurement, fractions, temperature, and multiplication.</p>
+
+      <h3>Science</h3>
+      <p><strong>Program:</strong> Hands-on Science Labs, SAM&rsquo;s Lab, Lego Lab, Mystery Science.<br>
+      <strong>Content:</strong> Scientific Method &middot; Engineering Design Process &middot; Matter &middot; Earth&rsquo;s Surface and Changes to Earth&rsquo;s Surface (Hawaii Landforms) &middot; Environments for Living Things.</p>
+
+      <h3>Social Studies</h3>
+      <p><strong>Book:</strong> Map, Globes, Graphs book &middot; Hands-on activities.<br>
+      <strong>Content:</strong> Self &mdash; all about me &middot; Family Unit &middot; Community and Community Helpers &middot; Economics &middot; American Culture / Government &middot; Cultural Diversity &middot; Earth and environmental awareness &middot; Geography.</p>
+    </div>
+
+    <!-- Grading Scale -->
+    <div class="section-card">
+      <h2>📊 Grading Scale</h2>
+      <p>Grading will be based on a variety of daily classwork, projects, assessments, observations, and homework. Assessments will be sent home in a manilla folder and need to be signed and returned. Writing samples can be provided at any time but I keep them for conferences and end of the year to show growth.</p>
+      <div class="grading-scale">
+        <div class="grade-item">
+          <div class="grade-num">40%</div>
+          <div class="grade-name">Formative Assessments</div>
+          <p>Quizzes, homework, and classwork.</p>
+        </div>
+        <div class="grade-item">
+          <div class="grade-num">40%</div>
+          <div class="grade-name">Summative Assessments</div>
+          <p>Projects, writing papers, and tests.</p>
+        </div>
+        <div class="grade-item">
+          <div class="grade-num">20%</div>
+          <div class="grade-name">Engagement &amp; Participation</div>
+          <p>In-class discussions and group activities.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Homework -->
+    <div class="section-card">
+      <h2>📝 Homework</h2>
+      <p>Homework is typically assigned <strong>Monday through Thursday</strong>. Students will write their homework assignments in their agenda every day.</p>
+      <ul>
+        <li><strong>Book Reports</strong> &mdash; Month-long assignment.</li>
+        <li><strong>Nightly:</strong> Math worksheet, phonics, book bags.</li>
+        <li><strong>HFW (High Frequency Words)</strong> flashcards.</li>
+        <li>Word Pattern Reading Sheets.</li>
+        <li>Sentences &mdash; Vocabulary and Key Pattern Words.</li>
+        <li><strong>Weekly:</strong> Literacy game provided to play at your child&rsquo;s leisure.</li>
+      </ul>
+      <div class="callout">
+        <p style="color:#B45309;font-weight:700;">📌 Recognize the patterns &mdash; don&rsquo;t memorize the words. &middot; No Math homework on test day.</p>
+      </div>
+    </div>
+
+    <!-- Policy -->
+    <div class="section-card">
+      <h2>📋 Policy</h2>
+
+      <h3>1. Dress Code</h3>
+      <ul>
+        <li>Please double-check that your child is dressed in school uniform every day.</li>
+        <li>Shirt must be tucked in.</li>
+        <li>Socks must be seen.</li>
+      </ul>
+
+      <h3>2. Attendance</h3>
+      <ul>
+        <li>Doors open at <strong>7:35</strong></li>
+        <li>Attendance is submitted at <strong>7:50</strong></li>
+        <li>After 7:50, please check-in at the office.</li>
+      </ul>
+
+      <h3>3. Birthday &mdash; We Love to Celebrate!</h3>
+      <ul>
+        <li>Please give a mandatory <strong>1 week advance notice</strong> if sending in treats. Be aware of any allergies in the class.</li>
+        <li><strong>Prepackaged, individually wrapped store-bought items only.</strong></li>
+        <li><strong>Invitations:</strong> You can only hand out invitations at school if the entire 2B class is invited. You can also invite via email using the 2B directory.</li>
+      </ul>
+
+      <h3>4. Pickup</h3>
+      <ul>
+        <li>Please make sure that your name placard is in your car for pickup.</li>
+        <li><strong>Time:</strong> 2:45 (regular days) &middot; 11:45 (early dismissal days).</li>
+        <li><strong>Place:</strong> Remain in the right lane. Students will be waiting just past the main office.</li>
+        <li><strong>After School Activities:</strong> Provide a printout schedule for your child to tape in their locker that quarter.</li>
+        <li><strong>Early Pickup:</strong> A parent or authorized individual MUST sign the student out from the office in the main administration building.</li>
+      </ul>
+    </div>
+
+    <!-- Programs and Content -->
+    <div class="section-card">
+      <h2>💻 Programs and Content</h2>
+
+      <h3>Digital Platforms</h3>
+      <p>We will be using these digital resources throughout the year: <strong>Freckle, Epic, Brain-Pop, Savvas</strong> &mdash; and others may be added during the year.</p>
+
+      <h3>Academic Program</h3>
+      <p>In second grade, students will be challenged through hands-on interactive cross-curricular units. Students will learn about a variety of Science and Social Studies units. These Science and Social Studies units will also integrate reading, writing, and math. For example, students will learn about <strong>Landforms (Quarter 3)</strong> in Social Studies. In this unit students will use their prior knowledge of <strong>Expository Writing (Quarter 2)</strong> to research a Hawaiian landform, build it with <strong>Design and Engineering (Quarter 1)</strong>, and write about it! They will practice their reading using digital platforms such as Epic, BrainPop, and Chat GPT (monitored by teacher to tailor the reading to their level).</p>
+
+      <h3>Freckle</h3>
+      <p>Now part of <strong>Renaissance</strong>, Freckle is an online learning platform that provides differentiated practice in Math and English Language Arts (ELA). It adapts to each student&rsquo;s individual skill level, offering personalized practice to challenge them appropriately. You will be given login information &mdash; they may practice this freely at home if you would like.</p>
+
+      <h3>School-Wide Assessments</h3>
+      <p><strong>STAR Testing</strong> &mdash; Fall, Winter, End of Year.</p>
+    </div>
+
+    <!-- Weekly Schedule -->
+    <div class="section-card">
+      <h2>🗓️ 2B Weekly Schedule</h2>
+      <div style="overflow-x:auto">
+      <table class="schedule">
+        <thead>
+          <tr><th></th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="time">7:35–8:00</td><td class="sub-morning">Morning Work</td><td class="sub-morning">Morning Work</td><td class="sub-morning">Morning Work</td><td class="sub-morning">Morning Work</td><td class="sub-morning">Morning Work</td></tr>
+          <tr><td class="time">8:00–8:30</td><td class="sub-phonics">Phonics</td><td class="sub-phonics">Phonics</td><td class="sub-phonics">Phonics</td><td class="sub-phonics">Phonics</td><td class="sub-mass">Mass</td></tr>
+          <tr><td class="time">8:30–9:00</td><td class="sub-religion">Religion</td><td class="sub-religion">Religion</td><td class="sub-religion">Religion</td><td class="sub-religion">Religion</td><td class="sub-mass">Mass</td></tr>
+          <tr><td class="time">9:00–9:45</td><td class="sub-math">Math</td><td class="sub-math">Math</td><td class="sub-math">Math</td><td class="sub-math">Math</td><td class="sub-math">Math</td></tr>
+          <tr><td class="time">9:45–9:55</td><td class="sub-snack">Snack</td><td class="sub-snack">Snack</td><td class="sub-snack">Snack</td><td class="sub-snack">Snack</td><td class="sub-snack">Snack</td></tr>
+          <tr><td class="time">10:00–10:50</td><td class="sub-art">ART</td><td class="sub-art">ART</td><td class="sub-pe">PE</td><td class="sub-music">MUSIC</td><td class="sub-pe">PE</td></tr>
+          <tr><td class="time">10:50–11:15</td><td class="sub-team">Team Meeting</td><td class="sub-station">3 Station Rotation</td><td class="sub-station">3 Station Rotation</td><td class="sub-station">3 Station Rotation</td><td class="sub-dict">Dictation Test</td></tr>
+          <tr><td class="time">11:15–12:15</td><td class="sub-lunch">Lunch</td><td class="sub-lunch">Lunch</td><td class="sub-lunch">Lunch</td><td class="sub-lunch">Lunch</td><td class="sub-lunch">Lunch</td></tr>
+          <tr><td class="time">12:15–1:00</td><td class="sub-library">Library</td><td class="sub-reading">Reading</td><td class="sub-reading">Reading</td><td class="sub-reading">Reading</td><td class="sub-reading">Reading</td></tr>
+          <tr><td class="time">1:00–1:45</td><td class="sub-writing">Writing</td><td class="sub-writing">Writing</td><td class="sub-music">Music</td><td class="sub-writing">Writing</td><td class="sub-writing">Writing</td></tr>
+          <tr><td class="time">1:45–2:15</td><td class="sub-sci-ss">Sci/SS</td><td class="sub-sci-ss">Sci/SS</td><td class="sub-sci-ss">Sci/SS</td><td class="sub-sci-ss">Sci/SS</td><td class="sub-seasonal">Seasonal</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <!-- Key Dates -->
+    <div class="section-card">
+      <h2>📅 2B Bulletin Board &mdash; Key Dates</h2>
+      <ul>
+        <li><strong>Grandparent&rsquo;s Day:</strong> September 8, 8:30–10 (9:30–10:00 Book Fair) &mdash; <em>Room Parent opportunity</em></li>
+        <li><strong>2B Flag Raising</strong> &mdash; date TBD</li>
+        <li><strong>Trick or Treat at Kamala Nui:</strong> 10/30</li>
+        <li><strong>FriendsGiving:</strong> 11/__ &mdash; <em>Room Parent opportunity</em></li>
+        <li><strong>Christmas Party:</strong> 12/__ &mdash; <em>Room Parent opportunity</em></li>
+        <li><strong>2B Mass:</strong> 1/__</li>
+        <li><strong>Market Day:</strong> 5/__</li>
+        <li><strong>End of Year Party:</strong> 6/__ &mdash; <em>Room Parent opportunity</em></li>
+      </ul>
+    </div>
+
+    <!-- Final Note -->
+    <div class="section-card" style="border-top-color:#c084fc;background:#faf5ff">
+      <h2 style="color:#6b21a8">💛 Final Note</h2>
+      <p>Our classroom is a safe, respectful space where every child feels valued and supported. At ages 7 and 8, students are still learning how to navigate social interactions, and it is our shared responsibility to model kindness and respect. Please help us maintain this positive environment by:</p>
+      <ul>
+        <li>Avoiding group texting about classroom matters that might cause confusion or concern.</li>
+        <li>Refraining from discussing other students or parents in front of your child. This classroom is their safe space; conversations that undermine this safety are discouraged.</li>
+      </ul>
+      <p>Thank you for partnering with me to create a nurturing and respectful community for all our students. Thank you for entrusting me with your child&rsquo;s academic and social development. It is a genuine privilege to be part of this meaningful chapter in their life. Please don&rsquo;t hesitate to reach out with any questions, concerns, or feedback &mdash; you can always count on my open and respectful communication. I&rsquo;m excited for a wonderful year ahead!</p>
+    </div>
+
+    <footer>
+      Mahalo for a wonderful year of learning together!
+    </footer>
+
+  </div>
+</div>
+</body>
+</html>

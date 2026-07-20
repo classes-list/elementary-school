@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mary, Star of the Sea — 2nd Grade B Math</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f9fa; color: #333; }
+    .container { display: flex; height: 100vh; }
+    .sidebar { border-right: 3px solid #FFD100; width: 260px; background: #1a2a4a; color: white; overflow-y: auto; padding: 20px; }
+    .sidebar h2 { font-size: 14px; margin-bottom: 4px; font-weight: bold; }
+    .sidebar-quarter { margin: 18px 0 8px; padding: 8px 10px; color: #FFD100; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; border-top: 1px solid #444; padding-top: 12px; }
+    .sidebar-quarter:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+    .sidebar-item { padding: 10px 12px; margin: 4px 0; background: #111d35; border-radius: 4px; cursor: pointer; font-size: 12.5px; line-height: 1.35; }
+    .sidebar-item:hover { background: #1B3A8A; }
+    .sidebar-item.active { background: #1B3A8A; color:#FFD100; }
+
+    .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .topbar { border-bottom: 4px solid #FFD100; background: #1B3A8A; color: white; padding: 12px 24px; font-size: 16px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .topbar-left { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .topbar-right { font-size: 13px; opacity: 0.85; }
+    .topbar-logos { display: flex; gap: 8px; align-items: center; }
+    .logo-circle { width: 42px; height: 42px; border-radius: 50%; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.25); overflow: hidden; display: inline-flex; align-items: center; justify-content: flex-start; flex-shrink: 0; }
+    .logo-circle img { display: block; }
+    .logo-circle.msos img { height: 100%; width: auto; }
+    .logo-circle.nui img { width: 100%; height: 100%; object-fit: cover; }
+    .logo-circle.msos { background: #1a2a4a; }
+
+    .nav-btn { background: rgba(0,0,0,0.18); border: none; color: white; cursor: pointer; font-size: 13px; font-weight: 700; padding: 8px 14px; border-radius: 6px; text-decoration: none; display: inline-block; transition: all 0.15s; }
+    .nav-btn:hover { background: rgba(0,0,0,0.28); }
+    .nav-btn.gold { background: #FFD100; color: #1a2a4a; }
+    .nav-btn.gold:hover { background: #ffc400; }
+    .nav-btn.print { background: #1B3A8A; color: #FFD100; border: 1.5px solid #FFD100; }
+    .nav-btn.print:hover { background: #16337a; }
+    .nav-btn.map { background: #B45309; color: white; }
+    .nav-btn.map:hover { background: #92400e; }
+
+    .content { flex: 1; overflow-y: auto; padding: 26px; }
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    .units-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+    .unit-card { background: white; border-radius: 10px; padding: 20px; cursor: pointer; transition: 0.2s; box-shadow: 0 2px 6px rgba(0,0,0,0.09); border-top: 4px solid #1B3A8A; }
+    .unit-card:hover { transform: translateY(-4px); box-shadow: 0 8px 18px rgba(27,58,138,0.2); }
+    .unit-card-header { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+    .unit-card-icon { font-size: 30px; }
+    .unit-card-title { font-weight: bold; font-size: 15px; color: #1B3A8A; margin-bottom: 4px; line-height: 1.25; }
+    .unit-card-cc { font-size: 11px; color: #777; font-weight: 600; }
+    .unit-card-desc { font-size: 13px; color: #555; margin-bottom: 12px; line-height: 1.45; }
+    .quarter-pill { display: inline-block; background: #FFD100; color: #1a2a4a; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; margin-bottom: 6px; }
+
+    .btn { display: inline-block; padding: 9px 18px; background: #1B3A8A; color: white; border: none; border-radius: 6px; cursor: pointer; text-decoration: none; margin: 4px 4px 4px 0; font-size: 14px; font-weight: 600; }
+    .btn:hover { background: #162E70; }
+    .btn.back { background: #6b7280; }
+    .btn.back:hover { background: #4b5563; }
+    .btn.ixl { background: #dc2626; }
+    .btn.ixl:hover { background: #b91c1c; }
+
+    .lesson-content h2 { margin: 14px 0 10px 0; color: #1B3A8A; font-size: 1.5rem; }
+    .lesson-content p { margin-bottom: 12px; line-height: 1.65; }
+    .lesson-content ul, .lesson-content ol { margin: 10px 0 12px 24px; }
+    .lesson-content li { margin-bottom: 6px; }
+    .lesson-cc { display: inline-block; background: #eef2fa; color: #1B3A8A; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-bottom: 10px; }
+    .ixl-card { background: #fef2f2; border-left: 4px solid #dc2626; padding: 14px 18px; border-radius: 8px; margin: 16px 0; }
+    .ixl-card h3 { color: #dc2626; font-size: 1rem; margin-bottom: 8px; }
+    .ixl-card ul { list-style: none; padding: 0; margin: 8px 0 0; }
+    .ixl-card li { padding: 3px 0; font-size: 13px; }
+
+    .problem { background: white; padding: 14px 18px; margin: 10px 0; border-left: 4px solid #1B3A8A; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    .problem h4 { color: #1B3A8A; font-size: 0.95rem; margin-bottom: 6px; }
+    .problem input { width: 100%; padding: 8px; margin: 6px 0; border: 1px solid #ccc; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 14px; }
+    .answer-key { background: #fef3c7; padding: 10px; margin: 8px 0; border-radius: 4px; font-size: 13px; }
+
+    .quiz-question { background: white; padding: 14px 18px; margin: 12px 0; border-radius: 6px; border-left: 4px solid #1B3A8A; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    .quiz-question h4 { color: #1B3A8A; margin-bottom: 8px; font-size: 0.95rem; }
+    .quiz-question label { display: block; padding: 6px 10px; margin: 3px 0; background: #f0f4ff; border-radius: 4px; cursor: pointer; font-size: 14px; }
+    .quiz-question label:hover { background: #dde5f5; }
+    .quiz-question input[type=radio] { margin-right: 8px; }
+
+    .nav-buttons { margin: 24px 0 12px; padding-top: 14px; border-top: 1px solid #eee; display: flex; gap: 8px; flex-wrap: wrap; }
+    .result-card { background: #fef3c7; padding: 18px; border-radius: 8px; margin: 15px 0; }
+    .result-card h3 { color: #059669; margin-bottom: 8px; }
+
+    @media (max-width: 800px) {
+      .container { flex-direction: column; height: auto; }
+      .sidebar { width: 100%; max-height: 260px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Mary, Star of the Sea</h2>
+      <p style="color:#888;font-size:13px;margin-bottom:8px;">2nd Grade Math &middot; Mrs. Peters</p>
+      <div class="sidebar-quarter">Q1: Aug–Oct</div>
+<div class="sidebar-item" onclick="showLesson('t01-add-sub-20')">➕ Fluently Add & Subtract Within 20</div>
+<div class="sidebar-item" onclick="showLesson('t02-equal-groups')">🍎 Work with Equal Groups</div>
+<div class="sidebar-item" onclick="showLesson('t03-add-100-strategies')">🔟 Add Within 100 Using Strategies</div>
+<div class="sidebar-item" onclick="showLesson('t04-add-100-fluent')">🧮 Fluently Add Within 100</div>
+<div class="sidebar-quarter">Q2: Oct–Dec</div>
+<div class="sidebar-item" onclick="showLesson('t05-sub-100-strategies')">➖ Subtract Within 100 Using Strategies</div>
+<div class="sidebar-item" onclick="showLesson('t06-sub-100-fluent')">🎯 Fluently Subtract Within 100</div>
+<div class="sidebar-item" onclick="showLesson('t07-word-problems')">📖 More Solving Problems (Addition & Subtraction)</div>
+<div class="sidebar-quarter">Q3: Jan–Mar</div>
+<div class="sidebar-item" onclick="showLesson('t08-time-money')">⏰ Work with Time & Money</div>
+<div class="sidebar-item" onclick="showLesson('t09-numbers-1000')">🔢 Numbers to 1,000</div>
+<div class="sidebar-item" onclick="showLesson('t10-add-1000')">➕🏛️ Add Within 1,000 (Models & Strategies)</div>
+<div class="sidebar-item" onclick="showLesson('t11-sub-1000')">➖🏛️ Subtract Within 1,000 (Models & Strategies)</div>
+<div class="sidebar-quarter">Q4: Mar–May</div>
+<div class="sidebar-item" onclick="showLesson('t12-measuring-length')">📏 Measuring Length</div>
+<div class="sidebar-item" onclick="showLesson('t13-shapes-attributes')">🔷 Shapes & Their Attributes</div>
+<div class="sidebar-item" onclick="showLesson('t14-more-add-sub-length')">🎯 More Addition, Subtraction, and Length</div>
+<div class="sidebar-item" onclick="showLesson('t15-graphs-data')">📊 Graphs & Data</div>
+    </div>
+    <div class="main">
+      <div class="topbar">
+        <div class="topbar-left">
+          <a href="2b-peters.html" class="nav-btn" title="Back to Mrs. Peters' Class">← All Classes</a>
+          <a href="2b-peters-syllabus.html" class="nav-btn gold" title="View Syllabus">📓 Syllabus</a>
+          <a href="2b-peters-syllabus.pdf?v=1" class="nav-btn print" target="_blank" rel="noopener" title="Open original PDF">🖨️ Print Syllabus</a>
+          <a href="2b-math-curriculum-map.html" class="nav-btn map" title="Curriculum Map &amp; Unit Calendar">📅 Curriculum Map</a>
+          <div class="topbar-logos">
+            <span class="logo-circle msos" title="Mary, Star of the Sea"><img src="msos-logo.svg" alt="MSOS"></span>
+            <span class="logo-circle nui" title="Nurture · Unite · Inspire"><img src="nui-logo.png" alt="NUI"></span>
+          </div>
+          <span>2nd Grade Math &middot; enVisionMATH 2.0</span>
+        </div>
+        <div class="topbar-right">Math &middot; Grade 2</div>
+      </div>
+      <div class="content">
+        <div id="home-screen" class="screen active">
+          <h2 style="color:#1B3A8A;margin-bottom:6px;">🧮 2nd Grade Math &mdash; All Topics</h2>
+          <p style="color:#666;margin-bottom:18px;">Click any topic to see the lesson, worksheet, quiz, and IXL practice link.</p>
+          <div id="units-grid" class="units-grid"></div>
+        </div>
+        <div id="lesson-screen" class="screen">
+          <a href="#" class="btn back" onclick="showHome();return false;">← Back to All Topics</a>
+          <div id="lesson-content" class="lesson-content"></div>
+          <div class="nav-buttons">
+            <a href="#" class="btn back" onclick="showHome();return false;">← Back</a>
+            <a href="#" class="btn" onclick="showWorksheet();return false;">📋 Worksheet →</a>
+            <a href="#" class="btn ixl" id="lesson-ixl-btn" target="_blank" rel="noopener">🎯 Practice on IXL</a>
+          </div>
+        </div>
+        <div id="worksheet-screen" class="screen">
+          <a href="#" class="btn back" onclick="showLesson(currentUnit);return false;">← Back to Lesson</a>
+          <h2 style="color:#1B3A8A;margin:14px 0 10px;">📋 Worksheet</h2>
+          <div id="worksheet-content"></div>
+          <div class="nav-buttons">
+            <a href="#" class="btn back" onclick="showLesson(currentUnit);return false;">← Back</a>
+            <a href="#" class="btn" onclick="checkWorksheet();return false;">Check Answers</a>
+            <a href="#" class="btn" onclick="showQuiz();return false;">📝 Quiz →</a>
+          </div>
+        </div>
+        <div id="quiz-screen" class="screen">
+          <a href="#" class="btn back" onclick="showWorksheet();return false;">← Back to Worksheet</a>
+          <h2 style="color:#1B3A8A;margin:14px 0 10px;">📝 Quick Quiz</h2>
+          <div id="quiz-content"></div>
+          <div class="nav-buttons">
+            <a href="#" class="btn back" onclick="showWorksheet();return false;">← Back</a>
+            <a href="#" class="btn" onclick="submitQuiz();return false;">Submit Quiz</a>
+            <a href="#" class="btn back" onclick="showHome();return false;">🏠 Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  const UNITS = [
+  {
+    "id": "t01-add-sub-20",
+    "quarter": "Q1",
+    "title": "Topic 1: Fluently Add & Subtract Within 20",
+    "icon": "\u2795",
+    "cc": "2.OA.B.2",
+    "desc": "Fluent addition and subtraction facts to 20 using make-a-ten, doubles, near-doubles, and think-addition.",
+    "ixlUrl": "https://www.ixl.com/math/grade-2/addition-facts-sums-up-to-20",
+    "ixlAlts": [
+      [
+        "Subtraction facts to 20",
+        "https://www.ixl.com/math/grade-2/subtraction-facts-up-to-20"
+      ],
+      [
+        "Make a ten to add",
+        "https://www.ixl.com/math/grade-2/add-a-two-digit-and-a-one-digit-number-with-regrouping"
+      ],
+      [
+        "Doubles / near-doubles",
+        "https://www.ixl.com/math/grade-2/add-doubles"
+      ]
+    ],
+    "lesson": "<p>2nd graders keep building the addition and subtraction facts they started in 1st grade. Key strategies: <strong>make a ten</strong>, <strong>doubles</strong>, <strong>near-doubles</strong>, and <strong>think addition</strong> to subtract (12 \u2212 5 \u2192 5 + ? = 12 \u2192 7).</p>",
+    "worksheet": [
+      [
+        "9 + 6 =",
+        "15"
+      ],
+      [
+        "8 + 7 =",
+        "15"
+      ],
+      [
+        "15 \u2212 8 =",
+        "7"
+      ],
+      [
+        "13 \u2212 6 =",
+        "7"
+      ]
+    ],
+    "quiz": [
+      {
+        "q": "7 + 8 =",
+        "opts": [
+          "14",
+          "15",
+          "16"
+        ],
+        "a": 1
+      },
+      {
+        "q": "14 \u2212 7 =",
+        "opts": [
+          "6",
+          "7",
+          "8"
+        ],
+        "a": 1
+      },
+      {
+        "q": "9 + 4 =",
+        "opts": [
+          "12",
+          "13",
+          "14"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "t02-equal-groups",
+    "quarter": "Q1",
+    "title": "Topic 2: Work with Equal Groups",
+    "icon": "\ud83c\udf4e",
+    "cc": "2.OA.C.3-4",
+    "desc": "Identify even and odd numbers; use arrays to find totals (foundation of multiplication).",
+    "ixlUrl": "https://www.ixl.com/math/grade-2/even-or-odd",
+    "ixlAlts": [
+      [
+        "Arrays: number of rows/columns",
+        "https://www.ixl.com/math/grade-2/count-shapes-in-a-3d-figure"
+      ],
+      [
+        "Repeated addition arrays",
+        "https://www.ixl.com/math/grade-2/write-addition-sentences-for-arrays-sums-to-20"
+      ]
+    ],
+    "lesson": "<p>A number is <strong>even</strong> if we can split it into two equal groups (2, 4, 6, 8, 10\u2026). Odd numbers have a leftover. An <strong>array</strong> is a rectangle of rows and columns; adding the rows helps us find the total.</p>",
+    "worksheet": [
+      [
+        "Is 12 even or odd?",
+        "Even."
+      ],
+      [
+        "Is 15 even or odd?",
+        "Odd."
+      ],
+      [
+        "An array has 3 rows of 4. What is the total?",
+        "12 (3 + 3 + 3 + 3 = 12 or 4 + 4 + 4 = 12)."
+      ],
+      [
+        "An array has 5 rows of 2. Total?",
+        "10."
+      ]
+    ],
+    "quiz": [
+      {
+        "q": "18 is\u2026",
+        "opts": [
+          "Even",
+          "Odd",
+          "Both"
+        ],
+        "a": 0
+      },
+      {
+        "q": "3 rows of 5 =",
+        "opts": [
+          "8",
+          "15",
+          "18"
+        ],
+        "a": 1
+      },
+      {
+        "q": "9 is\u2026",
+        "opts": [
+          "Even",
+          "Odd",
+          "Both"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "t03-add-100-strategies",
+    "quarter": "Q1",
+    "title": "Topic 3: Add Within 100 Using Strategies",
+    "icon": "\ud83d\udd1f",
+    "cc": "2.NBT.B.5-6, 2.NBT.B.9",
+    "desc": "Add 2-digit numbers using open number lines, breaking apart tens & ones, and mental math.",
+    "ixlUrl": "https://www.ixl.com/math/grade-2/add-two-digit-numbers-without-regrouping",
+    "ixlAlts": [
+      [
+        "Add on an open number line",
+        "https://www.ixl.com/math/grade-2/add-tens"
+      ],
+      [
+        "Break apart tens &amp; ones",
+        "https://www.ixl.com/math/grade-2/add-tens-and-ones"
+      ]
+    ],
+    "lesson": "<p>Mental strategies for 2-digit addition: <strong>break apart</strong> tens and ones (34 + 25 = 30 + 20 + 4 + 5 = 59), <strong>open number line</strong> (start at 34, jump +20 to 54, jump +5 to 59), or <strong>compensation</strong> (39 + 26 \u2192 40 + 25 = 65).</p>",
+    "worksheet": [
+      [
+        "34 + 25 =",
+        "59"
+      ],
+      [
+        "47 + 30 =",
+        "77"
+      ],
+      [
+        "52 + 18 =",
+        "70"
+      ],
+      [
+        "Break apart 43 + 26.",
+        "40 + 20 + 3 + 6 = 69."
+      ]
+    ],
+    "quiz": [
+      {
+        "q": "35 + 20 =",
+        "opts": [
+          "45",
+          "55",
+          "65"
+        ],
+        "a": 1
+      },
+      {
+        "q": "26 + 14 =",
+        "opts": [
+          "30",
+          "40",
+          "50"
+        ],
+        "a": 1
+      },
+      {
+        "q": "48 + 21 =",
+        "opts": [
+          "59",
+          "68",
+          "69"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "t04-add-100-fluent",
+    "quarter": "Q1",
+    "title": "Topic 4: Fluently Add Within 100",
+    "icon": "\ud83e\uddee",
+    "cc": "2.NBT.B.5",
+    "desc": "Standard algorithm and mental strategies for 2-digit addition with and without regrouping.",
+    "ixlUrl": "https://www.ixl.com/math/grade-2/add-two-digit-numbers-with-regrouping",
+    "ixlAlts": [
+      [
+        "Add three 2-digit numbers",
+        "https://www.ixl.com/math/grade-2/add-three-or-more-numbers-up-to-two-digits-each"
+      ],
+      [
+        "Word problems 2-digit add",
+        "https://www.ixl.com/math/grade-2/addition-word-problems-up-to-two-digits"
+      ]
+    ],
+    "lesson": "<p>Line up the tens and ones. Add the ones first. If the ones make 10 or more, <strong>regroup</strong> \u2014 carry a ten over to the tens column. Then add the tens.</p>",
+    "worksheet": [
+      [
+        "45 + 38 =",
+        "83"
+      ],
+      [
+        "29 + 56 =",
+        "85"
+      ],
+      [
+        "67 + 24 =",
+        "91"
+      ],
+      [
+        "38 + 27 + 15 =",
+        "80"
+      ]
+    ],
+    "quiz": [
+      {
+        "q": "36 + 28 =",
+        "opts": [
+          "54",
+          "64",
+          "74"
+        ],
+        "a": 1
+      },
+      {
+        "q": "49 + 37 =",
+        "opts": [
+          "76",
+          "86",
+          "96"
+        ],
+        "a": 1
+      },
+      {
+        "q": "58 + 25 =",
+        "opts": [
+          "73",
+          "83",
+          "93"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "t05-sub-100-strategies",
+    "quarter": "Q2",
+    "title": "Topic 5: Subtract Within 100 Using Strategies",
+    "icon": "\u2796",
+    "cc": "2.NBT.B.5-6, 2.NBT.B.9",
+    "desc": "Subtract 2-digit numbers using open number lines, counting up, and breaking apart tens.",
+    "ixlUrl": "https://www.ixl.com/math/grade-2/subtract-two-digit-numbers-without-regrouping",
+    "ixlAlts": [
+      [
+        "Count up to subtract",
+        "https://www.ixl.com/math/grade-2/subtract-tens"
+      ],
+      [
+        "Break apart to subtract",
+        "https://www.ixl.com/math/grade-2/subtract-tens-and-ones"
+      ]
+    ],
+    "lesson": "<p>Try <strong>counting up</strong> on a number line (65 \u2212 28: start at 28, jump +2 to 30, jump +30 to 60, jump +5 to 65 \u2192 answer 2 + 30 + 5 = 37), or <strong>break apart</strong> the smaller number and subtract in parts.</p>",
+    "worksheet": [
+      [
+        "65 \u2212 28 =",
+        "37"
+      ],
+      [
+        "50 \u2212 24 =",
+        "26"
+      ],
+      [
+        "72 \u2212 15 =",
+        "57"
+      ],
+      [
+        "Count up: 43 \u2212 26 =",
+        "17"
+      ]
+    ],
+    "quiz": [
+      {
+        "q": "80 \u2212 35 =",
+        "opts": [
+          "35",
+          "45",
+          "55"
+        ],
+        "a": 1
+      },
+      {
+        "q": "54 \u2212 27 =",
+        "opts": [
+          "27",
+          "37",
+          "47"
+        ],
+        "a": 0
+      },
+      {
+        "q": "63 \u2212 40 =",
+        "opts": [
+          "13",
+          "23",
+          "33"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "t06-sub-100-fluent",
+    "quarter": "Q2",
+    "title": "Topic 6: Fluently Subtract Within 100",
+    "icon": "\ud83c\udfaf",
+    "cc": "2.NBT.B.5",
+    "desc": "Standard algorithm for 2-digit subtraction with regrouping.",
+    "ixlUrl": "https://www.ixl.com/math/grade-2/subtract-two-digit-numbers-with-regrouping",
+    "ixlAlts": [
+      [
+        "Subtract with word problems",
+        "https://www.ixl.com/math/grade-2/subtraction-word-problems-up-to-two-digits"
+      ],
+      [
+        "Regrouping practice",
+        "https://www.ixl.com/math/grade-2/regroup-tens-and-ones-ways-to-make-a-number"
+      ]
+    ],
+    "lesson": "<p>Line up the ones and tens. If the top digit in the ones is smaller than the bottom, <strong>regroup</strong> \u2014 borrow a ten (turn it into 10 ones). Then subtract the ones, then the tens.</p>",
+    "worksheet": [
+      [
+        "62 \u2212 27 =",
+        "35"
+      ],
+      [
+        "80 \u2212 46 =",
+        "34"
+      ],
+      [
+        "71 \u2212 33 =",
+        "38"
+      ],
+      [
+        "95 \u2212 58 =",
+        "37"
+      ]
+    ],
+    "quiz": [
+      {
+        "q": "53 \u2212 26 =",
+        "opts": [
+          "27",
+          "37",
+          "47"
+        ],
+        "a": 0
+      },
+      {
+        "q": "84 \u2212 39 =",
+        "opts": [
+          "35",
+          "45",
+          "55"
+        ],
+        "a": 1
+      },
+      {
+        "q": "70 \u2212 22 =",
+        "opts": [
+          "38",
+          "48",
+          "58"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "t07-word-problems",
+    "quarter": "Q2",
+    "title": "Topic 7: More Solving Problems (Addition & Subtraction)",
+    "icon": "\ud83d\udcd6",
+    "cc": "2.OA.A.1",
+    "desc": "One- and two-step word problems involving addition and subtraction within 100.",
+    "ixlUrl": "https://www.ixl.com/math/grade-2/addition-and-subtraction-word-problems-up-to-100",
+    "ixlAlts": [
+      [
+        "Two-step word problems",
+        "https://www.ixl.com/math/grade-2/two-step-word-problems-with-addition-and-subtraction-up-to-100"
+      ],
+      [
+        "Compare word problems",
+        "https://www.ixl.com/math/grade-2/comparison-word-problems-up-to-100"
+      ]
+    ],
+    "lesson": "<p>For each problem, ask: what am I <strong>joining</strong>, <strong>taking away</strong>, or <strong>comparing</strong>? Draw a bar model or number line, write an equation, and check that the answer makes sense.</p>",
+    "worksheet": [
+      [
+        "Ana had 45 stickers. She gave 18 to her brother. How many left?",
+        "27. 45 \u2212 18 = 27."
+      ],
+      [
+        "There are 34 kids on Bus 1 and 27 on Bus 2. How many kids total?",
+        "61. 34 + 27 = 61."
+      ],
+      [
+        "Kai has 63 shells. Lani has 25. How many more does Kai have?",
+        "38. 63 \u2212 25 = 38."
+      ]
+    ],
+    "quiz": [
+      {
+        "q": "Sam has 40 crayons. He gives 15 away. Left =",
+        "opts": [
+          "15",
+          "25",
+          "35"
+        ],
+        "a": 1
+      },
+      {
+        "q": "26 birds + 34 more =",
+        "opts": [
+          "50",
+          "60",
+          "70"
+        ],
+        "a": 1
+      },
+      {
+        "q": "85 \u2212 47 =",
+        "opts": [
+          "28",
+          "38",
+          "48"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "t08-time-money",
+    "quarter": "Q3",
+    "title": "Topic 8: Work with Time & Money",
+    "icon": "\u23f0",
+    "cc": "2.MD.C.7-8",
+    "desc": "Tell time to the nearest 5 minutes and A.M./P.M.; solve money problems with coins and dollars.",
+    "ixlUrl": "https://www.ixl.com/math/grade-2/time-to-the-nearest-five-minutes",
+    "ixlAlts": [
+      [
+        "A.M. or P.M.",
+        "https://www.ixl.com/math/grade-2/a-m-or-p-m"
+      ],
+      [
+        "Add coins",
+        "https://www.ixl.com/math/grade-2/count-coins-quarters-dimes-nickels-and-pennies"
+      ],
+      [
+        "Bills and coins",
+        "https://www.ixl.com/math/grade-2/count-money-up-to-1"
+      ]
+    ],
+    "lesson": "<p><strong>Time</strong>: the minute hand jumps every 5 minutes (12\u21920, 1\u21925, 2\u219210\u2026). Use A.M. (morning) and P.M. (afternoon/evening).</p><p><strong>Money</strong>: penny 1\u00a2, nickel 5\u00a2, dime 10\u00a2, quarter 25\u00a2, dollar $1. Count the biggest coins first.</p>",
+    "worksheet": [
+      [
+        "The minute hand points to 7. How many minutes past?",
+        "35 minutes."
+      ],
+      [
+        "Write 2:15 as time past.",
+        "Quarter past 2 / 15 min past 2."
+      ],
+      [
+        "2 quarters + 1 dime + 3 pennies =",
+        "63\u00a2"
+      ],
+      [
+        "$1 + 2 quarters + 1 nickel =",
+        "$1.55"
+      ]
+    ],
+    "quiz": [
+      {
+        "q": "Minute hand on 3 =",
+        "opts": [
+          "3 min",
+          "15 min",
+          "30 min"
+        ],
+        "a": 1
+      },
+      {
+        "q": "5 dimes =",
+        "opts": [
+          "25\u00a2",
+          "50\u00a2",
+          "75\u00a2"
+        ],
+        "a": 1
+      },
+      {
+        "q": "3 quarters =",
+        "opts": [
+          "50\u00a2",
+          "75\u00a2",
+          "$1"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "t09-numbers-1000",
+    "quarter": "Q3",
+    "title": "Topic 9: Numbers to 1,000",
+    "icon": "\ud83d\udd22",
+    "cc": "2.NBT.A.1-4",
+    "desc": "Understand hundreds, tens, and ones; read, write, count, and compare 3-digit numbers.",
+    "ixlUrl": "https://www.ixl.com/math/grade-2/place-value-hundreds-tens-and-ones",
+    "ixlAlts": [
+      [
+        "Compare 3-digit numbers",
+        "https://www.ixl.com/math/grade-2/compare-numbers-up-to-1-000"
+      ],
+      [
+        "Skip count by 5, 10, 100",
+        "https://www.ixl.com/math/grade-2/skip-count"
+      ]
+    ],
+    "lesson": "<p>A 3-digit number has <strong>hundreds, tens, and ones</strong> places. In 346, the 3 = 300, the 4 = 40, and the 6 = 6. Skip count by <strong>5, 10, or 100</strong>. Compare with <strong>&gt;, &lt;, =</strong> \u2014 hundreds first, then tens, then ones.</p>",
+    "worksheet": [
+      [
+        "Write 500 + 40 + 7 as a number.",
+        "547."
+      ],
+      [
+        "Compare 683 ? 638.",
+        "683 > 638."
+      ],
+      [
+        "Skip count by 100 from 200: 200, 300, ___, ___",
+        "400, 500."
+      ],
+      [
+        "How many hundreds in 812?",
+        "8."
+      ]
+    ],
+    "quiz": [
+      {
+        "q": "700 + 30 + 5 =",
+        "opts": [
+          "375",
+          "735",
+          "573"
+        ],
+        "a": 1
+      },
+      {
+        "q": "489 ? 498",
+        "opts": [
+          ">",
+          "<",
+          "="
+        ],
+        "a": 1
+      },
+      {
+        "q": "Skip count by 10 from 470: next is",
+        "opts": [
+          "471",
+          "480",
+          "570"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "t10-add-1000",
+    "quarter": "Q3",
+    "title": "Topic 10: Add Within 1,000 (Models & Strategies)",
+    "icon": "\u2795\ud83c\udfdb\ufe0f",
+    "cc": "2.NBT.B.7",
+    "desc": "Add 3-digit numbers using place-value blocks, number lines, and the standard algorithm.",
+    "ixlUrl": "https://www.ixl.com/math/grade-2/add-three-digit-numbers",
+    "ixlAlts": [
+      [
+        "Add 3-digit with place value blocks",
+        "https://www.ixl.com/math/grade-2/add-two-three-digit-numbers-using-blocks"
+      ],
+      [
+        "Add on number lines",
+        "https://www.ixl.com/math/grade-2/add-three-digit-numbers-with-regrouping-in-multiple-places"
+      ]
+    ],
+    "lesson": "<p>For 3-digit addition, line up hundreds, tens, and ones. Add ones \u2192 regroup if 10 or more \u2192 add tens \u2192 regroup \u2192 add hundreds.</p>",
+    "worksheet": [
+      [
+        "245 + 137 =",
+        "382"
+      ],
+      [
+        "386 + 154 =",
+        "540"
+      ],
+      [
+        "507 + 268 =",
+        "775"
+      ]
+    ],
+    "quiz": [
+      {
+        "q": "312 + 158 =",
+        "opts": [
+          "460",
+          "470",
+          "480"
+        ],
+        "a": 1
+      },
+      {
+        "q": "428 + 375 =",
+        "opts": [
+          "703",
+          "793",
+          "803"
+        ],
+        "a": 2
+      },
+      {
+        "q": "205 + 195 =",
+        "opts": [
+          "300",
+          "400",
+          "500"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "t11-sub-1000",
+    "quarter": "Q3",
+    "title": "Topic 11: Subtract Within 1,000 (Models & Strategies)",
+    "icon": "\u2796\ud83c\udfdb\ufe0f",
+    "cc": "2.NBT.B.7",
+    "desc": "Subtract 3-digit numbers with place-value models, number lines, and the standard algorithm.",
+    "ixlUrl": "https://www.ixl.com/math/grade-2/subtract-three-digit-numbers",
+    "ixlAlts": [
+      [
+        "Subtract with regrouping",
+        "https://www.ixl.com/math/grade-2/subtract-two-three-digit-numbers-using-blocks"
+      ],
+      [
+        "Count up to subtract 3-digit",
+        "https://www.ixl.com/math/grade-2/subtract-three-digit-numbers-with-regrouping-in-multiple-places"
+      ]
+    ],
+    "lesson": "<p>For 3-digit subtraction, start with the ones. If you need to <strong>regroup</strong>, borrow from the tens (or the hundreds, then tens). Work through each place carefully.</p>",
+    "worksheet": [
+      [
+        "562 \u2212 145 =",
+        "417"
+      ],
+      [
+        "700 \u2212 246 =",
+        "454"
+      ],
+      [
+        "831 \u2212 458 =",
+        "373"
+      ]
+    ],
+    "quiz": [
+      {
+        "q": "400 \u2212 175 =",
+        "opts": [
+          "225",
+          "235",
+          "265"
+        ],
+        "a": 0
+      },
+      {
+        "q": "753 \u2212 289 =",
+        "opts": [
+          "464",
+          "474",
+          "484"
+        ],
+        "a": 0
+      },
+      {
+        "q": "600 \u2212 100 =",
+        "opts": [
+          "400",
+          "500",
+          "600"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "t12-measuring-length",
+    "quarter": "Q4",
+    "title": "Topic 12: Measuring Length",
+    "icon": "\ud83d\udccf",
+    "cc": "2.MD.A.1-4, 2.MD.B.5-6",
+    "desc": "Measure length in inches, feet, centimeters, and meters. Estimate, compare, and add/subtract lengths.",
+    "ixlUrl": "https://www.ixl.com/math/grade-2/measure-using-an-inch-ruler",
+    "ixlAlts": [
+      [
+        "Centimeter ruler",
+        "https://www.ixl.com/math/grade-2/measure-using-a-centimeter-ruler"
+      ],
+      [
+        "Add / subtract lengths",
+        "https://www.ixl.com/math/grade-2/add-and-subtract-lengths"
+      ]
+    ],
+    "lesson": "<p>Use rulers to measure in <strong>inches</strong>, <strong>feet</strong>, <strong>centimeters</strong>, or <strong>meters</strong>. Line up the zero mark! Add and subtract lengths in the same units.</p>",
+    "worksheet": [
+      [
+        "An eraser is 2 in. and a pencil is 7 in. Together?",
+        "9 inches."
+      ],
+      [
+        "If a rope is 45 cm and you cut 18 cm off, how much is left?",
+        "27 cm."
+      ],
+      [
+        "Estimate the length of your desk in feet.",
+        "Answers vary; typical answers 3\u20135 ft."
+      ]
+    ],
+    "quiz": [
+      {
+        "q": "12 inches =",
+        "opts": [
+          "1 foot",
+          "1 yard",
+          "1 meter"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Best unit for the length of a classroom?",
+        "opts": [
+          "Inch",
+          "Foot / meter",
+          "Centimeter"
+        ],
+        "a": 1
+      },
+      {
+        "q": "6 cm + 8 cm =",
+        "opts": [
+          "10 cm",
+          "12 cm",
+          "14 cm"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "t13-shapes-attributes",
+    "quarter": "Q4",
+    "title": "Topic 13: Shapes & Their Attributes",
+    "icon": "\ud83d\udd37",
+    "cc": "2.G.A.1-3",
+    "desc": "Identify shapes by number of sides, angles, and faces; partition shapes into equal shares (halves, thirds, fourths).",
+    "ixlUrl": "https://www.ixl.com/math/grade-2/identify-two-dimensional-shapes",
+    "ixlAlts": [
+      [
+        "Sides &amp; corners",
+        "https://www.ixl.com/math/grade-2/count-sides-and-corners"
+      ],
+      [
+        "Halves, thirds, fourths",
+        "https://www.ixl.com/math/grade-2/halves-thirds-and-fourths"
+      ]
+    ],
+    "lesson": "<p>2D shapes have <strong>sides</strong> and <strong>angles (corners)</strong>. Triangles have 3; quadrilaterals (squares, rectangles, trapezoids) have 4; pentagons 5; hexagons 6.</p><p>Partition circles and rectangles into 2, 3, or 4 equal shares: <strong>halves, thirds, fourths</strong>.</p>",
+    "worksheet": [
+      [
+        "How many sides does a pentagon have?",
+        "5."
+      ],
+      [
+        "How many corners does a hexagon have?",
+        "6."
+      ],
+      [
+        "Split a rectangle into 3 equal shares. Each share is a\u2026",
+        "Third."
+      ]
+    ],
+    "quiz": [
+      {
+        "q": "A quadrilateral has how many sides?",
+        "opts": [
+          "3",
+          "4",
+          "5"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Four equal shares of a shape are each called\u2026",
+        "opts": [
+          "Halves",
+          "Thirds",
+          "Fourths"
+        ],
+        "a": 2
+      },
+      {
+        "q": "How many faces does a cube have?",
+        "opts": [
+          "4",
+          "6",
+          "8"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "t14-more-add-sub-length",
+    "quarter": "Q4",
+    "title": "Topic 14: More Addition, Subtraction, and Length",
+    "icon": "\ud83c\udfaf",
+    "cc": "2.MD.B.5-6, 2.OA.A.1",
+    "desc": "Solve add & subtract length problems on number lines and in word problems.",
+    "ixlUrl": "https://www.ixl.com/math/grade-2/add-and-subtract-lengths",
+    "ixlAlts": [
+      [
+        "Number-line word problems",
+        "https://www.ixl.com/math/grade-2/addition-and-subtraction-problems-with-a-number-line-up-to-100"
+      ],
+      [
+        "Compare lengths word problems",
+        "https://www.ixl.com/math/grade-2/compare-numbers-using-word-problems"
+      ]
+    ],
+    "lesson": "<p>Length problems work like other add/subtract word problems, but keep the units. Use a <strong>number line</strong> to model \u2014 start at one length, then jump forward to add or backward to subtract.</p>",
+    "worksheet": [
+      [
+        "A snake is 32 in. long. It grows 15 in. New length?",
+        "47 in."
+      ],
+      [
+        "A rope is 84 cm. You cut 27 cm. Left?",
+        "57 cm."
+      ],
+      [
+        "On a number line, start at 45 and jump +28. Where are you?",
+        "73."
+      ]
+    ],
+    "quiz": [
+      {
+        "q": "26 in + 14 in =",
+        "opts": [
+          "30 in",
+          "40 in",
+          "50 in"
+        ],
+        "a": 1
+      },
+      {
+        "q": "60 cm \u2212 25 cm =",
+        "opts": [
+          "25 cm",
+          "35 cm",
+          "45 cm"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Start at 50, jump +30 =",
+        "opts": [
+          "70",
+          "80",
+          "90"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "t15-graphs-data",
+    "quarter": "Q4",
+    "title": "Topic 15: Graphs & Data",
+    "icon": "\ud83d\udcca",
+    "cc": "2.MD.D.9-10",
+    "desc": "Make line plots, picture graphs, and bar graphs; interpret data with up to 4 categories.",
+    "ixlUrl": "https://www.ixl.com/math/grade-2/interpret-picture-graphs",
+    "ixlAlts": [
+      [
+        "Bar graphs",
+        "https://www.ixl.com/math/grade-2/interpret-bar-graphs"
+      ],
+      [
+        "Line plots",
+        "https://www.ixl.com/math/grade-2/create-line-plots"
+      ]
+    ],
+    "lesson": "<p>Sort the data first, then choose a graph: <strong>picture graph</strong> (each picture = 1 or 2), <strong>bar graph</strong> (bar heights = counts), <strong>line plot</strong> (X marks over a number line). Ask: which has more, less, or how many total?</p>",
+    "worksheet": [
+      [
+        "A picture graph shows 5 apples, 3 pears, 4 oranges. Total fruits?",
+        "12."
+      ],
+      [
+        "Same graph: which has the most?",
+        "Apples."
+      ],
+      [
+        "A bar graph shows Mon 8, Tue 5, Wed 10. Total?",
+        "23."
+      ]
+    ],
+    "quiz": [
+      {
+        "q": "Bar graph: cats 3, dogs 5. Difference =",
+        "opts": [
+          "1",
+          "2",
+          "3"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Picture graph, each \ud83d\udc1f = 2 fish. 4 pictures =",
+        "opts": [
+          "4",
+          "6",
+          "8"
+        ],
+        "a": 2
+      },
+      {
+        "q": "Line plot uses\u2026",
+        "opts": [
+          "Bars",
+          "Xs over a number line",
+          "Pictures"
+        ],
+        "a": 1
+      }
+    ]
+  }
+];
+  let currentUnit = null;
+
+  function renderHome() {
+    const grid = document.getElementById('units-grid');
+    grid.innerHTML = UNITS.map(u => `
+      <div class="unit-card" onclick="showLesson('${u.id}')">
+        <div class="quarter-pill">${u.quarter}</div>
+        <div class="unit-card-header">
+          <div class="unit-card-icon">${u.icon}</div>
+          <div>
+            <div class="unit-card-title">${u.title}</div>
+            <div class="unit-card-cc">${u.cc}</div>
+          </div>
+        </div>
+        <div class="unit-card-desc">${u.desc}</div>
+      </div>
+    `).join('');
+  }
+
+  function showHome() {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('home-screen').classList.add('active');
+    document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+  }
+
+  function showLesson(id) {
+    currentUnit = id;
+    const u = UNITS.find(x => x.id === id);
+    if (!u) return;
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('lesson-screen').classList.add('active');
+
+    document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+    const items = document.querySelectorAll('.sidebar-item');
+    UNITS.forEach((x, idx) => { if (x.id === id) items[idx].classList.add('active'); });
+
+    document.getElementById('lesson-ixl-btn').href = u.ixlUrl;
+
+    const ixlList = u.ixlAlts.length
+      ? '<ul>' + u.ixlAlts.map(([n, url]) => `<li>• <a href="${url}" target="_blank" rel="noopener" style="color:#dc2626;font-weight:600;">${n}</a></li>`).join('') + '</ul>'
+      : '';
+    document.getElementById('lesson-content').innerHTML = `
+      <div class="quarter-pill">${u.quarter}</div>
+      <h2>${u.icon} ${u.title}</h2>
+      <div class="lesson-cc">Standards: ${u.cc}</div>
+      ${u.lesson}
+      <div class="ixl-card">
+        <h3>🎯 Practice on IXL — Grade 2</h3>
+        <p><a href="${u.ixlUrl}" target="_blank" rel="noopener" style="color:#dc2626;font-weight:700;">Main practice → ${u.ixlUrl.split('/').pop().replace(/-/g,' ')}</a></p>
+        ${u.ixlAlts.length ? '<p style="margin-top:8px;font-size:13px;">More Grade 2 IXL practice on this topic:</p>' + ixlList : ''}
+      </div>
+    `;
+  }
+
+  function showWorksheet() {
+    if (!currentUnit) return;
+    const u = UNITS.find(x => x.id === currentUnit);
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('worksheet-screen').classList.add('active');
+    document.getElementById('worksheet-content').innerHTML = u.worksheet.map((p, i) => `
+      <div class="problem" data-idx="${i}">
+        <h4>Problem ${i+1}</h4>
+        <p>${p[0]}</p>
+        <input type="text" placeholder="Your answer">
+        <div class="answer-key" style="display:none;"><strong>Answer:</strong> ${p[1]}</div>
+      </div>
+    `).join('');
+  }
+
+  function checkWorksheet() {
+    document.querySelectorAll('#worksheet-content .answer-key').forEach(el => el.style.display = 'block');
+  }
+
+  function showQuiz() {
+    if (!currentUnit) return;
+    const u = UNITS.find(x => x.id === currentUnit);
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('quiz-screen').classList.add('active');
+    document.getElementById('quiz-content').innerHTML = u.quiz.map((q, i) => `
+      <div class="quiz-question" data-idx="${i}" data-correct="${q.a}">
+        <h4>Q${i+1}. ${q.q}</h4>
+        ${q.opts.map((opt, oi) => `<label><input type="radio" name="q${i}" value="${oi}"> ${opt}</label>`).join('')}
+      </div>
+    `).join('') + '<div id="quiz-result"></div>';
+  }
+
+  function submitQuiz() {
+    const qs = document.querySelectorAll('.quiz-question');
+    let correct = 0, total = qs.length;
+    qs.forEach(q => {
+      const idx = q.dataset.idx;
+      const ans = parseInt(q.dataset.correct);
+      const sel = document.querySelector(`input[name=q${idx}]:checked`);
+      if (sel && parseInt(sel.value) === ans) correct++;
+    });
+    document.getElementById('quiz-result').innerHTML = `
+      <div class="result-card">
+        <h3>Score: ${correct} / ${total}</h3>
+        <p>${correct === total ? '🎉 Perfect! Great job!' : correct >= total*0.7 ? '👍 Nice work!' : '📚 Review the lesson and try again.'}</p>
+      </div>
+    `;
+  }
+
+  renderHome();
+  </script>
+</body>
+</html>
