@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mary, Star of the Sea &mdash; 2nd Grade Social Studies</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #fef3c7 0%, #f8f9fa 100%); color: #253a77; min-height: 100vh; }
+.container { display: flex; min-height: 100vh; }
+
+.sidebar { width: 280px; background: #b45309; color: #fff; padding: 24px 20px; overflow-y: auto; flex-shrink: 0; }
+.sidebar h2 { color: #FFD100; font-size: 1.05rem; }
+.sidebar-sub { color: rgba(255,255,255,0.7); font-size: 0.78rem; margin: 0 0 12px 0; }
+.sidebar-quarter { margin-top: 20px; padding-top: 10px; border-top: 1px solid #f59e0b; color: #FFD100; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.sidebar-unit { display: flex; align-items: center; gap: 10px; padding: 10px 12px; margin: 4px 0; background: #f59e0b; border-radius: 6px; cursor: pointer; transition: all 0.15s; font-size: 0.86rem; line-height: 1.3; }
+.sidebar-unit:hover { background: #FFD100; color: #253a77; }
+.sidebar-unit.active { background: #FFD100; color: #253a77; font-weight: 700; }
+
+.main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+.topbar { background: #fff; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid #FFD100; flex-wrap: wrap; gap: 10px; }
+.topbar-left { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.topbar-logos { display: flex; gap: 8px; }
+.logo-circle { width: 42px; height: 42px; border-radius: 50%; background: #fff; box-shadow: 0 2px 6px rgba(37,58,119,0.15); overflow: hidden; display: inline-flex; align-items: center; justify-content: flex-start; flex-shrink: 0; }
+.logo-circle img { display: block; }
+.logo-circle.msos img { height: 100%; width: auto; }
+.logo-circle.nui img { width: 100%; height: 100%; object-fit: cover; }
+.logo-circle.msos { background: #1a2a4a; }
+
+.nav-btn { background: #b45309; color: #fff; padding: 8px 14px; text-decoration: none; border-radius: 6px; font-weight: 700; font-size: 0.85rem; transition: all 0.15s; border: none; cursor: pointer; }
+.nav-btn:hover { background: #f59e0b; transform: translateY(-1px); }
+.nav-btn.gold { background: #FFD100; color: #1a2a4a; }
+.nav-btn.gold:hover { background: #ffc400; }
+.nav-btn.print { background: #fff; color: #b45309; border: 1.5px solid #b45309; }
+.nav-btn.print:hover { background: #b45309; color: #fff; }
+.nav-btn.map { background: #B45309; color: #fff; }
+.nav-btn.map:hover { background: #92400e; }
+.topbar-right { color: #666; font-size: 0.85rem; font-weight: 600; }
+
+.content { flex: 1; padding: 26px 32px; overflow-y: auto; max-width: 960px; }
+.screen { display: none; }
+.screen.active { display: block; }
+
+.units-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 20px; }
+.unit-card { background: #fff; padding: 22px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.06); cursor: pointer; transition: all 0.2s; border-top: 4px solid #b45309; }
+.unit-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+.unit-icon { font-size: 2.4rem; line-height: 1; margin-bottom: 6px; }
+.unit-title { font-weight: 700; color: #b45309; font-size: 1rem; margin-bottom: 6px; line-height: 1.3; }
+.unit-cc { font-size: 0.72rem; color: #7a5f00; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+.unit-desc { font-size: 0.85rem; color: #666; line-height: 1.45; }
+.q-pill { display: inline-block; background: #FFD100; color: #1a2a4a; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; margin-bottom: 8px; }
+
+.resources-box { margin-top: 40px; padding: 22px; background: #fff; border-left: 4px solid #FFD100; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.06); }
+.resources-box h2 { color: #b45309; font-size: 1.15rem; margin-bottom: 12px; }
+.res-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.res-link { padding: 12px 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; text-decoration: none; color: #253a77; transition: all 0.15s; }
+.res-link:hover { background: #b45309; color: #fff; border-color: #b45309; }
+.res-link:hover .res-link-desc { color: rgba(255,255,255,0.85); }
+.res-link-title { font-weight: 700; font-size: 0.92rem; margin-bottom: 3px; }
+.res-link-desc { font-size: 0.78rem; color: #64748b; }
+
+.lesson-content h2 { margin-bottom: 12px; font-size: 1.5rem; }
+.lesson-content h3 { color: #b45309; margin: 18px 0 8px; font-size: 1.05rem; padding: 6px 12px; background: linear-gradient(90deg, linear-gradient(135deg, #fef3c7 0%, #f8f9fa 100%) 0%, transparent 100%); border-left: 3px solid #b45309; }
+.lesson-content p { margin-bottom: 10px; line-height: 1.65; }
+.lesson-content ul { margin: 8px 0 12px 24px; }
+.lesson-content li { margin-bottom: 5px; line-height: 1.55; }
+.q-tag { display: inline-block; background: #FFD100; color: #1a2a4a; padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 700; margin-bottom: 14px; }
+.prayer { background: #fef3c7; border-left: 4px solid #FFD100; padding: 12px 16px; margin: 14px 0; border-radius: 6px; font-size: 0.95rem; }
+.highlight { background: #dcfce7; border-left: 4px solid #16a34a; padding: 12px 16px; margin: 14px 0; border-radius: 6px; font-size: 0.95rem; font-weight: 600; color: #14532d; }
+.back-to-home { margin-bottom: 16px; }
+.back-to-home button { background: #6b7280; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 0.85rem; }
+.back-to-home button:hover { background: #4b5563; }
+
+@media (max-width: 800px) {
+  .container { flex-direction: column; }
+  .sidebar { width: 100%; max-height: 300px; }
+  .content { padding: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="sidebar">
+    <h2>Mary, Star of the Sea</h2>
+    <p class="sidebar-sub">2nd Grade Social Studies &middot; Mrs. Peters</p>
+    <div><div class="sidebar-quarter">Q1 &middot; Aug–Oct</div><div class="sidebar-unit" onclick="showLesson('u1-self-family-community')">🏠 Self, Family &amp; Community</div><div class="sidebar-quarter">Q2 &middot; Oct–Dec</div><div class="sidebar-unit" onclick="showLesson('u2-economics-culture')">💰 Economics, American Culture &amp; Government</div><div class="sidebar-quarter">Q3 &middot; Jan–Mar</div><div class="sidebar-unit" onclick="showLesson('u3-geography-landforms')">🗺️ Geography &amp; Landforms (Hawaii Focus)</div><div class="sidebar-quarter">Q4 &middot; Mar–May</div><div class="sidebar-unit" onclick="showLesson('u4-earth-global')">🌎 Earth &amp; Environmental Awareness &middot; Global Geography</div></div>
+  </div>
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-left">
+        <a href="2b-peters.html" class="nav-btn">← All Classes</a>
+        <a href="2b-peters-syllabus.html" class="nav-btn gold">📓 Syllabus</a>
+        <a href="2b-peters-syllabus.pdf" class="nav-btn print" target="_blank" rel="noopener">🖨️ Print Syllabus</a>
+        <a href="2b-social-studies-curriculum-map.html" class="nav-btn map">📅 Curriculum Map</a>
+        <div class="topbar-logos">
+          <span class="logo-circle msos"><img src="msos-logo.svg" alt="MSOS Logo"></span>
+          <span class="logo-circle nui"><img src="nui-logo.png" alt="NUI Logo"></span>
+        </div>
+      </div>
+      <div class="topbar-right">Social Studies &middot; Grade 2</div>
+    </div>
+    <div class="content">
+      <div id="home-screen" class="screen active">
+        <h1 style="color:#b45309;">🌍 2nd Grade Social Studies</h1>
+        <p style="color:#555;font-style:italic;margin-top:6px;">Community &middot; Culture &middot; Geography &middot; Economics</p>
+        <div id="units-grid" class="units-grid"><div class="unit-card" onclick="showLesson('u1-self-family-community')"><div class="q-pill">Q1</div><div class="unit-icon">🏠</div><div class="unit-title">Unit 1: Self, Family &amp; Community</div><div class="unit-cc">HCPS III SS Grade 2</div><div class="unit-desc">Every person is unique and important</div></div><div class="unit-card" onclick="showLesson('u2-economics-culture')"><div class="q-pill">Q2</div><div class="unit-icon">💰</div><div class="unit-title">Unit 2: Economics, American Culture &amp; Government</div><div class="unit-cc">HCPS III SS Grade 2</div><div class="unit-desc">People trade, save, and spend money to meet their needs</div></div><div class="unit-card" onclick="showLesson('u3-geography-landforms')"><div class="q-pill">Q3</div><div class="unit-icon">🗺️</div><div class="unit-title">Unit 3: Geography &amp; Landforms (Hawaii Focus)</div><div class="unit-cc">HCPS III SS Grade 2</div><div class="unit-desc">Maps and globes show us where things are</div></div><div class="unit-card" onclick="showLesson('u4-earth-global')"><div class="q-pill">Q4</div><div class="unit-icon">🌎</div><div class="unit-title">Unit 4: Earth &amp; Environmental Awareness &middot; Global Geography</div><div class="unit-cc">HCPS III SS Grade 2</div><div class="unit-desc">We are all responsible for taking care of our Earth</div></div></div>
+        <div class="resources-box">
+          <h2>🌟 Recommended Resources</h2>
+          <div class="res-links"><a class="res-link" href="https://jr.brainpop.com/socialstudies/" target="_blank" rel="noopener"><div class="res-link-title">Brain-Pop Jr. Social Studies</div><div class="res-link-desc">Grade-appropriate SS videos</div></a><a class="res-link" href="https://kids.nationalgeographic.com/" target="_blank" rel="noopener"><div class="res-link-title">National Geographic Kids</div><div class="res-link-desc">Global geography and culture</div></a><a class="res-link" href="https://www.ducksters.com/" target="_blank" rel="noopener"><div class="res-link-title">Ducksters &mdash; History for Kids</div><div class="res-link-desc">Kid-friendly history and geography</div></a><a class="res-link" href="https://kidsdiscover.com/" target="_blank" rel="noopener"><div class="res-link-title">Kids Discover</div><div class="res-link-desc">Illustrated non-fiction topics</div></a><a class="res-link" href="https://www.hawaiipublicschools.org/" target="_blank" rel="noopener"><div class="res-link-title">Hawaii DOE</div><div class="res-link-desc">Hawaii resources</div></a><a class="res-link" href="https://pbskids.org/games/socialstudies/" target="_blank" rel="noopener"><div class="res-link-title">PBS Kids Social Studies</div><div class="res-link-desc">Interactive SS games</div></a></div>
+        </div>
+      </div>
+      <div id="lesson-screen" class="screen">
+        <div class="back-to-home"><button onclick="showHome()">← Back to Overview</button></div>
+        <div id="lesson-content" class="lesson-content"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+const LESSONS = {"u1-self-family-community": "<h2 style=\"color:#b45309;\">\ud83c\udfe0 Unit 1: Self, Family &amp; Community</h2><div class=\"q-tag\">Q1 &middot; HCPS III SS Grade 2</div><h3>\ud83d\udca1 Big Ideas</h3><ul><li>Every person is unique and important</li><li>Families come in many forms and share love</li><li>Communities help everyone live better together</li></ul><h3>\ud83d\udcda What Students Learn</h3><ul><li>All About Me project &mdash; identity, culture, family</li><li>Types of families and how families care for each other</li><li>Community helpers &mdash; teachers, firefighters, doctors, mail carriers</li><li>Being a good citizen in the classroom and community</li><li>Rules and laws &mdash; why we need them</li><li>Introduction to maps of the classroom and school</li></ul><div class=\"highlight\">\ud83d\udcd4 All About Me book &middot; Community helper interview</div><h3>\ud83d\udcca Assessments</h3><p>All About Me presentation &middot; Community helper report</p>", "u2-economics-culture": "<h2 style=\"color:#b45309;\">\ud83d\udcb0 Unit 2: Economics, American Culture &amp; Government</h2><div class=\"q-tag\">Q2 &middot; HCPS III SS Grade 2</div><h3>\ud83d\udca1 Big Ideas</h3><ul><li>People trade, save, and spend money to meet their needs</li><li>Our country has traditions and symbols we share</li><li>Government helps make and enforce rules for everyone</li></ul><h3>\ud83d\udcda What Students Learn</h3><ul><li>Wants vs. needs &middot; goods and services</li><li>Producers and consumers &middot; earning and spending</li><li>Saving, budgeting, and making choices with money</li><li>American symbols: flag, bald eagle, Statue of Liberty</li><li>American holidays: Thanksgiving, Christmas, Presidents&rsquo; Day, MLK Jr. Day</li><li>Introduction to how our government works (age-appropriate)</li></ul><div class=\"highlight\">\ud83c\udfe6 Classroom marketplace &middot; American symbols poster</div><h3>\ud83d\udcca Assessments</h3><p>Wants/needs sort &middot; American symbols quiz</p>", "u3-geography-landforms": "<h2 style=\"color:#b45309;\">\ud83d\uddfa\ufe0f Unit 3: Geography &amp; Landforms (Hawaii Focus)</h2><div class=\"q-tag\">Q3 &middot; HCPS III SS Grade 2</div><h3>\ud83d\udca1 Big Ideas</h3><ul><li>Maps and globes show us where things are</li><li>Hawaii has unique geography that shapes how we live</li><li>Where we live affects what we do every day</li></ul><h3>\ud83d\udcda What Students Learn</h3><ul><li>Map skills &mdash; symbols, compass rose, key, cardinal directions</li><li>Physical vs. political maps</li><li>Hawaii&rsquo;s eight main islands &mdash; names, locations, unique features</li><li>Hawaii landforms cross-curricular with Science (Landforms unit)</li><li>Expository writing about a Hawaii landform (with ELA)</li><li>Culture and heritage of Hawaii</li></ul><div class=\"highlight\">\ud83c\udf3a Hawaii Landform research project &middot; Map of Hawaii label</div><h3>\ud83d\udcca Assessments</h3><p>Landform research paper &middot; Hawaii map quiz &middot; Class presentation</p>", "u4-earth-global": "<h2 style=\"color:#b45309;\">\ud83c\udf0e Unit 4: Earth &amp; Environmental Awareness &middot; Global Geography</h2><div class=\"q-tag\">Q4 &middot; HCPS III SS Grade 2</div><h3>\ud83d\udca1 Big Ideas</h3><ul><li>We are all responsible for taking care of our Earth</li><li>The world has 7 continents and 5 oceans</li><li>People around the world share similarities and differences</li></ul><h3>\ud83d\udcda What Students Learn</h3><ul><li>The 7 continents and 5 oceans</li><li>Introduction to countries and cultures around the world</li><li>Reduce, reuse, recycle &mdash; being kind to Earth</li><li>May Day celebration &mdash; culture and giving thanks</li><li>Earth Day and environmental stewardship</li><li>Market Day (economics capstone) &mdash; students run a class market</li></ul><div class=\"highlight\">\ud83c\udf0d Market Day &middot; Global cultures potluck &middot; May Day performance</div><h3>\ud83d\udcca Assessments</h3><p>Continent quiz &middot; Recycling reflection &middot; Market Day participation</p>"};
+function showLesson(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('lesson-screen').classList.add('active');
+  document.getElementById('lesson-content').innerHTML = LESSONS[id] || '<p>Lesson not found.</p>';
+  document.querySelectorAll('.sidebar-unit').forEach(el => {
+    el.classList.remove('active');
+    if (el.getAttribute('onclick') && el.getAttribute('onclick').includes("'" + id + "'")) el.classList.add('active');
+  });
+  window.scrollTo(0, 0);
+}
+function showHome() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('home-screen').classList.add('active');
+  document.querySelectorAll('.sidebar-unit').forEach(el => el.classList.remove('active'));
+}
+</script>
+</body>
+</html>

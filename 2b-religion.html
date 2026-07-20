@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mary, Star of the Sea &mdash; 2nd Grade Religion</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #fdf3ea 0%, #f8f9fa 100%); color: #253a77; min-height: 100vh; }
+.container { display: flex; min-height: 100vh; }
+
+.sidebar { width: 280px; background: #7c2d12; color: #fff; padding: 24px 20px; overflow-y: auto; flex-shrink: 0; }
+.sidebar h2 { color: #FFD100; font-size: 1.05rem; }
+.sidebar-sub { color: rgba(255,255,255,0.7); font-size: 0.78rem; margin: 0 0 12px 0; }
+.sidebar-quarter { margin-top: 20px; padding-top: 10px; border-top: 1px solid #a15c1d; color: #FFD100; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.sidebar-unit { display: flex; align-items: center; gap: 10px; padding: 10px 12px; margin: 4px 0; background: #a15c1d; border-radius: 6px; cursor: pointer; transition: all 0.15s; font-size: 0.86rem; line-height: 1.3; }
+.sidebar-unit:hover { background: #FFD100; color: #253a77; }
+.sidebar-unit.active { background: #FFD100; color: #253a77; font-weight: 700; }
+
+.main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+.topbar { background: #fff; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid #FFD100; flex-wrap: wrap; gap: 10px; }
+.topbar-left { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.topbar-logos { display: flex; gap: 8px; }
+.logo-circle { width: 42px; height: 42px; border-radius: 50%; background: #fff; box-shadow: 0 2px 6px rgba(37,58,119,0.15); overflow: hidden; display: inline-flex; align-items: center; justify-content: flex-start; flex-shrink: 0; }
+.logo-circle img { display: block; }
+.logo-circle.msos img { height: 100%; width: auto; }
+.logo-circle.nui img { width: 100%; height: 100%; object-fit: cover; }
+.logo-circle.msos { background: #1a2a4a; }
+
+.nav-btn { background: #7c2d12; color: #fff; padding: 8px 14px; text-decoration: none; border-radius: 6px; font-weight: 700; font-size: 0.85rem; transition: all 0.15s; border: none; cursor: pointer; }
+.nav-btn:hover { background: #a15c1d; transform: translateY(-1px); }
+.nav-btn.gold { background: #FFD100; color: #1a2a4a; }
+.nav-btn.gold:hover { background: #ffc400; }
+.nav-btn.print { background: #fff; color: #7c2d12; border: 1.5px solid #7c2d12; }
+.nav-btn.print:hover { background: #7c2d12; color: #fff; }
+.nav-btn.map { background: #B45309; color: #fff; }
+.nav-btn.map:hover { background: #92400e; }
+.topbar-right { color: #666; font-size: 0.85rem; font-weight: 600; }
+
+.content { flex: 1; padding: 26px 32px; overflow-y: auto; max-width: 960px; }
+.screen { display: none; }
+.screen.active { display: block; }
+
+.units-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 20px; }
+.unit-card { background: #fff; padding: 22px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.06); cursor: pointer; transition: all 0.2s; border-top: 4px solid #7c2d12; }
+.unit-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+.unit-icon { font-size: 2.4rem; line-height: 1; margin-bottom: 6px; }
+.unit-title { font-weight: 700; color: #7c2d12; font-size: 1rem; margin-bottom: 6px; line-height: 1.3; }
+.unit-cc { font-size: 0.72rem; color: #7a5f00; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+.unit-desc { font-size: 0.85rem; color: #666; line-height: 1.45; }
+.q-pill { display: inline-block; background: #FFD100; color: #1a2a4a; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; margin-bottom: 8px; }
+
+.resources-box { margin-top: 40px; padding: 22px; background: #fff; border-left: 4px solid #FFD100; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.06); }
+.resources-box h2 { color: #7c2d12; font-size: 1.15rem; margin-bottom: 12px; }
+.res-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.res-link { padding: 12px 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; text-decoration: none; color: #253a77; transition: all 0.15s; }
+.res-link:hover { background: #7c2d12; color: #fff; border-color: #7c2d12; }
+.res-link:hover .res-link-desc { color: rgba(255,255,255,0.85); }
+.res-link-title { font-weight: 700; font-size: 0.92rem; margin-bottom: 3px; }
+.res-link-desc { font-size: 0.78rem; color: #64748b; }
+
+.lesson-content h2 { margin-bottom: 12px; font-size: 1.5rem; }
+.lesson-content h3 { color: #7c2d12; margin: 18px 0 8px; font-size: 1.05rem; padding: 6px 12px; background: linear-gradient(90deg, linear-gradient(135deg, #fdf3ea 0%, #f8f9fa 100%) 0%, transparent 100%); border-left: 3px solid #7c2d12; }
+.lesson-content p { margin-bottom: 10px; line-height: 1.65; }
+.lesson-content ul { margin: 8px 0 12px 24px; }
+.lesson-content li { margin-bottom: 5px; line-height: 1.55; }
+.q-tag { display: inline-block; background: #FFD100; color: #1a2a4a; padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 700; margin-bottom: 14px; }
+.prayer { background: #fef3c7; border-left: 4px solid #FFD100; padding: 12px 16px; margin: 14px 0; border-radius: 6px; font-size: 0.95rem; }
+.highlight { background: #dcfce7; border-left: 4px solid #16a34a; padding: 12px 16px; margin: 14px 0; border-radius: 6px; font-size: 0.95rem; font-weight: 600; color: #14532d; }
+.back-to-home { margin-bottom: 16px; }
+.back-to-home button { background: #6b7280; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 0.85rem; }
+.back-to-home button:hover { background: #4b5563; }
+
+@media (max-width: 800px) {
+  .container { flex-direction: column; }
+  .sidebar { width: 100%; max-height: 300px; }
+  .content { padding: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="sidebar">
+    <h2>Mary, Star of the Sea</h2>
+    <p class="sidebar-sub">2nd Grade Religion &middot; Mrs. Peters</p>
+    <div><div class="sidebar-quarter">Q1 &middot; Aug–Oct</div><div class="sidebar-unit" onclick="showLesson('u1-church-mass')">⛪ Prayer, Sacraments & the Mass</div><div class="sidebar-quarter">Q2 &middot; Oct–Dec</div><div class="sidebar-unit" onclick="showLesson('u2-bible-family')">📖 Bible Stories & God&rsquo;s Family</div><div class="sidebar-quarter">Q3 &middot; Jan–Mar</div><div class="sidebar-unit" onclick="showLesson('u3-jesus-holy-week')">🕊️ The Life of Jesus &middot; Lent &amp; Easter</div><div class="sidebar-quarter">Q4 &middot; Mar–May</div><div class="sidebar-unit" onclick="showLesson('u4-followers-service')">🌟 Living Our Faith &amp; Serving Others</div></div>
+  </div>
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-left">
+        <a href="2b-peters.html" class="nav-btn">← All Classes</a>
+        <a href="2b-peters-syllabus.html" class="nav-btn gold">📓 Syllabus</a>
+        <a href="2b-peters-syllabus.pdf" class="nav-btn print" target="_blank" rel="noopener">🖨️ Print Syllabus</a>
+        <a href="2b-religion-curriculum-map.html" class="nav-btn map">📅 Curriculum Map</a>
+        <div class="topbar-logos">
+          <span class="logo-circle msos"><img src="msos-logo.svg" alt="MSOS Logo"></span>
+          <span class="logo-circle nui"><img src="nui-logo.png" alt="NUI Logo"></span>
+        </div>
+      </div>
+      <div class="topbar-right">Religion &middot; Grade 2</div>
+    </div>
+    <div class="content">
+      <div id="home-screen" class="screen active">
+        <h1 style="color:#7c2d12;">✝️ 2nd Grade Religion</h1>
+        <p style="color:#555;font-style:italic;margin-top:6px;">Faith, prayer, Scripture &middot; SY 2026-2027</p>
+        <div id="units-grid" class="units-grid"><div class="unit-card" onclick="showLesson('u1-church-mass')"><div class="q-pill">Q1</div><div class="unit-icon">⛪</div><div class="unit-title">Unit 1: Prayer, Sacraments & the Mass</div><div class="unit-cc">Diocesan Standards</div><div class="unit-desc">We come together as God&rsquo;s family to pray and worship</div></div><div class="unit-card" onclick="showLesson('u2-bible-family')"><div class="q-pill">Q2</div><div class="unit-icon">📖</div><div class="unit-title">Unit 2: Bible Stories & God&rsquo;s Family</div><div class="unit-cc">Diocesan Standards</div><div class="unit-desc">The Bible is God&rsquo;s Word &mdash; a love letter to us</div></div><div class="unit-card" onclick="showLesson('u3-jesus-holy-week')"><div class="q-pill">Q3</div><div class="unit-icon">🕊️</div><div class="unit-title">Unit 3: The Life of Jesus &middot; Lent &amp; Easter</div><div class="unit-cc">Diocesan Standards</div><div class="unit-desc">Jesus is fully God and fully human</div></div><div class="unit-card" onclick="showLesson('u4-followers-service')"><div class="q-pill">Q4</div><div class="unit-icon">🌟</div><div class="unit-title">Unit 4: Living Our Faith &amp; Serving Others</div><div class="unit-cc">Diocesan Standards</div><div class="unit-desc">Being a follower of Jesus means serving others in love</div></div></div>
+        <div class="resources-box">
+          <h2>🌟 Recommended Resources</h2>
+          <div class="res-links"><a class="res-link" href="https://www.usccb.org/beliefs-and-teachings" target="_blank" rel="noopener"><div class="res-link-title">USCCB</div><div class="res-link-desc">Official U.S. Bishops&rsquo; resources</div></a><a class="res-link" href="https://catechism.cc/" target="_blank" rel="noopener"><div class="res-link-title">Catechism for Kids</div><div class="res-link-desc">Age-appropriate Catholic teaching</div></a><a class="res-link" href="https://formed.org/" target="_blank" rel="noopener"><div class="res-link-title">FORMED</div><div class="res-link-desc">Catholic videos, saints, Bible</div></a><a class="res-link" href="https://www.loyolapress.com/faith-formation/" target="_blank" rel="noopener"><div class="res-link-title">Loyola Press Kids</div><div class="res-link-desc">Prayers, saints, and Bible</div></a><a class="res-link" href="https://www.catholicicing.com/" target="_blank" rel="noopener"><div class="res-link-title">Catholic Icing</div><div class="res-link-desc">Hands-on Catholic crafts</div></a><a class="res-link" href="https://www.bible.com/kids" target="_blank" rel="noopener"><div class="res-link-title">Bible for Kids app</div><div class="res-link-desc">Interactive Bible stories</div></a></div>
+        </div>
+      </div>
+      <div id="lesson-screen" class="screen">
+        <div class="back-to-home"><button onclick="showHome()">← Back to Overview</button></div>
+        <div id="lesson-content" class="lesson-content"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+const LESSONS = {"u1-church-mass": "<h2 style=\"color:#7c2d12;\">\u26ea Unit 1: Prayer, Sacraments & the Mass</h2><div class=\"q-tag\">Q1 &middot; Diocesan Standards</div><h3>\ud83d\udca1 Big Ideas</h3><ul><li>We come together as God&rsquo;s family to pray and worship</li><li>The Mass is our most important prayer of the week</li><li>Basic prayers like the Sign of the Cross unite us as Catholics</li></ul><h3>\ud83d\udcda What Students Learn</h3><ul><li>Sign of the Cross &middot; Our Father &middot; Hail Mary</li><li>Parts of the Mass and how to participate reverently</li><li>The seven sacraments (introduction)</li><li>Baptism, Reconciliation, and Eucharist (with focus on First Reconciliation and First Communion prep)</li><li>The role of the priest, deacon, and Mass ministers</li></ul><div class=\"prayer\"><strong>\ud83d\ude4f Prayer Focus:</strong> Sign of the Cross &middot; Our Father &middot; Grace Before Meals</div><h3>\ud83d\udcca Assessments</h3><p>Prayer recitation checks &middot; Mass reverence rubric</p>", "u2-bible-family": "<h2 style=\"color:#7c2d12;\">\ud83d\udcd6 Unit 2: Bible Stories & God&rsquo;s Family</h2><div class=\"q-tag\">Q2 &middot; Diocesan Standards</div><div class=\"prayer\" style=\"background:#faf0d4;border-left-color:#a855f7;\"><strong>\ud83d\udd6f\ufe0f Liturgical Calendar &mdash; Advent: The 4 weeks of hopeful waiting before Christmas.</strong></div><h3>\ud83d\udca1 Big Ideas</h3><ul><li>The Bible is God&rsquo;s Word &mdash; a love letter to us</li><li>We are all part of God&rsquo;s family through Baptism</li><li>The saints show us how to live as God&rsquo;s children</li></ul><h3>\ud83d\udcda What Students Learn</h3><ul><li>Creation and Adam &amp; Eve</li><li>Noah&rsquo;s Ark, Abraham, Moses</li><li>David &amp; Goliath, Jonah, Ruth</li><li>The Nativity and the Holy Family</li><li>Advent preparation and Christmas celebration</li><li>Introduction to saints and role models of faith</li></ul><div class=\"prayer\"><strong>\ud83d\ude4f Prayer Focus:</strong> Hail Mary &middot; Guardian Angel Prayer &middot; Advent prayers</div><h3>\ud83d\udcca Assessments</h3><p>Bible story recall &middot; Advent journal &middot; Saint drawing project</p>", "u3-jesus-holy-week": "<h2 style=\"color:#7c2d12;\">\ud83d\udd4a\ufe0f Unit 3: The Life of Jesus &middot; Lent &amp; Easter</h2><div class=\"q-tag\">Q3 &middot; Diocesan Standards</div><div class=\"prayer\" style=\"background:#faf0d4;border-left-color:#a855f7;\"><strong>\u271d\ufe0f Liturgical Calendar &mdash; Lent (40 days) &amp; Easter Season.</strong></div><h3>\ud83d\udca1 Big Ideas</h3><ul><li>Jesus is fully God and fully human</li><li>Jesus taught us how to love God and our neighbor</li><li>Lent is our time to grow closer to Jesus through prayer, fasting, and giving</li></ul><h3>\ud83d\udcda What Students Learn</h3><ul><li>The life of Jesus &mdash; birth, ministry, miracles, parables</li><li>The Beatitudes and Jesus&rsquo; greatest commandment</li><li>The Last Supper and the Institution of the Eucharist</li><li>The Passion, Death, and Resurrection of Jesus</li><li>Ash Wednesday, Stations of the Cross, and Holy Week</li><li>Easter joy and the Resurrection</li></ul><div class=\"prayer\"><strong>\ud83d\ude4f Prayer Focus:</strong> Act of Contrition &middot; Prayer Before Meals &middot; Stations of the Cross</div><h3>\ud83d\udcca Assessments</h3><p>Lenten sacrifice reflection &middot; Passion reading &middot; Easter project</p>", "u4-followers-service": "<h2 style=\"color:#7c2d12;\">\ud83c\udf1f Unit 4: Living Our Faith &amp; Serving Others</h2><div class=\"q-tag\">Q4 &middot; Diocesan Standards</div><h3>\ud83d\udca1 Big Ideas</h3><ul><li>Being a follower of Jesus means serving others in love</li><li>Prayer, kindness, and helping others show God&rsquo;s love</li><li>We are all called to be Jesus&rsquo; disciples</li></ul><h3>\ud83d\udcda What Students Learn</h3><ul><li>Pentecost and the birth of the Church</li><li>The Holy Spirit&rsquo;s gifts (age-appropriate)</li><li>Corporal and Spiritual Works of Mercy (age-appropriate examples)</li><li>Class service projects (food drive, cards for elderly, etc.)</li><li>Living the Beatitudes at home and school</li><li>May Day, Mary as our Mother, and end-of-year celebration</li></ul><div class=\"prayer\"><strong>\ud83d\ude4f Prayer Focus:</strong> Prayer to the Holy Spirit &middot; Prayer for Others &middot; Rosary basics</div><h3>\ud83d\udcca Assessments</h3><p>Service project reflection &middot; End-of-year prayer portfolio</p>"};
+function showLesson(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('lesson-screen').classList.add('active');
+  document.getElementById('lesson-content').innerHTML = LESSONS[id] || '<p>Lesson not found.</p>';
+  document.querySelectorAll('.sidebar-unit').forEach(el => {
+    el.classList.remove('active');
+    if (el.getAttribute('onclick') && el.getAttribute('onclick').includes("'" + id + "'")) el.classList.add('active');
+  });
+  window.scrollTo(0, 0);
+}
+function showHome() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('home-screen').classList.add('active');
+  document.querySelectorAll('.sidebar-unit').forEach(el => el.classList.remove('active'));
+}
+</script>
+</body>
+</html>
