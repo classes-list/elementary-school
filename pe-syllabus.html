@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physical Education Syllabus &mdash; Mr. Kageyama &middot; SY 2026-2027</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #eef2fa 0%, #f8f9fa 100%);
+  color: #253a77;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+.container { max-width: 1080px; margin: 0 auto; }
+.back-index-btn {
+  position: fixed; top: 20px; left: 20px;
+  background: #253a77; color: #fff; text-decoration: none;
+  padding: 10px 16px; border-radius: 8px;
+  font-size: 14px; font-weight: 700;
+  box-shadow: 0 3px 10px rgba(37,58,119,0.25);
+  transition: all 0.18s; z-index: 10;
+}
+.back-index-btn:hover { background: #1a2a4a; transform: translateX(-2px); }
+.print-btn {
+  position: fixed; top: 20px; right: 20px;
+  background: #B45309; color: #fff; text-decoration: none;
+  padding: 10px 16px; border-radius: 8px;
+  font-size: 14px; font-weight: 700; border: none; cursor: pointer;
+  box-shadow: 0 3px 10px rgba(180,83,9,0.25);
+  z-index: 10;
+}
+.print-btn:hover { background: #92400e; }
+
+.syllabus-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 28px rgba(37,58,119,0.12);
+  padding: 40px 44px;
+  border-top: 6px solid #FFD100;
+}
+
+.header-top {
+  border-bottom: 2px solid #e2e8f0; padding-bottom: 22px; margin-bottom: 24px;
+  text-align: center;
+}
+.header-top .icons { font-size: 2rem; letter-spacing: 6px; margin-bottom: 8px; }
+.header-top h1 { color: #253a77; font-size: 2rem; font-weight: 800; margin-bottom: 4px; }
+.header-top .role { color: #7a5f00; font-style: italic; font-size: 1rem; margin-bottom: 6px; }
+.header-top .contact { font-size: 0.95rem; color: #444; }
+.header-top .contact a { color: #253a77; text-decoration: none; font-weight: 600; }
+.header-top .contact a:hover { text-decoration: underline; }
+.year-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #FFD100 0%, #FFB800 100%);
+  color: #253a77;
+  font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 999px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(255,209,0,0.35);
+}
+
+.theme-box {
+  background: linear-gradient(135deg, #fff8e1 0%, #fef3c7 100%);
+  border-left: 5px solid #FFD100;
+  padding: 20px 24px; border-radius: 10px;
+  margin-bottom: 22px; text-align: center;
+}
+.theme-box .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 800; color: #7a5f00; margin-bottom: 8px; }
+.theme-box .theme { font-size: 1.35rem; color: #253a77; font-weight: 800; font-style: italic; }
+
+.section-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(37,58,119,0.07);
+  padding: 22px 26px;
+  margin-bottom: 18px;
+  border-top: 4px solid #253a77;
+}
+.section-card h2 {
+  color: #253a77; font-size: 1.25rem; font-weight: 800;
+  margin-bottom: 10px; padding-bottom: 6px;
+  border-bottom: 2px solid #FFD100;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-card h3 { color: #253a77; font-size: 1.05rem; font-weight: 700; margin: 14px 0 6px; }
+.section-card p { color: #2d3748; font-size: 0.96rem; line-height: 1.7; margin-bottom: 10px; }
+.section-card ul, .section-card ol { margin: 8px 0 12px 24px; }
+.section-card li { padding: 3px 0; color: #2d3748; font-size: 0.95rem; line-height: 1.65; }
+.section-card li strong { color: #253a77; }
+
+.grade-scale {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px; margin-top: 12px;
+}
+.grade-item {
+  background: #f0fdf4; border-left: 4px solid #16a34a;
+  padding: 14px 16px; border-radius: 8px;
+}
+.grade-item .num { font-size: 1.6rem; font-weight: 800; color: #14532d; margin-bottom: 4px; }
+.grade-item .name { font-weight: 800; color: #14532d; margin-bottom: 6px; font-size: 0.98rem; }
+.grade-item p { font-size: 0.85rem; color: #14532d; line-height: 1.5; margin: 0; }
+
+.level-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px; margin-top: 12px;
+}
+.level-item {
+  background: #eff6ff; border-left: 4px solid #1e40af;
+  padding: 12px 16px; border-radius: 8px;
+}
+.level-item .letter { font-size: 1.4rem; font-weight: 800; color: #1e40af; margin-bottom: 4px; }
+.level-item .name { font-weight: 700; color: #1e40af; margin-bottom: 4px; font-size: 0.95rem; }
+.level-item p { font-size: 0.85rem; color: #1e3a8a; margin: 0; }
+
+.numbered-flow {
+  display: flex; gap: 14px; flex-wrap: wrap; margin: 14px 0;
+}
+.numbered-flow .step {
+  background: #f3f4f6; border-left: 4px solid #253a77;
+  padding: 12px 18px; border-radius: 8px;
+  flex: 1 1 200px;
+}
+.numbered-flow .step .step-num { display: inline-block; background: #253a77; color: #fff; width: 26px; height: 26px; text-align: center; line-height: 26px; border-radius: 50%; font-weight: 800; margin-right: 8px; }
+.numbered-flow .step strong { color: #253a77; font-size: 1rem; }
+
+.activities-grid {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;
+}
+.activity-pill {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  color: #1e3a8a; padding: 8px 14px; border-radius: 999px;
+  font-size: 0.9rem; font-weight: 600;
+  border: 1px solid #93c5fd;
+}
+
+.mission-box {
+  background: #fffbea; border-left: 4px solid #FFD100;
+  padding: 16px 22px; border-radius: 8px; margin-bottom: 20px;
+  text-align: center;
+}
+.mission-box strong { color: #7a5f00; }
+
+footer {
+  margin-top: 32px; padding-top: 20px;
+  border-top: 2px solid #e2e8f0;
+  text-align: center; color: #7a5f00;
+  font-style: italic; font-weight: 700; font-size: 1.05rem;
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .back-index-btn, .print-btn { display: none; }
+  .syllabus-card { box-shadow: none; padding: 20px; }
+  .section-card { box-shadow: none; break-inside: avoid; }
+}
+@media (max-width: 640px) {
+  .syllabus-card { padding: 24px 20px; }
+  .header-top h1 { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+<a href="javascript:history.back()" class="back-index-btn" title="Back">&larr; Back</a>
+<a class="print-btn" href="pe-syllabus.pdf" target="_blank" rel="noopener" title="Open printable syllabus PDF">🖨️ Print Syllabus</a>
+
+<div class="container">
+  <div class="syllabus-card">
+
+    <div class="header-top">
+      <div class="year-badge">School Year 2026-2027</div>
+      <div class="icons">🏃 🏀 🏈 🏐 ⚽ 🎳</div>
+      <h1>PE with Mr. K</h1>
+      <div class="role">Physical Education Course Syllabus &middot; Mary, Star of the Sea School</div>
+      <div class="contact">
+        <strong>Instructor:</strong> Gregg Kageyama &middot; <strong>Email:</strong> <a href="mailto:gkageyama@starofthesea.org">gkageyama@starofthesea.org</a>
+      </div>
+    </div>
+
+    <div class="mission-box">
+      <strong>MSOS Mission &amp; Vision:</strong> Nurture &middot; Unite &middot; Inspire &mdash; <em>Empowered to Succeed, Guided by Faith</em>
+    </div>
+
+    <!-- Theme -->
+    <div class="theme-box">
+      <div class="label">This Year&rsquo;s Theme for PE</div>
+      <div class="theme">&ldquo;Do your best and forget the rest.&rdquo;</div>
+    </div>
+
+    <!-- Course Objectives -->
+    <div class="section-card">
+      <h2>🎯 Course Objectives</h2>
+      <p><strong>Aloha!</strong> I&rsquo;m Gregg Kageyama, aka <strong>Mr. K</strong>. I teach PE to Kindergarteners and 1st graders. The overall objective of this course is to equip students with the <strong>knowledge, skills, and attitude</strong> to lead a physically active and healthy lifestyle throughout their lives.</p>
+      <p>We incorporate <strong>SHAPE America&rsquo;s National Physical Education Standards</strong> as a foundation for our PE program.</p>
+    </div>
+
+    <!-- Required Materials -->
+    <div class="section-card">
+      <h2>🎽 Required Materials</h2>
+      <ul>
+        <li><strong>Uniform:</strong> Students should come to school dressed in their PE uniform.</li>
+        <li><strong>Athletic Shoes:</strong> Required for running, jumping, moving, and exercising. If lace-up shoes are worn, the student must know how to tie shoes.</li>
+      </ul>
+    </div>
+
+    <!-- Grading Policy -->
+    <div class="section-card">
+      <h2>📊 Grading Policy</h2>
+      <h3>Grade Scale</h3>
+      <div class="grade-scale">
+        <div class="grade-item">
+          <div class="num">4</div><div class="name">Extends</div>
+          <p>Always gives best effort. Exemplary respect for all. Fully understands and follows rules.</p>
+        </div>
+        <div class="grade-item">
+          <div class="num">3</div><div class="name">Proficient</div>
+          <p>Consistently participates. Shows respect to peers. Mostly understands and follows rules.</p>
+        </div>
+        <div class="grade-item">
+          <div class="num">2</div><div class="name">Developing</div>
+          <p>Sometimes participates. Occasionally shows respect. Limited understanding of rules.</p>
+        </div>
+        <div class="grade-item">
+          <div class="num">1</div><div class="name">Emerging</div>
+          <p>Rarely participates. Lacks respect towards others. Minimal understanding of rules.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Learning Expectations -->
+    <div class="section-card">
+      <h2>📈 Learning Expectations &middot; Level</h2>
+      <div class="level-grid">
+        <div class="level-item">
+          <div class="letter">N</div>
+          <div class="name">Novice</div>
+          <p>Emerging, just learning.</p>
+        </div>
+        <div class="level-item">
+          <div class="letter">A</div>
+          <div class="name">Apprentice</div>
+          <p>Developing, almost there.</p>
+        </div>
+        <div class="level-item">
+          <div class="letter">P</div>
+          <div class="name">Proficient</div>
+          <p>Meets expectations.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Class Policies & Expectations -->
+    <div class="section-card">
+      <h2>🤝 Class Policies and Expectations</h2>
+      <ul>
+        <li>P.E. classes will occur <strong>twice a week</strong>.</li>
+        <li>All students are expected to <strong>give their best effort</strong> during all activities.</li>
+        <li>Display <strong>respect and sportsmanship</strong> towards classmates.</li>
+        <li>Learn the <strong>rules and regulations</strong> for all activities.</li>
+        <li>Be properly dressed in <strong>P.E. uniform and shoes</strong>.</li>
+      </ul>
+    </div>
+
+    <!-- Course Activities -->
+    <div class="section-card">
+      <h2>🏃 Course Activities</h2>
+      <p>A typical class will include:</p>
+      <div class="numbered-flow">
+        <div class="step"><span class="step-num">1</span><strong>Warm-up or Instant Activity</strong></div>
+        <div class="step"><span class="step-num">2</span><strong>Lesson of the Day</strong></div>
+        <div class="step"><span class="step-num">3</span><strong>Game Play</strong></div>
+      </div>
+      <p>The students will be <strong>in motion as much as possible</strong>. Music will be used throughout the year. At the end of each class, every student will conduct a quick self-assessment of his/her <strong>behavior and effort level</strong>.</p>
+
+      <h3>Activities Will Include:</h3>
+      <div class="activities-grid">
+        <span class="activity-pill">🏃 Locomotor Skills</span>
+        <span class="activity-pill">🥎 Throwing &amp; Catching</span>
+        <span class="activity-pill">💃 Fitness &amp; Dance</span>
+        <span class="activity-pill">🥤 Cup Speed Stacking</span>
+        <span class="activity-pill">🎳 Bowling</span>
+        <span class="activity-pill">⛳ Golf</span>
+        <span class="activity-pill">🏀 Basketball</span>
+        <span class="activity-pill">🏈 Flag Football</span>
+        <span class="activity-pill">🪢 Jump Rope</span>
+        <span class="activity-pill">⚽ Soccer</span>
+        <span class="activity-pill">🏐 Volleyball</span>
+        <span class="activity-pill">🎯 Impossible Shot</span>
+        <span class="activity-pill">✨ and more!</span>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="section-card">
+      <h2>📧 Contact Information</h2>
+      <p>For any questions or concerns regarding the course, please do not hesitate to reach out to me at <strong><a href="mailto:gkageyama@starofthesea.org" style="color:#253a77;">gkageyama@starofthesea.org</a></strong>.</p>
+    </div>
+
+    <!-- Mahalo -->
+    <div class="section-card" style="border-top-color:#c084fc;background:#faf5ff;text-align:center;">
+      <h2 style="color:#6b21a8;justify-content:center;">💛 Mahalo for Your Support!</h2>
+      <p style="font-size:1.05rem;font-weight:600;">We look forward to a fun and active year in Physical Education!</p>
+      <p style="margin-top:12px;font-style:italic;color:#6b21a8;">&mdash; Gregg Kageyama (Mr. K)</p>
+    </div>
+
+    <footer>
+      &ldquo;Do your best and forget the rest.&rdquo;
+    </footer>
+
+  </div>
+</div>
+</body>
+</html>

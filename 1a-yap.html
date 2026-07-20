@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mary, Star of the Sea &mdash; 1st Grade B &middot; Mrs. Eberlin</title>
+  <title>Mary, Star of the Sea &mdash; 1st Grade A &middot; Mrs. Yap</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -45,66 +45,16 @@
     .logo-circle.msos img { height: 100%; width: auto; }
     .logo-circle.nui img { width: 100%; height: 100%; object-fit: cover; }
     .logo-circle.msos { background: #1a2a4a; }
-    @media (max-width: 600px) {
-      .logo-circle { width: 100px; height: 100px; }
-    }
+    @media (max-width: 600px) { .logo-circle { width: 100px; height: 100px; } }
     .grade-badge {
       display: inline-block; background: linear-gradient(135deg, #FFD100 0%, #FFB800 100%);
       color: #253a77; padding: 6px 18px; border-radius: 999px;
       font-size: 0.85rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
       margin: 6px 0 10px; box-shadow: 0 2px 8px rgba(255, 209, 0, 0.35);
     }
-    h1 {
-      color: #253a77;
-      font-size: 2.4rem;
-      margin: 4px 0 8px;
-      font-weight: 700;
-    }
+    h1 { color: #253a77; font-size: 2.4rem; margin: 4px 0 8px; font-weight: 700; }
 
-    /* Teacher card */
-    .teacher-card {
-      margin: 36px auto 0;
-      max-width: 640px;
-      background: #fff;
-      border-left: 4px solid #FFD100;
-      padding: 22px 24px;
-      text-align: left;
-      border-radius: 8px;
-      box-shadow: 0 4px 14px rgba(37,58,119,0.10);
-      display: flex; gap: 22px; align-items: center;
-      flex-wrap: wrap;
-    }
-    .teacher-photo {
-      flex: 0 0 120px;
-      width: 120px; height: 120px;
-      border-radius: 50%;
-      background: #1a2a4a;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 12px rgba(37,58,119,0.18);
-      overflow: hidden;
-      position: relative;
-    }
-    .teacher-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center 25%;
-      display: block;
-    }
-    .teacher-photo .initials {
-      color: #FFD100;
-      font-size: 2.4rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-    }
-    .teacher-info { flex: 1 1 240px; }
-    .teacher-name { color: #253a77; font-size: 1.2rem; font-weight: 800; margin-bottom: 4px; }
-    .teacher-role { color: #7a5f00; font-size: 0.9rem; font-style: italic; margin-bottom: 10px; }
-    .teacher-meta { font-size: 0.92rem; color: #444; margin-bottom: 14px; line-height: 1.6; }
-    .teacher-meta strong { color: #253a77; }
-    .teacher-meta a { color: #253a77; text-decoration: none; }
-    .teacher-meta a:hover { text-decoration: underline; }
-
-    /* Subject cards grid — matches Mrs. Won's page */
+    /* Subject cards grid */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -126,34 +76,21 @@
       overflow: hidden;
     }
     .card.active { cursor: pointer; }
-    .card.active:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 28px rgba(37, 58, 119, 0.25);
-      background: #253a77;
-      color: #fff;
-    }
+    .card.active:hover { transform: translateY(-6px); box-shadow: 0 10px 28px rgba(37, 58, 119, 0.25); background: #253a77; color: #fff; }
     .card.active:hover .card-theme { color: #FFD100; }
     .card.active:hover .card-icon { transform: scale(1.1); }
-    .card-icon {
-      font-size: 2.8rem;
-      line-height: 1;
-      margin-bottom: 12px;
-      transition: transform 0.2s ease;
+    .card.coming {
+      cursor: default;
+      border-color: #cbd5e1;
+      background: #f8fafc;
+      color: #94a3b8;
     }
-    .card-label {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-      line-height: 1.25;
-    }
-    .card-theme {
-      font-size: 0.82rem;
-      opacity: 0.85;
-      font-style: italic;
-      transition: color 0.2s;
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
+    .card.coming .card-icon { opacity: 0.6; }
+    .card-icon { font-size: 2.8rem; line-height: 1; margin-bottom: 12px; transition: transform 0.2s ease; }
+    .card-label { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; line-height: 1.25; }
+    .card-theme { font-size: 0.82rem; opacity: 0.85; font-style: italic; transition: color 0.2s; margin-bottom: 8px; line-height: 1.3; }
+    .card-status { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 14px; text-transform: uppercase; }
+    .card.coming .card-status { background: #e2e8f0; color: #64748b; }
 
     /* Syllabus banner */
     .syllabus-banner {
@@ -161,52 +98,53 @@
       max-width: 900px;
       display: flex; align-items: center; justify-content: space-between;
       gap: 18px;
-      background: linear-gradient(135deg, #FFD100 0%, #FFB800 100%);
+      background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
       border-radius: 10px;
       padding: 14px 22px;
-      box-shadow: 0 4px 14px rgba(255,209,0,0.28);
+      box-shadow: 0 4px 14px rgba(148,163,184,0.28);
       text-align: left;
       flex-wrap: wrap;
     }
-    .syllabus-banner .sb-label {
-      color: #1a2a4a;
-      font-weight: 800;
-      font-size: 1rem;
-      line-height: 1.3;
-    }
-    .syllabus-banner .sb-sub {
-      color: #4a3a00;
-      font-size: 0.82rem;
-      font-style: italic;
-      margin-top: 2px;
-    }
+    .syllabus-banner .sb-label { color: #1f2937; font-weight: 800; font-size: 1rem; line-height: 1.3; }
+    .syllabus-banner .sb-sub { color: #475569; font-size: 0.82rem; font-style: italic; margin-top: 2px; }
     .syllabus-banner .sb-btn {
-      background: #253a77; color: #fff; text-decoration: none;
+      background: #64748b; color: #fff; text-decoration: none;
       padding: 10px 20px; border-radius: 8px;
       font-weight: 800; font-size: 0.9rem;
-      box-shadow: 0 3px 10px rgba(37,58,119,0.28);
-      transition: all 0.18s;
+      box-shadow: 0 3px 10px rgba(100,116,139,0.28);
       white-space: nowrap;
     }
-    .syllabus-banner .sb-btn:hover {
-      background: #1a2a4a; transform: translateY(-1px);
-      box-shadow: 0 5px 14px rgba(37,58,119,0.38);
-    }
-    .syllabus-banner .sb-btn::before { content: "📋 "; }
+    .syllabus-banner .sb-btn::before { content: "🕒 "; }
 
-    .about-btn {
-      display: inline-block;
-      background: #253a77; color: #fff; text-decoration: none;
-      padding: 9px 18px; border-radius: 8px;
-      font-weight: 700; font-size: 0.88rem;
-      transition: all 0.18s;
-      box-shadow: 0 2px 6px rgba(37,58,119,0.25);
+    /* Teacher card */
+    .teacher-card {
+      margin: 36px auto 0;
+      max-width: 640px;
+      background: #fff;
+      border-left: 4px solid #FFD100;
+      padding: 22px 24px;
+      text-align: left;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(37,58,119,0.10);
+      display: flex; gap: 22px; align-items: center;
+      flex-wrap: wrap;
     }
-    .about-btn:hover {
-      background: #1a2a4a; transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(37,58,119,0.35);
+    .teacher-photo {
+      flex: 0 0 120px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: #1a2a4a;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(37,58,119,0.18);
+      overflow: hidden; position: relative;
     }
-    .about-btn::after { content: " \2197"; font-weight: 600; }
+    .teacher-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; display: block; }
+    .teacher-photo .initials { color: #FFD100; font-size: 2.4rem; font-weight: 800; letter-spacing: 0.05em; }
+    .teacher-info { flex: 1 1 240px; }
+    .teacher-name { color: #253a77; font-size: 1.2rem; font-weight: 800; margin-bottom: 4px; }
+    .teacher-role { color: #7a5f00; font-size: 0.9rem; font-style: italic; margin-bottom: 10px; }
+    .teacher-meta { font-size: 0.92rem; color: #444; margin-bottom: 14px; line-height: 1.6; }
+    .teacher-meta strong { color: #253a77; }
 
     footer { margin-top: 40px; font-size: 0.85rem; color: #888; }
     @media (max-width: 600px) {
@@ -226,8 +164,8 @@
         <span class="logo-circle nui" title="Nurture &middot; Unite &middot; Inspire"><img src="nui-logo.png" alt="Nurture-Unite-Inspire Logo"></span>
       </div>
     </div>
-    <div class="grade-badge">1st Grade B</div>
-    <h1>Mrs. Eberlin's Class</h1>
+    <div class="grade-badge">1st Grade A</div>
+    <h1>Mrs. Yap's Class</h1>
     <div style="background:#fffbea;border-left:4px solid #FFD100;border-radius:8px;padding:16px 20px;margin:12px 0 20px;">
       <h3 style="color:#a16207;margin-bottom:8px;font-size:1.05rem;">🌟 Mary, Star of the Sea School Mission</h3>
       <p style="font-size:0.95rem;line-height:1.55;color:#1f2937;margin:0;"><strong>N</strong>urture, <strong>U</strong>nite, <strong>I</strong>nspire. We are committed to nurturing each child&rsquo;s curiosity, uniting our classroom in respect and collaboration, and inspiring every student to grow in knowledge, faith, and wonder for the world around them.</p>
@@ -235,38 +173,43 @@
 
     <div class="syllabus-banner">
       <div>
-        <div class="sb-label">📋 Class Syllabus &middot; SY 2026-2027</div>
-        <div class="sb-sub">Full-year syllabus &mdash; welcome, expectations, and quarterly focus</div>
+        <div class="sb-label">📋 Class Syllabus &middot; Coming Soon</div>
+        <div class="sb-sub">Mrs. Yap&rsquo;s full syllabus will be posted here for SY 2026-2027</div>
       </div>
-      <a class="sb-btn" href="1b-eberlin-syllabus.html">View Syllabus</a>
+      <span class="sb-btn">Coming Soon</span>
     </div>
 
     <div class="grid" style="margin-top: 30px;">
-      <a class="card active" href="1b-religion-curriculum-map.html">
+      <div class="card coming">
         <div class="card-icon">✝️</div>
         <div class="card-label">Religion</div>
-        <div class="card-theme">Church, God, Jesus &amp; Followers</div>
-      </a>
-      <a class="card active" href="1b-ela-curriculum-map.html">
+        <div class="card-theme">Faith, prayer, Scripture &amp; Mass</div>
+        <div class="card-status">Coming Soon</div>
+      </div>
+      <div class="card coming">
         <div class="card-icon">📖</div>
-        <div class="card-label">English Language Arts</div>
+        <div class="card-label">Language Arts</div>
         <div class="card-theme">Reading &middot; Writing &middot; Phonics &middot; Handwriting</div>
-      </a>
-      <a class="card active" href="msos-math-1.html">
+        <div class="card-status">Coming Soon</div>
+      </div>
+      <div class="card coming">
         <div class="card-icon">🧮</div>
         <div class="card-label">Math</div>
-        <div class="card-theme">enVisionMATH 2.0 &middot; Grade 1 &middot; Topics 1-16</div>
-      </a>
-      <a class="card active" href="1b-science-curriculum-map.html">
+        <div class="card-theme">enVisionMATH 2.0 &middot; Grade 1</div>
+        <div class="card-status">Coming Soon</div>
+      </div>
+      <div class="card coming">
         <div class="card-icon">🔬</div>
         <div class="card-label">Science</div>
-        <div class="card-theme">Inquiry &middot; Earth &middot; Life &middot; Engineering</div>
-      </a>
-      <a class="card active" href="1b-social-studies-curriculum-map.html">
+        <div class="card-theme">Hands-on Science &amp; Discovery</div>
+        <div class="card-status">Coming Soon</div>
+      </div>
+      <div class="card coming">
         <div class="card-icon">🌍</div>
         <div class="card-label">Social Studies</div>
         <div class="card-theme">Civics &middot; Community &middot; Geography</div>
-      </a>
+        <div class="card-status">Coming Soon</div>
+      </div>
       <a class="card active" href="pe-syllabus.html">
         <div class="card-icon">🏃</div>
         <div class="card-label">Physical Education</div>
@@ -276,16 +219,15 @@
 
     <div class="teacher-card">
       <div class="teacher-photo">
-        <img src="mrs-eberlin.jpg?v=2" alt="Mrs. Raylyn Eberlin" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="initials" style="display:none; width:100%; height:100%; align-items:center; justify-content:center;">RE</div>
+        <img src="mrs-yap.jpg" alt="Mrs. Yap" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="initials" style="display:none; width:100%; height:100%; align-items:center; justify-content:center;">MY</div>
       </div>
       <div class="teacher-info">
-        <div class="teacher-name">Mrs. Raylyn Eberlin</div>
-        <div class="teacher-role">1st Grade B Teacher</div>
+        <div class="teacher-name">Mrs. Yap</div>
+        <div class="teacher-role">1st Grade A Teacher</div>
         <div class="teacher-meta">
-          <strong>Email:</strong> <a href="mailto:reberlin@starofthesea.org">reberlin@starofthesea.org</a>
+          Contact info &amp; syllabus <strong>coming soon</strong> for SY 2026-2027.
         </div>
-        <a class="about-btn" href="https://starofthesea.org/staff/mrs-raylyn-camara-eberlin/" target="_blank" rel="noopener">About Mrs. Eberlin</a>
       </div>
     </div>
 
