@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Syllabus &mdash; Mrs. Tanaka &middot; ESL 2 &middot; SY 2026-2027</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #ecfeff 0%, #f8f9fa 100%);
+  color: #253a77;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+.container { max-width: 1080px; margin: 0 auto; }
+.back-index-btn {
+  position: fixed; top: 20px; left: 20px;
+  background: #253a77; color: #fff; text-decoration: none;
+  padding: 10px 16px; border-radius: 8px;
+  font-size: 14px; font-weight: 700;
+  box-shadow: 0 3px 10px rgba(37,58,119,0.25);
+  transition: all 0.18s; z-index: 10;
+}
+.back-index-btn:hover { background: #1a2a4a; transform: translateX(-2px); }
+.print-btn {
+  position: fixed; top: 20px; right: 20px;
+  background: #0891b2; color: #fff; text-decoration: none;
+  padding: 10px 16px; border-radius: 8px;
+  font-size: 14px; font-weight: 700; border: none; cursor: pointer;
+  box-shadow: 0 3px 10px rgba(14,116,144,0.25);
+  z-index: 10;
+}
+.print-btn:hover { background: #0e7490; }
+
+.syllabus-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 28px rgba(37,58,119,0.12);
+  padding: 40px 44px;
+  border-top: 6px solid #0891b2;
+}
+.header-top {
+  display: flex; gap: 24px; align-items: center;
+  border-bottom: 2px solid #e2e8f0; padding-bottom: 22px; margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.header-info { flex: 1 1 260px; }
+.header-info h1 { color: #253a77; font-size: 1.6rem; font-weight: 800; margin-bottom: 4px; }
+.header-info .role { color: #0e7490; font-style: italic; font-size: 0.95rem; margin-bottom: 6px; font-weight: 700; }
+.header-info .contact { font-size: 0.92rem; line-height: 1.7; color: #444; }
+.header-info .contact strong { color: #253a77; }
+.header-info .contact a { color: #253a77; text-decoration: none; }
+.header-info .contact a:hover { text-decoration: underline; }
+.year-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+  color: #fff;
+  font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 999px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(14,116,144,0.35);
+}
+.teacher-photo {
+  width: 130px; height: 130px; border-radius: 50%;
+  background: #1a2a4a; overflow: hidden; flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(37,58,119,0.2);
+}
+.teacher-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; display: block; }
+
+.welcome-box {
+  background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+  border-left: 5px solid #0891b2;
+  padding: 20px 24px; border-radius: 10px;
+  margin-bottom: 22px;
+}
+.welcome-box p { color: #1f2937; font-size: 0.98rem; line-height: 1.65; margin-bottom: 10px; }
+.welcome-box p:last-child { margin-bottom: 0; }
+.welcome-box .signature { font-style: italic; color: #0e7490; font-weight: 700; text-align: right; margin-top: 8px; }
+
+.section-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(37,58,119,0.07);
+  padding: 22px 26px;
+  margin-bottom: 18px;
+  border-top: 4px solid #0891b2;
+}
+.section-card h2 {
+  color: #253a77; font-size: 1.25rem; font-weight: 800;
+  margin-bottom: 10px; padding-bottom: 6px;
+  border-bottom: 2px solid #0891b2;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-card p { color: #2d3748; font-size: 0.96rem; line-height: 1.7; margin-bottom: 10px; }
+.section-card ul { margin: 8px 0 12px 24px; }
+.section-card li { padding: 4px 0; color: #2d3748; font-size: 0.95rem; line-height: 1.6; }
+.section-card li strong { color: #253a77; }
+.section-card li em { color: #0e7490; }
+
+.assess-item {
+  background: #ecfeff; border-left: 4px solid #0891b2;
+  padding: 12px 16px; margin: 10px 0; border-radius: 6px;
+}
+.assess-item strong { color: #0e7490; }
+
+.motto {
+  text-align: center; font-size: 1.15rem;
+  color: #0e7490; font-weight: 800; font-style: italic;
+  padding: 18px 20px; margin: 20px 0;
+  background: linear-gradient(135deg, #fff8e1 0%, #fef3c7 100%);
+  border-radius: 10px; border: 2px dashed #FFD100;
+}
+
+footer {
+  margin-top: 32px; padding-top: 20px;
+  border-top: 2px solid #e2e8f0;
+  text-align: center; color: #0e7490;
+  font-style: italic; font-weight: 700; font-size: 1.05rem;
+}
+@media print {
+  body { background: #fff; padding: 0; }
+  .back-index-btn, .print-btn { display: none; }
+  .syllabus-card { box-shadow: none; padding: 20px; }
+  .section-card { box-shadow: none; break-inside: avoid; }
+}
+@media (max-width: 640px) {
+  .syllabus-card { padding: 24px 20px; }
+  .header-info h1 { font-size: 1.3rem; }
+}
+</style>
+</head>
+<body>
+<a href="esl.html" class="back-index-btn" title="Back to ESL 2 Class">&larr; Back to Class</a>
+<a class="print-btn" href="esl-syllabus.pdf?v=1" target="_blank" rel="noopener" title="Open printable syllabus PDF">🖨️ Print Syllabus</a>
+
+<div class="container">
+  <div class="syllabus-card">
+
+    <div class="header-top">
+      <div class="teacher-photo">
+        <img src="mrs-tanaka.jpg" alt="Mrs. Krisette Tanaka">
+      </div>
+      <div class="header-info">
+        <div class="year-badge">School Year 2026-2027</div>
+        <h1>Mrs. Krisette Tanaka &middot; ESL</h1>
+        <div class="role">English as a Second Language &middot; Grades K&ndash;4 &middot; Mary, Star of the Sea School</div>
+        <div class="contact">
+          <strong>Email:</strong> <a href="mailto:ktanaka@starofthesea.org">ktanaka@starofthesea.org</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Welcome Letter -->
+    <div class="welcome-box">
+      <p><em>August 12, 2026</em></p>
+      <p><strong>Dear Parents and Guardians,</strong></p>
+      <p>Hello and welcome to English as a Second Language. My teaching experience at Mary, Star of the Sea School includes more than <strong>fifteen years of first grade</strong>, one year of third grade, and <strong>three years of English as a Second Language</strong>.</p>
+      <p>I will provide a <strong>safe, engaging, and nurturing Christ-centered environment</strong> where your child will be inspired to <strong>speak, listen, write, and read</strong> the English language.</p>
+      <p>When families and teachers work together, all students benefit from a consistent, supportive, and nurturing learning environment that respects cultural diversity and promotes academic success for all. I look forward to teaching your child this year.</p>
+      <p class="signature">Thank you for your support,<br>Mrs. Tanaka &middot; <a href="mailto:ktanaka@starofthesea.org">ktanaka@starofthesea.org</a></p>
+    </div>
+
+    <!-- Academics -->
+    <div class="section-card">
+      <h2>📚 Academics</h2>
+      <ul>
+        <li><strong>Communication</strong> is both written and oral. Students will understand and follow written and oral directions by reading and listening.</li>
+        <li><strong>Explode the Code</strong> is used for phonics and reinforcement.</li>
+        <li><strong>Spelling Skills</strong> cover spelling patterns, capitalization, and vocabulary development at the students&rsquo; level.</li>
+        <li><strong>Language Arts</strong> covers parts of speech and sentence structure.</li>
+        <li><strong>Reading Skills</strong> focus on Facts, Sequence, Context, Main Idea, Conclusion, and Inference.</li>
+        <li><strong>Imagine Learning &mdash; Language &amp; Literacy</strong> is an online reading program that focuses on vocabulary, comprehension, fluency, phonics, and phonemic awareness.</li>
+        <li><strong>Writing Skills</strong> cover personal narratives, informative writing, descriptive writing, opinion and comparative writing, and poetry.</li>
+      </ul>
+    </div>
+
+    <!-- Assessments -->
+    <div class="section-card">
+      <h2>📊 Assessments</h2>
+      <div class="assess-item">
+        <p><strong>WIDA</strong> is a research-based organization that supports teachers of multilingual learners. It provides online assessments to help students develop academic language proficiency, focusing on advancing academic language development and achievement for multilingual students.</p>
+      </div>
+      <div class="assess-item">
+        <p><strong>Imagine Learning</strong> provides online assessments that help teachers understand a student&rsquo;s language and literacy needs. These assessments identify specific strengths and weaknesses, allowing for targeted instruction and intervention.</p>
+      </div>
+    </div>
+
+    <div class="motto">&ldquo;Let&rsquo;s work together to soar with Jesus!&rdquo;</div>
+
+    <!-- Classroom -->
+    <div class="section-card">
+      <h2>🎒 The Classroom</h2>
+      <ul>
+        <li>Every student shall behave in a <strong>safe and appropriate manner</strong> as not to cause injury to self and classmates. The <strong>MSOS Student Conduct rules</strong> (see handbook online) must be followed at all times.</li>
+        <li>MSOS&rsquo;s <strong>Schoolwide Learning Expectations (SLEs Grades K&ndash;4)</strong> along with the school&rsquo;s mission and vision are integrated into the curriculum to foster growth in our students to become:
+          <ul style="margin-top:6px">
+            <li><em>Self-Aware, Confident Individuals</em></li>
+            <li><em>Teachable, Lifelong, Independent Learners</em></li>
+            <li><em>Active Christians</em></li>
+            <li><em>Responsible Citizens</em></li>
+          </ul>
+          <p style="margin-top:4px;font-size:0.9rem;font-style:italic;color:#64748b">(See handbook online for the full list.)</p>
+        </li>
+        <li>You should have received an <strong>ESL Supply List</strong> before school started. The required class supplies are: <em>1 wide-ruled composition book, 1 labeled 2-pocket portfolio, 1 Expo dry erase marker and eraser, 1 yellow highlighter, 12 pencils, 2 erasers, and 1 pack of 3&times;5 lined white index cards.</em></li>
+        <li><strong>Technology</strong> &mdash; Your child will use their iPad in ESL class for online reading programs and assessments. Please be sure your child has their headphones in their homeroom class.</li>
+        <li><strong>Homework</strong> is always due the next day. Please return the workbook to school. Homework should be a review of the day&rsquo;s class work.</li>
+        <li>Daily class work and homework are checked to show <strong>thoroughness, effort, and neatness</strong>.</li>
+        <li>All tests are recorded in <strong>percentages</strong>.</li>
+        <li><strong>Report Cards</strong> are given at the end of each quarter.</li>
+        <li><strong>Parent Conferences</strong> are scheduled twice a year and as needed.</li>
+      </ul>
+    </div>
+
+    <footer>Empowered to Succeed, Guided by Faith &nbsp;🌐</footer>
+  </div>
+</div>
+</body>
+</html>
