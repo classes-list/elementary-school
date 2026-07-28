@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESL 2 &middot; Unit 7: Sharing My Opinion &middot; Workbook</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #ecfeff 0%, #f8f9fa 100%);
+  color: #253a77;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+.container { max-width: 1080px; margin: 0 auto; }
+.back-btn, .print-btn {
+  position: fixed; top: 20px; text-decoration: none;
+  padding: 10px 16px; border-radius: 8px;
+  font-size: 14px; font-weight: 700;
+  box-shadow: 0 3px 10px rgba(37,58,119,0.25);
+  transition: all 0.18s; z-index: 10;
+}
+.back-btn { left: 20px; background: #253a77; color: #fff; }
+.back-btn:hover { background:#1a2a4a; transform:translateX(-2px); }
+.print-btn { right: 20px; background: #0891b2; color: #fff; }
+.print-btn:hover { background:#0e7490; }
+
+.header { text-align:center; margin-bottom: 24px; padding-bottom: 18px; border-bottom: 3px solid #0891b2; }
+.header .unit-icon { font-size: 3rem; line-height:1; }
+.header .unit-num { display:inline-block; margin-top: 6px; background: #FFD100; color: #1a2a4a; padding: 4px 14px; border-radius: 999px; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.05em; }
+.header h1 { color:#253a77; font-size: 1.9rem; font-weight: 800; margin: 6px 0 4px; }
+.header .wida { display:inline-block; margin-top: 8px; background: #ecfeff; border: 1px solid #0891b2; color: #0e7490; padding: 3px 12px; border-radius: 999px; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.05em; }
+
+.can-do { background: linear-gradient(135deg, #fff8e1 0%, #fef3c7 100%); border-left: 4px solid #FFD100; padding: 12px 18px; border-radius: 8px; margin: 16px 0 22px; font-size: 0.95rem; color: #1a2a4a; font-style: italic; }
+.can-do strong { color:#253a77; font-style: normal; }
+
+.section { background: #fff; border-radius: 12px; padding: 22px 26px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(37,58,119,0.07); border-top: 4px solid #0891b2; }
+.section h2 { color: #253a77; font-size: 1.2rem; font-weight: 800; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px solid #0891b2; display: flex; align-items:center; gap: 8px; }
+.section h3 { color:#0e7490; font-size: 1rem; margin: 12px 0 6px; font-weight: 800; }
+.section p { color:#2d3748; line-height: 1.65; font-size: 0.95rem; margin-bottom: 8px; }
+.section ul { margin: 6px 0 10px 22px; }
+.section li { font-size: 0.94rem; color:#2d3748; line-height: 1.55; padding: 3px 0; }
+
+.goals { background:#ecfeff; border-left: 4px solid #0891b2; padding: 12px 16px; border-radius: 8px; margin-top: 8px; }
+.goals ul { margin:0 0 0 22px; }
+
+.vocab-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+.vocab-table td { border-bottom: 1px solid #e2e8f0; padding: 8px 10px; color:#2d3748; vertical-align: top; }
+.vocab-table td:first-child { font-weight: 800; color: #0e7490; width: 30%; white-space: nowrap; }
+.vocab-table tr:hover td { background:#f8fafc; }
+
+.phonics-list { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin-top: 8px; }
+.phonics-card { background:#ecfeff; border-left: 3px solid #0891b2; padding: 10px 14px; border-radius: 8px; }
+.phonics-card strong { color:#0e7490; display: block; margin-bottom: 3px; }
+.phonics-card span { font-size: 0.9rem; color:#2d3748; }
+.sight-words { background: #fff8e1; border: 2px dashed #FFD100; padding: 10px 14px; border-radius: 8px; margin-top: 10px; font-size: 0.9rem; color:#1a2a4a; }
+.sight-words strong { color:#0e7490; }
+
+.passage { background: #fefce8; border: 1px solid #FFD100; padding: 18px 22px; border-radius: 8px; font-size: 0.96rem; line-height: 1.75; color:#1a2a4a; white-space: pre-line; }
+.passage-title { color:#0e7490; font-weight: 800; font-size: 1rem; margin-bottom: 10px; font-style: italic; }
+
+.comp-list { counter-reset: cq; }
+.comp-item { background:#fff; border-left: 3px solid #0891b2; padding: 12px 16px; margin-bottom: 10px; border-radius: 6px; box-shadow: 0 1px 4px rgba(37,58,119,0.08); counter-increment: cq; }
+.comp-item::before { content: counter(cq) ". "; color:#0e7490; font-weight: 800; }
+.comp-strat { display: inline-block; background: #253a77; color:#fff; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em; padding: 2px 8px; border-radius: 999px; margin-left: 6px; }
+.comp-q { display: inline; font-weight: 700; color:#1a2a4a; }
+.comp-a { display: block; margin-top: 6px; font-size: 0.88rem; color: #065f46; padding: 6px 10px; background: #d1fae5; border-radius: 6px; }
+.comp-a::before { content: "Answer: "; font-weight: 800; }
+
+.grammar-box { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); border-left: 4px solid #0891b2; padding: 14px 18px; border-radius: 8px; }
+.grammar-box h3 { color:#0e7490; font-size: 1rem; margin-bottom: 6px; }
+.grammar-box p { line-height: 1.65; color:#1a2a4a; }
+.grammar-try { margin-top: 10px; padding: 12px 14px; background: #fff; border-radius: 6px; font-size: 0.92rem; }
+.grammar-try strong { color:#0e7490; }
+.grammar-try ol { margin: 4px 0 0 22px; }
+
+.writing-diff { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 12px; }
+.diff-card { background: #f8fafc; border-top: 3px solid #0891b2; padding: 12px 14px; border-radius: 8px; }
+.diff-card .diff-grade { display:inline-block; background:#0e7490; color:#fff; padding: 3px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.05em; margin-bottom: 6px; }
+.diff-card p { font-size: 0.9rem; color: #2d3748; line-height: 1.55; margin:0; }
+
+.writing-prompt { background: #fef3c7; border-left: 4px solid #FFD100; padding: 14px 18px; border-radius: 8px; font-size: 0.98rem; color:#1a2a4a; font-weight: 700; }
+.writing-prompt::before { content: "✏️ Prompt: "; color:#0e7490; }
+
+.quiz { background: linear-gradient(135deg, #fff8e1 0%, #fef3c7 100%); border: 2px dashed #FFD100; border-radius: 12px; padding: 18px 22px; }
+.quiz-header { display: flex; align-items:center; justify-content: space-between; margin-bottom: 8px; }
+.quiz-header h2 { color:#1a2a4a; font-size: 1.15rem; font-weight: 800; border:none; padding:0; }
+.quiz-score { background: #253a77; color: #fff; padding: 4px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 800; }
+.q-item { background: #fff; border-radius: 8px; padding: 12px 14px; margin: 10px 0; box-shadow: 0 1px 4px rgba(37,58,119,0.08); }
+.q-num { color:#0e7490; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.06em; }
+.q-text { color:#1a2a4a; font-size: 0.98rem; font-weight: 700; margin: 4px 0 10px; }
+.q-choices { display: grid; gap: 6px; }
+.q-choice { padding: 8px 12px; border-radius: 6px; background: #f8fafc; border: 2px solid #e2e8f0; cursor: pointer; font-size: 0.92rem; transition: all 0.15s; text-align: left; }
+.q-choice:hover { background: #ecfeff; border-color: #0891b2; }
+.q-choice.correct { background: #d1fae5; border-color: #10b981; color: #065f46; font-weight: 700; }
+.q-choice.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
+.q-choice[disabled] { cursor: default; opacity: 0.85; }
+.q-feedback { margin-top: 6px; font-size: 0.82rem; color: #0e7490; font-weight: 700; }
+.quiz-reset { display: inline-block; margin-top: 8px; background: #253a77; color:#fff; text-decoration:none; padding: 6px 14px; border-radius: 6px; font-size: 0.82rem; font-weight: 700; cursor: pointer; border: none; }
+.quiz-reset:hover { background: #1a2a4a; }
+
+.nav-units { display: flex; justify-content: space-between; gap: 10px; margin-top: 30px; padding-top: 20px; border-top: 2px solid #e2e8f0; }
+.nav-btn { background: #ecfeff; color: #0e7490; text-decoration: none; padding: 8px 14px; border-radius: 8px; font-weight: 700; font-size: 0.88rem; border: 1px solid #0891b2; transition: all 0.18s; }
+.nav-btn:hover { background: #0891b2; color: #fff; }
+.nav-btn.disabled { opacity: 0.4; cursor: default; pointer-events: none; }
+
+footer { margin-top: 20px; padding-top: 10px; text-align: center; color: #0e7490; font-style: italic; font-weight: 700; font-size: 0.9rem; }
+.credits { margin-top: 14px; font-size: 0.72rem; color: #64748b; text-align: center; font-style: italic; }
+
+@media print {
+  body { background:#fff; padding:0; }
+  .back-btn, .print-btn, .quiz-reset, .nav-units { display:none; }
+  .section, .quiz { box-shadow:none; break-inside: avoid; }
+}
+@media (max-width: 640px) { .header h1 { font-size: 1.4rem; } }
+</style>
+</head>
+<body>
+<a href="esl-units.html" class="back-btn">&larr; All ESL 2 Units</a>
+<a href="javascript:window.print()" class="print-btn">🖨️ Print</a>
+
+<div class="container">
+
+  <div class="header">
+    <div class="unit-icon">💭</div>
+    <div class="unit-num">Unit 7 &middot; Q4 · Bridging to Grade-Level ELA</div>
+    <h1>Sharing My Opinion</h1>
+    <div class="wida">WIDA 3-4</div>
+  </div>
+
+  <div class="can-do"><strong>Can-Do:</strong> I can share my opinion and give reasons why I feel that way.</div>
+
+  <div class="section">
+    <h2>🎯 What You'll Learn</h2>
+    <div class="goals"><ul><li>Say my opinion with 'because'</li><li>Compare two things</li><li>Write an opinion sentence or paragraph</li><li>Read suffix words (-ing, -ed, -ly)</li></ul></div>
+  </div>
+
+  <div class="section">
+    <h2>📖 Vocabulary Bank</h2>
+    <p>Twelve key words for Unit 7. Read each aloud with your teacher, then use each in a spoken sentence.</p>
+    <table class="vocab-table"><tbody><tr><td>opinion</td><td>what I think or feel</td></tr><tr><td>reason</td><td>why I feel that way</td></tr><tr><td>because</td><td>word that gives a reason</td></tr><tr><td>favorite</td><td>the one I like best</td></tr><tr><td>best</td><td>better than all others</td></tr><tr><td>worst</td><td>worse than all others</td></tr><tr><td>agree</td><td>to think the same</td></tr><tr><td>disagree</td><td>to think differently</td></tr><tr><td>compare</td><td>to see how two things are alike</td></tr><tr><td>different</td><td>not the same</td></tr><tr><td>also</td><td>in addition</td></tr><tr><td>finally</td><td>the last reason</td></tr></tbody></table>
+  </div>
+
+  <div class="section">
+    <h2>🔤 Phonics & Word Study</h2>
+    <p><strong>This unit's focus:</strong> Explode the Code, Book 7: suffixes -ing, -ed, -ly</p>
+    <h3>Word Families</h3>
+    <div class="phonics-list"><div class="phonics-card"><strong>-ing</strong><span>running, singing, playing, jumping</span></div><div class="phonics-card"><strong>-ed</strong><span>walked, played, jumped, wanted</span></div><div class="phonics-card"><strong>-ly</strong><span>slowly, quickly, softly, kindly</span></div><div class="phonics-card"><strong>-er</strong><span>faster, taller, kinder, softer</span></div><div class="phonics-card"><strong>-est</strong><span>fastest, tallest, kindest, softest</span></div></div>
+    <div class="sight-words"><strong>Sight Words:</strong> think, feel, like, best, favorite, because, so, first, also</div>
+    <h3>Practice</h3>
+    <p>Read each word. Circle the ending. Then say the base word (running &amp;rarr; run).</p>
+  </div>
+
+  <div class="section">
+    <h2>📚 Reading Passage</h2>
+    <div class="passage">
+      <div class="passage-title">Beach or Park?</div>
+      My favorite place is the beach. I like the beach because I love to swim.
+
+Also, at the beach I can build sandcastles with my sister. We laugh a lot.
+
+Some kids like the park more. They say the park is best because they can run and play with balls.
+
+Both the beach and the park are fun. But the beach will always be my favorite.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>❓ Reading Comprehension</h2>
+    <p>Answer each question in a complete sentence. Check the green box after you write your answer.</p>
+    <div class="comp-list"><div class="comp-item"><span class="comp-q">What is the writer's favorite place?</span><span class="comp-strat">Main Idea</span><span class="comp-a">The beach.</span></div><div class="comp-item"><span class="comp-q">Name two reasons the writer loves the beach.</span><span class="comp-strat">Facts</span><span class="comp-a">He can swim, and he can build sandcastles with his sister.</span></div><div class="comp-item"><span class="comp-q">How is the park different from the beach in the story?</span><span class="comp-strat">Compare</span><span class="comp-a">At the park kids run and play with balls; at the beach the writer swims and builds sandcastles.</span></div><div class="comp-item"><span class="comp-q">Is 'The beach will always be my favorite' a fact or opinion?</span><span class="comp-strat">Fact vs. Opinion</span><span class="comp-a">An opinion -- 'favorite' is what the writer thinks.</span></div></div>
+  </div>
+
+  <div class="section">
+    <h2>📐 Language & Grammar</h2>
+    <div class="grammar-box">
+      <h3>Opinion Sentences with 'because'</h3>
+      <p>An opinion tells what you think. A strong opinion sentence has a <b>reason</b>. Use <b>because</b> to give the reason.<br><br><i>Sentence starter:</i> My favorite _____ is _____ <b>because</b> _____.<br><i>Example:</i> My favorite food is rice because it is warm and yummy.</p>
+      <div class="grammar-try">
+        <strong>Try It:</strong>
+        <ol><li>My favorite color is _____ because _____.</li><li>My favorite subject is _____ because _____.</li><li>My favorite friend is _____ because _____.</li><li>My favorite place is _____ because _____.</li></ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>✏️ Writing</h2>
+    <div class="writing-prompt">Write your opinion: Which is better, the beach or the park? Give reasons!</div>
+    <h3>Grade Differentiation</h3>
+    <div class="writing-diff">
+      <div class="diff-card"><span class="diff-grade">Grade 1</span><p>Draw your favorite place. Complete: 'My favorite is _____ because _____.'</p></div>
+      <div class="diff-card"><span class="diff-grade">Grade 2</span><p>Write a 3-sentence opinion: your favorite + 2 reasons.</p></div>
+      <div class="diff-card"><span class="diff-grade">Grade 3</span><p>Write a 5-sentence opinion paragraph: opinion + 3 reasons + closing sentence.</p></div>
+    </div>
+  </div>
+
+  <div class="section quiz" id="quiz" data-questions="[{&quot;q&quot;: &quot;An opinion is...&quot;, &quot;choices&quot;: [&quot;something true&quot;, &quot;what you think or feel&quot;, &quot;a math fact&quot;, &quot;a rule&quot;], &quot;a&quot;: 1}, {&quot;q&quot;: &quot;Which word gives a reason?&quot;, &quot;choices&quot;: [&quot;and&quot;, &quot;or&quot;, &quot;because&quot;, &quot;but&quot;], &quot;a&quot;: 2}, {&quot;q&quot;: &quot;Which suffix means &#x27;doing it now&#x27;?&quot;, &quot;choices&quot;: [&quot;-ed&quot;, &quot;-ing&quot;, &quot;-ly&quot;, &quot;-est&quot;], &quot;a&quot;: 1}, {&quot;q&quot;: &quot;Past tense of &#x27;jump&#x27; is...&quot;, &quot;choices&quot;: [&quot;jumping&quot;, &quot;jumped&quot;, &quot;jumps&quot;, &quot;jumper&quot;], &quot;a&quot;: 1}, {&quot;q&quot;: &quot;What is the writer&#x27;s favorite place?&quot;, &quot;choices&quot;: [&quot;park&quot;, &quot;school&quot;, &quot;beach&quot;, &quot;home&quot;], &quot;a&quot;: 2}, {&quot;q&quot;: &quot;Which is an opinion?&quot;, &quot;choices&quot;: [&quot;Beach has sand.&quot;, &quot;The park has swings.&quot;, &quot;The beach is the best!&quot;, &quot;Water is wet.&quot;], &quot;a&quot;: 2}, {&quot;q&quot;: &quot;&#x27;-ly&#x27; turns a word into an...&quot;, &quot;choices&quot;: [&quot;noun&quot;, &quot;verb&quot;, &quot;adverb&quot;, &quot;adjective&quot;], &quot;a&quot;: 2}, {&quot;q&quot;: &quot;To &#x27;compare&#x27; means to see how two things are...&quot;, &quot;choices&quot;: [&quot;different&quot;, &quot;alike&quot;, &quot;expensive&quot;, &quot;broken&quot;], &quot;a&quot;: 1}, {&quot;q&quot;: &quot;&#x27;Also&#x27; means...&quot;, &quot;choices&quot;: [&quot;in addition&quot;, &quot;never&quot;, &quot;first&quot;, &quot;only&quot;], &quot;a&quot;: 0}, {&quot;q&quot;: &quot;Which is a suffix word?&quot;, &quot;choices&quot;: [&quot;cat&quot;, &quot;running&quot;, &quot;stop&quot;, &quot;big&quot;], &quot;a&quot;: 1}]">
+    <div class="quiz-header">
+      <h2>🧠 Unit 7 Quiz</h2>
+      <span class="quiz-score">0 / 10</span>
+    </div>
+    <div class="q-items"></div>
+    <button class="quiz-reset" type="button">↻ Reset Quiz</button>
+  </div>
+
+  <div class="nav-units">
+    <a class="nav-btn " href="esl-unit-6-workbook.html">&larr; Unit 6</a>
+    <a class="nav-btn" href="esl-units.html">All Units</a>
+    <a class="nav-btn " href="esl-unit-8-workbook.html">Unit 8 &rarr;</a>
+  </div>
+
+  <footer>Empowered to Succeed, Guided by Faith &nbsp;🌐</footer>
+  <div class="credits">
+    Content styled after Spectrum Reading (Carson Dellosa) &middot; Harcourt Family Learning &middot; Explode the Code (Flashkids)
+    &middot; Reading passages original for MSOS ESL 2 by Mrs. Tanaka.
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var quizEl = document.querySelector('.quiz');
+  if (!quizEl) return;
+  var questions = JSON.parse(quizEl.getAttribute('data-questions'));
+  var scoreEl = quizEl.querySelector('.quiz-score');
+  var itemsEl = quizEl.querySelector('.q-items');
+  var total = questions.length;
+  function render() {
+    itemsEl.innerHTML = '';
+    var correct = 0;
+    scoreEl.textContent = '0 / ' + total;
+    questions.forEach(function(q, i) {
+      var item = document.createElement('div');
+      item.className = 'q-item';
+      item.innerHTML = '<div class="q-num">Question ' + (i+1) + ' of ' + total + '</div>' +
+                       '<div class="q-text"></div>' +
+                       '<div class="q-choices"></div><div class="q-feedback"></div>';
+      item.querySelector('.q-text').textContent = q.q;
+      var choicesDiv = item.querySelector('.q-choices');
+      var feedback = item.querySelector('.q-feedback');
+      var answered = false;
+      q.choices.forEach(function(choice, ci) {
+        var btn = document.createElement('button');
+        btn.className = 'q-choice'; btn.type='button'; btn.textContent = choice;
+        btn.addEventListener('click', function() {
+          if (answered) return; answered = true;
+          Array.prototype.forEach.call(choicesDiv.children, function(c) { c.disabled = true; });
+          if (ci === q.a) { btn.classList.add('correct'); correct++; feedback.textContent = '✓ Correct!'; feedback.style.color='#065f46'; }
+          else { btn.classList.add('wrong'); choicesDiv.children[q.a].classList.add('correct'); feedback.textContent = '✗ The correct answer is: ' + q.choices[q.a]; feedback.style.color='#991b1b'; }
+          scoreEl.textContent = correct + ' / ' + total;
+        });
+        choicesDiv.appendChild(btn);
+      });
+      itemsEl.appendChild(item);
+    });
+  }
+  render();
+  quizEl.querySelector('.quiz-reset').addEventListener('click', render);
+})();
+</script>
+</body>
+</html>
