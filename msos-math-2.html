@@ -119,7 +119,16 @@
           <a href="2b-peters.html" class="nav-btn" title="Back to Mrs. Peters' Class">← All Classes</a>
           <a href="2b-peters-syllabus.html" class="nav-btn gold" title="View Syllabus">📓 Syllabus</a>
           <a href="2b-peters-syllabus.pdf?v=1" class="nav-btn print" target="_blank" rel="noopener" title="Open original PDF">🖨️ Print Syllabus</a>
-          <a href="2a-math-curriculum-map.html" class="nav-btn map" title="Curriculum Map &amp; Unit Calendar">📅 Curriculum Map</a>
+          <a id="math2-curriculum-map-btn" href="2a-math-curriculum-map.html?v=2" class="nav-btn map" title="Curriculum Map &amp; Unit Calendar">📅 Curriculum Map</a>
+        <script>
+        (function(){
+          var btn = document.getElementById('math2-curriculum-map-btn');
+          if (!btn) return;
+          var ref = document.referrer || '';
+          if (ref.indexOf('2b-peters') !== -1) btn.href = '2b-math-curriculum-map.html?v=2';
+          else if (ref.indexOf('2a-wong') !== -1) btn.href = '2a-math-curriculum-map.html?v=2';
+        })();
+        </script>
           <div class="topbar-logos">
             <span class="logo-circle msos" title="Mary, Star of the Sea"><img src="msos-logo.svg" alt="MSOS"></span>
             <span class="logo-circle nui" title="Nurture · Unite · Inspire"><img src="nui-logo.png" alt="NUI"></span>
