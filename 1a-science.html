@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mary, Star of the Sea &mdash; 1st Grade A &middot; Science</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #d1fae5 0%, #f8f9fa 100%); color: #253a77; min-height: 100vh; }
+.container { display: flex; min-height: 100vh; }
+.sidebar { width: 280px; background: #065f46; color: #fff; padding: 24px 20px; overflow-y: auto; flex-shrink: 0; }
+.sidebar h2 { color: #FFD100; font-size: 1.05rem; }
+.sidebar-sub { color: rgba(255,255,255,0.7); font-size: 0.78rem; margin: 0 0 12px 0; }
+.sidebar-quarter { margin-top: 20px; padding-top: 10px; border-top: 1px solid #0d9488; color: #FFD100; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.sidebar-unit { display: flex; align-items: center; gap: 10px; padding: 10px 12px; margin: 4px 0; background: #0d9488; border-radius: 6px; cursor: pointer; transition: all 0.15s; font-size: 0.86rem; line-height: 1.3; }
+.sidebar-unit:hover { background: #FFD100; color: #253a77; }
+.sidebar-unit.active { background: #FFD100; color: #253a77; font-weight: 700; }
+.main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.topbar { background: #fff; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid #FFD100; flex-wrap: wrap; gap: 10px; }
+.topbar-left { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.topbar-logos { display: flex; gap: 8px; }
+.logo-circle { width: 42px; height: 42px; border-radius: 50%; background: #fff; box-shadow: 0 2px 6px rgba(37,58,119,0.15); overflow: hidden; display: inline-flex; align-items: center; justify-content: flex-start; flex-shrink: 0; }
+.logo-circle img { display: block; }
+.logo-circle.msos img { height: 100%; width: auto; }
+.logo-circle.nui img { width: 100%; height: 100%; object-fit: cover; }
+.logo-circle.msos { background: #1a2a4a; }
+.nav-btn { background: #065f46; color: #fff; padding: 8px 14px; text-decoration: none; border-radius: 6px; font-weight: 700; font-size: 0.85rem; transition: all 0.15s; border: none; cursor: pointer; }
+.nav-btn:hover { background: #064e3b; transform: translateY(-1px); }
+.nav-btn.gold { background: #FFD100; color: #1a2a4a; }
+.nav-btn.gold:hover { background: #ffc400; }
+.nav-btn.print { background: #fff; color: #065f46; border: 1.5px solid #065f46; }
+.nav-btn.print:hover { background: #065f46; color: #fff; }
+.nav-btn.map { background: #B45309; color: #fff; }
+.nav-btn.map:hover { background: #92400e; }
+.topbar-right { color: #666; font-size: 0.85rem; font-weight: 600; }
+.content { flex: 1; padding: 26px 32px; overflow-y: auto; max-width: 960px; }
+.screen { display: none; }
+.screen.active { display: block; }
+.units-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 20px; }
+.unit-card { background: #fff; padding: 22px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.06); cursor: pointer; transition: all 0.2s; border-top: 4px solid #065f46; }
+.unit-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+.unit-icon { font-size: 2.4rem; line-height: 1; margin-bottom: 6px; }
+.unit-title { font-weight: 700; color: #065f46; font-size: 1rem; margin-bottom: 6px; line-height: 1.3; }
+.unit-cc { font-size: 0.72rem; color: #7a5f00; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+.unit-desc { font-size: 0.85rem; color: #666; line-height: 1.45; }
+.q-pill { display: inline-block; background: #FFD100; color: #1a2a4a; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; margin-bottom: 8px; }
+.resources-box { margin-top: 40px; padding: 22px; background: #fff; border-left: 4px solid #FFD100; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.06); }
+.resources-box h2 { color: #065f46; font-size: 1.15rem; margin-bottom: 12px; }
+.res-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.res-link { padding: 12px 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; text-decoration: none; color: #253a77; transition: all 0.15s; }
+.res-link:hover { background: #065f46; color: #fff; border-color: #065f46; }
+.res-link:hover .res-link-desc { color: rgba(255,255,255,0.85); }
+.res-link-title { font-weight: 700; font-size: 0.92rem; margin-bottom: 3px; }
+.res-link-desc { font-size: 0.78rem; color: #64748b; }
+.lesson-content h2 { margin-bottom: 12px; font-size: 1.5rem; }
+.lesson-content h3 { color: #065f46; margin: 18px 0 8px; font-size: 1.05rem; padding: 6px 12px; border-left: 3px solid #065f46; background: #d1fae5; }
+.lesson-content p { margin-bottom: 10px; line-height: 1.65; }
+.lesson-content ul { margin: 8px 0 12px 24px; }
+.lesson-content li { margin-bottom: 5px; line-height: 1.55; }
+.q-tag { display: inline-block; background: #FFD100; color: #1a2a4a; padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 700; margin-bottom: 14px; }
+.prayer { background: #fef3c7; border-left: 4px solid #FFD100; padding: 12px 16px; margin: 14px 0; border-radius: 6px; font-size: 0.95rem; }
+.highlight { background: #dcfce7; border-left: 4px solid #16a34a; padding: 12px 16px; margin: 14px 0; border-radius: 6px; font-size: 0.95rem; font-weight: 600; color: #14532d; }
+.back-to-home { margin-bottom: 16px; }
+.back-to-home button { background: #6b7280; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 0.85rem; }
+.back-to-home button:hover { background: #4b5563; }
+@media (max-width: 800px) {
+  .container { flex-direction: column; }
+  .sidebar { width: 100%; max-height: 300px; }
+  .content { padding: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="sidebar">
+    <h2>Mary, Star of the Sea</h2>
+    <p class="sidebar-sub">1st Grade A Science &middot; Mrs. Yap</p>
+    <div><div class="sidebar-quarter">Q1 · Aug–Oct</div><div class="sidebar-unit" onclick="showLesson('u1-scientific-process-matter')">🔬 Unit 1: Scientific Process, Matter & Energy</div><div class="sidebar-quarter">Q2 · Oct–Dec</div><div class="sidebar-unit" onclick="showLesson('u2-sky-patterns')">🌙 Unit 2: Objects & Patterns in the Sky</div><div class="sidebar-quarter">Q3 · Jan–Mar</div><div class="sidebar-unit" onclick="showLesson('u3-living-things')">🌱 Unit 3: Survival of Living Things</div><div class="sidebar-quarter">Q4 · Mar–May</div><div class="sidebar-unit" onclick="showLesson('u4-weather-engineering')">🌦️ Unit 4: Weather & Engineering Design Process</div></div>
+  </div>
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-left">
+        <a href="1a-yap.html" class="nav-btn">← All Classes</a>
+        <a href="1a-yap-syllabus.html" class="nav-btn gold">📓 Syllabus</a>
+        <a href="1a-yap-syllabus.pdf" class="nav-btn print" target="_blank" rel="noopener">🖨️ Print Syllabus</a>
+        <a href="1a-science-curriculum-map.html" class="nav-btn map">📅 Curriculum Map</a>
+        <div class="topbar-logos">
+          <span class="logo-circle msos"><img src="msos-logo.svg" alt="MSOS Logo"></span>
+          <span class="logo-circle nui"><img src="nui-logo.png" alt="NUI Logo"></span>
+        </div>
+      </div>
+      <div class="topbar-right">Science &middot; Grade 1</div>
+    </div>
+    <div class="content">
+      <div id="home-screen" class="screen active">
+        <h1 style="color:#065f46;">🔬 1st Grade A Science</h1>
+        <p style="color:#555;font-style:italic;margin-top:6px;">Scientific Process · Matter & Energy · Sky Patterns · Living Things · Weather & Engineering · SY 2026-2027</p>
+        <div id="units-grid" class="units-grid"><div class="unit-card" onclick="showLesson('u1-scientific-process-matter')"><div class="q-pill">Q1</div><div class="unit-icon">🔬</div><div class="unit-title">Unit 1: Scientific Process, Matter & Energy</div><div class="unit-cc">Next Generation Science Standards</div><div class="unit-desc">How do scientists explore the world? What is everything around us made of?</div></div><div class="unit-card" onclick="showLesson('u2-sky-patterns')"><div class="q-pill">Q2</div><div class="unit-icon">🌙</div><div class="unit-title">Unit 2: Objects & Patterns in the Sky</div><div class="unit-cc">Next Generation Science Standards</div><div class="unit-desc">What do we see in the sky, and how does it change through the day and year?</div></div><div class="unit-card" onclick="showLesson('u3-living-things')"><div class="q-pill">Q3</div><div class="unit-icon">🌱</div><div class="unit-title">Unit 3: Survival of Living Things</div><div class="unit-cc">Next Generation Science Standards</div><div class="unit-desc">What do plants and animals need to survive and grow?</div></div><div class="unit-card" onclick="showLesson('u4-weather-engineering')"><div class="q-pill">Q4</div><div class="unit-icon">🌦️</div><div class="unit-title">Unit 4: Weather & Engineering Design Process</div><div class="unit-cc">Next Generation Science Standards</div><div class="unit-desc">How is weather different every day, and how do engineers solve problems?</div></div></div>
+        <div class="resources-box">
+          <h2>🌟 Recommended Resources</h2>
+          <div class="res-links"><a class="res-link" href="https://mysteryscience.com/" target="_blank" rel="noopener"><div class="res-link-title">Mystery Science</div><div class="res-link-desc">Grade 1 mini-lessons and videos</div></a><a class="res-link" href="https://www.hmhco.com/programs/hmh-into-science" target="_blank" rel="noopener"><div class="res-link-title">HMH Into Science</div><div class="res-link-desc">Textbook resources</div></a><a class="res-link" href="https://phet.colorado.edu/en/simulations/browse?levels=elementary-school" target="_blank" rel="noopener"><div class="res-link-title">PhET Interactive</div><div class="res-link-desc">Science simulations</div></a><a class="res-link" href="https://kids.nationalgeographic.com/" target="_blank" rel="noopener"><div class="res-link-title">NatGeo Kids</div><div class="res-link-desc">Animals, weather, science stories</div></a><a class="res-link" href="https://www.brainpopjr.com/science/" target="_blank" rel="noopener"><div class="res-link-title">BrainPop Jr. Science</div><div class="res-link-desc">Animated science videos</div></a><a class="res-link" href="https://climatekids.nasa.gov/" target="_blank" rel="noopener"><div class="res-link-title">NASA Climate Kids</div><div class="res-link-desc">Weather and Earth science</div></a></div>
+        </div>
+      </div>
+      <div id="lesson-screen" class="screen">
+        <div class="back-to-home"><button onclick="showHome()">← Back to Overview</button></div>
+        <div id="lesson-content" class="lesson-content"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+const LESSONS = {"u1-scientific-process-matter": "<h2 style=\"color:#065f46;\">\ud83d\udd2c Unit 1: Scientific Process, Matter & Energy</h2><div class=\"q-tag\">Q1 \u00b7 Aug\u2013Oct \u00b7 Next Generation Science Standards</div><h3>\ud83d\udca1 Big Ideas</h3><ul><li>Scientists observe, ask questions, predict, and test</li><li>Everything is made of matter (solids, liquids, gases)</li><li>Energy comes in different forms (light, sound, heat)</li></ul><h3>\ud83d\udcda What Students Learn</h3><ul><li>The scientific process: observe \u2192 question \u2192 predict \u2192 test \u2192 share</li><li>Simple lab tools (magnifying glass, measuring cups, ruler)</li><li>Matter \u2014 solids, liquids, and gases; what changes when we heat or cool</li><li>Energy \u2014 light and shadow, sound (loud/soft, high/low), heat</li></ul><h3>\ud83d\udcca Assessments</h3><p>Observation drawings \u00b7 Matter sorting activity \u00b7 Sound-and-light exploration station</p>", "u2-sky-patterns": "<h2 style=\"color:#065f46;\">\ud83c\udf19 Unit 2: Objects & Patterns in the Sky</h2><div class=\"q-tag\">Q2 \u00b7 Oct\u2013Dec \u00b7 Next Generation Science Standards</div><h3>\ud83d\udca1 Big Ideas</h3><ul><li>The sun, moon, and stars all move in predictable patterns</li><li>Day and night happen because the Earth spins</li><li>The seasons happen because of Earth's tilt and journey around the sun</li></ul><h3>\ud83d\udcda What Students Learn</h3><ul><li>The sun, moon, and stars \u2014 what we see and when</li><li>Patterns of day and night</li><li>Phases of the moon (simple recognition)</li><li>The seasons \u2014 what changes in fall, winter, spring, summer</li><li>Weather changes with the seasons</li><li>Simple sky journals \u2014 drawing what we see</li></ul><h3>\ud83d\udcca Assessments</h3><p>Sky journal \u00b7 Moon phases matching \u00b7 Seasons illustration</p>", "u3-living-things": "<h2 style=\"color:#065f46;\">\ud83c\udf31 Unit 3: Survival of Living Things</h2><div class=\"q-tag\">Q3 \u00b7 Jan\u2013Mar \u00b7 Next Generation Science Standards</div><h3>\ud83d\udca1 Big Ideas</h3><ul><li>All living things need certain things to survive (food, water, air, shelter)</li><li>Plants and animals have parts that help them survive</li><li>Living things grow and change through life cycles</li></ul><h3>\ud83d\udcda What Students Learn</h3><ul><li>What makes something living vs. non-living</li><li>Plant parts (roots, stem, leaves, flowers) and what each does</li><li>Animal body parts and how they help animals survive (fur, feathers, claws, beaks)</li><li>Life cycles of plants and animals (butterfly, frog, plant from seed)</li><li>Habitats and how living things depend on their environment</li><li>Class garden or plant observation project</li></ul><h3>\ud83d\udcca Assessments</h3><p>Life cycle project \u00b7 Habitat diorama \u00b7 Living/non-living sort \u00b7 Plant journal</p>", "u4-weather-engineering": "<h2 style=\"color:#065f46;\">\ud83c\udf26\ufe0f Unit 4: Weather & Engineering Design Process</h2><div class=\"q-tag\">Q4 \u00b7 Mar\u2013May \u00b7 Next Generation Science Standards</div><h3>\ud83d\udca1 Big Ideas</h3><ul><li>Weather changes daily and follows patterns we can observe</li><li>Engineers ask, imagine, plan, create, and improve to solve problems</li><li>We can design solutions to real-world problems</li></ul><h3>\ud83d\udcda What Students Learn</h3><ul><li>Types of weather (sunny, cloudy, rainy, windy, stormy)</li><li>Simple weather tools \u2014 thermometer, rain gauge, wind sock</li><li>Tracking weather over a week or month</li><li>The Engineering Design Process \u2014 Ask, Imagine, Plan, Create, Improve</li><li>Simple engineering challenges (build a shelter, design a boat, make a paper bridge)</li><li>Testing and improving our designs</li></ul><h3>\ud83d\udcca Assessments</h3><p>Weather log \u00b7 Design challenge portfolio \u00b7 Engineering reflection</p>"};
+function showLesson(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('lesson-screen').classList.add('active');
+  document.getElementById('lesson-content').innerHTML = LESSONS[id] || '<p>Lesson not found.</p>';
+  document.querySelectorAll('.sidebar-unit').forEach(el => {
+    el.classList.remove('active');
+    if (el.getAttribute('onclick') && el.getAttribute('onclick').includes("'" + id + "'")) el.classList.add('active');
+  });
+  window.scrollTo(0, 0);
+}
+function showHome() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('home-screen').classList.add('active');
+  document.querySelectorAll('.sidebar-unit').forEach(el => el.classList.remove('active'));
+}
+</script>
+</body>
+</html>
