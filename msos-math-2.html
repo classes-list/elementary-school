@@ -3786,16 +3786,26 @@
     const items = document.querySelectorAll('.sidebar-item');
     UNITS.forEach((x, idx) => { if (x.id === id) items[idx].classList.add('active'); });
 
-    const ixlList = u.ixlAlts.length
-      ? '<ul>' + u.ixlAlts.map(([n, url]) => `<li>• <a href="${url}" target="_blank" rel="noopener" style="color:#dc2626;font-weight:600;">${n}</a></li>`).join('') + '</ul>'
-      : '';
     document.getElementById('lesson-content').innerHTML = `
       <div class="quarter-pill">${u.quarter}</div>
       <h2>${u.icon} ${u.title}</h2>
       <div class="lesson-cc">Standards: ${u.cc}</div>
       ${u.lesson}
+    `;
+  }
+
+  function showWorksheet() {
+    if (!currentUnit) return;
+    const u = UNITS.find(x => x.id === currentUnit);
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('worksheet-screen').classList.add('active');
+    const html = u.worksheet.map((w, i) => `
+      <div class="worksheet-item">
+        <h4>Q${i+1}. ${w[0]}</h4>
+        <div class="answer-key" style="display:none;"><strong>Answer:</strong> ${w[1]}</div>
       </div>
     `).join('');
+    document.getElementById('worksheet-content').innerHTML = html;
   }
 
   function checkWorksheet() {
