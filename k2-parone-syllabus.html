@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Syllabus &mdash; Mrs. Parone &middot; Kindergarten 2 &middot; SY 2026-2027</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #eef2fa 0%, #f8f9fa 100%);
+  color: #253a77;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+.container { max-width: 1080px; margin: 0 auto; }
+.back-index-btn {
+  position: fixed; top: 20px; left: 20px;
+  background: #253a77; color: #fff; text-decoration: none;
+  padding: 10px 16px; border-radius: 8px;
+  font-size: 14px; font-weight: 700;
+  box-shadow: 0 3px 10px rgba(37,58,119,0.25);
+  transition: all 0.18s; z-index: 10;
+}
+.back-index-btn:hover { background: #1a2a4a; transform: translateX(-2px); }
+.print-btn {
+  position: fixed; top: 20px; right: 20px;
+  background: #B45309; color: #fff; text-decoration: none;
+  padding: 10px 16px; border-radius: 8px;
+  font-size: 14px; font-weight: 700; border: none; cursor: pointer;
+  box-shadow: 0 3px 10px rgba(180,83,9,0.25);
+  z-index: 10;
+}
+.print-btn:hover { background: #92400e; }
+
+.syllabus-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 28px rgba(37,58,119,0.12);
+  padding: 40px 44px;
+  border-top: 6px solid #FFD100;
+}
+
+.header-top {
+  display: flex; gap: 24px; align-items: center;
+  border-bottom: 2px solid #e2e8f0; padding-bottom: 22px; margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.header-info { flex: 1 1 260px; }
+.header-info h1 { color: #253a77; font-size: 1.6rem; font-weight: 800; margin-bottom: 4px; }
+.header-info .role { color: #7a5f00; font-style: italic; font-size: 0.95rem; margin-bottom: 6px; }
+.header-info .contact { font-size: 0.92rem; line-height: 1.7; color: #444; }
+.header-info .contact strong { color: #253a77; }
+.header-info .contact a { color: #253a77; text-decoration: none; }
+.header-info .contact a:hover { text-decoration: underline; }
+.year-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #FFD100 0%, #FFB800 100%);
+  color: #253a77;
+  font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 999px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(255,209,0,0.35);
+}
+.teacher-photo {
+  width: 130px; height: 130px; border-radius: 50%;
+  background: #1a2a4a; overflow: hidden; flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(37,58,119,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: #FFD100; font-size: 2.6rem; font-weight: 800; letter-spacing: 0.05em;
+}
+.teacher-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; display: block; }
+
+.eq-box {
+  background: linear-gradient(135deg, #fff8e1 0%, #fef3c7 100%);
+  border-left: 5px solid #FFD100;
+  padding: 20px 24px; border-radius: 10px;
+  margin-bottom: 22px;
+  text-align: center;
+}
+.eq-box .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 800; color: #7a5f00; margin-bottom: 8px; }
+.eq-box .question { font-size: 1.35rem; color: #253a77; font-weight: 700; font-style: italic; margin-bottom: 6px; }
+.eq-box .verse { color: #7a5f00; font-size: 0.95rem; font-weight: 600; }
+
+.section-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(37,58,119,0.07);
+  padding: 22px 26px;
+  margin-bottom: 18px;
+  border-top: 4px solid #253a77;
+}
+.section-card h2 {
+  color: #253a77; font-size: 1.25rem; font-weight: 800;
+  margin-bottom: 10px; padding-bottom: 6px;
+  border-bottom: 2px solid #FFD100;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-card p { color: #2d3748; font-size: 0.96rem; line-height: 1.7; margin-bottom: 10px; }
+.section-card ul, .section-card ol { margin: 8px 0 12px 24px; }
+.section-card li { padding: 3px 0; color: #2d3748; font-size: 0.95rem; line-height: 1.65; }
+.section-card li strong { color: #253a77; }
+
+.welcome-box {
+  background: #f0f4fc; border-left: 4px solid #253a77;
+  padding: 18px 22px; border-radius: 8px;
+  margin: 10px 0;
+}
+.welcome-box p { color: #2d3748; margin-bottom: 8px; }
+
+.star-list { list-style: none; margin-left: 0; padding-left: 0; }
+.star-list li { padding: 6px 0 6px 6px; font-size: 0.98rem; font-weight: 600; color: #253a77; }
+
+.grading-scale { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+.grade-item {
+  background: #f8fafc; border-left: 4px solid #253a77;
+  padding: 12px 16px; border-radius: 6px;
+}
+.grade-item .grade-num { font-size: 1.5rem; font-weight: 800; color: #253a77; margin-bottom: 4px; }
+.grade-item .grade-name { font-weight: 700; color: #7a5f00; margin-bottom: 4px; font-size: 0.92rem; }
+.grade-item ul { margin: 4px 0 0 18px; }
+.grade-item li { font-size: 0.85rem; padding: 1px 0; line-height: 1.45; }
+
+.hw-guidelines {
+  background: #fff8e1; border-left: 4px solid #FFD100;
+  padding: 16px 20px; border-radius: 8px; margin: 12px 0;
+}
+.hw-guidelines h4 { color: #7a5f00; font-size: 1rem; margin-bottom: 8px; }
+.hw-guidelines ul { margin-left: 22px; }
+.hw-guidelines li { font-size: 0.92rem; padding: 3px 0; }
+
+.ohana-callout {
+  background: #ecfdf5; border-left: 4px solid #10b981;
+  padding: 14px 18px; border-radius: 8px; margin: 10px 0;
+}
+.ohana-callout h4 { color: #059669; font-size: 1rem; margin-bottom: 6px; }
+.ohana-callout ul { margin: 4px 0 0 20px; }
+.ohana-callout li { font-size: 0.9rem; padding: 2px 0; }
+
+.behavior-callout {
+  background: #f0f9ff; border-left: 4px solid #0284c7;
+  padding: 14px 18px; border-radius: 8px; margin: 10px 0;
+}
+.behavior-callout h4 { color: #0284c7; font-size: 1rem; margin-bottom: 6px; }
+.behavior-callout ul { list-style: none; margin: 6px 0 0; padding: 0; }
+.behavior-callout li { padding: 4px 0; font-size: 0.92rem; }
+
+.birthday-callout {
+  background: #fdf2f8; border-left: 4px solid #ec4899;
+  padding: 14px 18px; border-radius: 8px; margin: 10px 0;
+}
+.birthday-callout h4 { color: #be185d; font-size: 1rem; margin-bottom: 6px; }
+.birthday-callout ul { margin: 4px 0 0 20px; }
+.birthday-callout li { font-size: 0.9rem; padding: 2px 0; }
+
+.subject-block { margin-bottom: 12px; padding: 14px 18px; background: #f8fafc; border-radius: 8px; border-left: 4px solid #253a77; }
+.subject-block h3 { color: #253a77; font-size: 1.05rem; margin-bottom: 6px; }
+.subject-block p { font-size: 0.93rem; color: #2d3748; margin-bottom: 6px; }
+.subject-block .quarters { margin-top: 6px; }
+.subject-block .quarters dt { color: #7a5f00; font-weight: 800; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 8px; }
+.subject-block .quarters dd { color: #2d3748; font-size: 0.92rem; margin-left: 12px; line-height: 1.6; }
+
+.dates-list li { padding: 4px 0; font-size: 0.94rem; }
+
+footer {
+  margin-top: 32px; padding-top: 20px;
+  border-top: 2px solid #e2e8f0;
+  text-align: center; color: #7a5f00;
+  font-style: italic; font-weight: 700; font-size: 1.05rem;
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .back-index-btn, .print-btn { display: none; }
+  .syllabus-card { box-shadow: none; padding: 20px; }
+  .section-card { box-shadow: none; break-inside: avoid; }
+}
+@media (max-width: 640px) {
+  .syllabus-card { padding: 24px 20px; }
+  .header-info h1 { font-size: 1.3rem; }
+}
+</style>
+</head>
+<body>
+<a href="k2-parone.html" class="back-index-btn" title="Back to Mrs. Parone's Class">&larr; Back to Class</a>
+<a class="print-btn" href="k2-parone-syllabus.pdf?v=2" target="_blank" rel="noopener" title="Open printable syllabus PDF">🖨️ Print Syllabus</a>
+
+<div class="container">
+  <div class="syllabus-card">
+
+    <div class="header-top">
+      <div class="teacher-photo">
+        <img src="mrs-parone.jpg" alt="Mrs. Clare Parone" onerror="this.style.display='none'; this.parentElement.textContent='CP';">
+      </div>
+      <div class="header-info">
+        <div class="year-badge">School Year 2026-2027</div>
+        <h1>Mrs. Clare Parone &middot; Kindergarten 2</h1>
+        <div class="role">Kindergarten 2 Teacher &middot; Mary, Star of the Sea School</div>
+        <div class="contact">
+          <strong>Email:</strong> <a href="mailto:cparone@starofthesea.org">cparone@starofthesea.org</a><br>
+          <strong>Phone (school office):</strong> (808) 734-0208
+        </div>
+      </div>
+    </div>
+
+    <!-- MSOS Essential Question -->
+    <div class="eq-box">
+      <div class="label">MSOS Essential Question</div>
+      <div class="question">&ldquo;With Jesus, what makes my spirit soar?&rdquo;</div>
+      <div class="verse">Isaiah 40:31</div>
+    </div>
+
+    <!-- Welcome -->
+    <div class="section-card">
+      <h2>👋 Welcome</h2>
+      <div class="welcome-box">
+        <p>Welcome to kindergarten and the brand new school year! I am so happy you are here and super excited for the year ahead. It is going to be amazing to see the amount of growth this year. As we go through this year, we will learn to <strong>nurture, unite, and inspire</strong> our friends. It is going to be a great school year!</p>
+      </div>
+    </div>
+
+    <!-- Teaching Philosophy -->
+    <div class="section-card">
+      <h2>💜 Mrs. Parone's Teaching Philosophy</h2>
+      <p>My teaching philosophy for Kindergarten 2 is rooted in nurturing the development of the whole child &mdash; socially, emotionally, spiritually, and academically. Kindergarten is a year of enormous growth: five- and six-year-olds thrive in a warm, structured environment where they feel safe to be curious, safe to try, and safe to make mistakes.</p>
+      <p>I believe learning at this age happens best through play, song, movement, story, and hands-on exploration. Every day in K2 blends structured academic work with joyful discovery, so that our children build strong foundations in reading, writing, and math while also learning how to be kind classmates, patient friends, and prayerful children of God.</p>
+      <p style="font-weight:700;color:#253a77;margin-top:12px">At Mary, Star of the Sea School, we guide our students to become <strong>S.T.A.R.s</strong>:</p>
+      <ul class="star-list">
+        <li>⭐ <strong>S</strong>elf-aware, Confident Individuals</li>
+        <li>⭐ <strong>T</strong>eachable, Lifelong Independent Learners</li>
+        <li>⭐ <strong>A</strong>ctive Christians</li>
+        <li>⭐ <strong>R</strong>esponsible Citizens</li>
+      </ul>
+      <p style="margin-top:12px">Together, we will nurture hearts and minds, unite in purpose and spirit, and inspire one another each day &mdash; empowered to succeed, and always guided by faith.</p>
+    </div>
+
+    <!-- Attendance -->
+    <div class="section-card">
+      <h2>🕘 Attendance</h2>
+      <p>Students begin school at <strong>7:45 a.m.</strong> Please inform me and the office via email of any absences by <strong>8:00 a.m.</strong> Kindergarteners are dismissed with the primary grades &mdash; please refer to your welcome packet for exact pick-up procedures.</p>
+      <ul>
+        <li><em><strong>Morning drop-off zone:</strong> the Gazebo along Marist Lane. Students arriving before 7:30 should proceed to the cafeteria.</em></li>
+        <li><em><strong>Afternoon pick-up zone:</strong> the Gazebo. Early Dismissal Days end at 11:35 a.m.</em></li>
+      </ul>
+    </div>
+
+    <!-- Class Expectations -->
+    <div class="section-card">
+      <h2>🌟 Class Expectations</h2>
+      <p>In K2 our four rules are simple, and we practice them every single day:</p>
+      <ul>
+        <li><strong>Be Kind</strong> &mdash; use kind words, kind hands, and kind hearts.</li>
+        <li><strong>Be Safe</strong> &mdash; take care of your body and our classroom.</li>
+        <li><strong>Do Your Best</strong> &mdash; try hard, keep trying, and be proud of your effort.</li>
+        <li><strong>Be Christ-like</strong> &mdash; treat others the way Jesus would.</li>
+      </ul>
+
+      <div class="behavior-callout">
+        <h4>💙 Stitch&rsquo;s Behavior Pouch</h4>
+        <p style="font-size:0.92rem;margin-bottom:6px">A daily color reminder of your student&rsquo;s behavior and choices is sent home in our Ohana Binder. Positive choices are praised daily; we use logical consequences to help students learn from their mistakes.</p>
+        <ul>
+          <li>🟢 <strong>Green</strong> &mdash; Great choices throughout the day &middot; great role model</li>
+          <li>🟡 <strong>Yellow</strong> &mdash; Good choices throughout the day</li>
+          <li>🔴 <strong>Red</strong> &mdash; Need support &middot; I will follow up with parents</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Grading -->
+    <div class="section-card">
+      <h2>📊 Grading</h2>
+      <p>I check daily classwork for <strong>effort, thoroughness, and neatness</strong>. Any projects will be graded using a rubric. Academic progress is measured through one-on-one assessment: informal assessments happen throughout each day, and summative assessments are given at the end of each unit to track student progress.</p>
+      <p>Report cards are sent home at the end of each quarter. Student performance is graded on a <strong>1&ndash;4 scale</strong>. Report cards reflect how each student performed each quarter &mdash; grades are not based on year-end assessments.</p>
+      <p style="margin-top:12px"><strong>Primary Grades K-3 Report Card Grading:</strong></p>
+      <div class="grading-scale">
+        <div class="grade-item">
+          <div class="grade-num">1</div>
+          <div class="grade-name">Beginning</div>
+          <ul>
+            <li>The student is beginning to understand the concept</li>
+            <li>Requires a significant amount of support</li>
+            <li>Limited understanding of topic</li>
+          </ul>
+        </div>
+        <div class="grade-item">
+          <div class="grade-num">2</div>
+          <div class="grade-name">Developing</div>
+          <ul>
+            <li>The student shows some understanding of a topic</li>
+            <li>Needs some support</li>
+          </ul>
+        </div>
+        <div class="grade-item">
+          <div class="grade-num">3</div>
+          <div class="grade-name">Proficient</div>
+          <ul>
+            <li>The student meets grade level expectations</li>
+            <li>Demonstrates solid understanding of topic</li>
+            <li>Works independently with minimal support</li>
+          </ul>
+        </div>
+        <div class="grade-item">
+          <div class="grade-num">4</div>
+          <div class="grade-name">Mastery</div>
+          <ul>
+            <li>The student exceeds grade level expectations</li>
+            <li>Demonstrates a thorough understanding and can apply the topic to new situations</li>
+            <li>Work is consistently accurate and shows a higher level of thinking</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:14px">Kindergartners also take the <strong>STAR Early Literacy</strong> assessment in fall, winter, and spring so we can track growth in phonics and reading. English Language Learners take the <strong>WIDA</strong> assessment as required.</p>
+      <p><strong>Parent-Teacher Conferences</strong> are held after Q1 and Q3.</p>
+    </div>
+
+    <!-- Homework & Ohana Binder -->
+    <div class="section-card">
+      <h2>📝 Homework Routine &amp; Ohana Binder</h2>
+      <p>Our <strong>Ohana Binder</strong> is your child&rsquo;s tool for organization and communication between home and school. It must be brought to school every day. Homework begins <strong>August 10</strong> and is sent home <strong>Monday&ndash;Thursday</strong> nights. There will be no homework on Friday or during long breaks.</p>
+
+      <div class="hw-guidelines">
+        <h4>Daily Homework</h4>
+        <ul>
+          <li><strong>Kindergarten Sight Words</strong> &mdash; practice one sight word a night from our calendar using notecards.</li>
+          <li><strong>Flashcards</strong> &mdash; practice naming letters and letter sounds using provided notecards (5 minutes).</li>
+          <li><strong>Homework packet</strong> &mdash; sent home every Monday and due by Friday. Contents:
+            <ul style="margin-top:4px">
+              <li>A cover sheet explaining the homework in the packet</li>
+              <li>Math &mdash; one topic nightly</li>
+              <li>Phonics / Reading &mdash; one page nightly</li>
+              <li>Handwriting / Tracing worksheet</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <p style="margin-top:12px"><strong>📚 Nightly Reading &middot; Book Pouch.</strong> Starting in <strong>September</strong>, I will send home a pouch with a leveled reader and a fun book. Please spend time reading with your child &mdash; the leveled reader lets your student try reading to you, and then you can read the fun book to your student.</p>
+
+      <div class="ohana-callout">
+        <h4>What is inside our Ohana Binder?</h4>
+        <ul>
+          <li>Kindergarten sight words and calendar &mdash; suggested review every night</li>
+          <li>Book Bag (starting September)</li>
+          <li>Stitch&rsquo;s Behavior Report &mdash; daily color reminder</li>
+          <li>Handwriting pages</li>
+          <li>Flash cards (in pencil case)</li>
+          <li>Homework packet &mdash; sent home Monday, due Friday</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Curriculum -->
+    <div class="section-card">
+      <h2>📚 Kindergarten Curriculum</h2>
+      <p style="font-size:0.9rem;color:#4a5568;font-style:italic">Full quarter-by-quarter arc below. Materials and topics are drawn from our K2 pacing guide.</p>
+
+      <div class="subject-block">
+        <h3>📖 Language Arts &mdash; Sight Words, Phonics, Reading &amp; Writing, Handwriting</h3>
+        <p><strong>Sight Words:</strong> the first 66 words from the Fry List (aligned with <em>Sounds of Spelling</em>).</p>
+        <dl class="quarters">
+          <dt>Phonics &middot; Q1</dt>
+          <dd>Student names; letters Mm, Ss, Aa, Rr, Tt, Ll, Nn, Bb, Oo, Pp, Cc, Ii, Ff, Dd, Hh</dd>
+          <dt>Phonics &middot; Q2</dt>
+          <dd>Letters Uu, Gg, Kk, Ee, Vv, Jj, Ww, Yy, Qq, Zz &middot; short vowels a and i &middot; CVC words with e/o/u &middot; CVC digraphs sh, th, ch, wh</dd>
+          <dt>Phonics &middot; Q3</dt>
+          <dd>Digraphs qu, ck &middot; CVC word families -at, -an, -am, -ap, -op, -ot, -ob, -im, -ip, -in, -ill, -ug, -ut, -ed, -et</dd>
+          <dt>Phonics &middot; Q4</dt>
+          <dd>Plural nouns &middot; inflectional endings with -s &middot; initial s-blends (st, sp, sm, sn, sw, sc, sk, sl) &middot; initial blends (bl, cl, fl, gl, pl) &middot; initial r-blends (br, cr, dr, fr, gr, pr, tr) &middot; long a, e, i, o, u &middot; CVC words with long a, i, u, o</dd>
+          <dt>Reading &amp; Writing</dt>
+          <dd>Q1 exploring letters and sounds, forming words, composing stories &middot; Q2 developing reading powers, writing a personal story &middot; Q3 pattern power, writing our opinion &middot; Q4 becoming avid readers and writing about a topic</dd>
+          <dt>Handwriting</dt>
+          <dd>Zaner-Bloser Handwriting Book &middot; basic strokes &middot; proper pencil grip and posture &middot; upper- and lowercase letter formation &middot; writing numerals &middot; applying handwriting skills to classroom and home life</dd>
+        </dl>
+      </div>
+
+      <div class="subject-block">
+        <h3>🧮 Math &mdash; Envision Math &middot; Zearn &middot; Mathletics</h3>
+        <p><strong>Materials:</strong> Envision Math books, manipulatives, iPads, Zearn, Mathletics, dry-erase boards, math journals.</p>
+        <ul>
+          <li>Math Centers</li>
+          <li>Numbers 0&ndash;20</li>
+          <li>Rote Counting to 100</li>
+          <li>Classify and Count Data</li>
+          <li>Understand Addition and Subtraction</li>
+          <li>Addition and Subtraction up to 10</li>
+          <li>2D and 3D shapes</li>
+          <li>Comparison of Length, Weight, and Capacity</li>
+        </ul>
+      </div>
+
+      <div class="subject-block">
+        <h3>🔬 Science</h3>
+        <dl class="quarters">
+          <dt>Quarter 1</dt><dd>Engineering, Technology, and Applications of Science &mdash; the Scientific Method and Engineering Design Process</dd>
+          <dt>Quarter 2 &middot; Life Science</dt><dd>Plants and animals &middot; resources in environments</dd>
+          <dt>Quarter 3</dt><dd>Earth and Space Science &mdash; weather and climate</dd>
+          <dt>Quarter 4</dt><dd>Physical Science &mdash; pushes and pulls</dd>
+        </dl>
+      </div>
+
+      <div class="subject-block">
+        <h3>🌍 Social Studies</h3>
+        <dl class="quarters">
+          <dt>Quarter 1 &middot; Civics and History</dt><dd>Learning and working together &middot; time and chronology</dd>
+          <dt>Quarter 2 &middot; Geography</dt><dd>Geography of the neighborhood</dd>
+          <dt>Quarter 3 &middot; Economics</dt><dd>Work now and long ago</dd>
+          <dt>Quarter 4 &middot; History</dt><dd>Learning about the past &middot; national and state symbols &middot; Hawaiiana Unit</dd>
+        </dl>
+      </div>
+
+      <div class="subject-block">
+        <h3>✝️ Religion &mdash; Stories of God&rsquo;s Love</h3>
+        <p><strong>Materials:</strong> <em>Stories of God&rsquo;s Love</em> textbook &middot; journals &middot; prayer corner.</p>
+        <ul>
+          <li>God Creates the World</li>
+          <li>God&rsquo;s Love Makes Me Who I Am</li>
+          <li>God Gives Us Loving People</li>
+          <li>Jesus Comes to Us</li>
+          <li>Social Emotional Unit</li>
+          <li>Celebrating Friendships</li>
+          <li>Jesus Shares God&rsquo;s Love</li>
+          <li>We Follow Jesus</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Wellness -->
+    <div class="section-card">
+      <h2>💛 Wellness &amp; Social-Emotional Learning</h2>
+      <p>Kindergartners begin every day with a short community meeting to name feelings, practice kindness, and set an intention. Social-emotional themes are also woven throughout our Religion units (Social Emotional Unit, Celebrating Friendships) so that faith formation and emotional growth reinforce one another.</p>
+    </div>
+
+    <!-- Birthday Protocols -->
+    <div class="section-card">
+      <h2>🎂 Birthday Protocols</h2>
+      <div class="birthday-callout">
+        <h4>Celebrating birthdays in K2</h4>
+        <ul>
+          <li>Notify me <strong>2 weeks in advance</strong> with what you're planning to bring.</li>
+          <li>Please make sure there is enough for everyone in the class.</li>
+          <li>Please send in <strong>store-bought</strong> goodies.</li>
+          <li>No big cupcakes please &mdash; small cupcakes are welcome.</li>
+          <li>We are a <strong>nut-free classroom</strong> &mdash; please avoid treats with nuts.</li>
+          <li>On your child&rsquo;s birthday, please leave treats in the main office. Treats will be passed out at the end of the school day.</li>
+        </ul>
+      </div>
+      <p><strong>Birthday Invitations.</strong> Invitations sent to be passed out at school must include every student in our classroom. I will send out a roster with family information (whatever information families are comfortable sharing) for outside invitations.</p>
+    </div>
+
+    <!-- Family Trips -->
+    <div class="section-card">
+      <h2>✈️ Family Trips</h2>
+      <p>If you are planning a family trip during the school year, please let the office and me know <strong>as soon as possible</strong>. Any missed work will be completed after the trip.</p>
+    </div>
+
+    <!-- Uniforms -->
+    <div class="section-card">
+      <h2>👕 School Uniforms</h2>
+      <p><em>Please refer to the</em> <strong>PARENT/STUDENT HANDBOOK</strong> for our school uniform policy.</p>
+      <p>Kindergartners wear their <strong>P.E. uniform on P.E. days</strong>. Watch for a schedule note home in the first week identifying our K2 P.E. days.</p>
+    </div>
+
+    <!-- Time, Talent, and Treasure -->
+    <div class="section-card">
+      <h2>🤝 Time, Talent, and Treasure</h2>
+      <p>We value any talents you are willing to share with the class. If you are interested in volunteering, please make sure your documentation is up to date with the office. Ways to volunteer:</p>
+      <ul>
+        <li><strong>Crafts and decorations</strong> &mdash; help decorate for Christmas or other classroom events.</li>
+        <li><strong>Field Trip Volunteers</strong> &mdash; please sign up to chaperone on one of our field trips.</li>
+        <li><strong>Skill Sharing</strong> &mdash; teach a skill or hobby.</li>
+      </ul>
+      <p style="font-size:0.9rem;color:#4a5568;margin-top:8px"><em>All volunteers must have current safe-environment training on file with the school office before helping in the classroom or on field trips.</em></p>
+    </div>
+
+    <!-- Parent Communication -->
+    <div class="section-card">
+      <h2>💬 Parent Communication</h2>
+      <ul>
+        <li>Please <strong>check the Ohana Binder DAILY</strong> and initial Stitch&rsquo;s Behavior Report.</li>
+        <li>Please read <strong>K2&rsquo;s Class Newsletter</strong> weekly, sent via email.</li>
+        <li><strong>Parent-Teacher Conferences</strong> are scheduled after Q1 and Q3.</li>
+        <li>Please email me if you are interested in being a room parent to support our K2 class.</li>
+      </ul>
+      <p style="margin-top:12px">Please feel free to contact me at <strong><a href="mailto:cparone@starofthesea.org">cparone@starofthesea.org</a></strong> with any questions or concerns. I will do my best to respond within 24 hours on school days.</p>
+    </div>
+
+    <!-- Final Notes & Acknowledgment -->
+    <div class="section-card" style="border-top-color:#c084fc;background:#faf5ff">
+      <h2 style="color:#6b21a8">💛 Final Notes &amp; Acknowledgment</h2>
+      <p>Thank you for entrusting me with your child this year. Kindergarten is a very special year, and I am grateful for your partnership. With God&rsquo;s blessings, I look forward to a wonderful year of faith, learning, and growth together.</p>
+      <p style="text-align:right;font-style:italic;color:#6b21a8;font-weight:700;margin-top:10px">Many Blessings,<br>Mrs. Clare Parone</p>
+      <p style="margin-top:14px"><strong>Class website:</strong> <a href="https://starofthesea.org/classes/" target="_blank" rel="noopener">starofthesea.org/classes</a> &mdash; all class pages and syllabi are live there.</p>
+      <p><strong>Acknowledgment:</strong> <em>After reviewing this syllabus, please email <a href="mailto:cparone@starofthesea.org">cparone@starofthesea.org</a> with the subject line &ldquo;K2 Syllabus Reviewed &mdash; [Student Name]&rdquo; so I know it has reached your family. Mahalo!</em></p>
+    </div>
+
+    <footer>Empowered to Succeed, Guided by Faith &nbsp;❤️!</footer>
+  </div>
+</div>
+</body>
+</html>
