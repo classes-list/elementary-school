@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Syllabus &mdash; Mrs. Yap &middot; 1st Grade A &middot; SY 2026-2027</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #eef2fa 0%, #f8f9fa 100%);
+  color: #253a77;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+.container { max-width: 1080px; margin: 0 auto; }
+.back-index-btn {
+  position: fixed; top: 20px; left: 20px;
+  background: #253a77; color: #fff; text-decoration: none;
+  padding: 10px 16px; border-radius: 8px;
+  font-size: 14px; font-weight: 700;
+  box-shadow: 0 3px 10px rgba(37,58,119,0.25);
+  transition: all 0.18s; z-index: 10;
+}
+.back-index-btn:hover { background: #1a2a4a; transform: translateX(-2px); }
+.print-btn {
+  position: fixed; top: 20px; right: 20px;
+  background: #B45309; color: #fff; text-decoration: none;
+  padding: 10px 16px; border-radius: 8px;
+  font-size: 14px; font-weight: 700; border: none; cursor: pointer;
+  box-shadow: 0 3px 10px rgba(180,83,9,0.25);
+  z-index: 10;
+}
+.print-btn:hover { background: #92400e; }
+
+.syllabus-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 28px rgba(37,58,119,0.12);
+  padding: 40px 44px;
+  border-top: 6px solid #FFD100;
+}
+.header-top {
+  display: flex; gap: 24px; align-items: center;
+  border-bottom: 2px solid #e2e8f0; padding-bottom: 22px; margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.header-info { flex: 1 1 260px; }
+.header-info h1 { color: #253a77; font-size: 1.6rem; font-weight: 800; margin-bottom: 4px; }
+.header-info .role { color: #7a5f00; font-style: italic; font-size: 0.95rem; margin-bottom: 6px; }
+.header-info .contact { font-size: 0.92rem; line-height: 1.7; color: #444; }
+.header-info .contact strong { color: #253a77; }
+.header-info .contact a { color: #253a77; text-decoration: none; }
+.header-info .contact a:hover { text-decoration: underline; }
+.year-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #FFD100 0%, #FFB800 100%);
+  color: #253a77;
+  font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 999px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(255,209,0,0.35);
+}
+.teacher-photo {
+  width: 130px; height: 130px; border-radius: 50%;
+  background: #1a2a4a; overflow: hidden; flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(37,58,119,0.2);
+  display: flex; align-items: center; justify-content: center;
+}
+.teacher-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; display: block; }
+.teacher-photo .initials { color: #FFD100; font-size: 2.4rem; font-weight: 800; letter-spacing: 0.05em; display: none; }
+
+.welcome-box {
+  background: linear-gradient(135deg, #fffbea 0%, #fef3c7 100%);
+  border-left: 5px solid #FFD100;
+  padding: 20px 24px; border-radius: 10px;
+  margin-bottom: 22px;
+}
+.welcome-box p { color: #1f2937; font-size: 0.98rem; line-height: 1.65; margin-bottom: 10px; }
+.welcome-box p:last-child { margin-bottom: 0; }
+
+.section-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(37,58,119,0.07);
+  padding: 22px 26px;
+  margin-bottom: 18px;
+  border-top: 4px solid #253a77;
+}
+.section-card h2 {
+  color: #253a77; font-size: 1.25rem; font-weight: 800;
+  margin-bottom: 10px; padding-bottom: 6px;
+  border-bottom: 2px solid #FFD100;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-card h3 { color: #253a77; font-size: 1.05rem; font-weight: 700; margin: 14px 0 6px; }
+.section-card p { color: #2d3748; font-size: 0.96rem; line-height: 1.7; margin-bottom: 10px; }
+.section-card ul, .section-card ol { margin: 8px 0 12px 24px; }
+.section-card li { padding: 3px 0; color: #2d3748; font-size: 0.95rem; line-height: 1.65; }
+.section-card li strong { color: #253a77; }
+
+table.curriculum {
+  width: 100%; border-collapse: collapse; margin: 12px 0;
+  font-size: 0.9rem;
+}
+table.curriculum th, table.curriculum td {
+  border: 1px solid #d1d5db; padding: 8px 10px; vertical-align: top; text-align: left;
+}
+table.curriculum th {
+  background: #253a77; color: #fff; font-weight: 800;
+  font-size: 0.85rem; letter-spacing: 0.03em;
+}
+table.curriculum td:first-child {
+  font-weight: 800; color: #253a77; background: #f8fafc; white-space: nowrap;
+}
+table.curriculum tr:nth-child(even) td { background: #fefdf6; }
+table.curriculum tr:nth-child(even) td:first-child { background: #f1f5f9; }
+
+.motto {
+  text-align: center; font-size: 1.1rem;
+  color: #7a5f00; font-weight: 800; font-style: italic;
+  padding: 16px 20px; margin: 20px 0;
+  background: linear-gradient(135deg, #fffbea 0%, #fef3c7 100%);
+  border-radius: 10px; border: 2px dashed #FFD100;
+}
+
+footer {
+  margin-top: 32px; padding-top: 20px;
+  border-top: 2px solid #e2e8f0;
+  text-align: center; color: #7a5f00;
+  font-style: italic; font-weight: 700; font-size: 1.05rem;
+}
+@media print {
+  body { background: #fff; padding: 0; }
+  .back-index-btn, .print-btn { display: none; }
+  .syllabus-card { box-shadow: none; padding: 20px; }
+  .section-card { box-shadow: none; break-inside: avoid; }
+}
+@media (max-width: 640px) {
+  .syllabus-card { padding: 24px 20px; }
+  .header-info h1 { font-size: 1.3rem; }
+}
+</style>
+</head>
+<body>
+<a href="1a-yap.html" class="back-index-btn" title="Back to 1A Class">&larr; Back to Class</a>
+<a class="print-btn" href="1a-yap-syllabus.pdf?v=1" target="_blank" rel="noopener" title="Open printable syllabus PDF">🖨️ Print Syllabus</a>
+
+<div class="container">
+  <div class="syllabus-card">
+
+    <div class="header-top">
+      <div class="teacher-photo">
+        <img src="mrs-yap.jpg" alt="Mrs. Mahina Yap" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="initials" style="width:100%;height:100%;align-items:center;justify-content:center;">MY</div>
+      </div>
+      <div class="header-info">
+        <div class="year-badge">School Year 2026-2027</div>
+        <h1>Mrs. Mahina Yap &middot; 1st Grade A</h1>
+        <div class="role">1st Grade A Teacher &middot; Mary, Star of the Sea School</div>
+        <div class="contact">
+          <strong>Email:</strong> <a href="mailto:myap@starofthesea.org">myap@starofthesea.org</a><br>
+          <strong>Emails answered:</strong> Mon&ndash;Fri, 7:30 a.m.&ndash;3:30 p.m.
+        </div>
+      </div>
+    </div>
+
+    <!-- Welcome Message -->
+    <div class="welcome-box">
+      <p><strong>Aloha and Welina Mai to 1A!</strong></p>
+      <p>My name is <strong>Mrs. Mahina Yap</strong>, and I am so excited to be your child&rsquo;s first-grade teacher. This year is going to be full of learning, community, and fun! In 1A, I hope to create a <strong>nurturing, united, inspiring, and faith-filled classroom</strong> where lifelong learners feel supported, challenged, and excited to grow. I am looking forward to getting to know all of you and working together to make your child&rsquo;s first-grade experience amazing.</p>
+    </div>
+
+    <!-- Contact Information -->
+    <div class="section-card">
+      <h2>📬 Contact Information</h2>
+      <ul>
+        <li>I can be reached at <strong><a href="mailto:myap@starofthesea.org" style="color:#253a77;text-decoration:none">myap@starofthesea.org</a></strong>.</li>
+        <li>I respond to emails between school hours <strong>Monday&ndash;Friday, 7:30 a.m.&ndash;3:30 p.m.</strong></li>
+        <li>You can also write me a note in your child&rsquo;s <strong>Home-to-School Agenda book</strong>.</li>
+        <li>Each <strong>Sunday</strong> you will receive an email with news, announcements, and a weekly newsletter detailing what we will be learning for the upcoming week.</li>
+        <li><strong>Parent Pouch:</strong> Sent home each <strong>Tuesday</strong> with important flyers from the school. Please check and remove all items and return your child&rsquo;s parent pouch each <strong>Wednesday</strong>.</li>
+        <li>Two <strong>parent-teacher conferences</strong> are scheduled this year, for the first and third quarters.</li>
+      </ul>
+    </div>
+
+    <!-- Curriculum Overview -->
+    <div class="section-card">
+      <h2>📚 Curriculum Overview</h2>
+
+      <h3>Religion</h3>
+      <table class="curriculum">
+        <thead><tr><th>Quarter</th><th>Focus</th></tr></thead>
+        <tbody>
+          <tr><td>Quarter 1</td><td>Our Church Community</td></tr>
+          <tr><td>Quarter 2</td><td>Our Loving God</td></tr>
+          <tr><td>Quarter 3</td><td>God&rsquo;s Son Jesus &middot; The Holy Spirit</td></tr>
+          <tr><td>Quarter 4</td><td>Jesus&rsquo; Church of Followers</td></tr>
+          <tr><td>Year-Long</td><td>Learning and reciting daily prayers, stories of Jesus, learning about God&rsquo;s creations, and practicing proper church behavior for weekly Mass</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Literacy</h3>
+      <table class="curriculum">
+        <thead>
+          <tr><th>Quarter</th><th>Reading Workshop</th><th>Writing Workshop</th><th>Sounds to Spelling (Phonics)</th><th>Zaner-Bloser Handwriting</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Q1</td>
+            <td>Launching Readers Workshop and building good reading habits<br><em>(Sept: Reading folders go home)</em></td>
+            <td>Launching Writer&rsquo;s Workshop and Narrative Writing</td>
+            <td>Letter names, CVC words, digraphs (ch, th, sh, wh), floss rule (ff, ll, ss, zz)</td>
+            <td>Getting started and basic strokes</td>
+          </tr>
+          <tr>
+            <td>Q2</td>
+            <td>Using decoding, comprehension, and fluency strategies to read simple texts</td>
+            <td>How-to writing; writing to share opinions on topics</td>
+            <td>S, R, and L blends; final blends (-mp, -nd); glued sounds (ng, nk)</td>
+            <td>Writing letters and numbers</td>
+          </tr>
+          <tr>
+            <td>Q3</td>
+            <td>Using reading strategies to read fairy tales and folk tales; learning about characters</td>
+            <td>Fairy tales and realistic fiction; nonfiction booklets</td>
+            <td>R-controlled words; long vowels with magic &ldquo;e&rdquo;</td>
+            <td>Writing words</td>
+          </tr>
+          <tr>
+            <td>Q4</td>
+            <td>Using decoding, comprehension, and fluency strategies to read non-fiction; poetry reading</td>
+            <td>Writing letters to persuade others; poetry writing</td>
+            <td>Long vowel teams (ee, ea, oa, oe, ue, ew); long vowel i spelled y and igh</td>
+            <td>Applying handwriting in the real world</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Math, Science &amp; Social Studies</h3>
+      <table class="curriculum">
+        <thead>
+          <tr><th>Quarter</th><th>Math Workshop</th><th>Science</th><th>Social Studies</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Q1</td>
+            <td>Measurement; 2D &amp; 3D shapes and their attributes; telling time to the hour and half hour; money; adding &amp; subtracting within 5 fluently</td>
+            <td>Scientific process; matter and energy</td>
+            <td>Rights and responsibilities; U.S. symbols</td>
+          </tr>
+          <tr>
+            <td>Q2</td>
+            <td>Solving addition &amp; subtraction word problems; adding &amp; subtracting within 10 fluently</td>
+            <td>Objects and patterns in the sky</td>
+            <td>Families past and present; celebrations around the world</td>
+          </tr>
+          <tr>
+            <td>Q3</td>
+            <td>Addition &amp; subtraction facts to 20 using various strategies; working with addition &amp; subtraction equations</td>
+            <td>Survival of living things (plants and animals)</td>
+            <td>Work and geography of a community</td>
+          </tr>
+          <tr>
+            <td>Q4</td>
+            <td>Extending the counting sequence; place value; comparing two-digit numbers</td>
+            <td>Weather; Engineering Design Process</td>
+            <td>May Day; geography (maps, globes, continents)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Daily Schedule -->
+    <div class="section-card">
+      <h2>🗓️ Daily Schedule</h2>
+      <p>Please refer to the MSOS elementary bell schedule (hard copy in your parent-orientation folder) for exact times. Highlights of a typical day:</p>
+      <ul>
+        <li><strong>Morning Arrival &amp; Prayer</strong> &mdash; Students settle in, morning meeting, prayer</li>
+        <li><strong>Morning Language Arts Block</strong> &mdash; Reading, Writing, Phonics/Grammar, Handwriting</li>
+        <li><strong>First Recess</strong> &mdash; Mid-morning snack and outdoor break</li>
+        <li><strong>Math Block</strong> &mdash; enVision Math 2.0 lesson + math centers</li>
+        <li><strong>Lunch &amp; Lunch Recess</strong> &mdash; Midday</li>
+        <li><strong>Afternoon Block</strong> &mdash; Social Studies, Science, or Religion (rotates by day)</li>
+        <li><strong>Specials</strong> &mdash; P.E., Music, Art, Library, Chapel rotate on specific days &mdash; please check the weekly schedule or monthly calendar of events for specific days and times</li>
+        <li><strong>Dismissal</strong> &mdash; Pickup procedures are in the family handbook. Please notify the office in advance for early pickups or changes.</li>
+      </ul>
+    </div>
+
+    <!-- Homework -->
+    <div class="section-card">
+      <h2>📝 Homework &amp; Study Expectations</h2>
+      <p>Following the MSOS guidelines of ~10 minutes per grade, first graders should expect roughly <strong>10&ndash;15 minutes of homework per night</strong>, plus daily independent reading. Homework is meant to <strong>reinforce</strong> (not introduce) what was learned in class.</p>
+      <ul>
+        <li>Each day your child brings home their <strong>Home-to-School Folder</strong> and <strong>Home-to-School Agenda Book</strong>. Please check both the folder and initial the agenda book daily. Return to school each day.</li>
+        <li>Your child&rsquo;s <strong>homework log</strong> for the week will be glued into their Home-to-School Agenda Book.</li>
+        <li>The homework log will indicate the homework each day and note important dates and reminders.</li>
+        <li><strong>Homework sheets</strong> will go home in the folder (Monday&ndash;Thursday). Sheets will be double-sided with math and language arts work. <strong>No homework is assigned on Fridays or during school breaks.</strong></li>
+        <li>Please remove all old paperwork daily. You will know I have checked homework if there is a star or happy face at the top.</li>
+        <li>Monthly calendar and lunch schedule are in sheet protectors &mdash; please leave these documents in the folder.</li>
+      </ul>
+      <p>Students will also receive <strong>reading folders with books at their reading level</strong>, starting in September. Reading folders go home on <strong>Monday</strong> with books for the week. Books are to be returned in the reading folder at the end of the school week in order to get a new set on Monday.</p>
+      <h3>To Support Homework at Home</h3>
+      <ul>
+        <li>Set a consistent, quiet study time and place.</li>
+        <li>Read the directions together, then step back and let your child work independently.</li>
+        <li>Encourage your child to do their best work.</li>
+        <li>If a task takes much longer than expected or your child is struggling, please let me know.</li>
+      </ul>
+    </div>
+
+    <!-- Classroom Procedures & Behavior -->
+    <div class="section-card">
+      <h2>🤝 Classroom Procedures &amp; Behavior Expectations</h2>
+      <p>Our class has created a <strong>classroom contract</strong> that establishes how we&rsquo;d like to feel while at school and the actions that make everyone feel like a part of our community. Students participated in a collaborative discussion in which we agreed upon the actions we wanted to see. Each action fell under the umbrella terms of <em>safety, attentiveness, respect, kindness, and doing your best.</em> Each student is expected to follow the agreed-upon expectations.</p>
+      <p>Other classroom expectations will be explicitly taught and demonstrated daily. Students are expected to work to high standards but are treated with warmth, respect, and fairness. I will contact you directly if your student is having difficulty following classroom expectations.</p>
+      <h3>Classroom Expectations</h3>
+      <ol>
+        <li>Be Safe</li>
+        <li>Be Attentive</li>
+        <li>Be Respectful</li>
+        <li>Be Kind</li>
+        <li>Do Your Best</li>
+      </ol>
+      <h3>When Expectations Are Not Met (in a supportive tone)</h3>
+      <ol>
+        <li>Reminder and reset</li>
+        <li>Reflection sheet or think time</li>
+        <li>Loss of a small privilege</li>
+        <li>Phone call home and, if needed, a family meeting with the principal</li>
+      </ol>
+    </div>
+
+    <!-- Assessment & Grading -->
+    <div class="section-card">
+      <h2>📊 Assessment &amp; Grading</h2>
+      <p>Daily class work and homework will be checked for <strong>thoroughness, effort, and neatness</strong>. Writing assessments and class projects will be graded using rubrics. I will frequently sit down with students one-on-one to formally assess their academic progress. Throughout the school day I use <strong>informal, ongoing assessments</strong> to track student growth, and <strong>summative assessments</strong> at the end of a unit or topic to measure growth. Report cards are given at the end of each quarter and are graded using a <strong>1 to 4 scale</strong>.</p>
+      <ul>
+        <li><strong>1 &mdash; Beginning:</strong> Beginning to understand the concept or skill; requires significant support and guidance; limited understanding or mastery.</li>
+        <li><strong>2 &mdash; Developing:</strong> Demonstrates partial understanding or skill; needs occasional assistance or support; progressing but with notable gaps.</li>
+        <li><strong>3 &mdash; Proficient:</strong> Meets grade-level expectations; demonstrates solid understanding of concepts or skills; works independently with minimal errors.</li>
+        <li><strong>4 &mdash; Mastery:</strong> Exceeds grade-level expectations; demonstrates thorough understanding and can apply skills in new situations; work is consistently accurate and shows higher-level thinking.</li>
+      </ul>
+      <p>Report cards are based on how your child performs each quarter. Grades are not reflected based on year-end benchmarks. Students also take a standardized assessment called <strong>STAR</strong> for early literacy and math in August and May.</p>
+    </div>
+
+    <!-- Supplies -->
+    <div class="section-card">
+      <h2>🎒 Supplies &amp; Materials</h2>
+      <p><strong>Provided by the school:</strong> textbooks, classroom manipulatives, math tools, and shared classroom technology.</p>
+      <p><strong>Provided by the student:</strong> First-grade student supply list items (please see supply list on the MSOS website).</p>
+      <p><strong>Students bring daily:</strong> Student backpack, Home-to-School Folder, Home-to-School Agenda book, a reusable water bottle, healthy snack.</p>
+    </div>
+
+    <!-- Technology -->
+    <div class="section-card">
+      <h2>💻 Technology Use</h2>
+      <p><strong>Platforms used in this class:</strong></p>
+      <ul>
+        <li><strong>FACTS / Beehively</strong> &mdash; Grade portal and family communication</li>
+        <li><strong>Individual iPads</strong> &mdash; used in class for language arts and math practice</li>
+        <li><strong>Educational sites:</strong> Epic, Zearn, Freckle, Lalilo</li>
+      </ul>
+      <p><strong>Digital Citizenship:</strong> All device use follows the MSOS Technology Acceptable Usage Policy in the family handbook. First graders learn to use devices only for schoolwork, keep passwords private, and tell an adult if anything on screen makes them uncomfortable.</p>
+    </div>
+
+    <!-- Room Parent -->
+    <div class="section-card">
+      <h2>🙋 Room Parent &amp; Parent Volunteers</h2>
+      <p>Room parents and parent volunteers at MSOS help support the <strong>PTG</strong>, the classroom teacher, and our students. Room parents gather information from the PTG and share it with their child&rsquo;s classroom parents and teacher. There may be meetings that a classroom parent needs to attend with the PTG.</p>
+      <p><strong>Duties of room parents may include&hellip;</strong></p>
+      <ul>
+        <li>Helping the PTG organize school-wide events</li>
+        <li>Getting volunteers for school-wide events</li>
+        <li>Volunteering for school-wide events</li>
+        <li>Organizing classroom activities</li>
+        <li>Chaperoning field trips</li>
+      </ul>
+      <p><strong>How to Sign Up:</strong> Please email me if you&rsquo;d like to help. All volunteers must sign a volunteer waiver.</p>
+      <p><strong>Key Dates to Remember:</strong> Parent orientation, Parent-Teacher Conferences (Q1 &amp; Q3), International Festival, Fall Festival, Christmas Program, Catholic Schools Week, May Day, and Semester Awards. Exact dates are on the school calendar and in weekly newsletters.</p>
+    </div>
+
+    <!-- Support at Home -->
+    <div class="section-card">
+      <h2>🏡 How to Support Your Child at Home</h2>
+      <p>Families are our most important partners in helping students succeed. The routines and habits established at home provide the foundation for strong first-grade learners and make a meaningful difference in your child&rsquo;s learning, confidence, and overall success.</p>
+      <p>Children thrive when they have a <strong>consistent bedtime</strong>, arrive at school on time, read with an adult each day, complete homework, and talk with their family about their school day. Encouraging independence and responsibility through simple daily tasks &mdash; such as <strong>packing their backpack, caring for their belongings, and taking ownership of their work</strong> &mdash; helps build confidence and self-reliance.</p>
+      <p>Equally important is <strong>maintaining open communication</strong> with your child&rsquo;s teacher, creating a strong home-school partnership that supports every child&rsquo;s growth. By working together to establish these routines, foster responsibility, and stay connected, we can help every first grader become a confident, capable, and successful learner.</p>
+    </div>
+
+    <div class="motto">&ldquo;Nurture, Unite, Inspire &mdash; empowered to succeed, guided by faith!&rdquo;</div>
+
+    <!-- Final Notes -->
+    <div class="section-card">
+      <h2>💛 Final Notes &amp; Acknowledgment</h2>
+      <p>Thank you for your partnership and support. Families play an essential role in helping students grow academically, socially, and emotionally, and I truly appreciate your commitment to working together throughout the school year. I look forward to partnering with you to make this a successful and rewarding year for your child.</p>
+      <p>Please visit our class website regularly at <a href="https://starofthesea.org/classes" target="_blank" rel="noopener" style="color:#253a77">starofthesea.org/classes</a> for important announcements, class pages, syllabi, unit materials, and other helpful resources.</p>
+      <h3>Acknowledgment</h3>
+      <p>After reviewing this syllabus, please email <strong><a href="mailto:myap@starofthesea.org" style="color:#253a77">myap@starofthesea.org</a></strong> with the subject line: <em>&ldquo;First Grade Handbook Reviewed &mdash; [Student Name]&rdquo;</em>. This confirmation lets me know the handbook has reached your family and that you&rsquo;ve had an opportunity to review it together.</p>
+      <p><strong>Mahalo for your partnership and support</strong> &mdash; I look forward to a wonderful year of learning together!</p>
+    </div>
+
+    <footer>Empowered to Succeed, Guided by Faith &nbsp;🌟</footer>
+  </div>
+</div>
+</body>
+</html>

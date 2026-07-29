@@ -98,23 +98,38 @@
       max-width: 900px;
       display: flex; align-items: center; justify-content: space-between;
       gap: 18px;
-      background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
+      background: linear-gradient(135deg, #FFD100 0%, #FFB800 100%);
       border-radius: 10px;
       padding: 14px 22px;
-      box-shadow: 0 4px 14px rgba(148,163,184,0.28);
+      box-shadow: 0 4px 14px rgba(255,209,0,0.28);
       text-align: left;
       flex-wrap: wrap;
     }
-    .syllabus-banner .sb-label { color: #1f2937; font-weight: 800; font-size: 1rem; line-height: 1.3; }
-    .syllabus-banner .sb-sub { color: #475569; font-size: 0.82rem; font-style: italic; margin-top: 2px; }
+    .syllabus-banner .sb-label { color: #1a2a4a; font-weight: 800; font-size: 1rem; line-height: 1.3; }
+    .syllabus-banner .sb-sub { color: #4a3a00; font-size: 0.82rem; font-style: italic; margin-top: 2px; }
+    .sb-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
     .syllabus-banner .sb-btn {
-      background: #64748b; color: #fff; text-decoration: none;
+      background: #253a77; color: #fff; text-decoration: none;
       padding: 10px 20px; border-radius: 8px;
       font-weight: 800; font-size: 0.9rem;
-      box-shadow: 0 3px 10px rgba(100,116,139,0.28);
+      box-shadow: 0 3px 10px rgba(37,58,119,0.28);
+      transition: all 0.18s;
       white-space: nowrap;
     }
-    .syllabus-banner .sb-btn::before { content: "🕒 "; }
+    .syllabus-banner .sb-btn:hover {
+      background: #1a2a4a; transform: translateY(-1px);
+      box-shadow: 0 5px 14px rgba(37,58,119,0.38);
+    }
+    .about-btn {
+      display: inline-block;
+      background: #253a77; color: #fff; text-decoration: none;
+      padding: 9px 18px; border-radius: 8px;
+      font-weight: 700; font-size: 0.88rem;
+      transition: all 0.18s;
+      box-shadow: 0 2px 6px rgba(37,58,119,0.25);
+    }
+    .about-btn:hover { background: #1a2a4a; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,58,119,0.35); }
+    .about-btn::after { content: " \2197"; font-weight: 600; }
 
     /* Teacher card */
     .teacher-card {
@@ -173,10 +188,13 @@
 
     <div class="syllabus-banner">
       <div>
-        <div class="sb-label">📋 Class Syllabus &middot; Coming Soon</div>
-        <div class="sb-sub">Mrs. Yap&rsquo;s full syllabus will be posted here for SY 2026-2027</div>
+        <div class="sb-label">📋 Class Syllabus &middot; SY 2026-2027</div>
+        <div class="sb-sub">Welcome, curriculum, expectations, and quarterly focus</div>
       </div>
-      <span class="sb-btn">Coming Soon</span>
+      <div class="sb-buttons">
+        <a class="sb-btn" href="1a-yap-syllabus.html">📓 View Syllabus</a>
+        <a class="sb-btn" href="1a-yap-syllabus.pdf?v=1" target="_blank" rel="noopener">🖨️ Print Syllabus</a>
+      </div>
     </div>
 
     <div class="grid" style="margin-top: 30px;">
@@ -218,11 +236,12 @@
         <div class="initials" style="display:none; width:100%; height:100%; align-items:center; justify-content:center;">MY</div>
       </div>
       <div class="teacher-info">
-        <div class="teacher-name">Mrs. Yap</div>
+        <div class="teacher-name">Mrs. Mahina Yap</div>
         <div class="teacher-role">1st Grade A Teacher</div>
         <div class="teacher-meta">
-          Contact info &amp; syllabus <strong>coming soon</strong> for SY 2026-2027.
+          <strong>Email:</strong> <a href="mailto:myap@starofthesea.org">myap@starofthesea.org</a>
         </div>
+        <a class="about-btn" href="https://starofthesea.org/staff/mrs-yap/" target="_blank" rel="noopener">About Mrs. Yap</a>
       </div>
     </div>
 
