@@ -140,7 +140,7 @@
       <div class="content">
         <div id="home-screen" class="screen active">
           <h2 style="color:#1B3A8A;margin-bottom:6px;">🧮 2nd Grade Math &mdash; All Topics</h2>
-          <p style="color:#666;margin-bottom:18px;">Click any topic to see the lesson, worksheet, quiz, and IXL practice link.</p>
+          <p style="color:#666;margin-bottom:18px;">Click any topic to see the lesson, worksheet, and quiz.</p>
           <div id="units-grid" class="units-grid"></div>
         </div>
         <div id="lesson-screen" class="screen">
@@ -148,9 +148,7 @@
           <div id="lesson-content" class="lesson-content"></div>
           <div class="nav-buttons">
             <a href="#" class="btn back" onclick="showHome();return false;">← Back</a>
-            <a href="#" class="btn" onclick="showWorksheet();return false;">📋 Worksheet →</a>
-            <a href="#" class="btn ixl" id="lesson-ixl-btn" target="_blank" rel="noopener">🎯 Practice on IXL</a>
-          </div>
+            <a href="#" class="btn" onclick="showWorksheet();return false;">📋 Worksheet →</a></div>
         </div>
         <div id="worksheet-screen" class="screen">
           <a href="#" class="btn back" onclick="showLesson(currentUnit);return false;">← Back to Lesson</a>
@@ -3788,8 +3786,6 @@
     const items = document.querySelectorAll('.sidebar-item');
     UNITS.forEach((x, idx) => { if (x.id === id) items[idx].classList.add('active'); });
 
-    document.getElementById('lesson-ixl-btn').href = u.ixlUrl;
-
     const ixlList = u.ixlAlts.length
       ? '<ul>' + u.ixlAlts.map(([n, url]) => `<li>• <a href="${url}" target="_blank" rel="noopener" style="color:#dc2626;font-weight:600;">${n}</a></li>`).join('') + '</ul>'
       : '';
@@ -3798,25 +3794,6 @@
       <h2>${u.icon} ${u.title}</h2>
       <div class="lesson-cc">Standards: ${u.cc}</div>
       ${u.lesson}
-      <div class="ixl-card">
-        <h3>🎯 Practice on IXL — Grade 2</h3>
-        <p><a href="${u.ixlUrl}" target="_blank" rel="noopener" style="color:#dc2626;font-weight:700;">Main practice → ${u.ixlUrl.split('/').pop().replace(/-/g,' ')}</a></p>
-        ${u.ixlAlts.length ? '<p style="margin-top:8px;font-size:13px;">More Grade 2 IXL practice on this topic:</p>' + ixlList : ''}
-      </div>
-    `;
-  }
-
-  function showWorksheet() {
-    if (!currentUnit) return;
-    const u = UNITS.find(x => x.id === currentUnit);
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById('worksheet-screen').classList.add('active');
-    document.getElementById('worksheet-content').innerHTML = u.worksheet.map((p, i) => `
-      <div class="problem" data-idx="${i}">
-        <h4>Problem ${i+1}</h4>
-        <p>${p[0]}</p>
-        <input type="text" placeholder="Your answer">
-        <div class="answer-key" style="display:none;"><strong>Answer:</strong> ${p[1]}</div>
       </div>
     `).join('');
   }
