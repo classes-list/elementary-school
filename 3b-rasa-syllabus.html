@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Syllabus &mdash; Ms. Rasa &middot; 3rd Grade B &middot; SY 2026-2027</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #eef2fa 0%, #f8f9fa 100%);
+  color: #253a77;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+.container { max-width: 1080px; margin: 0 auto; }
+.back-index-btn {
+  position: fixed; top: 20px; left: 20px;
+  background: #253a77; color: #fff; text-decoration: none;
+  padding: 10px 16px; border-radius: 8px;
+  font-size: 14px; font-weight: 700;
+  box-shadow: 0 3px 10px rgba(37,58,119,0.25);
+  z-index: 10;
+}
+.back-index-btn:hover { background: #1a2a4a; }
+.print-btn {
+  position: fixed; top: 20px; right: 20px;
+  background: #B45309; color: #fff; text-decoration: none;
+  padding: 10px 16px; border-radius: 8px;
+  font-size: 14px; font-weight: 700;
+  box-shadow: 0 3px 10px rgba(180,83,9,0.25);
+  z-index: 10;
+}
+.print-btn:hover { background: #92400e; }
+
+.syllabus-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 28px rgba(37,58,119,0.12);
+  padding: 40px 44px;
+  border-top: 6px solid #FFD100;
+}
+.header-top {
+  display: flex; gap: 24px; align-items: center;
+  border-bottom: 2px solid #e2e8f0; padding-bottom: 22px; margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.header-info { flex: 1 1 260px; }
+.header-info h1 { color: #253a77; font-size: 1.6rem; font-weight: 800; margin-bottom: 4px; }
+.header-info .role { color: #7a5f00; font-style: italic; font-size: 0.95rem; margin-bottom: 6px; }
+.header-info .contact { font-size: 0.92rem; line-height: 1.7; color: #444; }
+.header-info .contact strong { color: #253a77; }
+.header-info .contact a { color: #253a77; text-decoration: none; }
+.year-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #FFD100 0%, #FFB800 100%);
+  color: #253a77;
+  font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 999px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(255,209,0,0.35);
+}
+.teacher-photo {
+  width: 130px; height: 130px; border-radius: 50%;
+  background: #1a2a4a; overflow: hidden; flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(37,58,119,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: #FFD100; font-size: 2.6rem; font-weight: 800; letter-spacing: 0.05em;
+}
+.teacher-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; display: block; }
+
+.eq-box {
+  background: linear-gradient(135deg, #fff8e1 0%, #fef3c7 100%);
+  border-left: 5px solid #FFD100;
+  padding: 20px 24px; border-radius: 10px;
+  margin-bottom: 22px;
+  text-align: center;
+}
+.eq-box .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 800; color: #7a5f00; margin-bottom: 8px; }
+.eq-box .question { font-size: 1.35rem; color: #253a77; font-weight: 700; font-style: italic; margin-bottom: 6px; }
+.eq-box .verse { color: #7a5f00; font-size: 0.95rem; font-weight: 600; }
+
+.section-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(37,58,119,0.07);
+  padding: 22px 26px;
+  margin-bottom: 18px;
+  border-top: 4px solid #253a77;
+}
+.section-card h2 {
+  color: #253a77; font-size: 1.25rem; font-weight: 800;
+  margin-bottom: 10px; padding-bottom: 6px;
+  border-bottom: 2px solid #FFD100;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-card p { color: #2d3748; font-size: 0.96rem; line-height: 1.7; margin-bottom: 10px; }
+.section-card ul, .section-card ol { margin: 8px 0 12px 24px; }
+.section-card li { padding: 3px 0; color: #2d3748; font-size: 0.95rem; line-height: 1.65; }
+.section-card li strong { color: #253a77; }
+
+.welcome-box {
+  background: #f0f4fc; border-left: 4px solid #253a77;
+  padding: 18px 22px; border-radius: 8px;
+  margin: 10px 0;
+}
+.welcome-box p { color: #2d3748; margin-bottom: 8px; font-style: italic; }
+
+.nui-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px; margin-top: 10px;
+}
+.nui-item {
+  background: #fff8e1; border-left: 4px solid #FFD100;
+  padding: 12px 16px; border-radius: 8px;
+}
+.nui-item h4 { color: #a16207; font-size: 0.92rem; margin-bottom: 4px; letter-spacing: 0.08em; text-transform: uppercase; }
+.nui-item p { font-size: 0.9rem; margin: 0; color: #2d3748; line-height: 1.55; }
+
+.star-list { list-style: none; margin-left: 0; padding-left: 0; }
+.star-list li { padding: 6px 0 6px 6px; font-size: 0.98rem; font-weight: 600; color: #253a77; }
+
+.grading-scale { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+.grade-item {
+  background: #f8fafc; border-left: 4px solid #253a77;
+  padding: 12px 16px; border-radius: 6px;
+}
+.grade-item .grade-num { font-size: 1.5rem; font-weight: 800; color: #253a77; margin-bottom: 4px; }
+.grade-item .grade-name { font-weight: 700; color: #7a5f00; margin-bottom: 4px; font-size: 0.92rem; }
+.grade-item ul { margin: 4px 0 0 18px; }
+.grade-item li { font-size: 0.85rem; padding: 1px 0; line-height: 1.45; }
+
+.choice-board-callout {
+  background: #f0f9ff; border-left: 4px solid #0284c7;
+  padding: 14px 18px; border-radius: 8px; margin: 10px 0;
+}
+.choice-board-callout h4 { color: #0284c7; font-size: 1rem; margin-bottom: 6px; }
+.choice-board-callout ul { margin: 4px 0 0 20px; }
+.choice-board-callout li { font-size: 0.9rem; padding: 2px 0; }
+
+.birthday-callout {
+  background: #fdf2f8; border-left: 4px solid #ec4899;
+  padding: 14px 18px; border-radius: 8px; margin: 10px 0;
+}
+.birthday-callout h4 { color: #be185d; font-size: 1rem; margin-bottom: 6px; }
+.birthday-callout ul { margin: 4px 0 0 20px; }
+.birthday-callout li { font-size: 0.9rem; padding: 2px 0; }
+
+.subject-block { margin-bottom: 12px; padding: 14px 18px; background: #f8fafc; border-radius: 8px; border-left: 4px solid #253a77; }
+.subject-block h3 { color: #253a77; font-size: 1.05rem; margin-bottom: 6px; }
+.subject-block p { font-size: 0.93rem; color: #2d3748; margin-bottom: 6px; }
+
+footer {
+  margin-top: 32px; padding-top: 20px;
+  border-top: 2px solid #e2e8f0;
+  text-align: center; color: #7a5f00;
+  font-style: italic; font-weight: 700; font-size: 1.05rem;
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .back-index-btn, .print-btn { display: none; }
+  .syllabus-card { box-shadow: none; padding: 20px; }
+  .section-card { box-shadow: none; break-inside: avoid; }
+}
+@media (max-width: 640px) {
+  .syllabus-card { padding: 24px 20px; }
+  .header-info h1 { font-size: 1.3rem; }
+}
+
+table.schedule { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+table.schedule th, table.schedule td { border: 1px solid #cbd5e1; padding: 6px 8px; }
+table.schedule th { background: #253a77; color: #fff; font-weight: 700; }
+table.schedule td.time { background: #f8fafc; font-weight: 700; }
+table.schedule tr.recess td, table.schedule tr.lunch td { text-align: center; color: #64748b; font-style: italic; }
+</style>
+</head>
+<body>
+<a href="3b-rasa.html" class="back-index-btn" title="Back to Ms. Rasa's Class">&larr; Back to Class</a>
+<a class="print-btn" href="3b-rasa-syllabus.pdf?v=1" target="_blank" rel="noopener" title="Open printable syllabus PDF">🖨️ Print Syllabus</a>
+
+<div class="container">
+  <div class="syllabus-card">
+
+    <div class="header-top">
+      <div class="teacher-photo">
+        <img src="ms-rasa.jpg" alt="Ms. Rasa Fournier" onerror="this.style.display='none'; this.parentElement.textContent='RF';">
+      </div>
+      <div class="header-info">
+        <div class="year-badge">School Year 2026-2027</div>
+        <h1>Ms. Rasa Fournier &middot; 3rd Grade B</h1>
+        <div class="role">3rd Grade B Teacher &middot; Mary, Star of the Sea School</div>
+        <div class="contact">
+          <strong>Email:</strong> <a href="mailto:rfournier@starofthesea.org">rfournier@starofthesea.org</a><br>
+          <strong>Email response hours:</strong> Monday&ndash;Friday, 7:30 a.m.&ndash;3:30 p.m.<br>
+          <strong>Phone (school office):</strong> (808) 734-0208
+        </div>
+      </div>
+    </div>
+
+    <!-- MSOS Essential Question -->
+    <div class="eq-box">
+      <div class="label">MSOS Essential Question</div>
+      <div class="question">&ldquo;With Jesus, what makes my spirit soar?&rdquo;</div>
+      <div class="verse">Isaiah 40:31</div>
+    </div>
+
+    <!-- Welcome -->
+    <div class="section-card">
+      <h2>👋 Message from the Teacher</h2>
+      <div class="welcome-box">
+        <p>Aloha and welcome to 3B! My name is &ldquo;Ms. Rasa&rdquo; Fournier, and I am delighted to be your child&rsquo;s 3rd Grade teacher. This is my second year teaching 3rd Grade at MSOS. The year will be dedicated to learning and community. I hope to create a nurturing, united, inspiring, and faith-filled classroom where our life-long learners feel supported and excited to grow. I look forward to getting to know you and working together to make your child&rsquo;s experience amazing.</p>
+      </div>
+    </div>
+
+    <!-- School Mission NUI -->
+    <div class="section-card">
+      <h2>🌟 Our School Mission &mdash; Third Grade</h2>
+      <div class="nui-grid">
+        <div class="nui-item">
+          <h4>Nurture</h4>
+          <p>In 3rd Grade, nurture is an environment where students feel safe, supported, and valued &mdash; emotionally, socially, and academically.</p>
+        </div>
+        <div class="nui-item">
+          <h4>Unite</h4>
+          <p>In 3rd Grade, unite refers to creating a sense of togetherness, community, and belonging among students. It&rsquo;s about building a classroom where everyone feels included, respected, and part of the group &mdash; like a family unit.</p>
+        </div>
+        <div class="nui-item">
+          <h4>Inspire</h4>
+          <p>In 3rd Grade, inspire means sparking students&rsquo; curiosity, creativity, and confidence &mdash; making them excited to learn and believe in their own abilities.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAR / MSOS SLEs -->
+    <div class="section-card">
+      <h2>💜 Guiding Philosophy</h2>
+      <p>At Mary, Star of the Sea School, we guide our students to become <strong>S.T.A.R.s</strong>:</p>
+      <ul class="star-list">
+        <li>⭐ <strong>S</strong>elf-aware, Confident Individuals</li>
+        <li>⭐ <strong>T</strong>eachable, Lifelong Independent Learners</li>
+        <li>⭐ <strong>A</strong>ctive Christians</li>
+        <li>⭐ <strong>R</strong>esponsible Citizens</li>
+      </ul>
+      <p style="margin-top:10px">Together we will nurture hearts and minds, unite in purpose and spirit, and inspire one another each day &mdash; empowered to succeed, and always guided by faith.</p>
+    </div>
+
+    <!-- Communication -->
+    <div class="section-card">
+      <h2>📬 Communication</h2>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:rfournier@starofthesea.org">rfournier@starofthesea.org</a>. I answer emails during school hours <strong>Monday&ndash;Friday, 7:30 a.m.&ndash;3:30 p.m.</strong></li>
+        <li><strong>Notes:</strong> If needed, you can write me a note in your child&rsquo;s daily <strong>Agenda planner</strong>.</li>
+        <li><strong>Newsletter:</strong> Each <strong>Sunday</strong> you will receive an email with a newsletter about upcoming events and what we will be learning during the upcoming week.</li>
+        <li><strong>Parent Pouch:</strong> A pouch will go home each <strong>Tuesday</strong> with important fliers from the school. Please remove all items, sign, and return your child&rsquo;s pouch each <strong>Wednesday</strong>.</li>
+        <li><strong>Conferences:</strong> We will have two parent-teacher conferences scheduled for the 1st and 3rd quarter. We may have additional conferences as needed.</li>
+      </ul>
+    </div>
+
+    <!-- Daily Reminders / Arrival -->
+    <div class="section-card">
+      <h2>🕘 Daily Reminders &amp; Attendance</h2>
+      <ul>
+        <li><strong>Water bottle:</strong> Please provide your child with a labeled water bottle.</li>
+        <li><strong>Snack:</strong> Please provide your child with a healthy snack to be eaten at first recess. (We have children with allergies, so please pack snacks and lunch with <strong>no nut products</strong>.)</li>
+        <li><strong>Arrival:</strong> Classroom doors open <strong>7:35 a.m.</strong> Arrivals before 7:35 can go to the cafeteria for supervision.</li>
+        <li><strong>Tardy:</strong> If you arrive at school after <strong>7:45 a.m.</strong>, please have your child go to the office for a tardy slip before heading to the classroom.</li>
+        <li><strong>Absent:</strong> Please inform the school when your child is absent by calling the office between <strong>7:45&ndash;8:30 a.m.</strong> Please email me as well.</li>
+      </ul>
+    </div>
+
+    <!-- Class Expectations -->
+    <div class="section-card">
+      <h2>🌟 Classroom Rules &amp; Expectations</h2>
+      <p>Our class creates a <strong>classroom contract</strong> that establishes actions we take to make everyone feel like part of our community. Students participate in a collaborative discussion in which we agree upon the actions we want to see in the contract, and are expected to follow those agreed-upon expectations.</p>
+      <p>Other classroom expectations will be explicitly taught and demonstrated daily. Students are expected to work to high standards and are treated with warmth, respect, and fairness. I will contact you directly if your student is having any difficulties following classroom expectations that include:</p>
+      <ol>
+        <li>Be safe</li>
+        <li>Be attentive</li>
+        <li>Be respectful</li>
+        <li>Be kind</li>
+        <li>Do your best</li>
+      </ol>
+    </div>
+
+    <!-- Grading -->
+    <div class="section-card">
+      <h2>📊 Grading</h2>
+      <p>Daily class work and homework will be checked for <strong>timeliness, thoroughness, effort, and neatness</strong>. Writing assessments and class projects will be graded using rubrics. I will frequently be sitting down with students 1-on-1 to formally assess their academic progress. Throughout the school day I use informal, ongoing assessments to track student academic growth throughout the unit. I will then use summative assessments at the end of a unit or topic to see how much growth has been made and which areas still need improvement.</p>
+      <p>Report cards are given at the end of each quarter and are graded using a <strong>1&ndash;4 scale</strong>.</p>
+
+      <div class="grading-scale">
+        <div class="grade-item">
+          <div class="grade-num">1</div>
+          <div class="grade-name">Beginning</div>
+          <ul>
+            <li>Student is beginning to understand the concept or skill</li>
+            <li>Requires significant support and guidance</li>
+            <li>Limited understanding/mastery of the topic</li>
+          </ul>
+        </div>
+        <div class="grade-item">
+          <div class="grade-num">2</div>
+          <div class="grade-name">Developing</div>
+          <ul>
+            <li>Student demonstrates partial understanding or skill</li>
+            <li>Needs occasional assistance or support</li>
+            <li>Progressing but with notable gaps</li>
+          </ul>
+        </div>
+        <div class="grade-item">
+          <div class="grade-num">3</div>
+          <div class="grade-name">Proficient</div>
+          <ul>
+            <li>Student meets grade level expectations</li>
+            <li>Demonstrates a solid understanding of concepts or skills</li>
+            <li>Works independently with minimal errors</li>
+          </ul>
+        </div>
+        <div class="grade-item">
+          <div class="grade-num">4</div>
+          <div class="grade-name">Mastery</div>
+          <ul>
+            <li>The student exceeds grade level expectations</li>
+            <li>Demonstrates a thorough understanding and can apply skills in new situations</li>
+            <li>Work is consistently accurate and shows higher level thinking</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:14px">Report cards are based on how your child performs each quarter. Students also take a standardized assessment called <strong>STAR</strong> for early literacy and math in <strong>August and May</strong>. English Language Learners take the <strong>WIDA</strong> assessment as required.</p>
+    </div>
+
+    <!-- Homework -->
+    <div class="section-card">
+      <h2>📝 Homework Procedures</h2>
+      <p>Students should do their best to complete the work on their own. However, they depend on support from both school and home for success. Encourage them to attempt the work independently before they ask for help.</p>
+      <ul>
+        <li><strong>Agenda Book:</strong> Each day your child will bring home their agenda book listing the day&rsquo;s homework or any special notes/dates/reminders. Please initial the agenda book daily and return to school each day.</li>
+        <li><strong>Homework Folder:</strong> Any homework worksheets will go home in a Homework Folder. Please keep paperwork on the left side of the folder titled <em>Keep at Home</em> and return homework on the right side of the folder titled <em>Return to School</em>. You will know I have checked the work if there is a star ⭐ or happy face 😊 at the top.</li>
+      </ul>
+
+      <div class="choice-board-callout">
+        <h4>What is a Choice Board?</h4>
+        <p style="margin-bottom:6px">Generally homework will include a <strong>Choice Board</strong> (i.e., choose from a number of options) and a longer assignment like a Book Report that students will work on daily toward a final project. Homework will reflect what students have been learning in class and is expected to take about <strong>40 minutes to complete each day</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Library -->
+    <div class="section-card">
+      <h2>📚 Library Books</h2>
+      <p>Students will have the opportunity to check out a library book from our school library <strong>once a week on Fridays</strong>. Return it the following Friday so they can check out a new one!</p>
+    </div>
+
+    <!-- Curriculum Highlights -->
+    <div class="section-card">
+      <h2>📚 Curriculum Highlights</h2>
+      <p style="font-size:0.9rem;color:#4a5568;font-style:italic">We employ the use of textbooks and a variety of supplementary iPad apps, as well as hands-on activities for our daily subjects. In addition, students receive training in PE, Music, Art, STEM, and Library.</p>
+
+      <div class="subject-block">
+        <h3>✝️ Religion</h3>
+        <p><strong>RCL Benzinger</strong> is used as a guided resource. Growing in our faith is the core of our instruction. Learn to pray and follow the significant events in our liturgical calendar that teach us more about God.</p>
+      </div>
+      <div class="subject-block">
+        <h3>📖 Literacy</h3>
+        <p>Students will develop their reading comprehension, grammar/language, and writing skills through a cross-curricular approach that includes chapter books, online apps, and other resource materials. Students will explore fiction and non-fiction texts and write personal narratives, opinion pieces, research reports, poetry, and much more.</p>
+      </div>
+      <div class="subject-block">
+        <h3>🧮 Math</h3>
+        <p><strong>Envision Math</strong> is a problem-based curriculum that will develop number sense, multiplication, division, time, data tables, fractions, and much more.</p>
+      </div>
+      <div class="subject-block">
+        <h3>🔬 Science</h3>
+        <p><strong>Houghton Mifflin Harcourt</strong>, <strong>STEM Labs</strong>, and <strong>Mystery Science</strong> curriculum teaches students to explore engineering &amp; technology, forces &amp; motion, life cycles &amp; inherited traits, organisms &amp; their environment, and weather impact.</p>
+      </div>
+      <div class="subject-block">
+        <h3>🌍 Social Studies</h3>
+        <p><strong>My World</strong> social studies curriculum teaches students about our environment, economics, communities, government, and citizenship. We will also learn about maps and geography.</p>
+      </div>
+    </div>
+
+    <!-- Wellness -->
+    <div class="section-card">
+      <h2>💛 Health &amp; Wellness</h2>
+      <p><strong>Health and wellness will be taught during Second Semester</strong> with our School Counselor, Ms. Tacy. Lessons are spread out over the entire semester, with <strong>two class periods devoted to each topic</strong>. Students explore self-awareness by recognizing and managing their emotions.</p>
+    </div>
+
+    <!-- Class Schedule -->
+    <div class="section-card">
+      <h2>🗓️ Weekly Schedule (Q1) &middot; SY 26-27</h2>
+      <p style="font-size:0.88rem;color:#4a5568;font-style:italic;margin-bottom:10px">Ms. Rasa&rsquo;s 3B Class Schedule.</p>
+      <div style="overflow-x:auto">
+      <table class="schedule">
+        <thead>
+          <tr>
+            <th>Time</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="time">7:45&ndash;8:00</td><td>Morning Work</td><td>Morning Work</td><td>Morning Work</td><td>Morning Work</td><td>Morning Work</td></tr>
+          <tr><td class="time">8:00&ndash;8:50</td><td>Literacy / Writing</td><td>Literacy / Writing</td><td>Art</td><td>Literacy / Writing</td><td style="font-weight:700;color:#0e7490">MASS</td></tr>
+          <tr><td class="time">8:55&ndash;9:45</td><td>Art</td><td>P.E.</td><td>Music</td><td>Math</td><td>Literacy / Writing</td></tr>
+          <tr class="recess"><td class="time">9:45&ndash;9:55</td><td colspan="5">Snack</td></tr>
+          <tr><td class="time">10:00&ndash;10:50</td><td>Math</td><td>Math</td><td>Math</td><td>P.E.</td><td>Math</td></tr>
+          <tr><td class="time">10:50&ndash;11:15</td><td>Religion</td><td>Religion</td><td>Religion</td><td>Religion</td><td>Reading</td></tr>
+          <tr class="recess"><td class="time">11:15&ndash;11:40</td><td colspan="5">Recess</td></tr>
+          <tr class="lunch"><td class="time">11:45&ndash;12:10</td><td colspan="5">Lunch</td></tr>
+          <tr><td class="time">12:15&ndash;1:00</td><td>Reading</td><td>Reading</td><td>Reading</td><td>Reading</td><td>Library</td></tr>
+          <tr><td class="time">1:05&ndash;1:40</td><td>Science / SS</td><td>Science / SS</td><td>Science / SS</td><td>Science / SS</td><td>Science / SS</td></tr>
+          <tr><td class="time">1:45&ndash;2:20</td><td>Science / SS</td><td>Music (to 2:35)</td><td>Literacy / Writing</td><td>Science / SS</td><td>Science / SS</td></tr>
+          <tr><td class="time">2:25&ndash;2:35</td><td colspan="5" style="text-align:center;font-weight:700;color:#0e7490">Pack-up and Dismissal &middot; mini days 11:35&ndash;11:45 a.m.</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p style="font-size:0.86rem;color:#4a5568;font-style:italic;margin-top:8px">*Health and wellness will be taught during the Second Semester.</p>
+    </div>
+
+    <!-- Birthdays -->
+    <div class="section-card">
+      <h2>🎂 Birthdays</h2>
+      <div class="birthday-callout">
+        <h4>Please notify me one week in advance if you would like to bring in a treat.</h4>
+        <p style="font-size:0.9rem;margin-bottom:8px">Per the school handbook:</p>
+        <ul>
+          <li>Class treats must be delivered to the <strong>front office</strong>, not directly to the classroom.</li>
+          <li>Birthday treats need to be <strong>store-bought, pre-packaged</strong>, and easy to distribute (e.g., individual servings, sealed packaging). You may also consider non-food items (e.g. pencils, stickers, small books).</li>
+          <li>Due to allergies, all birthday treats need to be <strong>nut free</strong>.</li>
+          <li>Birthday treats will be distributed at the end of the school day.</li>
+        </ul>
+      </div>
+      <p><strong>Invitations:</strong> School protocol is that birthday invitations will only be handed out in school if the whole class is invited.</p>
+    </div>
+
+    <!-- Field Trips / Volunteering -->
+    <div class="section-card">
+      <h2>🚌 Field Trips &amp; Volunteering</h2>
+      <ul>
+        <li><strong>Field Trips:</strong> K-3 will go on one field trip per quarter. A permission form will go home for each field trip.</li>
+        <li><strong>Volunteers:</strong> Field trip volunteers may be needed. Other class and school-wide events may also require volunteers. The classroom teacher, room parent, or PTG will reach out when volunteers are needed.</li>
+      </ul>
+      <p style="font-size:0.9rem;color:#4a5568;margin-top:8px"><em>All volunteers must have current safe-environment training on file with the school office before helping in the classroom or on field trips.</em></p>
+    </div>
+
+    <!-- Thank You / Final Notes -->
+    <div class="section-card" style="border-top-color:#c084fc;background:#faf5ff">
+      <h2 style="color:#6b21a8">💛 Thank You!</h2>
+      <p>Student success is achieved by a combination of school and home support. We give your children the social and educational tools they need to become lifelong learners and valuable assets to their community. Parents are a key component of their child&rsquo;s academic success. You can support your 3rd Grader at home by showing interest: sign their daily homework Agenda, encourage reading, encourage writing opportunities (story-writing, diary entries, or writing cards or letters to family and friends), and math practice (give them real-life math problems or surprise them with an occasional, simple multiplication problem).</p>
+      <p>Please reach out to me with any concerns at all throughout the school year so that we can work together to give your child the best 3rd Grade experience possible. I hope that you will take the opportunity to participate in events and volunteer possibilities as they arise. Your support is invaluable in nurturing a confident and inspired learner. Thank you.</p>
+      <p style="text-align:right;font-style:italic;color:#6b21a8;font-weight:700;margin-top:10px">Many Blessings,<br>Ms. Rasa Fournier</p>
+      <p style="margin-top:14px"><strong>Class website:</strong> <a href="https://starofthesea.org/classes/" target="_blank" rel="noopener">starofthesea.org/classes</a></p>
+      <p><strong>Acknowledgment:</strong> <em>After reviewing this syllabus with your student, please email <a href="mailto:rfournier@starofthesea.org">rfournier@starofthesea.org</a> with the subject line &ldquo;3B Syllabus Reviewed &mdash; [Student Name]&rdquo; so I know it has reached your family. Mahalo!</em></p>
+    </div>
+
+    <footer>Empowered to Succeed, Guided by Faith &nbsp;❤️!</footer>
+  </div>
+</div>
+</body>
+</html>
