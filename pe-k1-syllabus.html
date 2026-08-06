@@ -52,6 +52,18 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 .section-card li { padding:4px 0; color:#2d3748; line-height:1.55; }
 .section-card strong { color:#253a77; }
 
+/* — Quarter scope cards (mirrors art-syllabus style, green PE theme) — */
+.quarters-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:8px; }
+.quarter-card { background:#fff; border-radius:12px; padding:18px 20px; box-shadow:0 3px 12px rgba(37,58,119,0.08); border-top:5px solid #059669; display:flex; flex-direction:column; }
+.quarter-card .q-pill { display:inline-block; background:#059669; color:#fff; padding:3px 12px; border-radius:999px; font-size:0.72rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px; align-self:flex-start; }
+.quarter-card h3 { color:#065f46; font-size:1.05rem; font-weight:800; margin-bottom:4px; line-height:1.3; }
+.quarter-card .focus { color:#0e7490; font-size:0.85rem; font-weight:700; margin-bottom:10px; }
+.quarter-card ul { margin:4px 0 0 18px; padding:0; }
+.quarter-card li { font-size:0.9rem; color:#2d3748; padding:3px 0; line-height:1.5; }
+.quarter-card.year-round { border-top-color:#7c3aed; }
+.quarter-card.year-round .q-pill { background:#7c3aed; }
+.quarter-card.year-round h3 { color:#5b21b6; }
+
 .scale-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
               gap:10px; margin-top:10px; }
 .scale-pill { background:#f0fdf4; border-left:4px solid #10b981;
@@ -111,6 +123,42 @@ footer { text-align:center; margin-top:24px; padding-top:18px;
         <li>Learn the <strong>rules and regulations</strong> for all activities.</li>
         <li>Be <strong>properly dressed</strong> in P.E. uniform and shoes.</li>
       </ul>
+    </div>
+
+    <div class="section-card"><h2>📅 Course Overview by Quarter</h2>
+      <p>Each quarter emphasizes a rotating set of skills and games, with year-round staples woven into every class.</p>
+      <div class="quarters-grid">
+        <div class="quarter-card">
+          <span class="q-pill">Q1</span>
+          <h3>Fall</h3>
+          <div class="focus">Focus: Foundational Movement</div>
+          <ul><li>Locomotors</li><li>Throwing and Catching</li><li>Volleyball</li></ul>
+        </div>
+        <div class="quarter-card">
+          <span class="q-pill">Q2</span>
+          <h3>Fall / Winter</h3>
+          <div class="focus">Focus: Coordination and Teamwork</div>
+          <ul><li>Baseball</li><li>Cup Stacking</li><li>Soccer</li></ul>
+        </div>
+        <div class="quarter-card">
+          <span class="q-pill">Q3</span>
+          <h3>Winter / Spring</h3>
+          <div class="focus">Focus: Fitness and Skill Building</div>
+          <ul><li>Fitness</li><li>Football</li><li>Golf</li><li>Jump Rope</li></ul>
+        </div>
+        <div class="quarter-card">
+          <span class="q-pill">Q4</span>
+          <h3>Spring / Summer</h3>
+          <div class="focus">Focus: Games and Sportsmanship</div>
+          <ul><li>Basketball</li><li>Slap Ball</li><li>Pickleball</li><li>Bowling</li></ul>
+        </div>
+        <div class="quarter-card year-round">
+          <span class="q-pill">Q1&ndash;Q4</span>
+          <h3>All Year</h3>
+          <div class="focus">Focus: Everyday Movement &amp; Community</div>
+          <ul><li>Running</li><li>Team-building games</li><li>Eye-hand coordination</li><li>Agility</li><li>Dance</li><li>Holiday-themed games</li></ul>
+        </div>
+      </div>
     </div>
 
     <div class="section-card"><h2>🏃 Course Activities</h2>
